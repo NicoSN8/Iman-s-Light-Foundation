@@ -372,6 +372,12 @@ export default function HomePage() {
               <div style={{ background: 'rgba(255, 255, 255, 0.9)', padding: '24px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}>
                 <Image src="https://static.wixstatic.com/media/56e6ee_55f0bbe459fb41e9907cd3c547b6afb5~mv2.png/v1/fill/w_371,h_268,q_90,enc_avif,quality_auto/56e6ee_55f0bbe459fb41e9907cd3c547b6afb5~mv2.png" alt="One More Child" width={110} height={79} style={{ objectFit: 'contain' }} />
               </div>
+              <div style={{ background: 'rgba(255, 255, 255, 0.9)', padding: '24px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}>
+                <Image src="/sponsors/sponsor_logo_1.png" alt="Monarch Air Group" width={100} height={78} style={{ objectFit: 'contain' }} />
+              </div>
+              <div style={{ background: 'rgba(255, 255, 255, 0.9)', padding: '24px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}>
+                <Image src="/sponsors/sponsor_logo_2.png" alt="King Realty / Century 21" width={100} height={78} style={{ objectFit: 'contain' }} />
+              </div>
             </div>
 
             {/* Text Sponsors */}

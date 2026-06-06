@@ -438,3 +438,32 @@
   border-color: var(--gold) !important;
   box-shadow: 0 16px 36px rgba(201, 168, 76, 0.25) !important;
 }
+
+.communitySponsorLogosGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1000px;
+  margin: 24px auto 32px;
+}
+
+.communitySponsorLogoBadge {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 12px 20px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 75px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.communitySponsorLogoBadge:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(201, 168, 76, 0.4);
+}

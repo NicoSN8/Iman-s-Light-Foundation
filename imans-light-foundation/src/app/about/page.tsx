@@ -436,6 +436,37 @@ export default function AboutPage() {
               </div>
             </div>
             
+            {/* Community & Event Sponsor Logos */}
+            <div style={{ width: '100%', marginTop: '16px' }}>
+              <h4 className={styles.subsectionHeading}>
+                {lang === 'en' ? 'Community & Event Sponsors' : 'Patrocinadores de Eventos y Apoyo'}
+              </h4>
+              <div className={styles.subsectionDivider} />
+              <div className={styles.communitySponsorLogosGrid}>
+                {[
+                  { src: '/sponsors/extracted/sp3_logo_0.png', alt: 'Event Sponsor' },
+                  { src: '/sponsors/extracted/sp3_logo_1.png', alt: 'Event Sponsor' },
+                  { src: '/sponsors/extracted/sp3_logo_2.png', alt: 'Event Sponsor' },
+                  { src: '/sponsors/extracted/sp3_logo_3.png', alt: 'Event Sponsor' },
+                  { src: '/sponsors/extracted/sp3_logo_4.png', alt: 'Event Sponsor' },
+                  { src: 'https://static.wixstatic.com/media/56e6ee_ebe0f16f3a7f45d2a15a997eab2927f3~mv2.png', alt: 'Sponsor' },
+                  { src: 'https://static.wixstatic.com/media/56e6ee_90b6e59a5df142298b790e6f643fa66a~mv2.png', alt: 'Sponsor' },
+                  { src: 'https://static.wixstatic.com/media/56e6ee_5a2822e2820d4722ab0093e1f1f8d03a~mv2.png', alt: 'Sponsor' },
+                  { src: 'https://static.wixstatic.com/media/56e6ee_0f2c809c926641329fd63076093e1de7~mv2.png', alt: 'Sponsor' },
+                  { src: 'https://static.wixstatic.com/media/56e6ee_28bd559fd2fb4f969d85fe406d67ad5d~mv2.png', alt: 'Sponsor' },
+                  { src: 'https://static.wixstatic.com/media/56e6ee_f96e2e03e38f4cafa7f45f9969059dd6~mv2.png', alt: 'Sponsor' },
+                  { src: 'https://static.wixstatic.com/media/56e6ee_243f0558f3794b77a33603bbcf0b1de4~mv2.png', alt: 'Sponsor' },
+                  { src: 'https://static.wixstatic.com/media/56e6ee_d4e6c416379046f2bc8cc91a16464637~mv2.png', alt: 'Sponsor' },
+                  { src: 'https://static.wixstatic.com/media/56e6ee_a9dda332ae464d16adc838ae65a885dd~mv2.png', alt: 'Sponsor' },
+                  { src: 'https://static.wixstatic.com/media/56e6ee_1941e013eda54ccf829e7227e5bde355~mv2.png', alt: 'Sponsor' },
+                ].map((s, i) => (
+                  <div key={i} className={styles.communitySponsorLogoBadge}>
+                    <Image src={s.src} alt={s.alt} width={120} height={60} style={{ objectFit: 'contain' }} />
+                  </div>
+                ))}
+              </div>
+            </div>
+
             {/* Extended text partners from Wix data */}
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', justifyContent: 'center', marginTop: '24px' }}>
               {['Secure Your Drink', 'Outreach Behavior Support', 'Infinity Life Wellness Center', 'Behavior Support Center of Florida', 'Improving Lives Community', 'Luxe Properties', 'DAER Nightclub', 'Juan Carlos Pinera', 'Master Bodyworker', 'ScribeAmerica'].map((p, i) => (
