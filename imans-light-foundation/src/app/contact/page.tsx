@@ -122,14 +122,6 @@ export default function ContactPage() {
                 </div>
 
                 <div className={styles.contactCard}>
-                  <div className={styles.contactCardIcon}><MapPin /></div>
-                  <div>
-                    <div className={styles.contactCardLabel}>{isEs ? 'Dirección' : 'Address'}</div>
-                    <div className={styles.contactCardValue}>15160 SW 44 St, Miramar, FL 33027</div>
-                  </div>
-                </div>
-
-                <div className={styles.contactCard}>
                   <div className={styles.contactCardIcon}><Clipboard /></div>
                   <div>
                     <div className={styles.contactCardLabel}>EIN</div>

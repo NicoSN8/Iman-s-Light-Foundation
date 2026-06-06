@@ -390,12 +390,11 @@ export default function HomePage() {
                 { src: '/sponsors/extracted/sp3_logo_4.png', alt: 'Event Sponsor' },
                 { src: 'https://static.wixstatic.com/media/56e6ee_ebe0f16f3a7f45d2a15a997eab2927f3~mv2.png', alt: 'Sponsor' },
                 { src: 'https://static.wixstatic.com/media/56e6ee_90b6e59a5df142298b790e6f643fa66a~mv2.png', alt: 'Sponsor' },
-                { src: 'https://static.wixstatic.com/media/56e6ee_5a2822e2820d4722ab0093e1f1f8d03a~mv2.png', alt: 'Sponsor' },
+                { src: '/sponsors/prosperity_logo.png', alt: 'Prosperity Social Community Development Group' },
                 { src: 'https://static.wixstatic.com/media/56e6ee_0f2c809c926641329fd63076093e1de7~mv2.png', alt: 'Sponsor' },
                 { src: 'https://static.wixstatic.com/media/56e6ee_28bd559fd2fb4f969d85fe406d67ad5d~mv2.png', alt: 'Sponsor' },
                 { src: 'https://static.wixstatic.com/media/56e6ee_f96e2e03e38f4cafa7f45f9969059dd6~mv2.png', alt: 'Sponsor' },
                 { src: 'https://static.wixstatic.com/media/56e6ee_243f0558f3794b77a33603bbcf0b1de4~mv2.png', alt: 'Sponsor' },
-                { src: 'https://static.wixstatic.com/media/56e6ee_d4e6c416379046f2bc8cc91a16464637~mv2.png', alt: 'Sponsor' },
                 { src: 'https://static.wixstatic.com/media/56e6ee_a9dda332ae464d16adc838ae65a885dd~mv2.png', alt: 'Sponsor' },
                 { src: 'https://static.wixstatic.com/media/56e6ee_1941e013eda54ccf829e7227e5bde355~mv2.png', alt: 'Sponsor' },
               ].map((s, i) => (
