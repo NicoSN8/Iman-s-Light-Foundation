@@ -93,6 +93,17 @@ export default function ContactPage() {
               <h2 className="section-title">{isEs ? 'Contacta Directamente' : 'Reach Us Directly'}</h2>
               <div className="gold-divider" />
               <div className={styles.contactCards}>
+                {/* Director Title Card */}
+                <div className={styles.contactCard} style={{ background: 'rgba(201, 168, 76, 0.08)', border: '1px solid rgba(201, 168, 76, 0.25)' }}>
+                  <div className={styles.contactCardIcon} style={{ color: 'var(--gold)' }}><CheckCircle2 /></div>
+                  <div>
+                    <div className={styles.contactCardLabel}>{isEs ? 'Dirección Ejecutiva' : 'Executive Leadership'}</div>
+                    <div className={styles.contactCardValue} style={{ color: '#fff', fontWeight: 600 }}>
+                      {isEs ? 'Dra.h.e. Mari Carmen Rodríguez, Fundadora y Directora Ejecutiva' : 'Dr.h.e. Mari Carmen Rodriguez, Founder and Executive Director'}
+                    </div>
+                  </div>
+                </div>
+
                 <div className={styles.contactCard}>
                   <div className={styles.contactCardIcon}><Phone /></div>
                   <div>
@@ -100,11 +111,21 @@ export default function ContactPage() {
                     <a href="tel:+17868533347" className={styles.contactCardValue}>+1 (786) 853-3347</a>
                   </div>
                 </div>
+
                 <div className={styles.contactCard}>
                   <div className={styles.contactCardIcon}><Mail /></div>
                   <div>
                     <div className={styles.contactCardLabel}>{isEs ? 'Correo' : 'Email'}</div>
-                    <a href="mailto:imanslightfoundation@gmail.com" className={styles.contactCardValue}>imanslightfoundation@gmail.com</a>
+                    <a href="mailto:imanslightfoundation@gmail.com" className={styles.contactCardValue} style={{ display: 'block', marginBottom: '4px' }}>imanslightfoundation@gmail.com</a>
+                    <a href="mailto:MRrodriguez@Imanslightfoundation.org" className={styles.contactCardValue} style={{ display: 'block' }}>MRrodriguez@Imanslightfoundation.org</a>
+                  </div>
+                </div>
+
+                <div className={styles.contactCard}>
+                  <div className={styles.contactCardIcon}><MapPin /></div>
+                  <div>
+                    <div className={styles.contactCardLabel}>{isEs ? 'Dirección' : 'Address'}</div>
+                    <div className={styles.contactCardValue}>15160 SW 44 St, Miramar, FL 33027</div>
                   </div>
                 </div>
 

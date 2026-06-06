@@ -225,3 +225,206 @@
     margin-bottom: 8px;
   }
 }
+
+/* ===== TESTIMONIALS GRID (5 cards, flex-wrap) ===== */
+.testimonialsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  margin-top: 40px;
+  justify-content: center;
+}
+
+.testimonialCard {
+  background: rgba(20, 28, 46, 0.7);
+  backdrop-filter: blur(12px);
+  padding: 36px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 calc(33.333% - 28px);
+  min-width: 300px;
+  max-width: 420px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.testimonialCard:hover {
+  transform: translateY(-6px);
+  border-color: rgba(201, 168, 76, 0.4);
+}
+
+.testimonialRole {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.85rem;
+  margin-top: 4px;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .testimonialCard {
+    flex: 1 1 100%;
+    max-width: 100%;
+    min-width: unset;
+  }
+}
+
+/* ===== AWARDS TIMELINE ===== */
+.awardsTimeline {
+  position: relative;
+  padding-left: 40px;
+  margin-top: 48px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.awardsTimeline::before {
+  content: '';
+  position: absolute;
+  left: 12px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, rgba(201, 168, 76, 0.8), rgba(201, 168, 76, 0.1));
+}
+
+.awardCard {
+  position: relative;
+  margin-bottom: 32px;
+  background: rgba(20, 28, 46, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(201, 168, 76, 0.15);
+  border-radius: 12px;
+  padding: 24px 28px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.awardCard:hover {
+  transform: translateX(6px);
+  border-color: rgba(201, 168, 76, 0.5);
+}
+
+.awardCard::before {
+  content: '';
+  position: absolute;
+  left: -34px;
+  top: 28px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 12px rgba(201, 168, 76, 0.5);
+  border: 2px solid rgba(4, 8, 20, 1);
+}
+
+.awardYear {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--gold), #E8C97A);
+  color: var(--navy-900);
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+
+.awardTitle {
+  color: var(--white);
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+  line-height: 1.5;
+}
+
+.awardOrg {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .awardsTimeline {
+    padding-left: 32px;
+  }
+  .awardCard::before {
+    left: -26px;
+  }
+  .awardsTimeline::before {
+    left: 8px;
+  }
+}
+
+/* ===== AFFILIATIONS GRID ===== */
+.affiliationsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 36px;
+}
+
+.affiliationBadge {
+  background: rgba(20, 28, 46, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 12px 22px;
+  border-radius: 30px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.affiliationBadge:hover {
+  border-color: rgba(201, 168, 76, 0.5);
+  color: var(--gold);
+  transform: translateY(-2px);
+}
+
+.chambersGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.chamberBadge {
+  background: rgba(201, 168, 76, 0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(201, 168, 76, 0.25);
+  padding: 12px 22px;
+  border-radius: 30px;
+  color: var(--gold);
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.chamberBadge:hover {
+  background: rgba(201, 168, 76, 0.15);
+  border-color: rgba(201, 168, 76, 0.6);
+  transform: translateY(-2px);
+}
+
+.subsectionHeading {
+  color: var(--gold);
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  margin-top: 48px;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.subsectionDivider {
+  width: 60px;
+  height: 2px;
+  background: var(--gold);
+  margin: 0 auto 24px;
+  opacity: 0.5;
+}

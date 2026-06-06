@@ -92,3 +92,113 @@
   line-height: 1.6;
   margin-top: auto;
 }
+
+/* ===== FEATURED EVENTS STYLES ===== */
+.featuredSectionTitle {
+  margin-bottom: 32px;
+  text-align: left;
+}
+
+.featuredSectionTitle h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  color: #fff;
+  margin-top: 8px;
+  margin-bottom: 12px;
+}
+
+.featuredCard {
+  background: rgba(20, 28, 46, 0.85);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 48px rgba(0,0,0,0.4);
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.featuredCard:hover {
+  transform: translateY(-2px);
+}
+
+.featuredBadge {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: var(--gradient-gold);
+  color: var(--navy);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  padding: 6px 16px;
+  border-radius: 50px;
+  text-transform: uppercase;
+}
+
+.pastBadge {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--gold-light);
+  border: 1px solid rgba(201, 168, 76, 0.4);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  padding: 6px 16px;
+  border-radius: 50px;
+  text-transform: uppercase;
+}
+
+.featuredContent {
+  max-width: 800px;
+}
+
+.featuredDate {
+  color: var(--gold);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.featuredTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  color: #fff;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.featuredLocation {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.featuredDesc {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.05rem;
+  line-height: 1.75;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .featuredCard {
+    padding: 32px 24px 28px;
+  }
+  .featuredBadge, .pastBadge {
+    position: static;
+    display: inline-block;
+    margin-bottom: 16px;
+  }
+  .featuredTitle {
+    font-size: 1.6rem;
+  }
+}

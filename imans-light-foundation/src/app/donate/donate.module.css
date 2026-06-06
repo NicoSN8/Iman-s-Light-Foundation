@@ -148,3 +148,40 @@
     margin-bottom: 8px;
   }
 }
+
+/* ===== COMMUNITY SPONSORS STYLES ===== */
+.communitySponsorGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.communitySponsorBadge {
+  background: rgba(20, 28, 46, 0.65);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 12px 24px;
+  border-radius: 30px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.communitySponsorBadge:hover {
+  border-color: rgba(201, 168, 76, 0.5);
+  color: var(--gold);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+@media (max-width: 768px) {
+  .communitySponsorBadge {
+    padding: 10px 20px;
+    font-size: 0.85rem;
+  }
+}

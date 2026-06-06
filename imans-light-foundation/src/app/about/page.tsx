@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { LanguageContext } from '@/context/LanguageContext';
-import { Lightbulb, Heart, Scale, Leaf, Users, Star, Globe2, Quote } from 'lucide-react';
+import { Lightbulb, Heart, Scale, Leaf, Users, Star, Globe2, Quote, Award } from 'lucide-react';
 import styles from './about.module.css';
 
 const t = {
@@ -46,15 +46,47 @@ const t = {
       { name: 'Libby L. Calero', role: 'PR & Sponsor Development', image: 'https://static.wixstatic.com/media/56e6ee_37bc5c9d971949858e3cd5393e414ae6~mv2.jpg/v1/fill/w_413,h_371,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG-20250918-WA0055(1).jpg', bio: 'With over 25 years in hospitality and PR (working alongside DJ Irie and Jamie Foxx), Libby uses her vast network to bring massive visibility and crucial sponsorships to the foundation’s life-saving mission.' },
       { name: 'Victor H. Jinete', role: 'Audio Visual Director', image: 'https://static.wixstatic.com/media/56e6ee_1857a150774e4beb9114d4788de004a5~mv2.jpeg/v1/fill/w_413,h_371,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/WhatsApp%20Image%202025-09-21%20at%2019_01_37.jpeg', bio: 'Known as "Vic The Kid", this rising Latin music artist uses his massive platform to produce engaging content for the foundation, demonstrating to youth that success and joy do not require lethal substances.' },
       { name: 'Naylin Rizo, LMHC', role: 'Psychology Advisor', image: 'https://static.wixstatic.com/media/56e6ee_35c37897108948f48e30e3d1ff4434c9~mv2.jpg/v1/fill/w_344,h_344,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_0477.jpg', bio: 'A Licensed Mental Health Counselor with 14+ years guiding teens and adults through trauma and addiction. She ensures our mental wellness programs are clinically sound and maximally effective.' },
+      { name: 'Natalie Cruz, MSW', role: 'Social Work Advisor', image: 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="413" height="371" viewBox="0 0 413 371"><rect fill="%23141C2E" width="413" height="371"/><circle cx="206" cy="140" r="60" fill="none" stroke="%23C9A84C" stroke-width="2"/><text x="206" y="155" text-anchor="middle" fill="%23C9A84C" font-family="serif" font-size="48" font-weight="bold">NC</text><rect x="146" y="220" width="120" height="4" rx="2" fill="%23C9A84C" opacity="0.6"/></svg>'), bio: 'A dedicated social worker for over 25 years with a strong foundation in supporting individuals across the lifespan. Natalie holds a Bachelor\'s degree in Psychology from St. Thomas University and a Master of Social Work from Florida International University. She currently serves as a Manager of a Hospital Case Management department, leading care coordination efforts and ensuring patients receive comprehensive post-acute care.' },
       { name: 'Nicolas S. Nobrega', role: 'IT Intern', image: 'https://static.wixstatic.com/media/56e6ee_e765024d488a45ffad6cb38cac0d5d78~mv2.jpeg/v1/fill/w_344,h_344,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/WhatsApp%20Image%202025-08-19%20at%2013_41_58.jpeg', bio: 'A passionate Cybersecurity student at FIU, Nicolas handles the foundation’s digital infrastructure, ensuring our lifesaving resources and data remain accessible, secure, and easily reachable.' },
     ],
-    testimonialsLabel: 'Voices of Hope',
-    testimonialsTitle: 'Community Impact Testimonials',
-    testimonialsSub: 'Real stories from the families, students, and partners we serve.',
+    testimonialsLabel: 'Voices of Support',
+    testimonialsTitle: 'Letters of Support',
+    testimonialsSub: 'Endorsements from our school counselors, mental health partners, and community organizers.',
     testimonials: [
-      { quote: "We honestly felt lost before finding Iman's Light. The emotional training and the Narcan kits gave us an overwhelming sense of relief and an actual plan to protect our kids. You feel Mari's genuine heart in every single presentation.", author: "A Grateful Local Parent & Advocate" },
-      { quote: "The interactive workshop they hosted at our school resonated deeply with the youth. They finally felt spoken to with deep respect, truth, and genuine care instead of standard fear tactics. It completely shifted the narrative in our classrooms.", author: "Miami-Dade High School Counselor" },
-      { quote: "This foundation doesn't just discuss the fentanyl crisis. They are physically out here carrying Narcan, holding space for grieving families, and saving actual lives every single day. Their strength and compassion are truly awe-inspiring.", author: "Community Leader with S.A.R.A." },
+      { quote: 'Through the Iman\'s Light Foundation, you offer students critical knowledge they often have not encountered before—particularly regarding the dangers of substance abuse, marijuana use, vaping, and fentanyl. Your approach creates a safe, welcoming environment where students feel comfortable asking questions without fear of judgment.', author: 'Eduardo Sabillon', role: 'Counselor, Kinloch Park Middle School' },
+      { quote: 'Dr. Rodriguez has demonstrated an unwavering commitment to empowering individuals through education and awareness. What distinguishes her approach is her ability to share lived experiences in a way that fosters trust, understanding, and meaningful dialogue.', author: 'Francesco Buberli PhD, MPH, MS', role: 'CEO, Survivors\' Pathway Corporation' },
+      { quote: 'Your presentation offered critical, evidence-based information regarding the dangers of counterfeit pills, fentanyl contamination, and emerging synthetic substances. This education directly supports our ability to provide safe, informed, and responsive care to the individuals we serve.', author: 'The Leadership Team', role: 'Behavior Support Center of Florida' },
+      { quote: 'Her ability to combine professional expertise with personal experience sets her apart as a true leader in prevention and community outreach. The workshops she has conducted in partnership with us have not only increased awareness but also fostered safe spaces for dialogue.', author: 'Natalia Angarita', role: 'Director of Special Affairs, Drug-Free World Foundation South Florida' },
+      { quote: 'Imans Light Foundation has demonstrated a strong commitment to educating our youth and community members on the dangers of lethal synthetic drugs, vaping, and overall substance misuse. Their workshops are informative, engaging, and rooted in compassion and evidence-based practices.', author: 'Romnie Vertus', role: 'Program Coordinator, S.A.R.A. / Prosperity Social & Community Development Group' }
+    ],
+    awardsLabel: 'Recognition',
+    awardsTitle: 'Awards & Community Recognitions',
+    awardsSub: 'Honors received by our founder and foundation for outstanding community service and prevention work.',
+    awards: [
+      { year: '2024', title: 'La Antorcha de Oro – Woman Who Transcends', org: 'Christian Latin Business Chamber of Commerce' },
+      { year: '2023 & 2024', title: 'Mayor Daniela Levine Cava Certificate of Appreciation', org: '4th & 5th Annual Power & Influence Awards' },
+      { year: '2023', title: 'National Caribbean American Awards', org: 'Community Service Recognition' },
+      { year: '2022', title: 'Certificate for Exceptional Community Service during COVID-19', org: 'City of Miramar, Commissioner Maxwell Chambers' },
+      { year: '2021', title: 'Trail Blazer Awards – Woman Inspiring Woman', org: 'Community Leadership' },
+      { year: 'Award', title: 'Comunidad FVE "Premios Gratitud" Award', org: 'Gratitude for Community Support' },
+      { year: 'Award', title: 'Mejora & Youth for Human Rights "Goodwill Peace Makers & Keepers of the Flame" Award', org: 'Human Rights Advocacy' },
+      { year: 'Award', title: '"Unwavering Commitment to Justice and Education" Award', org: 'Toys for Kids Miami' }
+    ],
+    affiliationsLabel: 'Affiliations',
+    affiliationsTitle: 'Community Affiliations & Professional Involvement',
+    organizationsTitle: 'Professional Organizations',
+    chambersTitle: 'Chambers of Commerce & Advisory Boards',
+    organizations: [
+      'PTA & PTSA', 'Global Innovative Foundation', 'Florida Board of Nursing', 'Black Nurses Association',
+      'Miami Kingdom Lion Club', 'Wings to Freedom', 'Survivors Pathway', 'Miami Children\'s Hospital / Joe DiMaggio',
+      'Miami Mission', 'Global Philanthropy Society', 'Foundation of the Americas', 'Comunidad FBE',
+      'The Circle of Brotherhood', 'DEA', 'CDC', 'Southern Winds Hospital', 'Behavior Support of South Florida',
+      'Jewish University System'
+    ],
+    chambers: [
+      'The Christian Latin Chamber of Commerce', 'Miami Chamber of Commerce', 'Miami Real Estate Association of Realtors',
+      'National Association of Realtors', 'Huntington Board of Directors', 'Asociación Internacional de Clubes de Leones',
+      'North Miami Chamber of Commerce'
     ],
     partnersLabel: 'Our Extended Family',
     partnersTitle: 'Friends of the Foundation',
@@ -103,15 +135,47 @@ const t = {
       { name: 'Libby L. Calero', role: 'Relaciones Públicas', image: 'https://static.wixstatic.com/media/56e6ee_37bc5c9d971949858e3cd5393e414ae6~mv2.jpg/v1/fill/w_413,h_371,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG-20250918-WA0055(1).jpg', bio: 'Utiliza su vasta red (DJ Irie, Jamie Foxx) para dar visibilidad masiva y patrocinios cruciales a la misión de la fundación.' },
       { name: 'Victor H. Jinete', role: 'Director Audiovisual', image: 'https://static.wixstatic.com/media/56e6ee_1857a150774e4beb9114d4788de004a5~mv2.jpeg/v1/fill/w_413,h_371,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/WhatsApp%20Image%202025-09-21%20at%2019_01_37.jpeg', bio: 'El artista de música latina ("Vic The Kid") utiliza su plataforma para demostrar a los jóvenes que el éxito no requieren sustancias letales.' },
       { name: 'Naylin Rizo, LMHC', role: 'Asesora Psicológica', image: 'https://static.wixstatic.com/media/56e6ee_35c37897108948f48e30e3d1ff4434c9~mv2.jpg/v1/fill/w_344,h_344,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_0477.jpg', bio: 'Asesora especializada en traumas y adicciones, garantiza que nuestros programas enfocados en el bienestar mental sean sumamente efectivos.' },
+      { name: 'Natalie Cruz, MSW', role: 'Asesora de Trabajo Social', image: 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="413" height="371" viewBox="0 0 413 371"><rect fill="%23141C2E" width="413" height="371"/><circle cx="206" cy="140" r="60" fill="none" stroke="%23C9A84C" stroke-width="2"/><text x="206" y="155" text-anchor="middle" fill="%23C9A84C" font-family="serif" font-size="48" font-weight="bold">NC</text><rect x="146" y="220" width="120" height="4" rx="2" fill="%23C9A84C" opacity="0.6"/></svg>'), bio: 'Trabajadora social dedicada por más de 25 años con una sólida base en el apoyo a individuos a lo largo de toda la vida. Natalie posee una Licenciatura en Psicología de St. Thomas University y una Maestría en Trabajo Social de Florida International University. Actualmente se desempeña como Gerente de un departamento de Gestión de Casos Hospitalarios, liderando esfuerzos de coordinación de atención.' },
       { name: 'Nicolas S. Nobrega', role: 'Pasante de TI', image: 'https://static.wixstatic.com/media/56e6ee_e765024d488a45ffad6cb38cac0d5d78~mv2.jpeg/v1/fill/w_344,h_344,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/WhatsApp%20Image%202025-08-19%20at%2013_41_58.jpeg', bio: 'Nico maneja nuestra infraestructura cibernética para que los recursos siempre estén totalmente seguros y accesibles para todos.' },
     ],
-    testimonialsLabel: 'Voces de Esperanza',
-    testimonialsTitle: 'Testimonios de Impacto',
-    testimonialsSub: 'Historias reales de las familias, estudiantes y socios a los que servimos.',
+    testimonialsLabel: 'Voces de Apoyo',
+    testimonialsTitle: 'Cartas de Apoyo',
+    testimonialsSub: 'Endosos de nuestros consejeros escolares, socios de salud mental y organizadores comunitarios.',
     testimonials: [
-      { quote: "Nos sentíamos honestamente perdidos antes de encontrar la Luz de Iman. El entrenamiento emocional y los kits de Narcan nos dieron un enorme sentido de alivio. Sientes el genuino corazón de Mari en cada presentación que hacen.", author: "Una Madre y Defensora Local Increíblemente Agradecida" },
-      { quote: "El taller interactivo que hicieron en nuestra escuela resonó profundamente con los jóvenes. Se sintieron escuchados con gran respeto, verdad y un cuidado real. Cambió completamente la conversación en nuestros pasillos.", author: "Consejero de Escuela Secundaria de Miami-Dade" },
-      { quote: "Esta fundación no solo habla de la crisis del fentanilo en teoría. Ellos están físicamente presentes impartiendo Narcan, llorando con las familias y salvando vidas reales todos los días. Su amor y dolor son nuestra mayor esperanza.", author: "Líder Comunitario en S.A.R.A." },
+      { quote: "A través de la Fundación Iman's Light, ofrecen a los estudiantes conocimientos críticos que a menudo no habían encontrado antes, particularmente sobre los peligros del abuso de sustancias, el uso de marihuana, el vapeo y el fentanilo. Su enfoque crea un ambiente seguro y acogedor donde los estudiantes se sienten cómodos haciendo preguntas.", author: "Eduardo Sabillon", role: "Consejero, Kinloch Park Middle School" },
+      { quote: "La Dra. Rodríguez ha demostrado un compromiso inquebrantable con el empoderamiento de las personas a través de la educación y la concientización. Lo que distingue su enfoque es su capacidad para compartir experiencias vividas de manera que fomenta la confianza y el diálogo significativo.", author: "Francesco Buberli PhD, MPH, MS", role: "CEO, Survivors' Pathway Corporation" },
+      { quote: "Su presentación ofreció información crítica y basada en evidencia sobre los peligros de las pastillas falsificadas, la contaminación con fentanilo y las sustancias sintéticas emergentes. Esta educación apoya directamente nuestra capacidad de brindar atención segura e informada.", author: "El Equipo de Liderazgo", role: "Behavior Support Center of Florida" },
+      { quote: "Su capacidad para combinar la experiencia profesional con la experiencia personal la distingue como una verdadera líder en prevención y alcance comunitario. Los talleres que ha realizado en asociación con nosotros no solo han aumentado la conciencia sino que también han fomentado espacios seguros para el diálogo.", author: "Natalia Angarita", role: "Directora de Asuntos Especiales, Drug-Free World Foundation South Florida" },
+      { quote: "La Fundación Iman's Light ha demostrado un fuerte compromiso con la educación de nuestros jóvenes y miembros de la comunidad sobre los peligros de las drogas sintéticas letales, el vapeo y el mal uso de sustancias. Sus talleres son informativos, atractivos y basados en la compasión y prácticas basadas en evidencia.", author: "Romnie Vertus", role: "Coordinador de Programas, S.A.R.A. / Prosperity Social & Community Development Group" }
+    ],
+    awardsLabel: 'Reconocimiento',
+    awardsTitle: 'Premios y Reconocimientos Comunitarios',
+    awardsSub: 'Honores recibidos por nuestra fundadora y la fundación por servicios sobresalientes y prevención.',
+    awards: [
+      { year: '2024', title: 'La Antorcha de Oro – Mujer Que Trasciende', org: 'Cámara de Comercio de Negocios Latinos Cristianos' },
+      { year: '2023 & 2024', title: 'Certificado de Apreciación de la Alcaldesa Daniela Levine Cava', org: '4to y 5to Premios Anuales de Poder e Influencia' },
+      { year: '2023', title: 'Premios Nacionales del Caribe Americano', org: 'Reconocimiento al Servicio Comunitario' },
+      { year: '2022', title: 'Certificado por Servicio Comunitario Excepcional durante COVID-19', org: 'Ciudad de Miramar, Comisionado Maxwell Chambers' },
+      { year: '2021', title: 'Trail Blazer Awards – Mujer que Inspira a Otra Mujer', org: 'Liderazgo Comunitario' },
+      { year: 'Premio', title: 'Premio "Premios Gratitud" de Comunidad FVE', org: 'Gratitud por Apoyo Comunitario' },
+      { year: 'Premio', title: 'Premio "Goodwill Peace Makers & Keepers of the Flame" de Mejora & Youth for Human Rights', org: 'Defensa de los Derechos Humanos' },
+      { year: 'Premio', title: 'Premio "Compromiso Inquebrantable con la Justicia y la Educación"', org: 'Toys for Kids Miami' }
+    ],
+    affiliationsLabel: 'Afiliaciones',
+    affiliationsTitle: 'Afiliaciones Comunitarias e Involucramiento Profesional',
+    organizationsTitle: 'Organizaciones Profesionales',
+    chambersTitle: 'Cámaras de Comercio y Juntas Asesoras',
+    organizations: [
+      'PTA y PTSA', 'Global Innovative Foundation', 'Florida Board of Nursing', 'Black Nurses Association',
+      'Miami Kingdom Lion Club', 'Wings to Freedom', 'Survivors Pathway', 'Miami Children\'s Hospital / Joe DiMaggio',
+      'Miami Mission', 'Global Philanthropy Society', 'Foundation of the Americas', 'Comunidad FBE',
+      'The Circle of Brotherhood', 'DEA', 'CDC', 'Southern Winds Hospital', 'Behavior Support of South Florida',
+      'Jewish University System'
+    ],
+    chambers: [
+      'Cámara de Comercio Cristiana Latina', 'Cámara de Comercio de Miami', 'Asociación de Agentes Inmobiliarios de Miami',
+      'Asociación Nacional de Agentes Inmobiliarios', 'Junta Directiva de Huntington', 'Asociación Internacional de Clubes de Leones',
+      'Cámara de Comercio de North Miami'
     ],
     partnersLabel: 'Nuestra Familia Extendida',
     partnersTitle: 'Amigos de la Fundación',
@@ -218,13 +282,22 @@ export default function AboutPage() {
             {txt.team.map((member, i) => (
               <div key={i} className={styles.teamCard}>
                 <div className={styles.teamImageWrapper}>
-                  <Image 
-                    src={member.image} 
-                    alt={member.name} 
-                    fill 
-                    className={styles.teamImage}
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
+                  {member.image.startsWith('data:') ? (
+                    <img 
+                      src={member.image} 
+                      alt={member.name} 
+                      className={styles.teamImage}
+                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    />
+                  ) : (
+                    <Image 
+                      src={member.image} 
+                      alt={member.name} 
+                      fill 
+                      className={styles.teamImage}
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
+                  )}
                   <div className={styles.teamImageOverlay} />
                 </div>
                 <div className={styles.teamContent}>
@@ -246,27 +319,77 @@ export default function AboutPage() {
             <div className="gold-divider center" />
             <p className="section-subtitle" style={{ color: 'rgba(255,255,255,0.8)' }}>{txt.testimonialsSub}</p>
           </div>
-          <div className="grid-3" style={{ marginTop: '40px' }}>
+          <div className={styles.testimonialsGrid}>
             {txt.testimonials.map((test, i) => (
-              <div key={i} style={{ 
-                background: 'rgba(20, 28, 46, 0.7)', 
-                backdropFilter: 'blur(12px)', 
-                padding: '36px', 
-                borderRadius: '16px', 
-                border: '1px solid rgba(255,255,255,0.1)',
-                position: 'relative',
-                display: 'flex',
-                flexDirection: 'column'
-              }}>
+              <div key={i} className={styles.testimonialCard}>
                 <Quote size={40} color="var(--gold)" style={{ opacity: 0.3, position: 'absolute', top: 20, right: 20 }} />
                 <p style={{ color: 'rgba(255,255,255,0.9)', fontStyle: 'italic', fontSize: '1.05rem', lineHeight: '1.8', marginBottom: '24px', flexGrow: 1 }}>
                   "{test.quote}"
                 </p>
                 <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '16px' }}>
-                  <span style={{ color: 'var(--gold)', fontWeight: 600, fontFamily: 'Playfair Display, serif' }}>{test.author}</span>
+                  <span style={{ color: 'var(--gold)', fontWeight: 600, fontFamily: 'Playfair Display, serif', display: 'block' }}>{test.author}</span>
+                  {test.role && <span className={styles.testimonialRole}>{test.role}</span>}
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== AWARDS SECTION ===== */}
+      <section className="section section-dark" id="awards">
+        <div className="container">
+          <div className="text-center">
+            <span className="section-label">{txt.awardsLabel}</span>
+            <h2 className="section-title" style={{ color: 'var(--white)' }}>{txt.awardsTitle}</h2>
+            <div className="gold-divider center" />
+            <p className="section-subtitle" style={{ color: 'rgba(255,255,255,0.8)' }}>{txt.awardsSub}</p>
+          </div>
+          
+          <div className={styles.awardsTimeline}>
+            {txt.awards.map((award, i) => (
+              <div key={i} className={styles.awardCard}>
+                {award.year && <span className={styles.awardYear}>{award.year}</span>}
+                <h3 style={{ color: 'var(--white)', fontSize: '1.25rem', marginBottom: '6px', fontFamily: 'Playfair Display, serif', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <Award size={18} color="var(--gold)" />
+                  {award.title}
+                </h3>
+                <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.9rem' }}>{award.org}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== AFFILIATIONS SECTION ===== */}
+      <section className="section transparent-bg" id="affiliations">
+        <div className="container">
+          <div className="text-center">
+            <span className="section-label">{txt.affiliationsLabel}</span>
+            <h2 className="section-title" style={{ color: 'var(--white)' }}>{txt.affiliationsTitle}</h2>
+            <div className="gold-divider center" />
+          </div>
+
+          <div style={{ marginTop: '40px' }}>
+            <h3 className={styles.subsectionHeading}>{txt.organizationsTitle}</h3>
+            <div className={styles.subsectionDivider} />
+            <div className={styles.affiliationsGrid}>
+              {txt.organizations.map((org, i) => (
+                <div key={i} className={styles.affiliationBadge}>
+                  {org}
+                </div>
+              ))}
+            </div>
+
+            <h3 className={styles.subsectionHeading}>{txt.chambersTitle}</h3>
+            <div className={styles.subsectionDivider} />
+            <div className={styles.chambersGrid}>
+              {txt.chambers.map((chamber, i) => (
+                <div key={i} className={styles.chamberBadge}>
+                  {chamber}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -277,7 +400,8 @@ export default function AboutPage() {
           <h2 className="section-title" style={{ color: 'var(--white)' }}>{txt.partnersTitle}</h2>
           <div className="gold-divider center" />
           <p className="section-subtitle" style={{ color: 'rgba(255,255,255,0.8)' }}>{txt.partnersSub}</p>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '48px', marginTop: '48px', alignItems: 'center' }}>
+          
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '48px', marginTop: '48px', alignItems: 'center' }}>
             <div style={{ width: '100%' }}>
               <div className={styles.sponsorLogosGrid}>
                 <div className={styles.sponsorBadge}>

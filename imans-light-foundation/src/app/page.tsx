@@ -53,7 +53,7 @@ const t = {
     prog4Text: 'Connecting grieving families to resources, counseling, and community support networks.',
     learnMore: 'Learn More',
     eventsLabel: 'Events',
-    eventsTitle: 'Upcoming Events',
+    eventsTitle: 'Highlighted Events',
     eventsSub: 'Join us at our community events where education meets action.',
     viewAllEvents: 'View All Events',
     ctaTitle: 'Be Part of the Solution',
@@ -99,7 +99,7 @@ const t = {
     storyBtn: 'Leer la Historia Completa de Iman',
     programsLabel: 'Programas',
     programsTitle: 'Nuestros Programas Principales',
-    programsSub: 'Programas integrales centrados en la comunidad para prevenir la adicción y sanar a los afectados.',
+    programsSub: 'Programas integrales en la comunidad para prevenir la adicción y sanar a los afectados.',
     prog1: 'Talleres de Educación sobre Drogas',
     prog1Text: 'Talleres en escuelas y comunidades sobre los peligros del Fentanilo, el corte de drogas y estrategias de resistencia.',
     prog2: 'Bienestar de Salud Mental',
@@ -110,7 +110,7 @@ const t = {
     prog4Text: 'Conectamos familias en duelo con recursos, asesoramiento y redes de apoyo comunitario.',
     learnMore: 'Saber Más',
     eventsLabel: 'Eventos',
-    eventsTitle: 'Próximos Eventos',
+    eventsTitle: 'Eventos Destacados',
     eventsSub: 'Únase a nuestros eventos comunitarios donde la educación se convierte en acción.',
     viewAllEvents: 'Ver Todos los Eventos',
     ctaTitle: 'Sé Parte de la Solución',
@@ -157,14 +157,31 @@ export default function HomePage() {
       {/* ===== HERO ===== */}
       <section className={styles.hero}>
         <div className={styles.heroBg}>
-          <Image
-            src="https://static.wixstatic.com/media/56e6ee_a50079ec691048d8bdb8696486b07456~mv2.jpg"
-            alt="Iman's Light Foundation"
-            fill
-            priority
-            className={styles.heroBgImg}
-            style={{ objectFit: 'cover', objectPosition: 'center' }}
-          />
+          <div style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'linear-gradient(135deg, #050814 0%, #0A0E1A 40%, #161F33 70%, #050814 100%)',
+          }} />
+          <div style={{
+            position: 'absolute',
+            top: '20%',
+            left: '30%',
+            width: '400px',
+            height: '400px',
+            background: 'radial-gradient(circle, rgba(201, 168, 76, 0.08) 0%, transparent 70%)',
+            filter: 'blur(60px)',
+            pointerEvents: 'none'
+          }} />
+          <div style={{
+            position: 'absolute',
+            bottom: '10%',
+            right: '20%',
+            width: '500px',
+            height: '500px',
+            background: 'radial-gradient(circle, rgba(201, 168, 76, 0.05) 0%, transparent 70%)',
+            filter: 'blur(80px)',
+            pointerEvents: 'none'
+          }} />
           <div className={styles.heroOverlay} />
         </div>
         <div className={`container ${styles.heroContent}`}>
@@ -309,7 +326,7 @@ export default function HomePage() {
         </div>
       </section>
 
-            {/* ===== GALA EVENT ===== */}
+      {/* ===== GALA EVENT ===== */}
       <section className="section transparent-bg">
         <div className="container">
           <div ref={addRef} className="fade-up text-center">
@@ -319,12 +336,27 @@ export default function HomePage() {
             <p className="section-subtitle">{txt.eventsSub}</p>
           </div>
           
+          {/* Primary Highlight Card: 2026 Gala */}
           <div ref={addRef} className="fade-up" style={{ marginTop: '40px', background: 'var(--navy)', borderRadius: '16px', border: '2px solid rgba(201,168,76,0.6)', padding: '48px', textAlign: 'center', boxShadow: '0 20px 40px rgba(0,0,0,0.3)', position: 'relative', overflow: 'hidden' }}>
             <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '6px', background: 'var(--gradient-gold)' }} />
+            <span className="tag" style={{ marginBottom: '16px', display: 'inline-block' }}>{lang === 'es' ? 'Próximo Evento' : 'Upcoming Highlight'}</span>
             <h3 style={{ color: 'var(--gold)', fontFamily: 'Playfair Display', fontSize: '2.5rem', marginBottom: '16px' }}>{lang === 'es' ? 'Tercera Gala Anual' : '3rd Annual Gala'}</h3>
             <p style={{ color: 'var(--white)', fontSize: '1.4rem', marginBottom: '8px' }}>{lang === 'es' ? 'Octubre 2026' : 'October 2026'}</p>
             <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.1rem', marginBottom: '32px' }}>@ The Signature Grand</p>
             <Link href="/events" className="btn btn-primary">{txt.viewAllEvents} →</Link>
+          </div>
+
+          {/* Secondary Past Highlight Card: 2025 Event */}
+          <div ref={addRef} className="fade-up" style={{ background: 'rgba(20, 28, 46, 0.4)', backdropFilter: 'blur(10px)', borderRadius: '16px', border: '1px solid rgba(201,168,76,0.3)', padding: '36px', textAlign: 'center', maxWidth: '800px', margin: '30px auto 0', boxShadow: '0 10px 30px rgba(0,0,0,0.2)' }}>
+            <span className="tag" style={{ marginBottom: '16px', display: 'inline-block' }}>{lang === 'es' ? 'Destacado del Pasado' : 'Past Highlight'}</span>
+            <h4 style={{ color: 'var(--white)', fontFamily: 'Playfair Display', fontSize: '1.6rem', marginBottom: '10px' }}>
+              {lang === 'es' ? 'Música y Luces por la Vida 2025' : 'Music & Lights for Life 2025'}
+            </h4>
+            <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '1rem', lineHeight: '1.6', maxWidth: '640px', margin: '0 auto' }}>
+              {lang === 'es' 
+                ? 'Nuestro evento más grande hasta ahora — Música y Luces por la Vida 2025 en el Miramar City Center Hall reunió a la comunidad con presentaciones, 24+ patrocinadores y un poderoso mensaje de prevención.' 
+                : 'Our biggest event yet — Music and Lights for Life 2025 at Miramar City Center Hall brought together the community with performances, 24+ sponsors, and powerful prevention messaging.'}
+            </p>
           </div>
         </div>
       </section>
@@ -355,6 +387,18 @@ export default function HomePage() {
                 <Image src="https://static.wixstatic.com/media/56e6ee_55f0bbe459fb41e9907cd3c547b6afb5~mv2.png/v1/fill/w_371,h_268,q_90,enc_avif,quality_auto/56e6ee_55f0bbe459fb41e9907cd3c547b6afb5~mv2.png" alt="One More Child" width={110} height={79} style={{ objectFit: 'contain' }} />
               </div>
             </div>
+
+            {/* Text Sponsors */}
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', justifyContent: 'center', maxWidth: '900px', marginTop: '16px' }}>
+              {[
+                'Monarch Air Group', 'South Florida Wellness Network', 'Phoenix Title & Closing', 
+                'Expressions Noblemen & Consulting', 'Rewind 103.5', 'S.A.R.A. Coalition', 
+                'Fentanyl Awareness Coalition', 'King Realty / Century 21', 'Gables Cigars Shop', 'RMT Media'
+              ].map((p, i) => (
+                <div key={i} style={{ border: '1px solid rgba(201, 168, 76, 0.3)', padding: '10px 20px', borderRadius: '30px', color: 'var(--navy-900)', fontWeight: 600, fontSize: '0.88rem', background: 'rgba(201, 168, 76, 0.05)' }}>{p}</div>
+              ))}
+            </div>
+
             <Link href="/about#partnerships" className="btn btn-outline" style={{ marginTop: '24px' }}>{lang === 'es' ? 'Ver Todos los Socios' : 'View All Partners'} →</Link>
           </div>
         </div>

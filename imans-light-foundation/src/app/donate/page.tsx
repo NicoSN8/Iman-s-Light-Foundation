@@ -27,25 +27,33 @@ const tiers = {
       },
       {
         id: 'lifesaver',
-        name: 'The Community Lifesaver',
+        name: 'The Lifesaver Package',
         amount: '$1,000',
         icon: <ShieldAlert size={32} color="var(--gold)" />,
-        descEn: 'Supply a local community center with bulk Narcan kits and specialized training on overdose reversal and emergency response.',
-        descEs: 'Proporcionar al centro comunitario local kits masivos de Narcan y capacitación especializada sobre reversión de sobredosis.'
+        descEn: 'Fund 100 boxes of Narcan (Naloxone) spray and resources for our direct community outreach team to distribute to high-risk youth and families.',
+        descEs: 'Financia 100 cajas de aerosol Narcan y folletos educativos para distribuir a jóvenes y familias de alto riesgo.'
       },
       {
-        id: 'ambassador',
-        name: 'The Ambassador',
-        amount: '$500+',
+        id: 'supporter',
+        name: 'The Prevention Supporter',
+        amount: '$500',
         icon: <Scale size={32} color="var(--gold)" />,
-        descEn: 'Support our ongoing legislative advocacy to aggressively punish drug traffickers and enforce stricter child protection laws.',
-        descEs: 'Apoye nuestra defensa legislativa para castigar a los traficantes y hacer cumplir leyes más estrictas de protección.'
+        descEn: 'Help print 1,000 copies of our educational drug prevention toolkits distributed to middle school and high school classrooms.',
+        descEs: 'Ayuda a imprimir 1,000 copias de nuestros manuales de prevención distribuidos en aulas de secundaria.'
+      },
+      {
+        id: 'custom',
+        name: 'A Custom Contribution',
+        amount: 'Custom',
+        icon: <Leaf size={32} color="var(--gold)" />,
+        descEn: 'Every single dollar helps. Make a custom donation that goes directly to supporting our local prevention and counseling efforts.',
+        descEs: 'Cada dólar ayuda. Haz una contribución personalizada que irá directamente a apoyar nuestros esfuerzos locales.'
       }
-  ],
+    ],
   es: [
       {
         id: 'workshop',
-        name: 'Paquete de Taller',
+        name: 'Paquete de Taller Completo',
         amount: '$5,000',
         icon: <GraduationCap size={32} color="var(--gold-light)" />,
         featured: true,
@@ -62,21 +70,29 @@ const tiers = {
       },
       {
         id: 'lifesaver',
-        name: 'Salvavidas Comunitario',
+        name: 'Paquete Salvador de Vidas',
         amount: '$1,000',
         icon: <ShieldAlert size={32} color="var(--gold)" />,
-        descEn: 'Supply a local community center with bulk Narcan kits and specialized training on overdose reversal and emergency response.',
-        descEs: 'Proporcionar al centro comunitario local kits masivos de Narcan y capacitación especializada sobre reversión de sobredosis.'
+        descEn: 'Fund 100 boxes of Narcan (Naloxone) spray and resources for our direct community outreach team to distribute to high-risk youth and families.',
+        descEs: 'Financia 100 cajas de aerosol Narcan y folletos educativos para distribuir a jóvenes y familias de alto riesgo.'
       },
       {
-        id: 'ambassador',
-        name: 'El Embajador',
-        amount: '$500+',
+        id: 'supporter',
+        name: 'Colaborador de Prevención',
+        amount: '$500',
         icon: <Scale size={32} color="var(--gold)" />,
-        descEn: 'Support our ongoing legislative advocacy to aggressively punish drug traffickers and enforce stricter child protection laws.',
-        descEs: 'Apoye nuestra defensa legislativa para castigar a los traficantes y hacer cumplir leyes más estrictas de protección.'
+        descEn: 'Help print 1,000 copies of our educational drug prevention toolkits distributed to middle school and high school classrooms.',
+        descEs: 'Ayuda a imprimir 1,000 copias de nuestros manuales de prevención distribuidos en aulas de secundaria.'
+      },
+      {
+        id: 'custom',
+        name: 'Contribución Personalizada',
+        amount: 'Personalizado',
+        icon: <Leaf size={32} color="var(--gold)" />,
+        descEn: 'Every single dollar helps. Make a custom donation that goes directly to supporting our local prevention and counseling efforts.',
+        descEs: 'Cada dólar ayuda. Haz una contribución personalizada que irá directamente a apoyar nuestros esfuerzos locales.'
       }
-  ],
+    ]
 };
 
 export default function DonatePage() {
@@ -93,20 +109,19 @@ export default function DonatePage() {
             <span>›</span>
             <span style={{ color: 'rgba(255,255,255,0.7)' }}>{isEs ? 'Donar' : 'Donate'}</span>
           </div>
-          <span className="section-label">{isEs ? 'Tu Donación Importa' : 'Your Gift Matters'}</span>
-          <h1>{isEs ? 'Apoya la Misión de Iman\'s Light' : "Support Iman's Light Mission"}</h1>
-          <p>{isEs ? 'Cada donación financia talleres de educación, recursos de salud mental y alcance comunitario que salva vidas en Florida y más allá.' : 'Every donation funds education workshops, mental health resources, and community outreach that saves lives across Florida and beyond.'}</p>
+          <span className="section-label">{isEs ? 'Apóyanos' : 'Support Our Mission'}</span>
+          <h1>{isEs ? 'Invierte en el Mañana' : 'Invest in Tomorrow'}</h1>
+          <p>{isEs ? 'Tu generosidad financia directamente la educación sobre drogas en las escuelas locales y el asesoramiento terapéutico para familias necesitadas.' : 'Your generosity directly funds life-saving drug education in local classrooms and therapy sessions for grieving or at-risk families.'}</p>
         </div>
       </div>
 
-      {/* Donation Tiers */}
-      <section className="section section-cream">
+      <section className="section">
         <div className="container">
-          <div className="text-center">
-            <span className="section-label">{isEs ? 'Niveles de Donación' : 'Giving Levels'}</span>
-            <h2 className="section-title">{isEs ? '¿Cuánto Puedes Dar?' : 'How Much Would You Like to Give?'}</h2>
+          <div className="text-center" style={{ marginBottom: '60px' }}>
+            <span className="section-label">{isEs ? 'Opciones de Financiamiento' : 'Funding Packages'}</span>
+            <h2 className="section-title">{isEs ? 'Nuestros Paquetes de Impacto' : 'How You Can Support'}</h2>
             <div className="gold-divider center" />
-            <p className="section-subtitle">{isEs ? 'Cada nivel de donación tiene un impacto real y medible en nuestra comunidad.' : 'Every giving level has a real, measurable impact on our community.'}</p>
+            <p className="section-subtitle">{isEs ? 'Elige un nivel que resuene con tu deseo de generar un cambio duradero en el sur de Florida.' : 'Choose a sponsorship level that matches your commitment to saving young lives and supporting families.'}</p>
           </div>
           <div className={styles.tiersGrid}>
             {tierList.map((tier, i) => (
@@ -130,8 +145,7 @@ export default function DonatePage() {
         </div>
       </section>
 
-      
-            {/* Official Sponsors */}
+      {/* Official Sponsors */}
       <section className="section transparent-bg">
         <div className="container text-center">
           <span className="section-label">{isEs ? 'Nuestros Socios' : 'Our Partners'}</span>
@@ -183,6 +197,40 @@ export default function DonatePage() {
                     <Image src="https://static.wixstatic.com/media/56e6ee_0b1d1f617c3b42acbf68755c62e11afe~mv2.png/v1/fill/w_224,h_225,q_90,enc_avif,quality_auto/56e6ee_0b1d1f617c3b42acbf68755c62e11afe~mv2.png" alt="Village South" width={97} height={97} style={{ objectFit: 'contain' }} />
                   </div>
                 </div>
+              </div>
+            </div>
+
+            {/* Community Sponsors */}
+            <div style={{ width: '100%', marginTop: '16px' }}>
+              <h4 style={{ color: 'var(--gold)', marginBottom: '24px', fontSize: '1.2rem', fontFamily: 'Playfair Display' }}>
+                {isEs ? 'PATROCINADORES COMUNITARIOS' : 'COMMUNITY SPONSORS'}
+              </h4>
+              <div className={styles.communitySponsorGrid}>
+                {[
+                  'Monarch Air Group',
+                  'South Florida Wellness Network',
+                  'Phoenix Title & Closing',
+                  'Expressions Noblemen & Consulting',
+                  'Rewind 103.5',
+                  'S.A.R.A. Coalition',
+                  'Fentanyl Awareness Coalition',
+                  'King Realty / Century 21',
+                  'Gables Cigars Shop',
+                  'RMT Media',
+                  'Secure Your Drink',
+                  'Outreach Behavior Support',
+                  'Infinity Life Wellness Center',
+                  'Improving Lives Community',
+                  'Luxe Properties',
+                  'DAER Nightclub',
+                  'Master Bodyworker',
+                  'ScribeAmerica',
+                  'blackandwhite'
+                ].map((s, i) => (
+                  <div key={i} className={styles.communitySponsorBadge}>
+                    {s}
+                  </div>
+                ))}
               </div>
             </div>
 

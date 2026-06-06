@@ -1,12 +1,13 @@
 [
   {
     "date": "2025-10-18",
-    "titleEn": "Music & Lights for Life Dance & Exhibition",
-    "titleEs": "Exhibición y Baile de Música y Luces por la Vida",
-    "location": "Miami",
-    "descriptionEn": "Celebration of life and awareness on perils affecting youth.",
-    "descriptionEs": "Celebración de la vida y concienciación sobre los peligros que afectan a los jóvenes.",
-    "image": "https://static.wixstatic.com/media/56e6ee_c06acaeb840e48098e7a8113301f3404~mv2.jpg"
+    "titleEn": "Music & Lights for Life Dance & Exhibition 2025",
+    "titleEs": "Música y Luces por la Vida - Baile y Exhibición 2025",
+    "location": "Miramar City Center Hall, 2400 Civic Center Pl, Miramar FL 33025",
+    "descriptionEn": "Celebration of Life — our biggest event ever. Featuring special performances by Mari Trini, Floyd, Aria Canales, Chirirun, Jackie Rain, Zeleste, Ebi Rich, David Fernandez, Vic The Kid, Coral Cove Choir, and more. MC Tayhana Garcia. Special guests State Representative Marie Woodson and Commissioner Maxwell Chambers. 24+ sponsors, lantern memorial, food and refreshments included.",
+    "descriptionEs": "Celebración de la Vida — nuestro evento más grande hasta ahora. Con presentaciones especiales por Mari Trini, Floyd, Aria Canales, Chirirun, Jackie Rain, Zeleste, Ebi Rich, David Fernandez, Vic The Kid, Coral Cove Choir y más. MC Tayhana Garcia. Invitados especiales Representante Estatal Marie Woodson y Comisionado Maxwell Chambers. Más de 24 patrocinadores, memorial de linternas, comida y refrescos incluidos.",
+    "image": "https://static.wixstatic.com/media/56e6ee_c06acaeb840e48098e7a8113301f3404~mv2.jpg",
+    "featured": true
   },
   {
     "date": "2025-09-20",
@@ -61,6 +62,15 @@
     "descriptionEn": "Workshop on marijuana, vaping, and fentanyl for ages 12-17.",
     "descriptionEs": "Taller sobre marihuana, vapeadores y fentanilo para edades 12-17.",
     "image": "https://static.wixstatic.com/media/56e6ee_3d1195150c614e4eb00f5e3b86aa67d5~mv2.jpeg"
+  },
+  {
+    "date": "2024-12-01",
+    "titleEn": "Democracy and Human Rights Summit",
+    "titleEs": "Cumbre de Democracia y Derechos Humanos",
+    "location": "Miami Dade College",
+    "descriptionEn": "Iman's Light Foundation assisted with this important summit on democracy and human rights.",
+    "descriptionEs": "La Fundación Iman's Light asistió con esta importante cumbre sobre democracia y derechos humanos.",
+    "image": ""
   },
   {
     "date": "2024-11-22",
@@ -135,6 +145,24 @@
     "image": ""
   },
   {
+    "date": "2024-10-16",
+    "titleEn": "Actualidad Radio Interview",
+    "titleEs": "Entrevista en Actualidad Radio",
+    "location": "Radio",
+    "descriptionEn": "Interview with Miriam De La Fuente and Agustín Acosta discussing foundation initiatives.",
+    "descriptionEs": "Entrevista con Miriam De La Fuente y Agustín Acosta sobre las iniciativas de la fundación.",
+    "image": ""
+  },
+  {
+    "date": "2024-10-16",
+    "titleEn": "Comunidad FVE Event",
+    "titleEs": "Evento Comunidad FVE",
+    "location": "Miami",
+    "descriptionEn": "Represented Iman's Light Foundation at the Comunidad FVE community event.",
+    "descriptionEs": "Representamos a la Fundación Iman's Light en el evento comunitario de Comunidad FVE.",
+    "image": ""
+  },
+  {
     "date": "2024-09-25",
     "titleEn": "Doral Voice Radio: Verdades Sin Filtro",
     "titleEs": "Radio Doral Voice: Verdades Sin Filtro",
@@ -151,6 +179,15 @@
     "descriptionEn": "Red Ribbon Cutting Ceremony.",
     "descriptionEs": "Ceremonia de inauguración y corte de lazo.",
     "image": "https://static.wixstatic.com/media/56e6ee_401a04d342a04fab8c3b951e00b9c84d~mv2.jpeg"
+  },
+  {
+    "date": "2024-09-12",
+    "titleEn": "Brownsville Middle School Proposal",
+    "titleEs": "Propuesta en Brownsville Middle School",
+    "location": "Brownsville, Miami",
+    "descriptionEn": "Presented a prevention program proposal for ongoing school collaboration.",
+    "descriptionEs": "Presentamos una propuesta de programa de prevención para colaboración escolar continua.",
+    "image": ""
   },
   {
     "date": "2024-08-31",
@@ -198,6 +235,15 @@
     "image": "https://static.wixstatic.com/media/56e6ee_8558efb67b02449c97a6991b333eaa21~mv2.jpeg"
   },
   {
+    "date": "2024-07-10",
+    "titleEn": "Podcast Interview - Channel 51",
+    "titleEs": "Entrevista Podcast - Canal 51",
+    "location": "Miami",
+    "descriptionEn": "Podcast interview with Tayana discussing fentanyl dangers and Iman's Light Foundation's initiatives.",
+    "descriptionEs": "Entrevista podcast con Tayana sobre los peligros del fentanilo y las iniciativas de la fundación.",
+    "image": ""
+  },
+  {
     "date": "2024-06-21",
     "titleEn": "United Nations Int. Day Against Drug Abuse",
     "titleEs": "Día Internacional de la ONU Contra el Abuso de Drogas",
@@ -213,6 +259,15 @@
     "location": "Miramar",
     "descriptionEn": "Bilingual educational outreach.",
     "descriptionEs": "Ayuda con divulgación bilingüe comunitaria.",
+    "image": ""
+  },
+  {
+    "date": "2024-04-18",
+    "titleEn": "Navigating the Maze of Drugs",
+    "titleEs": "Navegando el Laberinto de las Drogas",
+    "location": "City of Doral",
+    "descriptionEn": "Drug prevention presentation with Councilman Rafael Pineyro, delivered in Spanish.",
+    "descriptionEs": "Presentación de prevención de drogas con el Concejal Rafael Pineyro, entregada en español.",
     "image": ""
   },
   {
