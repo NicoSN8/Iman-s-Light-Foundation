@@ -428,3 +428,13 @@
   margin: 0 auto 24px;
   opacity: 0.5;
 }
+
+.flyerCard {
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.flyerCard:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: var(--gold) !important;
+  box-shadow: 0 16px 36px rgba(201, 168, 76, 0.25) !important;
+}

@@ -157,31 +157,14 @@ export default function HomePage() {
       {/* ===== HERO ===== */}
       <section className={styles.hero}>
         <div className={styles.heroBg}>
-          <div style={{
-            position: 'absolute',
-            inset: 0,
-            background: 'linear-gradient(135deg, #050814 0%, #0A0E1A 40%, #161F33 70%, #050814 100%)',
-          }} />
-          <div style={{
-            position: 'absolute',
-            top: '20%',
-            left: '30%',
-            width: '400px',
-            height: '400px',
-            background: 'radial-gradient(circle, rgba(201, 168, 76, 0.08) 0%, transparent 70%)',
-            filter: 'blur(60px)',
-            pointerEvents: 'none'
-          }} />
-          <div style={{
-            position: 'absolute',
-            bottom: '10%',
-            right: '20%',
-            width: '500px',
-            height: '500px',
-            background: 'radial-gradient(circle, rgba(201, 168, 76, 0.05) 0%, transparent 70%)',
-            filter: 'blur(80px)',
-            pointerEvents: 'none'
-          }} />
+          <Image
+            src="/hero_hope_bg.png"
+            alt="Iman's Light Foundation Hope Background"
+            fill
+            priority
+            className={styles.heroBgImg}
+            style={{ objectFit: 'cover', objectPosition: 'center', opacity: 0.6 }}
+          />
           <div className={styles.heroOverlay} />
         </div>
         <div className={`container ${styles.heroContent}`}>
@@ -201,6 +184,9 @@ export default function HomePage() {
           </div>
         </div>
         <div className={styles.heroScroll}>
+          <span className={styles.heroScrollText}>
+            {lang === 'en' ? 'SCROLL TO DISCOVER TRANSPARENCY & IMPACT REPORTS' : 'DESPLACE HACIA ABAJO PARA INFORMES Y TRANSPARENCIA'}
+          </span>
           <div className={styles.scrollDot} />
         </div>
       </section>

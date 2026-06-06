@@ -413,6 +413,12 @@ export default function AboutPage() {
                 <div className={styles.sponsorBadge}>
                   <Image src="https://static.wixstatic.com/media/56e6ee_b29a7ddaabd3481bb888135a8da07410~mv2.png/v1/fill/w_357,h_194,q_90,enc_avif,quality_auto/56e6ee_b29a7ddaabd3481bb888135a8da07410~mv2.png" alt="Survivors Pathway" width={178} height={97} style={{ objectFit: 'contain' }} />
                 </div>
+                <div className={styles.sponsorBadge}>
+                  <Image src="/sponsors/sponsor_logo_1.png" alt="Monarch Air Group" width={110} height={97} style={{ objectFit: 'contain' }} />
+                </div>
+                <div className={styles.sponsorBadge}>
+                  <Image src="/sponsors/sponsor_logo_2.png" alt="Sponsor Partner" width={110} height={97} style={{ objectFit: 'contain' }} />
+                </div>
               </div>
             </div>
 
@@ -435,6 +441,29 @@ export default function AboutPage() {
               {['Secure Your Drink', 'Outreach Behavior Support', 'Infinity Life Wellness Center', 'Behavior Support Center of Florida', 'Improving Lives Community', 'Luxe Properties', 'DAER Nightclub', 'Juan Carlos Pinera', 'Master Bodyworker', 'ScribeAmerica'].map((p, i) => (
                 <div key={i} className={styles.partnerLogo} style={{ border: '1px solid rgba(255,255,255,0.2)', padding: '16px 24px', borderRadius: '8px', color: 'var(--white)', fontWeight: 600 }}>{p}</div>
               ))}
+            </div>
+
+            {/* Event Flyers Showcase */}
+            <div style={{ width: '100%', marginTop: '32px' }}>
+              <h4 className={styles.subsectionHeading}>
+                {lang === 'en' ? 'Event Flyers & Sponsor Showcase' : 'Folletos de Eventos y Patrocinadores'}
+              </h4>
+              <div className={styles.subsectionDivider} />
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '24px', maxWidth: '800px', margin: '24px auto 0' }}>
+                {['/sponsors/sponsor_1.jpg', '/sponsors/sponsor_2.jpg', '/sponsors/sponsor_3.jpg'].map((src, i) => (
+                  <div key={i} className={styles.flyerCard} style={{ 
+                    position: 'relative', 
+                    borderRadius: '12px', 
+                    overflow: 'hidden', 
+                    border: '1px solid rgba(201, 168, 76, 0.25)', 
+                    boxShadow: '0 8px 24px rgba(0,0,0,0.5)',
+                    aspectRatio: src.endsWith('3.jpg') ? '892/1024' : '2/3',
+                    transition: 'all 0.3s ease'
+                  }}>
+                    <Image src={src} alt={`Event Flyer ${i+1}`} fill style={{ objectFit: 'cover' }} />
+                  </div>
+                ))}
+              </div>
             </div>
 
           </div>
