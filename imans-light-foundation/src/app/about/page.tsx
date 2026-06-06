@@ -413,12 +413,6 @@ export default function AboutPage() {
                 <div className={styles.sponsorBadge}>
                   <Image src="https://static.wixstatic.com/media/56e6ee_b29a7ddaabd3481bb888135a8da07410~mv2.png/v1/fill/w_357,h_194,q_90,enc_avif,quality_auto/56e6ee_b29a7ddaabd3481bb888135a8da07410~mv2.png" alt="Survivors Pathway" width={178} height={97} style={{ objectFit: 'contain' }} />
                 </div>
-                <div className={styles.sponsorBadge}>
-                  <Image src="/sponsors/sponsor_logo_1.png" alt="Monarch Air Group" width={110} height={97} style={{ objectFit: 'contain' }} />
-                </div>
-                <div className={styles.sponsorBadge}>
-                  <Image src="/sponsors/sponsor_logo_2.png" alt="Sponsor Partner" width={110} height={97} style={{ objectFit: 'contain' }} />
-                </div>
               </div>
             </div>
 
@@ -451,7 +445,6 @@ export default function AboutPage() {
                   { src: '/sponsors/extracted/sp3_logo_4.png', alt: 'Event Sponsor' },
                   { src: 'https://static.wixstatic.com/media/56e6ee_ebe0f16f3a7f45d2a15a997eab2927f3~mv2.png', alt: 'Sponsor' },
                   { src: 'https://static.wixstatic.com/media/56e6ee_90b6e59a5df142298b790e6f643fa66a~mv2.png', alt: 'Sponsor' },
-                  { src: '/sponsors/prosperity_logo.png', alt: 'Prosperity Social Community Development Group' },
                   { src: 'https://static.wixstatic.com/media/56e6ee_0f2c809c926641329fd63076093e1de7~mv2.png', alt: 'Sponsor' },
                   { src: 'https://static.wixstatic.com/media/56e6ee_28bd559fd2fb4f969d85fe406d67ad5d~mv2.png', alt: 'Sponsor' },
                   { src: 'https://static.wixstatic.com/media/56e6ee_f96e2e03e38f4cafa7f45f9969059dd6~mv2.png', alt: 'Sponsor' },
@@ -468,7 +461,7 @@ export default function AboutPage() {
 
             {/* Extended text partners from Wix data */}
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', justifyContent: 'center', marginTop: '24px' }}>
-              {['Secure Your Drink', 'Outreach Behavior Support', 'Infinity Life Wellness Center', 'Behavior Support Center of Florida', 'Improving Lives Community', 'Luxe Properties', 'DAER Nightclub', 'Juan Carlos Pinera', 'Master Bodyworker', 'ScribeAmerica'].map((p, i) => (
+              {['Secure Your Drink', 'Outreach Behavior Support', 'Infinity Life Wellness Center', 'Behavior Support Center of Florida', 'Improving Lives Community', 'Luxe Properties', 'DAER Nightclub', 'Juan Carlos Pinera', 'Master Bodyworker', 'ScribeAmerica', 'Prosperity Social & Community Development Group'].map((p, i) => (
                 <div key={i} className={styles.partnerLogo} style={{ border: '1px solid rgba(255,255,255,0.2)', padding: '16px 24px', borderRadius: '8px', color: 'var(--white)', fontWeight: 600 }}>{p}</div>
               ))}
             </div>

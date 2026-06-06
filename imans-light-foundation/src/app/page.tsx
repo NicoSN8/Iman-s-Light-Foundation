@@ -372,12 +372,6 @@ export default function HomePage() {
               <div style={{ background: 'rgba(255, 255, 255, 0.9)', padding: '24px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}>
                 <Image src="https://static.wixstatic.com/media/56e6ee_55f0bbe459fb41e9907cd3c547b6afb5~mv2.png/v1/fill/w_371,h_268,q_90,enc_avif,quality_auto/56e6ee_55f0bbe459fb41e9907cd3c547b6afb5~mv2.png" alt="One More Child" width={110} height={79} style={{ objectFit: 'contain' }} />
               </div>
-              <div style={{ background: 'rgba(255, 255, 255, 0.9)', padding: '24px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}>
-                <Image src="/sponsors/sponsor_logo_1.png" alt="Monarch Air Group" width={100} height={78} style={{ objectFit: 'contain' }} />
-              </div>
-              <div style={{ background: 'rgba(255, 255, 255, 0.9)', padding: '24px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}>
-                <Image src="/sponsors/sponsor_logo_2.png" alt="King Realty / Century 21" width={100} height={78} style={{ objectFit: 'contain' }} />
-              </div>
             </div>
 
             {/* Community & Event Sponsor Logos */}
@@ -390,7 +384,6 @@ export default function HomePage() {
                 { src: '/sponsors/extracted/sp3_logo_4.png', alt: 'Event Sponsor' },
                 { src: 'https://static.wixstatic.com/media/56e6ee_ebe0f16f3a7f45d2a15a997eab2927f3~mv2.png', alt: 'Sponsor' },
                 { src: 'https://static.wixstatic.com/media/56e6ee_90b6e59a5df142298b790e6f643fa66a~mv2.png', alt: 'Sponsor' },
-                { src: '/sponsors/prosperity_logo.png', alt: 'Prosperity Social Community Development Group' },
                 { src: 'https://static.wixstatic.com/media/56e6ee_0f2c809c926641329fd63076093e1de7~mv2.png', alt: 'Sponsor' },
                 { src: 'https://static.wixstatic.com/media/56e6ee_28bd559fd2fb4f969d85fe406d67ad5d~mv2.png', alt: 'Sponsor' },
                 { src: 'https://static.wixstatic.com/media/56e6ee_f96e2e03e38f4cafa7f45f9969059dd6~mv2.png', alt: 'Sponsor' },
@@ -409,7 +402,8 @@ export default function HomePage() {
               {[
                 'Monarch Air Group', 'South Florida Wellness Network', 'Phoenix Title & Closing', 
                 'Expressions Noblemen & Consulting', 'Rewind 103.5', 'S.A.R.A. Coalition', 
-                'Fentanyl Awareness Coalition', 'King Realty / Century 21', 'Gables Cigars Shop', 'RMT Media'
+                'Fentanyl Awareness Coalition', 'King Realty / Century 21', 'Gables Cigars Shop', 'RMT Media',
+                'Prosperity Social & Community Development Group'
               ].map((p, i) => (
                 <div key={i} style={{ border: '1px solid rgba(201, 168, 76, 0.3)', padding: '10px 20px', borderRadius: '30px', color: 'var(--navy-900)', fontWeight: 600, fontSize: '0.88rem', background: 'rgba(201, 168, 76, 0.05)' }}>{p}</div>
               ))}

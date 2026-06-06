@@ -177,12 +177,6 @@ export default function DonatePage() {
                 <div className={styles.sponsorBadge}>
                   <Image src="https://static.wixstatic.com/media/56e6ee_f010f8e8cccb405a8fc28f3fb2481f7e~mv2.png/v1/fill/w_233,h_183,q_90,enc_avif,quality_auto/56e6ee_f010f8e8cccb405a8fc28f3fb2481f7e~mv2.png" alt="Nicklaus Childrens" width={116} height={91} style={{ objectFit: 'contain' }} />
                 </div>
-                <div className={styles.sponsorBadge}>
-                  <Image src="/sponsors/sponsor_logo_1.png" alt="Monarch Air Group" width={110} height={97} style={{ objectFit: 'contain' }} />
-                </div>
-                <div className={styles.sponsorBadge}>
-                  <Image src="/sponsors/sponsor_logo_2.png" alt="Sponsor Partner" width={110} height={97} style={{ objectFit: 'contain' }} />
-                </div>
               </div>
             </div>
 
@@ -224,7 +218,6 @@ export default function DonatePage() {
                   { src: '/sponsors/extracted/sp3_logo_2.png', alt: 'Event Sponsor' },
                   { src: '/sponsors/extracted/sp3_logo_3.png', alt: 'Event Sponsor' },
                   { src: '/sponsors/extracted/sp3_logo_4.png', alt: 'Event Sponsor' },
-                  { src: '/sponsors/prosperity_logo.png', alt: 'Prosperity Social Community Development Group' },
                   { src: 'https://static.wixstatic.com/media/56e6ee_ebe0f16f3a7f45d2a15a997eab2927f3~mv2.png', alt: 'Sponsor' },
                   { src: 'https://static.wixstatic.com/media/56e6ee_90b6e59a5df142298b790e6f643fa66a~mv2.png', alt: 'Sponsor' },
                   { src: 'https://static.wixstatic.com/media/56e6ee_0f2c809c926641329fd63076093e1de7~mv2.png', alt: 'Sponsor' },
@@ -263,7 +256,8 @@ export default function DonatePage() {
                   'DAER Nightclub',
                   'Master Bodyworker',
                   'ScribeAmerica',
-                  'blackandwhite'
+                  'blackandwhite',
+                  'Prosperity Social & Community Development Group'
                 ].map((s, i) => (
                   <div key={i} className={styles.communitySponsorBadge}>
                     {s}
