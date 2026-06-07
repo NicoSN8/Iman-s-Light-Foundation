@@ -31,7 +31,22 @@ const t = {
       { icon: <Users size={32} />, title: 'Nonviolent Communication (NVC)', desc: 'Developed by Dr. Marshall Rosenberg, we train families in NVC to resolve conflict. Data shows that high-conflict homes drastically increase a child\'s likelihood to self-medicate.' },
       { icon: <Database size={32} />, title: 'The Kingian Philosophy', desc: 'Inspired by Dr. Martin Luther King Jr., we use social justice metrics to empower underserved demographics who are disproportionately targeted by illicit drug operations.' },
       { icon: <AlertTriangle size={32} />, title: 'Counterfeit Pill Identification', desc: 'Using DEA forensics, we actively teach students how to identify cartel-pressed lethal synthetics that disguise themselves as Adderall or Percocet.' },
-    ]
+    ],
+    surveyLabel: 'Outreach Impact Report',
+    surveyTitle: 'Youth Workshop Survey Feedback',
+    surveySub: 'Following our recent youth workshop on Fentanyl and vaping dangers, we collected anonymous surveys from 30 students (ages 14-18) to measure clarity, relevance, and overall presentation impact.',
+    downloadBtn: 'Download Full PDF Report',
+    statQuality: 'Presentation Quality',
+    statQualitySub: 'Average Rating (Scale 1-10)',
+    statEngagement: 'Presenter Engagement',
+    statEngagementSub: 'Rated 4 or 5 out of 5',
+    statMindShift: 'Awareness Impact',
+    statMindShiftSub: 'Changed Risk Awareness',
+    statRelevance: 'Content Relevance',
+    statRelevanceSub: 'Agree/Strongly Agree',
+    chart1Title: 'Overall Presentation Quality & Presenter Engagement',
+    chart2Title: 'Lecture Content Breakdown',
+    chart3Title: 'Demographics & Awareness Impact',
   },
   es: {
     breadcrumb: 'Inicio',
@@ -59,7 +74,22 @@ const t = {
       { icon: <Users size={32} />, title: 'Comunicación No Violenta (CNV)', desc: 'Capacitamos a las familias para resolver conflictos. Los datos muestran que los hogares de alto conflicto aumentan drásticamente la probabilidad de que un niño se automedique.' },
       { icon: <Database size={32} />, title: 'Filosofía Kingiana', desc: 'Inspirados en el Dr. Martin Luther King Jr., usamos métricas de justicia social para empoderar a poblaciones desatendidas que son blanco de operaciones de drogas ilícitas.' },
       { icon: <AlertTriangle size={32} />, title: 'Identificación de Píldoras Falsas', desc: 'Usando estudios de la DEA, enseñamos a los estudiantes cómo identificar sintéticos letales que se disfrazan como Adderall o Percocet.' },
-    ]
+    ],
+    surveyLabel: 'Reporte de Impacto',
+    surveyTitle: 'Resultados de Encuestas de Talleres',
+    surveySub: 'Tras nuestro reciente taller sobre peligros del Fentanilo y vapeo, recopilamos encuestas anónimas de 30 estudiantes (14-18 años) para medir la claridad, relevancia e impacto.',
+    downloadBtn: 'Descargar Reporte Completo (PDF)',
+    statQuality: 'Calidad de Presentación',
+    statQualitySub: 'Calificación Promedio (Escala 1-10)',
+    statEngagement: 'Compromiso del Presentador',
+    statEngagementSub: 'Calificado 4 o 5 de 5',
+    statMindShift: 'Cambio de Conciencia',
+    statMindShiftSub: 'Cambió su Visión de Riesgos',
+    statRelevance: 'Relevancia del Tema',
+    statRelevanceSub: 'De Acuerdo/Totalmente de Acuerdo',
+    chart1Title: 'Calidad General y Compromiso del Presentador',
+    chart2Title: 'Análisis del Contenido de la Conferencia',
+    chart3Title: 'Demografía e Impacto en la Conciencia',
   },
 };
 
@@ -106,7 +136,7 @@ export default function DataMetricsPage() {
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <div style={{ position: 'relative', width: '100%', maxWidth: '440px', aspectRatio: '1/1', background: 'rgba(20, 28, 46, 0.6)', backdropFilter: 'blur(16px)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 20px 50px rgba(0,0,0,0.5)', border: '1px solid rgba(255,255,255,0.05)' }}>
                 <Activity size={160} color="var(--gold)" strokeWidth={1} />
-                <div style={{ position: 'absolute', bottom: '15%', background: 'var(--gold)', color: 'var(--navy)', padding: '8px 24px', borderRadius: '30px', fontWeight: 'bold', fontSize: '1.1rem' }}>
+                <div style={{ position: 'absolute', bottom: '15%', background: 'var(--gold)', color: 'var(--navy)', padding: '8px 24px', borderRadius: '30px', fontweight: 'bold', fontSize: '1.1rem' }}>
                   {lang === 'en' ? 'Evidence in Action' : 'Evidencia en Acción'}
                 </div>
               </div>
@@ -133,6 +163,74 @@ export default function DataMetricsPage() {
                 <p style={{ fontSize: '0.95rem', color: 'rgba(255,255,255,0.7)', lineHeight: '1.6' }}>{m.desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== SURVEY RESULTS DASHBOARD SECTION ===== */}
+      <section className="section" id="survey-results" style={{ background: '#f8fafc', borderTop: '1px solid rgba(201, 168, 76, 0.15)', borderBottom: '1px solid rgba(201, 168, 76, 0.15)' }}>
+        <div className="container">
+          <div className="text-center" style={{ marginBottom: '48px' }}>
+            <span className="section-label" style={{ color: 'var(--gold-dark)' }}>{txt.surveyLabel}</span>
+            <h2 className="section-title" style={{ color: 'var(--navy)' }}>{txt.surveyTitle}</h2>
+            <div className="gold-divider center" />
+            <p className="section-subtitle" style={{ color: 'rgba(20, 28, 46, 0.75)', maxWidth: '720px', margin: '0 auto' }}>
+              {txt.surveySub}
+            </p>
+          </div>
+
+          {/* Survey Metrics Key Stats Row */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '24px', marginBottom: '48px' }}>
+            {[
+              { num: '9.3 / 10', label: txt.statQuality, sub: txt.statQualitySub },
+              { num: '97%', label: txt.statEngagement, sub: txt.statEngagementSub },
+              { num: '67%', label: txt.statMindShift, sub: txt.statMindShiftSub },
+              { num: '100%', label: txt.statRelevance, sub: txt.statRelevanceSub }
+            ].map((stat, i) => (
+              <div key={i} className="card text-center" style={{ padding: '24px', background: '#ffffff', boxShadow: '0 4px 20px rgba(0,0,0,0.05)', border: '1px solid rgba(201, 168, 76, 0.25)', borderRadius: '12px' }}>
+                <div style={{ fontSize: '2.2rem', fontWeight: 'bold', color: 'var(--gold)', marginBottom: '8px', fontFamily: 'Playfair Display' }}>{stat.num}</div>
+                <div style={{ fontWeight: 600, color: 'var(--navy)', fontSize: '1.05rem', marginBottom: '4px' }}>{stat.label}</div>
+                <div style={{ color: 'rgba(20, 28, 46, 0.65)', fontSize: '0.82rem', lineHeight: '1.4' }}>{stat.sub}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Graph Images Grid */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '32px', alignItems: 'start', marginBottom: '40px' }}>
+            <div className="card" style={{ padding: '24px', background: '#ffffff', border: '1px solid rgba(201, 168, 76, 0.15)', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0,0,0,0.03)' }}>
+              <h4 style={{ color: 'var(--navy)', marginBottom: '16px', fontFamily: 'Playfair Display', fontSize: '1.25rem', textAlign: 'center' }}>
+                {txt.chart1Title}
+              </h4>
+              <div style={{ position: 'relative', width: '100%', borderRadius: '8px', overflow: 'hidden' }}>
+                <img src="/metrics/survey_ratings.png" alt="Overall Presentation Quality" style={{ width: '100%', height: 'auto', display: 'block' }} />
+              </div>
+            </div>
+
+            <div className="card" style={{ padding: '24px', background: '#ffffff', border: '1px solid rgba(201, 168, 76, 0.15)', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0,0,0,0.03)' }}>
+              <h4 style={{ color: 'var(--navy)', marginBottom: '16px', fontFamily: 'Playfair Display', fontSize: '1.25rem', textAlign: 'center' }}>
+                {txt.chart2Title}
+              </h4>
+              <div style={{ position: 'relative', width: '100%', borderRadius: '8px', overflow: 'hidden' }}>
+                <img src="/metrics/lecture_aspects.png" alt="Lecture Content Breakdown" style={{ width: '100%', height: 'auto', display: 'block' }} />
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Full-Width Chart */}
+          <div className="card" style={{ padding: '24px', background: '#ffffff', border: '1px solid rgba(201, 168, 76, 0.15)', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0,0,0,0.03)', maxWidth: '800px', margin: '0 auto 40px' }}>
+            <h4 style={{ color: 'var(--navy)', marginBottom: '16px', fontFamily: 'Playfair Display', fontSize: '1.25rem', textAlign: 'center' }}>
+              {txt.chart3Title}
+            </h4>
+            <div style={{ position: 'relative', width: '100%', borderRadius: '8px', overflow: 'hidden' }}>
+              <img src="/metrics/survey_demographics.png" alt="Demographics and Impact" style={{ width: '100%', height: 'auto', display: 'block' }} />
+            </div>
+          </div>
+
+          {/* Download Report Button */}
+          <div className="text-center" style={{ marginTop: '40px' }}>
+            <a href="/metrics/student_survey_report.pdf" download className="btn btn-primary" style={{ padding: '16px 40px', fontSize: '1rem' }}>
+              {txt.downloadBtn} →
+            </a>
           </div>
         </div>
       </section>
