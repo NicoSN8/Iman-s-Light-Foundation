@@ -35,7 +35,6 @@ const t = {
     surveyLabel: 'Outreach Impact Report',
     surveyTitle: 'Youth Workshop Survey Feedback',
     surveySub: 'Following our recent youth workshop on Fentanyl and vaping dangers, we collected anonymous surveys from 30 students (ages 14-18) to measure clarity, relevance, and overall presentation impact.',
-    downloadBtn: 'Download Full PDF Report',
     statQuality: 'Presentation Quality',
     statQualitySub: 'Average Rating (Scale 1-10)',
     statEngagement: 'Presenter Engagement',
@@ -78,7 +77,6 @@ const t = {
     surveyLabel: 'Reporte de Impacto',
     surveyTitle: 'Resultados de Encuestas de Talleres',
     surveySub: 'Tras nuestro reciente taller sobre peligros del Fentanilo y vapeo, recopilamos encuestas anónimas de 30 estudiantes (14-18 años) para medir la claridad, relevancia e impacto.',
-    downloadBtn: 'Descargar Reporte Completo (PDF)',
     statQuality: 'Calidad de Presentación',
     statQualitySub: 'Calificación Promedio (Escala 1-10)',
     statEngagement: 'Compromiso del Presentador',
@@ -226,12 +224,7 @@ export default function DataMetricsPage() {
             </div>
           </div>
 
-          {/* Download Report Button */}
-          <div className="text-center" style={{ marginTop: '40px' }}>
-            <a href="/metrics/student_survey_report.pdf" download className="btn btn-primary" style={{ padding: '16px 40px', fontSize: '1rem' }}>
-              {txt.downloadBtn} →
-            </a>
-          </div>
+
         </div>
       </section>
     </>

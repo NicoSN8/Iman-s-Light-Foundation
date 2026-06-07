@@ -245,7 +245,6 @@ export default function DonatePage() {
                   'Rewind 103.5',
                   'S.A.R.A. Coalition',
                   'Fentanyl Awareness Coalition',
-                  'King Realty / Century 21',
                   'Gables Cigars Shop',
                   'RMT Media',
                   'Secure Your Drink',

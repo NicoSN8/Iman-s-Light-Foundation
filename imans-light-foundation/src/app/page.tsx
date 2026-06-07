@@ -402,7 +402,7 @@ export default function HomePage() {
               {[
                 'Monarch Air Group', 'South Florida Wellness Network', 'Phoenix Title & Closing', 
                 'Expressions Noblemen & Consulting', 'Rewind 103.5', 'S.A.R.A. Coalition', 
-                'Fentanyl Awareness Coalition', 'King Realty / Century 21', 'Gables Cigars Shop', 'RMT Media',
+                'Fentanyl Awareness Coalition', 'Gables Cigars Shop', 'RMT Media',
                 'Prosperity Social & Community Development Group'
               ].map((p, i) => (
                 <div key={i} style={{ border: '1px solid rgba(201, 168, 76, 0.3)', padding: '10px 20px', borderRadius: '30px', color: 'var(--navy-900)', fontWeight: 600, fontSize: '0.88rem', background: 'rgba(201, 168, 76, 0.05)' }}>{p}</div>
