@@ -134,7 +134,7 @@ export default function DataMetricsPage() {
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <div style={{ position: 'relative', width: '100%', maxWidth: '440px', aspectRatio: '1/1', background: 'rgba(20, 28, 46, 0.6)', backdropFilter: 'blur(16px)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 20px 50px rgba(0,0,0,0.5)', border: '1px solid rgba(255,255,255,0.05)' }}>
                 <Activity size={160} color="var(--gold)" strokeWidth={1} />
-                <div style={{ position: 'absolute', bottom: '15%', background: 'var(--gold)', color: 'var(--navy)', padding: '8px 24px', borderRadius: '30px', fontweight: 'bold', fontSize: '1.1rem' }}>
+                <div style={{ position: 'absolute', bottom: '15%', background: 'var(--gold)', color: 'var(--navy)', padding: '8px 24px', borderRadius: '30px', fontWeight: 'bold', fontSize: '1.1rem' }}>
                   {lang === 'en' ? 'Evidence in Action' : 'Evidencia en Acción'}
                 </div>
               </div>
