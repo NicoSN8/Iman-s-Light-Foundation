@@ -6,6 +6,7 @@ import { LanguageProvider } from '@/context/LanguageContext';
 import NebulaBackground from '@/components/NebulaBackground';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.imanslightfoundation.org'),
   title: {
     default: "Iman's Light Foundation | Preventing Tragedies, Illuminating Futures",
     template: "%s | Iman's Light Foundation",

@@ -260,7 +260,7 @@ export default function HomePage() {
           <div className="grid-2">
             <div ref={addRef} className="fade-up">
               <video 
-                src="https://video.wixstatic.com/video/56e6ee_aeaf7c872eb5487cbda598589baea0e7/720p/mp4/file.mp4" 
+                src="/media/video/56e6ee_aeaf7c872eb5487cbda598589baea0e7.mp4" 
                 autoPlay 
                 loop 
                 muted 
@@ -358,19 +358,19 @@ export default function HomePage() {
             {/* Platinum & Gold Combined for Home */}
             <div style={{ width: '100%', display: 'flex', flexWrap: 'wrap', gap: '24px', justifyContent: 'center', alignItems: 'center' }}>
               <div style={{ background: 'rgba(255, 255, 255, 0.9)', padding: '24px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}>
-                <Image src="https://static.wixstatic.com/media/56e6ee_b2c36136ad654d72a7f4de09ea17cf05~mv2.png/v1/fill/w_568,h_191,q_90,enc_avif,quality_auto/56e6ee_b2c36136ad654d72a7f4de09ea17cf05~mv2.png" alt="FGA" width={200} height={67} style={{ objectFit: 'contain' }} />
+                <Image src="/media/56e6ee_b2c36136ad654d72a7f4de09ea17cf05~mv2.png" alt="FGA" width={200} height={67} style={{ objectFit: 'contain' }} />
               </div>
               <div style={{ background: 'rgba(255, 255, 255, 0.9)', padding: '24px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}>
-                <Image src="https://static.wixstatic.com/media/56e6ee_b9e7061a12d24743b5b3fc07a74f92ed~mv2.png/v1/fill/w_201,h_194,q_90,enc_avif,quality_auto/56e6ee_b9e7061a12d24743b5b3fc07a74f92ed~mv2.png" alt="The Bridge" width={80} height={77} style={{ objectFit: 'contain' }} />
+                <Image src="/media/56e6ee_b9e7061a12d24743b5b3fc07a74f92ed~mv2.png" alt="The Bridge" width={80} height={77} style={{ objectFit: 'contain' }} />
               </div>
               <div style={{ background: 'rgba(255, 255, 255, 0.9)', padding: '24px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}>
-                <Image src="https://static.wixstatic.com/media/56e6ee_b29a7ddaabd3481bb888135a8da07410~mv2.png/v1/fill/w_357,h_194,q_90,enc_avif,quality_auto/56e6ee_b29a7ddaabd3481bb888135a8da07410~mv2.png" alt="Survivors Pathway" width={140} height={76} style={{ objectFit: 'contain' }} />
+                <Image src="/media/56e6ee_b29a7ddaabd3481bb888135a8da07410~mv2.png" alt="Survivors Pathway" width={140} height={76} style={{ objectFit: 'contain' }} />
               </div>
               <div style={{ background: 'rgba(255, 255, 255, 0.9)', padding: '24px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}>
-                <Image src="https://static.wixstatic.com/media/56e6ee_f010f8e8cccb405a8fc28f3fb2481f7e~mv2.png/v1/fill/w_233,h_183,q_90,enc_avif,quality_auto/56e6ee_f010f8e8cccb405a8fc28f3fb2481f7e~mv2.png" alt="Nicklaus Childrens" width={100} height={78} style={{ objectFit: 'contain' }} />
+                <Image src="/media/56e6ee_f010f8e8cccb405a8fc28f3fb2481f7e~mv2.png" alt="Nicklaus Childrens" width={100} height={78} style={{ objectFit: 'contain' }} />
               </div>
               <div style={{ background: 'rgba(255, 255, 255, 0.9)', padding: '24px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}>
-                <Image src="https://static.wixstatic.com/media/56e6ee_55f0bbe459fb41e9907cd3c547b6afb5~mv2.png/v1/fill/w_371,h_268,q_90,enc_avif,quality_auto/56e6ee_55f0bbe459fb41e9907cd3c547b6afb5~mv2.png" alt="One More Child" width={110} height={79} style={{ objectFit: 'contain' }} />
+                <Image src="/media/56e6ee_55f0bbe459fb41e9907cd3c547b6afb5~mv2.png" alt="One More Child" width={110} height={79} style={{ objectFit: 'contain' }} />
               </div>
             </div>
 
@@ -382,14 +382,14 @@ export default function HomePage() {
                 { src: '/sponsors/extracted/sp3_logo_2.png', alt: 'Event Sponsor' },
                 { src: '/sponsors/extracted/sp3_logo_3.png', alt: 'Event Sponsor' },
                 { src: '/sponsors/extracted/sp3_logo_4.png', alt: 'Event Sponsor' },
-                { src: 'https://static.wixstatic.com/media/56e6ee_ebe0f16f3a7f45d2a15a997eab2927f3~mv2.png', alt: 'Sponsor' },
-                { src: 'https://static.wixstatic.com/media/56e6ee_90b6e59a5df142298b790e6f643fa66a~mv2.png', alt: 'Sponsor' },
-                { src: 'https://static.wixstatic.com/media/56e6ee_0f2c809c926641329fd63076093e1de7~mv2.png', alt: 'Sponsor' },
-                { src: 'https://static.wixstatic.com/media/56e6ee_28bd559fd2fb4f969d85fe406d67ad5d~mv2.png', alt: 'Sponsor' },
-                { src: 'https://static.wixstatic.com/media/56e6ee_f96e2e03e38f4cafa7f45f9969059dd6~mv2.png', alt: 'Sponsor' },
-                { src: 'https://static.wixstatic.com/media/56e6ee_243f0558f3794b77a33603bbcf0b1de4~mv2.png', alt: 'Sponsor' },
-                { src: 'https://static.wixstatic.com/media/56e6ee_a9dda332ae464d16adc838ae65a885dd~mv2.png', alt: 'Sponsor' },
-                { src: 'https://static.wixstatic.com/media/56e6ee_1941e013eda54ccf829e7227e5bde355~mv2.png', alt: 'Sponsor' },
+                { src: '/media/56e6ee_ebe0f16f3a7f45d2a15a997eab2927f3~mv2.png', alt: 'Sponsor' },
+                { src: '/media/56e6ee_90b6e59a5df142298b790e6f643fa66a~mv2.png', alt: 'Sponsor' },
+                { src: '/media/56e6ee_0f2c809c926641329fd63076093e1de7~mv2.png', alt: 'Sponsor' },
+                { src: '/media/56e6ee_28bd559fd2fb4f969d85fe406d67ad5d~mv2.png', alt: 'Sponsor' },
+                { src: '/media/56e6ee_f96e2e03e38f4cafa7f45f9969059dd6~mv2.png', alt: 'Sponsor' },
+                { src: '/media/56e6ee_243f0558f3794b77a33603bbcf0b1de4~mv2.png', alt: 'Sponsor' },
+                { src: '/media/56e6ee_a9dda332ae464d16adc838ae65a885dd~mv2.png', alt: 'Sponsor' },
+                { src: '/media/56e6ee_1941e013eda54ccf829e7227e5bde355~mv2.png', alt: 'Sponsor' },
               ].map((s, i) => (
                 <div key={i} className={styles.communitySponsorLogoBadge}>
                   <Image src={s.src} alt={s.alt} width={120} height={60} style={{ objectFit: 'contain' }} />
@@ -405,7 +405,7 @@ export default function HomePage() {
                 'Fentanyl Awareness Coalition', 'Gables Cigars Shop', 'RMT Media',
                 'Prosperity Social & Community Development Group'
               ].map((p, i) => (
-                <div key={i} style={{ border: '1px solid rgba(201, 168, 76, 0.3)', padding: '10px 20px', borderRadius: '30px', color: 'var(--navy-900)', fontWeight: 600, fontSize: '0.88rem', background: 'rgba(201, 168, 76, 0.05)' }}>{p}</div>
+                <div key={i} style={{ border: '1px solid rgba(201, 168, 76, 0.3)', padding: '10px 20px', borderRadius: '30px', color: 'var(--gold-light)', fontWeight: 600, fontSize: '0.88rem', background: 'rgba(201, 168, 76, 0.05)' }}>{p}</div>
               ))}
             </div>
 
@@ -437,9 +437,21 @@ export default function HomePage() {
               <span className="section-label">{txt.newsletterTitle}</span>
               <h3>{txt.newsletterText}</h3>
             </div>
-            <form className={styles.newsletterForm} onSubmit={(e) => e.preventDefault()}>
+            <form
+              className={styles.newsletterForm}
+              onSubmit={(e) => {
+                e.preventDefault();
+                const email = (new FormData(e.currentTarget).get('email') as string)?.trim() ?? '';
+                const subject = lang === 'es' ? 'Suscripción al boletín' : 'Newsletter signup';
+                const body = lang === 'es'
+                  ? `Por favor agrégame al boletín de noticias.\n\nMi correo: ${email}`
+                  : `Please add me to the newsletter.\n\nMy email: ${email}`;
+                window.location.href = `mailto:imanslightfoundation@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+              }}
+            >
               <input
                 type="email"
+                name="email"
                 placeholder={txt.newsletterPlaceholder}
                 className={styles.newsletterInput}
                 aria-label="Email address for newsletter"

@@ -22,7 +22,6 @@ const t = {
     drugEd: 'Drug Education',
     mentalHealth: 'Mental Health',
     savingLives: 'Saving Lives',
-    resources: 'Community Resources',
     getInvolved: 'Get Involved',
     phone: 'Phone',
     email: 'Email',
@@ -47,7 +46,6 @@ const t = {
     drugEd: 'Educación sobre Drogas',
     mentalHealth: 'Salud Mental',
     savingLives: 'Salvando Vidas',
-    resources: 'Recursos Comunitarios',
     getInvolved: 'Participa',
     phone: 'Teléfono',
     email: 'Correo',
@@ -73,7 +71,7 @@ export default function Footer() {
               <Link href="/" className={styles.logo}>
                 <Image src="/logo.jpg" alt="Iman's Light Foundation" width={64} height={64} className={styles.logoImg} />
                 <div>
-                  <div className={styles.logoMain}>Iman's Light</div>
+                  <div className={styles.logoMain}>Iman&apos;s Light</div>
                   <div className={styles.logoSub}>Foundation</div>
                 </div>
               </Link>
@@ -114,10 +112,9 @@ export default function Footer() {
             <div className={styles.col}>
               <h4 className={styles.colTitle}>{txt.programs}</h4>
               <ul className={styles.linkList}>
-                <li><Link href="/programs#education">{txt.drugEd}</Link></li>
+                <li><Link href="/programs#workshops">{txt.drugEd}</Link></li>
                 <li><Link href="/programs#mental-health">{txt.mentalHealth}</Link></li>
-                <li><Link href="/programs#saving-lives">{txt.savingLives}</Link></li>
-                <li><Link href="/programs#resources">{txt.resources}</Link></li>
+                <li><Link href="/saving-lives">{txt.savingLives}</Link></li>
                 <li><Link href="/donate">{txt.donate}</Link></li>
               </ul>
             </div>

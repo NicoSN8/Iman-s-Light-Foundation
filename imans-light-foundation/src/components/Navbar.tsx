@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { LanguageContext } from '@/context/LanguageContext';
@@ -54,12 +54,34 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const { lang, setLang } = useContext(LanguageContext);
+  const hamburgerRef = useRef<HTMLButtonElement>(null);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const wasMobileOpen = useRef(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (mobileOpen) {
+      wasMobileOpen.current = true;
+      mobileMenuRef.current?.querySelector<HTMLElement>('a, button')?.focus();
+    } else if (wasMobileOpen.current) {
+      wasMobileOpen.current = false;
+      hamburgerRef.current?.focus();
+    }
+  }, [mobileOpen]);
+
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMobileOpen(false);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [mobileOpen]);
 
   return (
     <>
@@ -109,7 +131,7 @@ export default function Navbar() {
           <Link href="/" className={styles.logo} onClick={() => setMobileOpen(false)}>
             <Image src="/logo.jpg" alt="Iman's Light Foundation" width={56} height={56} className={styles.logoImg} />
             <span className={styles.logoText}>
-              <span className={styles.logoMain}>Iman's Light</span>
+              <span className={styles.logoMain}>Iman&apos;s Light</span>
               <span className={styles.logoSub}>Foundation</span>
             </span>
           </Link>
@@ -151,9 +173,11 @@ export default function Navbar() {
 
             {/* Mobile Hamburger */}
             <button
+              ref={hamburgerRef}
               className={`${styles.hamburger} ${mobileOpen ? styles.hamburgerOpen : ''}`}
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Toggle menu"
+              aria-expanded={mobileOpen}
             >
               <span />
               <span />
@@ -163,7 +187,7 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Menu */}
-        <div className={`${styles.mobileMenu} ${mobileOpen ? styles.mobileMenuOpen : ''}`}>
+        <div ref={mobileMenuRef} className={`${styles.mobileMenu} ${mobileOpen ? styles.mobileMenuOpen : ''}`}>
           <div className={styles.mobileInner}>
             <Link href="/" className={styles.mobileLink} onClick={() => setMobileOpen(false)}>
               {lang === 'en' ? 'Home' : 'Inicio'}
