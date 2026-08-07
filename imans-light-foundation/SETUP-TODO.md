@@ -80,6 +80,14 @@ site can't safely continue (or shouldn't go live) until you do this.
 
 ## Phase 2 — Admin login (not started)
 
+> **What this is:** a private staff-only dashboard at `yoursite.com/admin` —
+> **not** something donors ever see or use. A donor never creates an account
+> or logs in anywhere; they pay through PayPal and we capture their name,
+> email, and amount straight from that transaction, automatically. `/admin`
+> is just where *you* go afterward to see who gave, resend a receipt, or
+> (later) check someone in at the door. One shared password for your team,
+> not per-person accounts.
+
 - [ ] **LATER — Choose an admin password.** I'll ask you to pick a strong
   password for the site's private `/admin` area (donations, contact
   messages, later ticket check-in). You'll paste it somewhere temporarily so
@@ -106,18 +114,45 @@ site can't safely continue (or shouldn't go live) until you do this.
   your `/admin` dashboard, confirm a donation receipt email arrives, and
   confirm refunding it in the sandbox updates the status correctly.
 
-## Phase 4 — Email receipts (not started)
+## Phase 4 — Email receipts, sent from the org's Gmail (not started)
 
-- [ ] **LATER — Add Resend from the Vercel Marketplace.** From your Vercel
-  dashboard: **Integrations** (or **Storage**, Resend is listed alongside
-  databases) → find **Resend** → **Add Integration**. This creates the
-  account and injects the API key automatically.
-- [ ] **LATER — Add DNS records so receipts send from your own domain.**
-  Resend will show you 2–3 DNS records (SPF/DKIM) to add wherever
-  `imanslightfoundation.org`'s DNS is managed. Tell me who manages that DNS
-  when we reach this step and I'll give you the exact records to paste in.
-  Until this is done, test emails still work, just from a generic
-  `resend.dev` address instead of your own.
+> Using `imanslightfoundation@gmail.com` directly (instead of a separate
+> email-sending service) as requested. It's genuinely simpler — no new
+> account, no DNS changes — and Gmail's free sending limit is 500 emails a
+> day, far more than a local nonprofit's donation/ticket volume will ever
+> hit. Every receipt is also BCC'd back to the org inbox, so you always have
+> a copy of what went out.
+
+- [ ] **LATER — Turn on 2-Step Verification on the org's Gmail** (required
+  before Google will let us create the app-specific password below).
+  1. Sign in to **imanslightfoundation@gmail.com**.
+  2. Go to **myaccount.google.com/security**.
+  3. Under "How you sign in to Google," click **2-Step Verification** →
+     **Get Started**, and follow the prompts (you'll need a phone number to
+     receive a one-time code).
+  4. **Verify:** the Security page shows "2-Step Verification: On."
+
+- [ ] **LATER — Create an App Password** (a special 16-character password
+  just for the website to send mail — it's separate from the real Gmail
+  password and can be revoked any time without changing the real password).
+  1. Still signed in to the org Gmail, go to
+     **myaccount.google.com/apppasswords** (you may be asked to sign in
+     again).
+  2. Under "App name," type **Website Receipts** and click **Create**.
+  3. Google shows a 16-character password in a yellow box — copy it right
+     away, it's shown only once. Spaces in it don't matter.
+  4. Send that password to me somewhere private (not in a public chat or
+     doc) so I can add it to Vercel, or paste it directly into Vercel
+     yourself if you'd rather — I'll tell you the exact variable name when
+     we get here.
+  5. **Verify:** back on the App Passwords page, you'll see "Website
+     Receipts" listed. (You can revoke it there any time.)
+
+- [ ] **LATER — I'll wire up sending.** I'll add the Gmail address and that
+  app password as two Vercel environment variables, and the site will send
+  bilingual receipts through Gmail's own mail servers whenever a donation or
+  ticket purchase completes — no further setup needed after the two steps
+  above.
 
 ## Phase 5 — Go live with donations (not started)
 
@@ -154,4 +189,5 @@ site can't safely continue (or shouldn't go live) until you do this.
 
 ---
 
-*Updated at the end of Phase 0, 2026-08-07.*
+*Updated 2026-08-07: switched email receipts to the org's own Gmail (App
+Password) instead of a separate email service, per your request.*
