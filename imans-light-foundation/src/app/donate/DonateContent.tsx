@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { LanguageContext } from '@/context/LanguageContext';
 import { Leaf, Mail, RefreshCcw, Building2, GraduationCap, Heart, ShieldAlert, Scale } from 'lucide-react';
 import styles from './donate.module.css';
+import { FEATURED_SPONSORS, COMMUNITY_SPONSORS } from '@/data/sponsors';
 
 interface Tier {
   id: string;
@@ -164,49 +165,14 @@ export default function DonatePage() {
           <p className="section-subtitle">{isEs ? 'Agradecemos profundamente a las organizaciones que hacen posible nuestra misión.' : 'We are deeply grateful to the organizations that make our mission possible.'}</p>
           
           <div style={{ display: 'flex', flexDirection: 'column', gap: '48px', marginTop: '48px', alignItems: 'center' }}>
-            {/* Platinum */}
+            {/* Featured Sponsors */}
             <div style={{ width: '100%' }}>
-              <h4 style={{ color: 'var(--gold)', marginBottom: '16px', fontSize: '1.2rem', fontFamily: 'Playfair Display' }}>PLATINUM</h4>
               <div className={styles.sponsorLogosGrid}>
-                <div className={styles.sponsorBadge}>
-                  <Image src="/media/56e6ee_b2c36136ad654d72a7f4de09ea17cf05~mv2.png" alt="FGA" width={284} height={95} style={{ objectFit: 'contain' }} />
-                </div>
-              </div>
-            </div>
-
-            {/* Gold */}
-            <div style={{ width: '100%' }}>
-              <h4 style={{ color: 'var(--gold)', marginBottom: '16px', fontSize: '1.2rem', fontFamily: 'Playfair Display' }}>GOLD</h4>
-              <div className={styles.sponsorLogosGrid}>
-                <div className={styles.sponsorBadge}>
-                  <Image src="/media/56e6ee_b9e7061a12d24743b5b3fc07a74f92ed~mv2.png" alt="The Bridge" width={100} height={97} style={{ objectFit: 'contain' }} />
-                </div>
-                <div className={styles.sponsorBadge}>
-                  <Image src="/media/56e6ee_b29a7ddaabd3481bb888135a8da07410~mv2.png" alt="Survivors Pathway" width={178} height={97} style={{ objectFit: 'contain' }} />
-                </div>
-                <div className={styles.sponsorBadge}>
-                  <Image src="/media/56e6ee_f010f8e8cccb405a8fc28f3fb2481f7e~mv2.png" alt="Nicklaus Childrens" width={116} height={91} style={{ objectFit: 'contain' }} />
-                </div>
-              </div>
-            </div>
-
-            {/* Silver & Educational */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '48px', justifyContent: 'center', width: '100%' }}>
-              <div style={{ flex: '1 1 300px' }}>
-                <h4 style={{ color: 'var(--gold)', marginBottom: '16px', fontSize: '1.2rem', fontFamily: 'Playfair Display' }}>SILVER</h4>
-                <div className={styles.sponsorLogosGrid}>
-                  <div className={styles.sponsorBadge}>
-                    <Image src="/media/56e6ee_55f0bbe459fb41e9907cd3c547b6afb5~mv2.png" alt="One More Child" width={135} height={97} style={{ objectFit: 'contain' }} />
+                {FEATURED_SPONSORS.map((s, i) => (
+                  <div key={i} className={styles.sponsorBadge}>
+                    <Image src={s.src} alt={s.alt} width={178} height={97} style={{ objectFit: 'contain' }} />
                   </div>
-                </div>
-              </div>
-              <div style={{ flex: '1 1 300px' }}>
-                <h4 style={{ color: 'var(--gold)', marginBottom: '16px', fontSize: '1.2rem', fontFamily: 'Playfair Display' }}>EDUCATIONAL SILVER</h4>
-                <div className={styles.sponsorLogosGrid}>
-                  <div className={styles.sponsorBadge}>
-                    <Image src="/media/56e6ee_0b1d1f617c3b42acbf68755c62e11afe~mv2.png" alt="Village South" width={97} height={97} style={{ objectFit: 'contain' }} />
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
 
@@ -216,27 +182,13 @@ export default function DonatePage() {
                 {isEs ? 'PATROCINADORES DE APOYO Y EVENTOS' : 'SUPPORTING & EVENT SPONSOR LOGOS'}
               </h4>
               <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem', marginBottom: '24px', maxWidth: '600px', margin: '0 auto' }}>
-                {isEs 
-                  ? 'Agradecemos profundamente a todos nuestros colaboradores que apoyan directamente a nuestra comunidad con su marca y compromiso.' 
+                {isEs
+                  ? 'Agradecemos profundamente a todos nuestros colaboradores que apoyan directamente a nuestra comunidad con su marca y compromiso.'
                   : 'We are deeply grateful to all our partners who directly support our community with their brand and commitment.'}
               </p>
-              
+
               <div className={styles.communitySponsorLogosGrid}>
-                {[
-                  { src: '/sponsors/extracted/sp3_logo_0.png', alt: 'Event Sponsor' },
-                  { src: '/sponsors/extracted/sp3_logo_1.png', alt: 'Event Sponsor' },
-                  { src: '/sponsors/extracted/sp3_logo_2.png', alt: 'Event Sponsor' },
-                  { src: '/sponsors/extracted/sp3_logo_3.png', alt: 'Event Sponsor' },
-                  { src: '/sponsors/extracted/sp3_logo_4.png', alt: 'Event Sponsor' },
-                  { src: '/media/56e6ee_ebe0f16f3a7f45d2a15a997eab2927f3~mv2.png', alt: 'Sponsor' },
-                  { src: '/media/56e6ee_90b6e59a5df142298b790e6f643fa66a~mv2.png', alt: 'Sponsor' },
-                  { src: '/media/56e6ee_0f2c809c926641329fd63076093e1de7~mv2.png', alt: 'Sponsor' },
-                  { src: '/media/56e6ee_28bd559fd2fb4f969d85fe406d67ad5d~mv2.png', alt: 'Sponsor' },
-                  { src: '/media/56e6ee_f96e2e03e38f4cafa7f45f9969059dd6~mv2.png', alt: 'Sponsor' },
-                  { src: '/media/56e6ee_243f0558f3794b77a33603bbcf0b1de4~mv2.png', alt: 'Sponsor' },
-                  { src: '/media/56e6ee_a9dda332ae464d16adc838ae65a885dd~mv2.png', alt: 'Sponsor' },
-                  { src: '/media/56e6ee_1941e013eda54ccf829e7227e5bde355~mv2.png', alt: 'Sponsor' },
-                ].map((s, i) => (
+                {COMMUNITY_SPONSORS.map((s, i) => (
                   <div key={i} className={styles.communitySponsorLogoBadge}>
                     <Image src={s.src} alt={s.alt} width={120} height={60} style={{ objectFit: 'contain' }} />
                   </div>
