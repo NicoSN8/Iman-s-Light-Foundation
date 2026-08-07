@@ -1,72 +1,12 @@
-'use client';
-import { useContext } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { Camera } from 'lucide-react';
-import { LanguageContext } from '@/context/LanguageContext';
-import styles from './gallery.module.css';
-import galleryItems from '@/data/gallery.json';
+import type { Metadata } from 'next';
+import GalleryContent from './GalleryContent';
+
+export const metadata: Metadata = {
+  title: 'Photo Gallery',
+  description:
+    "Browse photos from Iman's Light Foundation's workshops, community events, and advocacy efforts across South Florida.",
+};
 
 export default function GalleryPage() {
-  const { lang } = useContext(LanguageContext);
-  const isEs = lang === 'es';
-
-  return (
-    <>
-      <div className="page-hero">
-        <div className="container">
-          <div className="breadcrumb">
-            <Link href="/">{isEs ? 'Inicio' : 'Home'}</Link>
-            <span>›</span>
-            <span style={{ color: 'rgba(255,255,255,0.7)' }}>{isEs ? 'Galería' : 'Gallery'}</span>
-          </div>
-          <span className="section-label">{isEs ? 'Nuestra Comunidad' : 'Our Community'}</span>
-          <h1>{isEs ? 'Galería de Fotos' : 'Photo Gallery'}</h1>
-          <p>{isEs ? 'Una ventana a nuestro trabajo comunitario, cada imagen representa vidas tocadas y comunidades fortalecidas.' : 'A window into our community work, every image represents lives touched and communities strengthened.'}</p>
-        </div>
-      </div>
-
-      <section className="section">
-        <div className="container">
-          <div className={styles.galleryNote}>
-            <p style={{ display: 'flex', gap: '8px', alignItems: 'flex-start' }}>
-              <Camera className="gold-icon" style={{ flexShrink: 0, marginTop: '2px' }} size={20} />
-              <span>
-                {isEs
-                  ? 'La galería de fotos completa se actualizará con imágenes reales de nuestros eventos y programas. Por favor contáctenos para enviar fotos de nuestros eventos.'
-                  : 'The full photo gallery will be updated with real images from our events and programs. Please contact us to submit photos from our events.'}
-              </span>
-            </p>
-          </div>
-          <div className={styles.gallery}>
-            {galleryItems.map((item, i) => (
-              <div key={i} className={styles.galleryItem}>
-                <div className={styles.galleryImg}>
-                  <Image
-                    src={item.src}
-                    alt={isEs ? item.captionEs : item.captionEn}
-                    fill
-                    style={{ objectFit: 'cover' }}
-                  />
-                  <div className={styles.galleryOverlay}>
-                    <span className="tag">{item.category}</span>
-                    <p className={styles.galleryCaption}>{isEs ? item.captionEs : item.captionEn}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section section-cream">
-        <div className="container text-center">
-          <h2 className="section-title">{isEs ? '¿Tienes fotos de nuestros eventos?' : 'Have photos from our events?'}</h2>
-          <div className="gold-divider center" />
-          <p className="section-subtitle">{isEs ? 'Comparte tus fotos con nosotros y las agregaremos a nuestra galería.' : 'Share your photos with us and we\'ll add them to our gallery.'}</p>
-          <Link href="/contact" className="btn btn-dark">{isEs ? 'Enviar Fotos' : 'Submit Photos'} →</Link>
-        </div>
-      </section>
-    </>
-  );
+  return <GalleryContent />;
 }

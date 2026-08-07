@@ -12,6 +12,9 @@
   --navy-mid: #111827;
   --navy-light: #1E2A3D;
   --navy-card: #141C2E;
+  --navy-600: var(--navy-light);
+  --navy-800: var(--navy-mid);
+  --navy-900: var(--navy);
   --white: #FFFFFF;
   --off-white: #F8F5EE;
   --gray-100: #F3F4F6;
