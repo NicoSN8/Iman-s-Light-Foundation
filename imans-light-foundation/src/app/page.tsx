@@ -435,8 +435,12 @@ export default function HomePage() {
             {/* Community & Event Sponsor Logos */}
             <div className={styles.communitySponsorLogosGrid} style={{ marginTop: '24px' }}>
               {COMMUNITY_SPONSORS.map((s, i) => (
-                <div key={i} className={styles.communitySponsorLogoBadge}>
-                  <Image src={s.src} alt={s.alt} width={120} height={60} style={{ objectFit: 'contain' }} />
+                <div
+                  key={i}
+                  className={styles.communitySponsorLogoBadge}
+                  style={s.dark ? { background: 'rgba(10, 14, 26, 0.9)', border: '1px solid rgba(201,168,76,0.2)' } : undefined}
+                >
+                  <Image src={s.src} alt={s.alt} width={120} height={60} style={{ objectFit: 'contain' }} unoptimized={s.src.endsWith('.svg')} />
                 </div>
               ))}
             </div>
@@ -444,10 +448,11 @@ export default function HomePage() {
             {/* Text Sponsors */}
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', justifyContent: 'center', maxWidth: '900px', marginTop: '16px' }}>
               {[
-                'Monarch Air Group', 'South Florida Wellness Network', 'Phoenix Title & Closing', 
-                'Expressions Noblemen & Consulting', 'Rewind 103.5', 'S.A.R.A. Coalition', 
+                'Monarch Air Group', 'South Florida Wellness Network',
+                'Expressions Noblemen & Consulting', 'Rewind 103.9', 'S.A.R.A. Coalition',
                 'Fentanyl Awareness Coalition', 'Gables Cigars Shop', 'RMT Media',
-                'Prosperity Social & Community Development Group'
+                'Prosperity Social & Community Development Group',
+                'Powerhouse Workshops & Consulting', 'Century 21 King Realty', 'Wepa.fm', 'Super Q Miami'
               ].map((p, i) => (
                 <div key={i} style={{ border: '1px solid rgba(201, 168, 76, 0.3)', padding: '10px 20px', borderRadius: '30px', color: 'var(--gold-light)', fontWeight: 600, fontSize: '0.88rem', background: 'rgba(201, 168, 76, 0.05)' }}>{p}</div>
               ))}
