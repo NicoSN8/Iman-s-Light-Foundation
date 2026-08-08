@@ -66,17 +66,22 @@ site can't safely continue (or shouldn't go live) until you do this.
 
 ---
 
-## Phase 1 — Database (not started)
+## Phase 1 — Database ✅ done (2026-08-08)
 
-- [ ] **LATER — Create the database.** From your Vercel project dashboard:
-  **Storage** tab → **Create Database** → choose **Neon** → pick a region
-  (closest to Florida is `us-east-1`) → **Connect to Project** → select all
-  three environments (Production, Preview, Development). Vercel and Neon
-  handle the connection automatically — you won't need to copy any keys by
-  hand for this step.
-  **Verify:** the Storage tab shows a connected Neon database, and your
-  Vercel project's Environment Variables list gains a `DATABASE_URL` entry
-  automatically.
+- [x] **Create the database.** Done — Neon Postgres is connected to the
+  `iman-s-light-foundation` Vercel project (connection named
+  `Imans_Payments`), all three environments (Production, Preview,
+  Development).
+- [x] **Contact form now writes to the database**, in addition to still
+  opening your email app as before. There's no admin view to read these
+  yet (that's Phase 2) — for now the only way you see a new message is the
+  email that still opens automatically.
+- Note: there's a harmless, empty, unused Vercel project called
+  `imans-light-foundation` (no hyphen after "imans") — created by an
+  accidental command during this setup. It has no deployments and nothing
+  points at it. Safe to delete from your Vercel dashboard (Settings →
+  General → Delete Project) whenever you feel like tidying up, or just
+  ignore it.
 
 ## Phase 2 — Admin login (not started)
 
@@ -189,5 +194,4 @@ site can't safely continue (or shouldn't go live) until you do this.
 
 ---
 
-*Updated 2026-08-07: switched email receipts to the org's own Gmail (App
-Password) instead of a separate email service, per your request.*
+*Updated 2026-08-08: Phase 1 (database) complete.*

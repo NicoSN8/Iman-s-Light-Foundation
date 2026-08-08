@@ -27,6 +27,16 @@ export default function ContactPage() {
     const phone = (data.get('phone') as string)?.trim() ?? '';
     const subjectKey = (data.get('subject') as string) ?? '';
     const message = (data.get('message') as string)?.trim() ?? '';
+    const website = (data.get('website') as string) ?? '';
+
+    // Store the message so it shows up in /admin later. Fire-and-forget: a
+    // slow or failed save should never block the mailto fallback below,
+    // which is still the only thing that notifies anyone today.
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, phone, subject: subjectKey, message, lang, website }),
+    }).catch(() => {});
 
     const subjectLabel = SUBJECT_LABELS[subjectKey]?.[lang] ?? subjectKey;
     const mailSubject = `${isEs ? 'Contacto desde el sitio web' : 'Website Contact'}: ${subjectLabel}`;
@@ -82,6 +92,14 @@ export default function ContactPage() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className={styles.form}>
+                  <input
+                    type="text"
+                    name="website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                    style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', opacity: 0 }}
+                  />
                   <div className={styles.formRow}>
                     <div className="form-group">
                       <label htmlFor="contact-name">{isEs ? 'Nombre Completo' : 'Full Name'} *</label>
