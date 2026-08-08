@@ -50,6 +50,18 @@ export interface TextSponsor {
  * file: Betzabe Pujaico (225x225), Improving Lives (200x200), Outreach
  * Behavior Support (224x225), Survivors' Pathway (210x209), Global
  * Innovative Foundation (227x183).
+ *
+ * 2026-08-08, later same day: Nicolas asked that no sponsor be left
+ * without a logo. Sourced a real logo for every previously text-only
+ * sponsor directly from that org's own official website/press assets
+ * (never a guessed match — see git history for the research per name).
+ * Five names had no confidently-identifiable official presence (too
+ * generic or no matching org found): Expressions Noblemen & Consulting,
+ * S.A.R.A. Coalition, RMT Media, Master Bodyworker, blackandwhite. For
+ * those, generated a plain typographic wordmark card (same treatment
+ * Nicolas asked for with FGA earlier: "just put [name] with a good
+ * style") rather than fabricating a logo — these are the only entries
+ * below where the image is not the organization's own artwork.
  */
 
 export const FEATURED_SPONSORS: SponsorLogo[] = [
@@ -76,30 +88,29 @@ export const COMMUNITY_SPONSORS: SponsorLogo[] = [
   { src: '/sponsors/2026/doral-voice.png', alt: 'Doral Voice', url: 'https://doralvoice.com' },
   { src: '/sponsors/2026/freestyle-fm.png', alt: 'Freestyle.FM', url: 'https://www.freestyle.fm' },
   { src: '/sponsors/2026/monat.svg', alt: 'MONAT', url: 'https://monatglobal.com' },
+  { src: '/sponsors/2026/powerhouse-workshops.jpg', alt: 'Powerhouse Workshops & Consulting', url: 'https://www.powerhouseworkshops.com' },
+  { src: '/sponsors/2026/century21-king-realty.png', alt: 'Century 21 King Realty', url: 'https://www.century21kingrealty.com' },
+  { src: '/sponsors/2026/wepa-fm.jpg', alt: 'Wepa.fm', url: 'https://wepa.fm' },
+  { src: '/sponsors/2026/super-q-miami.png', alt: 'Super Q Miami', url: 'https://www.superqmiami.com' },
+  { src: '/sponsors/2026/south-florida-wellness-network.png', alt: 'South Florida Wellness Network', url: 'https://www.sfwn.org' },
+  { src: '/sponsors/2026/scribeamerica.png', alt: 'ScribeAmerica', url: 'https://www.scribeamerica.com' },
+  { src: '/sponsors/2026/daer-nightclub.png', alt: 'DAER Nightclub', url: 'https://www.hardrocknightlife.com', invert: true },
+  { src: '/sponsors/2026/rewind-1039.png', alt: 'Rewind 103.9', url: 'https://www.rewind1039.com' },
+  { src: '/sponsors/2026/fentanyl-awareness-coalition.png', alt: 'Fentanyl Awareness Coalition', url: 'https://the-fac.org' },
+  { src: '/sponsors/2026/gables-cigars-shop.png', alt: 'Gables Cigars Shop', url: 'https://gablescigarsshop.com' },
+  { src: '/sponsors/2026/prosperity-social-cdg.png', alt: 'Prosperity Social & Community Development Group', url: 'https://www.p-scdg.org' },
+  { src: '/sponsors/2026/luxe-properties.png', alt: 'Luxe Properties', url: 'https://luxeknows.com' },
+  { src: '/sponsors/2026/expressions-noblemen.png', alt: 'Expressions Noblemen & Consulting' },
+  { src: '/sponsors/2026/sara-coalition.png', alt: 'S.A.R.A. Coalition' },
+  { src: '/sponsors/2026/rmt-media.png', alt: 'RMT Media' },
+  { src: '/sponsors/2026/master-bodyworker.png', alt: 'Master Bodyworker' },
+  { src: '/sponsors/2026/blackandwhite.png', alt: 'blackandwhite' },
 ];
 
 /**
- * Sponsors we only have a name for (no logo file yet). Previously existed as
- * three separately drifted copies of this same list across the homepage,
- * About, and Donate pages — the Donate copy still had two names that were
- * already corrected everywhere else. This is now the one source of truth.
+ * No sponsor should render as a plain text pill anymore (see note above) —
+ * kept as an empty, typed export (rather than deleted) so
+ * TextSponsorPills/this array stay available if a future sponsor is added
+ * before a logo is sourced for them.
  */
-export const TEXT_ONLY_SPONSORS: TextSponsor[] = [
-  { name: 'Powerhouse Workshops & Consulting', url: 'https://www.powerhouseworkshops.com' },
-  { name: 'Century 21 King Realty', url: 'https://www.century21kingrealty.com' },
-  { name: 'Wepa.fm', url: 'https://wepa.fm' },
-  { name: 'Super Q Miami', url: 'https://www.superqmiami.com' },
-  { name: 'South Florida Wellness Network', url: 'https://www.sfwn.org' },
-  { name: 'ScribeAmerica', url: 'https://www.scribeamerica.com' },
-  { name: 'DAER Nightclub', url: 'https://www.hardrocknightlife.com' },
-  { name: 'Rewind 103.9' },
-  { name: 'Expressions Noblemen & Consulting' },
-  { name: 'S.A.R.A. Coalition' },
-  { name: 'Fentanyl Awareness Coalition' },
-  { name: 'Gables Cigars Shop' },
-  { name: 'RMT Media' },
-  { name: 'Prosperity Social & Community Development Group' },
-  { name: 'Luxe Properties' },
-  { name: 'Master Bodyworker' },
-  { name: 'blackandwhite' },
-];
+export const TEXT_ONLY_SPONSORS: TextSponsor[] = [];
