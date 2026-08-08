@@ -9,6 +9,8 @@ export const contactSubmissions = pgTable('contact_submissions', {
   message: text('message').notNull(),
   lang: text('lang').notNull().default('en'),
   createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+  adminReply: text('admin_reply'),
+  repliedAt: timestamp('replied_at', { withTimezone: true }),
 });
 
 export const events = pgTable('events', {
