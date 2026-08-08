@@ -410,7 +410,7 @@ export default function AboutPage() {
                     key={i}
                     className={`${styles.sponsorBadge} ${s.card === 'light' ? styles.sponsorBadgeLight : s.card === 'dark' ? styles.sponsorBadgeDark : ''}`}
                   >
-                    <Image src={s.src} alt={s.alt} width={178} height={97} style={{ objectFit: 'contain' }} />
+                    <Image src={s.src} alt={s.alt} width={400} height={160} style={{ objectFit: 'contain' }} />
                   </div>
                 ))}
               </div>
@@ -428,7 +428,7 @@ export default function AboutPage() {
                     key={i}
                     className={`${styles.communitySponsorLogoBadge} ${s.card === 'light' ? styles.communitySponsorLogoBadgeLight : s.card === 'dark' ? styles.communitySponsorLogoBadgeDark : ''}`}
                   >
-                    <Image src={s.src} alt={s.alt} width={280} height={90} style={{ objectFit: 'contain' }} unoptimized={s.src.endsWith('.svg')} />
+                    <Image src={s.src} alt={s.alt} width={400} height={140} style={{ objectFit: 'contain' }} unoptimized={s.src.endsWith('.svg')} />
                   </div>
                 ))}
               </div>

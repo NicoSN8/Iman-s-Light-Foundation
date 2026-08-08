@@ -424,16 +424,17 @@ export default function HomePage() {
           
           <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', marginTop: '48px', alignItems: 'center' }}>
             {/* Featured Sponsors */}
-            <div style={{ width: '100%', display: 'flex', flexWrap: 'wrap', gap: '24px', justifyContent: 'center', alignItems: 'center' }}>
+            <div style={{ width: '100%', display: 'flex', flexWrap: 'wrap', gap: '32px', justifyContent: 'center', alignItems: 'center' }}>
               {FEATURED_SPONSORS.map((s, i) => (
                 <div
                   key={i}
                   style={{
-                    padding: '20px 28px',
+                    padding: '24px 32px',
                     borderRadius: '12px',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
+                    height: '160px',
                     ...(s.card === 'light'
                       ? { background: 'rgba(255, 255, 255, 0.92)', boxShadow: '0 10px 30px rgba(0,0,0,0.2)' }
                       : s.card === 'dark'
@@ -441,7 +442,7 @@ export default function HomePage() {
                       : {}),
                   }}
                 >
-                  <Image src={s.src} alt={s.alt} width={160} height={80} style={{ objectFit: 'contain' }} />
+                  <Image src={s.src} alt={s.alt} width={400} height={112} style={{ height: '112px', width: 'auto', maxWidth: '380px', objectFit: 'contain' }} />
                 </div>
               ))}
             </div>
@@ -453,7 +454,7 @@ export default function HomePage() {
                   key={i}
                   className={`${styles.communitySponsorLogoBadge} ${s.card === 'light' ? styles.communitySponsorLogoBadgeLight : s.card === 'dark' ? styles.communitySponsorLogoBadgeDark : ''}`}
                 >
-                  <Image src={s.src} alt={s.alt} width={280} height={90} style={{ objectFit: 'contain' }} unoptimized={s.src.endsWith('.svg')} />
+                  <Image src={s.src} alt={s.alt} width={400} height={140} style={{ objectFit: 'contain' }} unoptimized={s.src.endsWith('.svg')} />
                 </div>
               ))}
             </div>

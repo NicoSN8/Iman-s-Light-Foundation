@@ -381,26 +381,24 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 64px;
-  transition: transform 0.25s ease, opacity 0.25s ease;
-  opacity: 0.85;
+  height: 112px;
+  transition: transform 0.25s ease;
 }
 
 .communitySponsorLogoBadge img {
   height: 100%;
   width: auto;
-  max-width: 240px;
+  max-width: 340px;
 }
 
 .communitySponsorLogoBadge:hover {
   transform: translateY(-4px);
-  opacity: 1;
 }
 
 .communitySponsorLogoBadgeLight,
 .communitySponsorLogoBadgeDark {
-  height: 72px;
-  padding: 12px 22px;
+  height: 132px;
+  padding: 16px 26px;
 }
 
 .communitySponsorLogoBadgeLight {
