@@ -34,6 +34,8 @@ const programs = {
       subtitle: 'Knowledge is the strongest defense against synthetics.',
       description: 'Your investment of $5,000 funds four interactive, specialized workshops (1-2.5 hours each) led by presenters and presentation aids. "The Truth About Drugs" covers the realities of vaping, marijuana, fentanyl, synthetics, and addiction. We detail how these affect the brain and body, providing clear instruction on overdose signs and Narcan application. Pre- and post-assessments guarantee that students properly integrate this critical survival knowledge.',
       cta: 'View Lesson Plans',
+      image: '/media/56e6ee_073f30a006774b13b0b4760f92bad63e~mv2.jpeg',
+      imageAlt: 'Iman\'s Light Foundation Narcan distribution and overdose-response training',
     },
     {
       id: 'mental-health',
@@ -43,6 +45,8 @@ const programs = {
       subtitle: 'Understanding emotions to prevent self-harm.',
       description: 'Addiction often stems from emotional pain. Our Mental Wellness Workshop "Understanding Emotions and Critical Thinking"—provides deep skills in emotional intelligence and cognitive restructuring. By teaching nonviolent communication and positive self-talk, we help youth manage the stress, anger, anxiety, and grief that often lead to self-medication and violence.',
       cta: 'Request a Session',
+      image: '/media/56e6ee_3576a17eaea54dc89bcb590ac41a3ec6~mv2.jpeg',
+      imageAlt: 'Iman\'s Light Foundation founder presenting at a community wellness event',
     },
     {
       id: 'youth-groups',
@@ -52,6 +56,8 @@ const programs = {
       subtitle: 'Empowering students to lead their peers.',
       description: 'Iman\'s Light Foundation is committed to encouraging and supporting schools and students to continue the conversation locally. We establish ILF Youth Groups, providing them with ongoing materials and topics to discuss among themselves. This transforms students into proactive leaders and positive influences within their own peer circles.',
       cta: 'Start a Youth Group',
+      image: '/media/56e6ee_d289e22e23694b668fdf387aaafa140c~mv2.jpeg',
+      imageAlt: 'Iman\'s Light Foundation mentor connecting with a student',
     },
     {
       id: 'music-dance',
@@ -61,6 +67,8 @@ const programs = {
       subtitle: 'Celebrating life safely, without substances.',
       description: 'Our annual "Music and Lights for Life Dance and Exhibition" provides a safe environment to dance, laugh, and have fun, proving there is absolutely no need for substances that alter your mental state. We deliver crucial information on drug lacing, mental wellness, and the reality of fake pills. With Narcan distributed on-site and sponsors offering CPR lessons, we honor lives lost while actively protecting the living.',
       cta: 'Attend the Event',
+      image: '/media/56e6ee_b5621014b4e14c088141ec0ff07a50fb~mv2.jpeg',
+      imageAlt: 'Music and Lights for Life annual dance event',
     },
   ],
   es: [
@@ -72,6 +80,8 @@ const programs = {
       subtitle: 'El conocimiento es la defensa más fuerte.',
       description: 'Su inversión de $5,000 financia cuatro talleres interactivos y especializados. Cubrimos las realidades del vapeo, la marihuana, el fentanilo y las adicciones. Detallamos cómo afectan el cerebro y el cuerpo, y enseñamos a aplicar Narcan. Las evaluaciones previas y posteriores garantizan que los estudiantes integren este conocimiento vital de supervivencia.',
       cta: 'Ver Planes de Estudio',
+      image: '/media/56e6ee_073f30a006774b13b0b4760f92bad63e~mv2.jpeg',
+      imageAlt: 'Distribución de Narcan y entrenamiento de respuesta a sobredosis de Iman\'s Light Foundation',
     },
     {
       id: 'mental-health',
@@ -81,6 +91,8 @@ const programs = {
       subtitle: 'Comprendiendo las emociones para prevenir autolesiones.',
       description: 'Nuestro taller "Comprendiendo las emociones y pensamiento crítico" brinda habilidades de inteligencia emocional. Enseñamos comunicación no violenta para manejar el estrés, la ira y el dolor, que a menudo llevan a la automedicación.',
       cta: 'Solicitar una Sesión',
+      image: '/media/56e6ee_3576a17eaea54dc89bcb590ac41a3ec6~mv2.jpeg',
+      imageAlt: 'Fundadora de Iman\'s Light Foundation presentando en un evento comunitario de bienestar',
     },
     {
       id: 'youth-groups',
@@ -90,6 +102,8 @@ const programs = {
       subtitle: 'Empoderando a los líderes del mañana.',
       description: 'Establecemos Grupos Juveniles ILF en escuelas, brindándoles materiales y temas continuos para continuar la conversación de prevención entre ellos mismos. Esto transforma a los estudiantes en líderes positivos.',
       cta: 'Crear un Grupo',
+      image: '/media/56e6ee_d289e22e23694b668fdf387aaafa140c~mv2.jpeg',
+      imageAlt: 'Mentor de Iman\'s Light Foundation conectando con un estudiante',
     },
     {
       id: 'music-dance',
@@ -99,6 +113,8 @@ const programs = {
       subtitle: 'Celebrando con seguridad, sin sustancias.',
       description: 'Nuestro baile anual proporciona un entorno seguro demostrando que no hay necesidad de sustancias para alterar el estado mental. Entregamos información vital, distribuimos Narcan y celebramos las vidas que hemos perdido.',
       cta: 'Asistir al Evento',
+      image: '/media/56e6ee_b5621014b4e14c088141ec0ff07a50fb~mv2.jpeg',
+      imageAlt: 'Evento anual de baile Música y Luces por la Vida',
     },
   ]
 };
@@ -231,21 +247,16 @@ export default function ProgramsPage() {
               </div>
               <div style={{ order: i % 2 === 1 ? 1 : 2, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <div style={{
+                  position: 'relative',
                   width: '100%',
                   aspectRatio: '1',
                   maxWidth: '460px',
                   borderRadius: 'var(--radius-lg)',
-                  background: 'rgba(20, 28, 46, 0.7)',
-                  backdropFilter: 'blur(12px)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
+                  overflow: 'hidden',
                   boxShadow: '0 20px 50px rgba(0,0,0,0.5)',
                   border: '1px solid rgba(255,255,255,0.05)',
-                  color: 'var(--gold-light)',
-                  padding: '30px'
                 }}>
-                  <prog.icon size={160} strokeWidth={1} style={{ opacity: 0.9 }} />
+                  <Image src={prog.image} alt={prog.imageAlt} fill style={{ objectFit: 'cover' }} />
                 </div>
               </div>
             </div>
@@ -459,17 +470,20 @@ export default function ProgramsPage() {
               </div>
               <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <div style={{
-                  background: 'linear-gradient(135deg, rgba(201,168,76,0.1), rgba(20,28,46,0.6))',
+                  position: 'relative',
                   borderRadius: '50%',
-                  width: '240px',
-                  height: '240px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  border: '1px solid rgba(201,168,76,0.3)',
-                  boxShadow: '0 0 40px rgba(201,168,76,0.1)'
+                  width: '280px',
+                  height: '280px',
+                  overflow: 'hidden',
+                  border: '3px solid rgba(201,168,76,0.4)',
+                  boxShadow: '0 0 40px rgba(201,168,76,0.15)'
                 }}>
-                  <Sparkles size={100} color="var(--gold-light)" strokeWidth={1} style={{ filter: 'drop-shadow(0 0 10px rgba(201,168,76,0.3))' }} />
+                  <Image
+                    src="/media/56e6ee_2fe90c9ddf2c4e36824477286a4a5492~mv2.jpeg"
+                    alt={isEs ? 'Jóvenes participantes de Iman\'s Light Foundation' : 'Iman\'s Light Foundation youth participants'}
+                    fill
+                    style={{ objectFit: 'cover' }}
+                  />
                 </div>
               </div>
             </div>
