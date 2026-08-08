@@ -64,3 +64,47 @@ export async function sendContactNotification(submission: ContactSubmission): Pr
     console.error('sendContactNotification: failed to send email:', err);
   }
 }
+
+interface AdminReplyInput {
+  to: string;
+  toName: string;
+  originalSubject: string;
+  originalMessage: string;
+  replyText: string;
+  lang: 'en' | 'es';
+}
+
+/**
+ * Sends an admin's reply to whoever submitted a /contact message. Unlike
+ * sendContactNotification, this one is NOT best-effort — the admin needs to
+ * know whether their reply actually went out, so callers should surface a
+ * thrown error rather than swallow it.
+ */
+export async function sendAdminReply(input: AdminReplyInput): Promise<void> {
+  const transport = getTransport();
+  if (!transport) {
+    throw new Error('Email is not configured yet (GMAIL_USER/GMAIL_APP_PASSWORD missing).');
+  }
+
+  const quoted = input.originalMessage
+    .split('\n')
+    .map((line) => `> ${line}`)
+    .join('\n');
+
+  const subjectPrefix = input.lang === 'es' ? 'Re' : 'Re';
+
+  await transport.sendMail({
+    from: `"Iman's Light Foundation" <${process.env.GMAIL_USER}>`,
+    to: input.to,
+    subject: `${subjectPrefix}: ${input.originalSubject}`,
+    text: [
+      input.replyText,
+      '',
+      '---',
+      input.lang === 'es'
+        ? `${input.toName} escribió originalmente:`
+        : `${input.toName} originally wrote:`,
+      quoted,
+    ].join('\n'),
+  });
+}
