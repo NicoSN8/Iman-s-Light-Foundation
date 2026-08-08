@@ -27,11 +27,11 @@ export default function NebulaBackground() {
         stars.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          radius: Math.random() * 1.2 + 0.2, // Smaller, subtle stars
+          radius: Math.random() * 1.4 + 0.3,
           vx: (Math.random(), 0.5) * 0.1, // Slower drift
           vy: -Math.abs((Math.random() * 0.2) + 0.1), // Drift upwards
-          baseAlpha: Math.random() * 0.6 + 0.1,
-          isGold: Math.random() > 0.7 // 30% of stars are gold tinted
+          baseAlpha: Math.random() * 0.7 + 0.2,
+          isGold: Math.random() > 0.55 // 45% of stars are gold tinted
         });
       }
     };
@@ -97,13 +97,13 @@ export default function NebulaBackground() {
         left: '-10%',
         width: '60vw',
         height: '60vw',
-        background: 'radial-gradient(circle, rgba(62, 34, 114, 0.15) 0%, transparent 60%)',
+        background: 'radial-gradient(circle, rgba(90, 48, 165, 0.38) 0%, transparent 62%)',
         filter: 'blur(90px)',
         borderRadius: '50%',
         animation: 'nebulaDrift 30s infinite alternate ease-in-out',
         willChange: 'transform'
       }} />
-      
+
       {/* Iman's Light Gold Glow */}
       <div style={{
         position: 'absolute',
@@ -111,10 +111,24 @@ export default function NebulaBackground() {
         right: '-10%',
         width: '70vw',
         height: '70vw',
-        background: 'radial-gradient(circle, rgba(201, 168, 76, 0.08) 0%, transparent 60%)',
+        background: 'radial-gradient(circle, rgba(201, 168, 76, 0.22) 0%, transparent 62%)',
         filter: 'blur(100px)',
         borderRadius: '50%',
         animation: 'nebulaDrift 35s infinite alternate-reverse ease-in-out',
+        willChange: 'transform'
+      }} />
+
+      {/* Warm Accent Glow */}
+      <div style={{
+        position: 'absolute',
+        top: '55%',
+        left: '30%',
+        width: '45vw',
+        height: '45vw',
+        background: 'radial-gradient(circle, rgba(232, 201, 122, 0.14) 0%, transparent 65%)',
+        filter: 'blur(85px)',
+        borderRadius: '50%',
+        animation: 'nebulaDrift 40s infinite alternate ease-in-out',
         willChange: 'transform'
       }} />
 
@@ -126,19 +140,19 @@ export default function NebulaBackground() {
         transform: 'translate(-50%, -50%)',
         width: '80vw',
         height: '80vw',
-        background: 'radial-gradient(circle, rgba(10, 14, 26, 0.4) 0%, transparent 70%)',
+        background: 'radial-gradient(circle, rgba(10, 14, 26, 0.35) 0%, transparent 70%)',
         filter: 'blur(80px)',
         borderRadius: '50%',
       }} />
 
-      <canvas 
-        ref={canvasRef} 
+      <canvas
+        ref={canvasRef}
         style={{
           position: 'absolute',
           inset: 0,
           width: '100%',
           height: '100%',
-          opacity: 0.8 /* Soften the stars slightly */
+          opacity: 0.95
         }}
       />
       

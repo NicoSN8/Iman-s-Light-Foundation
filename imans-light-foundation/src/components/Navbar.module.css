@@ -189,6 +189,7 @@
 }
 
 .navLink {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -200,8 +201,24 @@
   white-space: nowrap;
 }
 
+.navLink::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-gold);
+  border-radius: 2px;
+  transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .navLink:hover {
   color: #C9A84C;
+}
+
+.navLink:hover::after {
+  width: 100%;
 }
 
 .chevron {
@@ -223,15 +240,15 @@
   transform: translateX(-50%) translateY(12px);
   width: 240px;
   background: rgba(10, 14, 26, 0.95);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(201, 168, 76, 0.2);
-  border-radius: 8px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(201, 168, 76, 0.35);
+  border-radius: 10px;
   padding: 12px;
   opacity: 0;
   visibility: hidden;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(201, 168, 76, 0.08);
   pointer-events: none;
 }
 
