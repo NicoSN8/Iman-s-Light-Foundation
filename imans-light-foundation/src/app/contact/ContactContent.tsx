@@ -5,23 +5,17 @@ import { LanguageContext } from '@/context/LanguageContext';
 import { CheckCircle2, Phone, Mail, Clipboard, Siren } from 'lucide-react';
 import styles from './contact.module.css';
 
-const SUBJECT_LABELS: Record<string, { en: string; es: string }> = {
-  general: { en: 'General Inquiry', es: 'Consulta General' },
-  workshop: { en: 'Request a Workshop', es: 'Solicitar un Taller' },
-  volunteer: { en: 'Volunteer', es: 'Ser Voluntario' },
-  partner: { en: 'Partnerships / Sponsorships', es: 'Alianzas / Patrocinios' },
-  media: { en: 'Press / Media', es: 'Prensa / Medios' },
-  support: { en: 'I Need Support', es: 'Necesito Apoyo' },
-};
-
 export default function ContactPage() {
   const { lang } = useContext(LanguageContext);
   const isEs = lang === 'es';
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const data = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const data = new FormData(form);
     const name = (data.get('name') as string)?.trim() ?? '';
     const email = (data.get('email') as string)?.trim() ?? '';
     const phone = (data.get('phone') as string)?.trim() ?? '';
@@ -29,27 +23,24 @@ export default function ContactPage() {
     const message = (data.get('message') as string)?.trim() ?? '';
     const website = (data.get('website') as string) ?? '';
 
-    // Store the message so it shows up in /admin later. Fire-and-forget: a
-    // slow or failed save should never block the mailto fallback below,
-    // which is still the only thing that notifies anyone today.
-    fetch('/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, email, phone, subject: subjectKey, message, lang, website }),
-    }).catch(() => {});
+    setSubmitting(true);
+    setSubmitError(false);
 
-    const subjectLabel = SUBJECT_LABELS[subjectKey]?.[lang] ?? subjectKey;
-    const mailSubject = `${isEs ? 'Contacto desde el sitio web' : 'Website Contact'}: ${subjectLabel}`;
-    const bodyLines = [
-      `${isEs ? 'Nombre' : 'Name'}: ${name}`,
-      `${isEs ? 'Correo' : 'Email'}: ${email}`,
-      phone ? `${isEs ? 'Teléfono' : 'Phone'}: ${phone}` : null,
-      '',
-      message,
-    ].filter((line): line is string => line !== null).join('\n');
-
-    window.location.href = `mailto:imanslightfoundation@gmail.com?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(bodyLines)}`;
-    setSubmitted(true);
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, phone, subject: subjectKey, message, lang, website }),
+      });
+      const result = await res.json().catch(() => null);
+      if (!res.ok || !result?.ok) throw new Error('Contact submission failed');
+      form.reset();
+      setSubmitted(true);
+    } catch {
+      setSubmitError(true);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -79,12 +70,11 @@ export default function ContactPage() {
               {submitted ? (
                 <div className={styles.successMsg}>
                   <div className={styles.successIcon}><CheckCircle2 size={48} /></div>
-                  <h3>{isEs ? 'Abriendo tu Aplicación de Correo…' : 'Opening Your Email App…'}</h3>
+                  <h3>{isEs ? '¡Mensaje Enviado!' : 'Message Sent!'}</h3>
                   <p>
                     {isEs
-                      ? 'Tu mensaje ya está listo en tu aplicación de correo — solo presiona enviar. ¿No se abrió nada? Escríbenos directamente a '
-                      : "Your message is ready in your email app — just hit send. Didn't anything open? Email us directly at "}
-                    <a href="mailto:imanslightfoundation@gmail.com">imanslightfoundation@gmail.com</a>.
+                      ? 'Gracias por escribirnos. Tu mensaje ya fue recibido y te responderemos lo antes posible.'
+                      : "Thanks for reaching out. Your message has been received and we'll get back to you as soon as possible."}
                   </p>
                   <button className="btn btn-dark" onClick={() => setSubmitted(false)} style={{ marginTop: '16px' }}>
                     {isEs ? 'Enviar Otro' : 'Send Another'}
@@ -130,8 +120,21 @@ export default function ContactPage() {
                     <label htmlFor="contact-message">{isEs ? 'Mensaje' : 'Message'} *</label>
                     <textarea id="contact-message" name="message" required placeholder={isEs ? 'Cuéntanos cómo podemos ayudarte...' : 'Tell us how we can help...'} />
                   </div>
-                  <button type="submit" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center', padding: '16px' }}>
-                    {isEs ? 'Enviar Mensaje' : 'Send Message'} →
+                  {submitError && (
+                    <p style={{ color: '#f87171', fontSize: '0.9rem' }}>
+                      {isEs
+                        ? 'No se pudo enviar tu mensaje. Intenta de nuevo o escríbenos directamente a '
+                        : "Your message couldn't be sent. Please try again, or email us directly at "}
+                      <a href="mailto:imanslightfoundation@gmail.com">imanslightfoundation@gmail.com</a>.
+                    </p>
+                  )}
+                  <button
+                    type="submit"
+                    className="btn btn-primary"
+                    disabled={submitting}
+                    style={{ width: '100%', justifyContent: 'center', padding: '16px', opacity: submitting ? 0.7 : 1, cursor: submitting ? 'default' : 'pointer' }}
+                  >
+                    {submitting ? (isEs ? 'Enviando…' : 'Sending…') : `${isEs ? 'Enviar Mensaje' : 'Send Message'} →`}
                   </button>
                 </form>
               )}
