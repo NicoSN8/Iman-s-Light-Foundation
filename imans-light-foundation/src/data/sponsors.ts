@@ -51,20 +51,8 @@ export interface TextSponsor {
  * Behavior Support (224x225), Survivors' Pathway (210x209), Global
  * Innovative Foundation (227x183).
  *
- * 2026-08-08, later same day: Nicolas asked that no sponsor be left
- * without a logo. Sourced a real logo for every previously text-only
- * sponsor directly from that org's own official website/press assets
- * (never a guessed match — see git history for the research per name).
- * Four names had no confidently-identifiable official presence (too
- * generic or no matching org found): Expressions Noblemen & Consulting,
- * S.A.R.A. Coalition, RMT Media, Master Bodyworker. For those, generated
- * a plain typographic wordmark card (same treatment Nicolas asked for
- * with FGA earlier: "just put [name] with a good style") rather than
- * fabricating a logo — these are the only entries below where the image
- * is not the organization's own artwork.
- *
- * 2026-08-08, later still: Nicolas flagged he didn't recognize several of
- * these names and asked for a legitimacy pass. Traced "blackandwhite"
+ * 2026-08-08, later still: Nicolas flagged he didn't recognize several
+ * sponsor names and asked for a legitimacy pass. Traced "blackandwhite"
  * back to its actual source — it's a performer/act tile from the
  * "Music and Lights for Life 2025" flyer (public/media/56e6ee_c06acaeb...),
  * which lists entertainment (Tito Puente Jr, Maritrini, Floyd, Vic,
@@ -73,11 +61,15 @@ export interface TextSponsor {
  * wepa.fm's live site currently redirects visitors through an unrelated,
  * inappropriate ad — the station itself and its logo are real (confirmed
  * against their own domain), but the outbound link was pulled until
- * that's resolved. The remaining names without independent corroboration
- * beyond "a business with this exact name exists" were reported to
- * Nicolas directly rather than removed or kept unilaterally — this file
- * doesn't reflect his answer yet if you're reading this before that
- * follow-up lands.
+ * that's resolved.
+ *
+ * Reported 5 names with no independent corroboration beyond "a business
+ * with this exact name exists" — Nicolas said to drop all 5 rather than
+ * confirm them individually: Expressions Noblemen & Consulting, S.A.R.A.
+ * Coalition, RMT Media, Master Bodyworker, Gables Cigars Shop. Removed,
+ * along with their generated wordmark files. If any of these turns out to
+ * be a real sponsor after all, re-add with the same rigor as everything
+ * else here — a verified logo/site, or ask first.
  */
 
 export const FEATURED_SPONSORS: SponsorLogo[] = [
@@ -113,13 +105,8 @@ export const COMMUNITY_SPONSORS: SponsorLogo[] = [
   { src: '/sponsors/2026/daer-nightclub.png', alt: 'DAER Nightclub', url: 'https://www.hardrocknightlife.com', invert: true },
   { src: '/sponsors/2026/rewind-1039.png', alt: 'Rewind 103.9', url: 'https://www.rewind1039.com' },
   { src: '/sponsors/2026/fentanyl-awareness-coalition.png', alt: 'Fentanyl Awareness Coalition', url: 'https://the-fac.org' },
-  { src: '/sponsors/2026/gables-cigars-shop.png', alt: 'Gables Cigars Shop', url: 'https://gablescigarsshop.com' },
   { src: '/sponsors/2026/prosperity-social-cdg.png', alt: 'Prosperity Social & Community Development Group', url: 'https://www.p-scdg.org' },
   { src: '/sponsors/2026/luxe-properties.png', alt: 'Luxe Properties', url: 'https://luxeknows.com' },
-  { src: '/sponsors/2026/expressions-noblemen.png', alt: 'Expressions Noblemen & Consulting' },
-  { src: '/sponsors/2026/sara-coalition.png', alt: 'S.A.R.A. Coalition' },
-  { src: '/sponsors/2026/rmt-media.png', alt: 'RMT Media' },
-  { src: '/sponsors/2026/master-bodyworker.png', alt: 'Master Bodyworker' },
 ];
 
 /**
