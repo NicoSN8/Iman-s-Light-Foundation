@@ -102,7 +102,7 @@ site can't safely continue (or shouldn't go live) until you do this.
 - [x] **`/admin` is live** (once this branch is merged/deployed) — shows
   contact form submissions. Log in at `yoursite.com/admin/login`.
 
-## Phase 3 — PayPal donations, sandbox (in progress — waiting on PayPal)
+## Phase 3 — PayPal donations, sandbox (on hold — see Zeffy below)
 
 > **Status update from you (2026-08-08):** the CEO is waiting on an email
 > from PayPal to link the account to the new site — they're using PayPal's
@@ -110,6 +110,40 @@ site can't safely continue (or shouldn't go live) until you do this.
 > linking. That matches the plan below exactly: the "API" they mean is the
 > Client ID/Secret pair from a PayPal Developer app, which is what the two
 > steps below produce. Nothing for you to do until that email arrives.
+>
+> **2026-08-08 — switching to Zeffy first.** The CEO decided to use Zeffy
+> (zeffy.com) instead of waiting on PayPal, and I agreed it's a strong
+> choice: genuinely 100% free (no platform/transaction/card fees — Zeffy
+> makes money from an optional donor tip, the foundation keeps every
+> dollar), it captures donor name + email automatically at checkout, and it
+> also handles event ticket sales, which PayPal alone wouldn't. See the
+> **"Zeffy setup"** section right below — that's the active next step, not
+> the PayPal steps beneath it. The PayPal steps stay here in case the CEO
+> wants both, or wants to switch back later.
+
+### Zeffy setup (do this first)
+
+- [ ] **BLOCKING — Sign up at zeffy.com.** Needs: your email, your name,
+  the foundation's legal name, phone number, and the site's URL.
+- [ ] **BLOCKING — Have the EIN and legal address ready.** Zeffy verifies
+  the foundation's EIN (**93-4410846**) and legal name/address against IRS
+  records, so make sure what you enter matches your IRS filing exactly.
+- [ ] **BLOCKING — An authorized representative completes Stripe identity
+  verification.** Zeffy processes payments through Stripe behind the
+  scenes. Whoever is a board member, executive director, or other
+  authorized signatory (this may need to be the CEO, not you, depending on
+  who's authorized) will need to upload a government-issued ID, take a
+  selfie, and provide the last 4 digits of their SSN, directly to
+  Stripe/Zeffy's own verification flow — **never send any of that to me or
+  type it in chat.** Stripe typically reviews within 24-72 hours.
+- [ ] **BLOCKING — Connect the foundation's bank account** (must be the
+  organization's own account, not a personal one) so donations/ticket
+  revenue has somewhere to deposit to.
+- [ ] **LATER — Once the account is approved,** send me the Zeffy
+  donation/ticket form link (or give me access to create one) and I'll
+  embed it on `/donate` and wire the Gala's ticket flow to it — this
+  replaces the PayPal Checkout integration work described below, so once
+  Zeffy is live we likely won't need the PayPal steps at all.
 
 - [ ] **LATER — Create a PayPal Developer account and a sandbox app.** At
   **developer.paypal.com**, log in with the same PayPal account, go to **My
@@ -136,6 +170,13 @@ site can't safely continue (or shouldn't go live) until you do this.
 > day, far more than a local nonprofit's donation/ticket volume will ever
 > hit. Every receipt is also BCC'd back to the org inbox, so you always have
 > a copy of what went out.
+>
+> **2026-08-08:** the two steps below don't need to wait for PayPal/Zeffy —
+> Nicolas asked whether `/contact` submissions could reach
+> `imanslightfoundation@gmail.com` without adding a new service. The same
+> App Password created here can power that immediately (a contact-form
+> email whenever someone submits, in addition to the future donation/ticket
+> receipts) — so it's worth doing these two steps now rather than later.
 
 - [ ] **LATER — Turn on 2-Step Verification on the org's Gmail** (required
   before Google will let us create the app-specific password below).
