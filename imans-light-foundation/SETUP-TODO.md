@@ -173,13 +173,16 @@ site can't safely continue (or shouldn't go live) until you do this.
 >
 > **2026-08-08:** the two steps below don't need to wait for PayPal/Zeffy —
 > Nicolas asked whether `/contact` submissions could reach
-> `imanslightfoundation@gmail.com` without adding a new service. The same
-> App Password created here can power that immediately (a contact-form
-> email whenever someone submits, in addition to the future donation/ticket
-> receipts) — so it's worth doing these two steps now rather than later.
+> `imanslightfoundation@gmail.com` without adding a new service, and said
+> yes, set it up. **The code side is already built and merged** (nodemailer
+> + `src/lib/mail.ts`, wired into `/api/contact`) — it just needs the two
+> environment variables below to actually start sending. Until they're set,
+> the contact form still works exactly as before (saves to the database,
+> visible in `/admin`), it just silently skips the email step.
 
-- [ ] **LATER — Turn on 2-Step Verification on the org's Gmail** (required
-  before Google will let us create the app-specific password below).
+- [ ] **BLOCKING — Turn on 2-Step Verification on the org's Gmail**
+  (required before Google will let us create the app-specific password
+  below).
   1. Sign in to **imanslightfoundation@gmail.com**.
   2. Go to **myaccount.google.com/security**.
   3. Under "How you sign in to Google," click **2-Step Verification** →
@@ -187,7 +190,7 @@ site can't safely continue (or shouldn't go live) until you do this.
      receive a one-time code).
   4. **Verify:** the Security page shows "2-Step Verification: On."
 
-- [ ] **LATER — Create an App Password** (a special 16-character password
+- [ ] **BLOCKING — Create an App Password** (a special 16-character password
   just for the website to send mail — it's separate from the real Gmail
   password and can be revoked any time without changing the real password).
   1. Still signed in to the org Gmail, go to
@@ -196,18 +199,23 @@ site can't safely continue (or shouldn't go live) until you do this.
   2. Under "App name," type **Website Receipts** and click **Create**.
   3. Google shows a 16-character password in a yellow box — copy it right
      away, it's shown only once. Spaces in it don't matter.
-  4. Send that password to me somewhere private (not in a public chat or
-     doc) so I can add it to Vercel, or paste it directly into Vercel
-     yourself if you'd rather — I'll tell you the exact variable name when
-     we get here.
+  4. In the Vercel dashboard, go to the project's **Settings → Environment
+     Variables** and add two new variables (or tell me and I'll add them via
+     the CLI without you having to paste the password anywhere but Vercel
+     itself):
+     - `GMAIL_USER` = `imanslightfoundation@gmail.com`
+     - `GMAIL_APP_PASSWORD` = the 16-character password from step 3
   5. **Verify:** back on the App Passwords page, you'll see "Website
-     Receipts" listed. (You can revoke it there any time.)
+     Receipts" listed (you can revoke it there any time), and Vercel's
+     Environment Variables list shows both new entries.
 
-- [ ] **LATER — I'll wire up sending.** I'll add the Gmail address and that
-  app password as two Vercel environment variables, and the site will send
-  bilingual receipts through Gmail's own mail servers whenever a donation or
-  ticket purchase completes — no further setup needed after the two steps
-  above.
+- [ ] **LATER — Redeploy.** Once both variables are set, the next deploy
+  (or a manual redeploy from the Vercel dashboard) picks them up
+  automatically — submitting `/contact` will then email
+  `imanslightfoundation@gmail.com` with the message, reply-to set to
+  whoever submitted it, in addition to still saving to `/admin`. The same
+  two variables will power donation/ticket receipts once those exist —
+  nothing further to configure for that later.
 
 ## Phase 5 — Go live with donations (not started)
 

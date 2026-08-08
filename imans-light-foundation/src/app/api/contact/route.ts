@@ -1,5 +1,6 @@
 import { getDb } from '@/db';
 import { contactSubmissions } from '@/db/schema';
+import { sendContactNotification } from '@/lib/mail';
 
 const MAX_LENGTHS = { name: 200, email: 320, phone: 40, subject: 200, message: 5000 };
 
@@ -42,19 +43,22 @@ export async function POST(request: Request) {
 
   const lang = data.lang === 'es' ? 'es' : 'en';
 
+  const name = data.name.trim();
+  const email = data.email.trim();
+  const phone = typeof data.phone === 'string' ? data.phone.trim() : null;
+  const subject = data.subject.trim();
+  const message = data.message.trim();
+
   try {
-    await getDb().insert(contactSubmissions).values({
-      name: data.name.trim(),
-      email: data.email.trim(),
-      phone: typeof data.phone === 'string' ? data.phone.trim() : null,
-      subject: data.subject.trim(),
-      message: data.message.trim(),
-      lang,
-    });
+    await getDb().insert(contactSubmissions).values({ name, email, phone, subject, message, lang });
   } catch (err) {
     console.error('Failed to store contact submission:', err);
     return Response.json({ ok: false, error: 'Could not save your message.' }, { status: 500 });
   }
+
+  // Best-effort — the row above is already saved, so a mail failure here
+  // must not turn into an error response for the visitor.
+  await sendContactNotification({ name, email, phone, subject, message, lang });
 
   return Response.json({ ok: true });
 }
