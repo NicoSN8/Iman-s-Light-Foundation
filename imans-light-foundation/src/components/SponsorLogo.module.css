@@ -1,0 +1,39 @@
+.link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+}
+
+.card {
+  background: rgba(253, 251, 247, 0.98);
+  border: 1px solid rgba(201, 168, 76, 0.25);
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  height: 140px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 22px 26px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.25);
+  border-color: rgba(201, 168, 76, 0.5);
+}
+
+.imgWrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 480px) {
+  .card {
+    height: 110px;
+    padding: 16px 18px;
+  }
+}

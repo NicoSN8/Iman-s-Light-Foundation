@@ -118,74 +118,6 @@
   .tiersGrid { grid-template-columns: 1fr; }
 }
 
-.sponsorLogosGrid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
-  justify-content: center;
-  align-items: center;
-}
-
-.sponsorBadge {
-  background: rgba(255, 255, 255, 0.9);
-  padding: 24px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-  transition: transform 0.3s ease;
-}
-
-.sponsorBadge:hover {
-  transform: translateY(-5px);
-}
-
-@media (max-width: 768px) {
-  .sponsorBadge {
-    padding: 16px;
-    width: 100%;
-    margin-bottom: 8px;
-  }
-}
-
-/* ===== COMMUNITY SPONSORS STYLES ===== */
-.communitySponsorGrid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  justify-content: center;
-  max-width: 960px;
-  margin: 0 auto;
-}
-
-.communitySponsorBadge {
-  background: rgba(20, 28, 46, 0.65);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 12px 24px;
-  border-radius: 30px;
-  color: rgba(255, 255, 255, 0.85);
-  font-size: 0.9rem;
-  font-weight: 600;
-  transition: all 0.25s ease;
-  white-space: nowrap;
-}
-
-.communitySponsorBadge:hover {
-  border-color: rgba(201, 168, 76, 0.5);
-  color: var(--gold);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-}
-
-@media (max-width: 768px) {
-  .communitySponsorBadge {
-    padding: 10px 20px;
-    font-size: 0.85rem;
-  }
-}
-
 .flyerCard {
   transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
@@ -196,31 +128,3 @@
   box-shadow: 0 16px 36px rgba(201, 168, 76, 0.25) !important;
 }
 
-.communitySponsorLogosGrid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  max-width: 1000px;
-  margin: 24px auto 32px;
-}
-
-.communitySponsorLogoBadge {
-  background: rgba(255, 255, 255, 0.95);
-  padding: 12px 20px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 150px;
-  height: 75px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.communitySponsorLogoBadge:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(201, 168, 76, 0.4);
-}

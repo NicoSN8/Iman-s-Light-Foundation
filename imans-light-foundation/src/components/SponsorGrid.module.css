@@ -1,0 +1,32 @@
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 24px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.item {
+  flex: 0 0 calc(50% - 12px);
+  max-width: calc(50% - 12px);
+}
+
+@media (min-width: 640px) {
+  .item {
+    flex: 0 0 calc(33.333% - 16px);
+    max-width: calc(33.333% - 16px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    gap: 28px;
+  }
+  .item {
+    flex: 0 0 calc(25% - 21px);
+    max-width: calc(25% - 21px);
+  }
+}

@@ -1,11 +1,12 @@
 'use client';
 import { useContext, ReactNode } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { LanguageContext } from '@/context/LanguageContext';
 import { Leaf, Mail, RefreshCcw, Building2, GraduationCap, Heart, ShieldAlert, Scale } from 'lucide-react';
 import styles from './donate.module.css';
-import { FEATURED_SPONSORS, COMMUNITY_SPONSORS } from '@/data/sponsors';
+import { FEATURED_SPONSORS, COMMUNITY_SPONSORS, TEXT_ONLY_SPONSORS } from '@/data/sponsors';
+import SponsorGrid from '@/components/SponsorGrid';
+import TextSponsorPills from '@/components/TextSponsorPills';
 
 interface Tier {
   id: string;
@@ -164,20 +165,11 @@ export default function DonatePage() {
           <div className="gold-divider center" />
           <p className="section-subtitle">{isEs ? 'Agradecemos profundamente a las organizaciones que hacen posible nuestra misión.' : 'We are deeply grateful to the organizations that make our mission possible.'}</p>
           
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '48px', marginTop: '48px', alignItems: 'center' }}>
-            {/* Featured Sponsors */}
-            <div style={{ width: '100%' }}>
-              <div className={styles.sponsorLogosGrid}>
-                {FEATURED_SPONSORS.map((s, i) => (
-                  <div key={i} className={styles.sponsorBadge}>
-                    <Image src={s.src} alt={s.alt} width={178} height={97} style={{ objectFit: 'contain' }} />
-                  </div>
-                ))}
-              </div>
-            </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '40px', marginTop: '48px', alignItems: 'center' }}>
+            <SponsorGrid items={FEATURED_SPONSORS} />
 
             {/* Community Sponsors */}
-            <div style={{ width: '100%', marginTop: '16px' }}>
+            <div style={{ width: '100%' }}>
               <h4 style={{ color: 'var(--gold)', marginBottom: '16px', fontSize: '1.2rem', fontFamily: 'Playfair Display' }}>
                 {isEs ? 'PATROCINADORES DE APOYO Y EVENTOS' : 'SUPPORTING & EVENT SPONSOR LOGOS'}
               </h4>
@@ -187,46 +179,13 @@ export default function DonatePage() {
                   : 'We are deeply grateful to all our partners who directly support our community with their brand and commitment.'}
               </p>
 
-              <div className={styles.communitySponsorLogosGrid}>
-                {COMMUNITY_SPONSORS.map((s, i) => (
-                  <div key={i} className={styles.communitySponsorLogoBadge}>
-                    <Image src={s.src} alt={s.alt} width={120} height={60} style={{ objectFit: 'contain' }} />
-                  </div>
-                ))}
-              </div>
+              <SponsorGrid items={COMMUNITY_SPONSORS} />
 
               <h4 style={{ color: 'var(--gold)', marginBottom: '16px', fontSize: '1.1rem', fontFamily: 'Playfair Display', marginTop: '32px' }}>
                 {isEs ? 'OTROS COLABORADORES Y AMIGOS' : 'OTHER SPONSORS & ADVOCATES'}
               </h4>
-              <div className={styles.communitySponsorGrid}>
-                {[
-                  'Monarch Air Group',
-                  'South Florida Wellness Network',
-                  'Phoenix Title & Closing',
-                  'Expressions Noblemen & Consulting',
-                  'Rewind 103.5',
-                  'S.A.R.A. Coalition',
-                  'Fentanyl Awareness Coalition',
-                  'Gables Cigars Shop',
-                  'RMT Media',
-                  'Secure Your Drink',
-                  'Outreach Behavior Support',
-                  'Infinity Life Wellness Center',
-                  'Improving Lives Community',
-                  'Luxe Properties',
-                  'DAER Nightclub',
-                  'Master Bodyworker',
-                  'ScribeAmerica',
-                  'blackandwhite',
-                  'Prosperity Social & Community Development Group'
-                ].map((s, i) => (
-                  <div key={i} className={styles.communitySponsorBadge}>
-                    {s}
-                  </div>
-                ))}
-              </div>
+              <TextSponsorPills items={TEXT_ONLY_SPONSORS} />
             </div>
-
           </div>
         </div>
       </section>

@@ -6,7 +6,9 @@ import Link from 'next/link';
 import { LanguageContext } from '@/context/LanguageContext';
 import { BookOpen, Brain, Scale, GraduationCap, HeartPulse, ShieldPlus, Users } from 'lucide-react';
 import styles from './page.module.css';
-import { FEATURED_SPONSORS, COMMUNITY_SPONSORS } from '@/data/sponsors';
+import { FEATURED_SPONSORS, COMMUNITY_SPONSORS, TEXT_ONLY_SPONSORS } from '@/data/sponsors';
+import SponsorGrid from '@/components/SponsorGrid';
+import TextSponsorPills from '@/components/TextSponsorPills';
 
 const t = {
   en: {
@@ -422,38 +424,12 @@ export default function HomePage() {
           <h2 className="section-title">{lang === 'es' ? 'Patrocinadores Actuales' : 'Current Sponsors'}</h2>
           <div className="gold-divider center" />
           
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', marginTop: '48px', alignItems: 'center' }}>
-            {/* Featured Sponsors */}
-            <div style={{ width: '100%', display: 'flex', flexWrap: 'wrap', gap: '24px', justifyContent: 'center', alignItems: 'center' }}>
-              {FEATURED_SPONSORS.map((s, i) => (
-                <div key={i} style={{ background: 'rgba(255, 255, 255, 0.9)', padding: '24px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}>
-                  <Image src={s.src} alt={s.alt} width={160} height={80} style={{ objectFit: 'contain' }} />
-                </div>
-              ))}
-            </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '40px', marginTop: '48px', alignItems: 'center' }}>
+            <SponsorGrid items={FEATURED_SPONSORS} />
+            <SponsorGrid items={COMMUNITY_SPONSORS} />
+            <TextSponsorPills items={TEXT_ONLY_SPONSORS} />
 
-            {/* Community & Event Sponsor Logos */}
-            <div className={styles.communitySponsorLogosGrid} style={{ marginTop: '24px' }}>
-              {COMMUNITY_SPONSORS.map((s, i) => (
-                <div key={i} className={styles.communitySponsorLogoBadge}>
-                  <Image src={s.src} alt={s.alt} width={120} height={60} style={{ objectFit: 'contain' }} />
-                </div>
-              ))}
-            </div>
-
-            {/* Text Sponsors */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', justifyContent: 'center', maxWidth: '900px', marginTop: '16px' }}>
-              {[
-                'Monarch Air Group', 'South Florida Wellness Network', 'Phoenix Title & Closing', 
-                'Expressions Noblemen & Consulting', 'Rewind 103.5', 'S.A.R.A. Coalition', 
-                'Fentanyl Awareness Coalition', 'Gables Cigars Shop', 'RMT Media',
-                'Prosperity Social & Community Development Group'
-              ].map((p, i) => (
-                <div key={i} style={{ border: '1px solid rgba(201, 168, 76, 0.3)', padding: '10px 20px', borderRadius: '30px', color: 'var(--gold-light)', fontWeight: 600, fontSize: '0.88rem', background: 'rgba(201, 168, 76, 0.05)' }}>{p}</div>
-              ))}
-            </div>
-
-            <Link href="/about#partnerships" className="btn btn-outline" style={{ marginTop: '24px' }}>{lang === 'es' ? 'Ver Todos los Socios' : 'View All Partners'} →</Link>
+            <Link href="/about#partnerships" className="btn btn-outline" style={{ marginTop: '8px' }}>{lang === 'es' ? 'Ver Todos los Socios' : 'View All Partners'} →</Link>
           </div>
         </div>
       </section>
