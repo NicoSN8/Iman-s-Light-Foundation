@@ -1,18 +1,23 @@
 export interface SponsorLogo {
   src: string;
   alt: string;
+  /** Official website. Only render a link when this is set — never guessed. */
+  url?: string;
   /**
-   * Badge treatment the logo needs to stay legible against the site's dark
-   * navy background. Determined by measuring each logo's actual pixel
-   * content (alpha-weighted luminosity), not guessed:
-   * - 'none' (default): logo's own colors read fine directly on the dark
-   *   page, no card needed.
-   * - 'light': logo is dark-colored (e.g. black/navy wordmark) and would
-   *   vanish on the dark page — needs a light surface behind it.
-   * - 'dark': logo is white/light-colored and would vanish on a light
-   *   surface — needs a dark surface behind it (inverse of 'light').
+   * True only for logos whose artwork is itself white/light-colored (Behavior
+   * Support Center of Florida and Foundation of the Americas — both confirmed
+   * white-on-transparent PNGs earlier this session). Every logo now sits on
+   * the same light card, so a white-on-transparent file would otherwise
+   * vanish — this flag applies a non-destructive CSS `filter: invert(1)` in
+   * SponsorLogo.tsx so it renders in black instead. The image file itself is
+   * never edited.
    */
-  card?: 'none' | 'light' | 'dark';
+  invert?: boolean;
+}
+
+export interface TextSponsor {
+  name: string;
+  url?: string;
 }
 
 /**
@@ -30,49 +35,71 @@ export interface SponsorLogo {
  * asset), since thefga.org lazy-loads its logo via JS and couldn't be
  * fetched directly.
  *
- * 2026-08-08: removed the flat white/black rectangle every logo used to sit
- * in per Nicolas's request that logos read directly against the page
- * instead of sitting in a sticker-like box. Several logos (fga, infinity
- * life, improving lives, outreach) had their baked-in white background
- * digitally removed (sharp, threshold + edge feathering, then visually
- * re-verified against the dark page) so they could go background-less too.
- * A few logos are genuinely dark-colored artwork (black/navy wordmarks) and
- * would be unreadable directly on the dark page no matter what — those keep
- * a light `card` rather than being forced transparent, since "delete the
- * background" can't come at the cost of a sponsor's logo being invisible.
+ * 2026-08-08, later same day: every logo now renders through one shared
+ * component (src/components/SponsorLogo.tsx + SponsorGrid.tsx) instead of
+ * three separately hand-copied blocks of markup (homepage, About, Donate)
+ * that had already drifted out of sync. Every logo gets the same light,
+ * rounded "premium" card — the old per-logo 'card: none/light/dark' system
+ * is gone, replaced by a single `invert` flag for the one white-artwork
+ * exception (Behavior Support Center of Florida). `url` was added and
+ * populated with officially verified websites researched this session —
+ * left blank (never guessed) wherever a real site couldn't be confirmed.
  *
- * Same date, follow-up: Nicolas said some logos were still hard to read —
- * partly a genuinely low-res source file, partly the fixed-size badge
- * squishing wide logos down to a few pixels tall. Foundation of the
- * Americas was the one real "bad source" case (125x43px) — found and
- * swapped in their own site's much larger white version (586x640,
- * "foundation-of-the-americas-logo4.png"), which also happens to need no
- * card at all now since it's white. The squishing was a badge-sizing bug,
- * fixed in the CSS, not a per-logo data problem.
+ * Known low-resolution source files that will look softer than the rest
+ * even at the new larger size — worth asking these sponsors for a better
+ * file: Betzabe Pujaico (225x225), Improving Lives (200x200), Outreach
+ * Behavior Support (224x225), Survivors' Pathway (210x209), Global
+ * Innovative Foundation (227x183).
  */
 
 export const FEATURED_SPONSORS: SponsorLogo[] = [
-  { src: '/media/56e6ee_b2c36136ad654d72a7f4de09ea17cf05~mv2.png', alt: "Nicklaus Children's Hospital" },
-  { src: '/media/56e6ee_b9e7061a12d24743b5b3fc07a74f92ed~mv2.png', alt: "Survivors' Pathway" },
-  { src: '/sponsors/2026/fga.png', alt: 'Foundation for Government Accountability (FGA)' },
+  { src: '/media/56e6ee_b2c36136ad654d72a7f4de09ea17cf05~mv2.png', alt: "Nicklaus Children's Hospital", url: 'https://www.nicklauschildrens.org' },
+  { src: '/media/56e6ee_b9e7061a12d24743b5b3fc07a74f92ed~mv2.png', alt: "Survivors' Pathway", url: 'https://www.survivorspathway.org' },
+  { src: '/sponsors/2026/fga.png', alt: 'Foundation for Government Accountability (FGA)', url: 'https://thefga.org' },
 ];
 
 export const COMMUNITY_SPONSORS: SponsorLogo[] = [
-  { src: '/sponsors/2026/behavior-support-center-of-florida.png', alt: 'Behavior Support Center of Florida', card: 'dark' },
-  { src: '/sponsors/2026/infinity-life-wellness.png', alt: 'Infinity Life Wellness Center' },
-  { src: '/media/56e6ee_90b6e59a5df142298b790e6f643fa66a~mv2.png', alt: 'Miami Magazine', card: 'light' },
-  { src: '/media/56e6ee_28bd559fd2fb4f969d85fe406d67ad5d~mv2.png', alt: 'Drug Enforcement Administration' },
-  { src: '/sponsors/2026/phoenix-title-escrow.png', alt: 'Phoenix Title & Escrow LLC' },
-  { src: '/media/56e6ee_243f0558f3794b77a33603bbcf0b1de4~mv2.png', alt: 'Monarch Air Group' },
-  { src: '/media/56e6ee_a9dda332ae464d16adc838ae65a885dd~mv2.png', alt: 'Betzabe Pujaico Fashion Designer' },
-  { src: '/sponsors/2026/improving-lives.png', alt: 'Improving Lives Community Mental Health Center' },
+  { src: '/sponsors/2026/behavior-support-center-of-florida.png', alt: 'Behavior Support Center of Florida', url: 'https://bscof.com', invert: true },
+  { src: '/sponsors/2026/infinity-life-wellness.png', alt: 'Infinity Life Wellness Center', url: 'https://infinitylifewellness.com' },
+  { src: '/media/56e6ee_90b6e59a5df142298b790e6f643fa66a~mv2.png', alt: 'Miami Magazine' },
+  { src: '/media/56e6ee_28bd559fd2fb4f969d85fe406d67ad5d~mv2.png', alt: 'Drug Enforcement Administration', url: 'https://www.dea.gov' },
+  { src: '/sponsors/2026/phoenix-title-escrow.png', alt: 'Phoenix Title & Escrow LLC', url: 'https://closewithphoenix.com' },
+  { src: '/media/56e6ee_243f0558f3794b77a33603bbcf0b1de4~mv2.png', alt: 'Monarch Air Group', url: 'https://monarchairgroup.com' },
+  { src: '/media/56e6ee_a9dda332ae464d16adc838ae65a885dd~mv2.png', alt: 'Betzabe Pujaico Fashion Designer', url: 'https://betzabepujaico.com' },
+  { src: '/sponsors/2026/improving-lives.png', alt: 'Improving Lives Community Mental Health Center', url: 'https://www.improvinglivesus.org' },
   { src: '/sponsors/2026/outreach-behavior-support.png', alt: 'Outreach Behavior Support' },
-  { src: '/media/56e6ee_f010f8e8cccb405a8fc28f3fb2481f7e~mv2.png', alt: 'Juan Carlos Piñera', card: 'light' },
-  { src: '/media/56e6ee_55f0bbe459fb41e9907cd3c547b6afb5~mv2.png', alt: 'Secure Your Drink', card: 'light' },
-  { src: '/sponsors/2026/global-innovative-foundation.png', alt: 'Global Innovative Foundation, Inc.' },
-  { src: '/sponsors/2026/wings-to-freedom-foundation.png', alt: 'Wings To Freedom Foundation' },
-  { src: '/sponsors/2026/foundation-of-the-americas.png', alt: 'Foundation of the Americas' },
-  { src: '/sponsors/2026/doral-voice.png', alt: 'Doral Voice' },
-  { src: '/sponsors/2026/freestyle-fm.png', alt: 'Freestyle.FM' },
-  { src: '/sponsors/2026/monat.svg', alt: 'MONAT', card: 'light' },
+  { src: '/media/56e6ee_f010f8e8cccb405a8fc28f3fb2481f7e~mv2.png', alt: 'Juan Carlos Piñera' },
+  { src: '/media/56e6ee_55f0bbe459fb41e9907cd3c547b6afb5~mv2.png', alt: 'Secure Your Drink', url: 'https://secureyourdrink.com' },
+  { src: '/sponsors/2026/global-innovative-foundation.png', alt: 'Global Innovative Foundation, Inc.', url: 'https://globalinnovativefoundation.org' },
+  { src: '/sponsors/2026/wings-to-freedom-foundation.png', alt: 'Wings To Freedom Foundation', url: 'https://www.wingstofreedomfoundation.org' },
+  { src: '/sponsors/2026/foundation-of-the-americas.png', alt: 'Foundation of the Americas', url: 'https://foundationoftheamericas.org', invert: true },
+  { src: '/sponsors/2026/doral-voice.png', alt: 'Doral Voice', url: 'https://doralvoice.com' },
+  { src: '/sponsors/2026/freestyle-fm.png', alt: 'Freestyle.FM', url: 'https://www.freestyle.fm' },
+  { src: '/sponsors/2026/monat.svg', alt: 'MONAT', url: 'https://monatglobal.com' },
+];
+
+/**
+ * Sponsors we only have a name for (no logo file yet). Previously existed as
+ * three separately drifted copies of this same list across the homepage,
+ * About, and Donate pages — the Donate copy still had two names that were
+ * already corrected everywhere else. This is now the one source of truth.
+ */
+export const TEXT_ONLY_SPONSORS: TextSponsor[] = [
+  { name: 'Powerhouse Workshops & Consulting', url: 'https://www.powerhouseworkshops.com' },
+  { name: 'Century 21 King Realty', url: 'https://www.century21kingrealty.com' },
+  { name: 'Wepa.fm', url: 'https://wepa.fm' },
+  { name: 'Super Q Miami', url: 'https://www.superqmiami.com' },
+  { name: 'South Florida Wellness Network', url: 'https://www.sfwn.org' },
+  { name: 'ScribeAmerica', url: 'https://www.scribeamerica.com' },
+  { name: 'DAER Nightclub', url: 'https://www.hardrocknightlife.com' },
+  { name: 'Rewind 103.9' },
+  { name: 'Expressions Noblemen & Consulting' },
+  { name: 'S.A.R.A. Coalition' },
+  { name: 'Fentanyl Awareness Coalition' },
+  { name: 'Gables Cigars Shop' },
+  { name: 'RMT Media' },
+  { name: 'Prosperity Social & Community Development Group' },
+  { name: 'Luxe Properties' },
+  { name: 'Master Bodyworker' },
+  { name: 'blackandwhite' },
 ];

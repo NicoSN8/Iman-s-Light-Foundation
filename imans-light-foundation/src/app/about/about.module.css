@@ -88,34 +88,6 @@
   margin-top: 8px;
 }
 
-.partnerLogos {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 40px;
-}
-
-.partnerLogo {
-  padding: 20px 36px;
-  border: 1px solid var(--gray-200);
-  border-radius: var(--radius-md);
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  background: rgba(20, 28, 46, 0.7);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: var(--shadow-sm);
-  transition: all 0.2s ease;
-}
-
-.partnerLogo:hover {
-  border-color: var(--gold);
-  color: var(--gold-dark);
-  box-shadow: var(--shadow-gold);
-}
-
 @media (max-width: 768px) {
   .missionGrid { grid-template-columns: 1fr; }
 }
@@ -194,54 +166,6 @@
   flex-grow: 1;
 }
 
-
-.sponsorLogosGrid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
-  justify-content: center;
-  align-items: center;
-}
-
-.sponsorBadge {
-  background: transparent;
-  padding: 24px 32px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 160px;
-  transition: transform 0.3s ease;
-}
-
-.sponsorBadge img {
-  height: 100%;
-  width: auto;
-  max-width: 380px;
-}
-
-.sponsorBadge:hover {
-  transform: translateY(-5px);
-}
-
-.sponsorBadgeLight {
-  background: rgba(255, 255, 255, 0.92);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-}
-
-.sponsorBadgeDark {
-  background: rgba(10, 14, 26, 0.85);
-  border: 1px solid rgba(201, 168, 76, 0.25);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
-}
-
-@media (max-width: 768px) {
-  .sponsorBadge {
-    padding: 16px;
-    width: 100%;
-    margin-bottom: 8px;
-  }
-}
 
 /* ===== TESTIMONIALS GRID (5 cards, flex-wrap) ===== */
 .testimonialsGrid {
@@ -381,6 +305,9 @@
   gap: 12px;
   justify-content: center;
   margin-top: 36px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .affiliationBadge {
@@ -393,7 +320,10 @@
   font-size: 0.88rem;
   font-weight: 500;
   transition: all 0.25s ease;
-  white-space: nowrap;
+  min-width: 0;
+  max-width: 100%;
+  word-break: break-word;
+  box-sizing: border-box;
 }
 
 .affiliationBadge:hover {
@@ -408,6 +338,9 @@
   gap: 12px;
   justify-content: center;
   margin-top: 24px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .chamberBadge {
@@ -420,7 +353,10 @@
   font-size: 0.88rem;
   font-weight: 600;
   transition: all 0.25s ease;
-  white-space: nowrap;
+  min-width: 0;
+  max-width: 100%;
+  word-break: break-word;
+  box-sizing: border-box;
 }
 
 .chamberBadge:hover {
@@ -456,56 +392,3 @@
   box-shadow: 0 16px 36px rgba(201, 168, 76, 0.25) !important;
 }
 
-.communitySponsorLogosGrid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px 40px;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  max-width: 1100px;
-  margin: 24px auto 32px;
-}
-
-.communitySponsorLogoBadge {
-  background: transparent;
-  padding: 8px 14px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 112px;
-  transition: transform 0.25s ease;
-}
-
-.communitySponsorLogoBadge img {
-  height: 100%;
-  width: auto;
-  max-width: 340px;
-}
-
-.communitySponsorLogoBadgeLight,
-.communitySponsorLogoBadgeDark {
-  height: 132px;
-  padding: 16px 26px;
-}
-
-.communitySponsorLogoBadgeLight {
-  background: rgba(255, 255, 255, 0.92);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
-}
-
-.communitySponsorLogoBadgeDark {
-  background: rgba(10, 14, 26, 0.85);
-  border: 1px solid rgba(201, 168, 76, 0.25);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
-}
-
-.communitySponsorLogoBadge:hover {
-  transform: translateY(-4px);
-}
-
-.communitySponsorLogoBadgeLight:hover,
-.communitySponsorLogoBadgeDark:hover {
-  box-shadow: 0 8px 20px rgba(201, 168, 76, 0.4);
-}

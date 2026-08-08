@@ -6,7 +6,9 @@ import Link from 'next/link';
 import { LanguageContext } from '@/context/LanguageContext';
 import { BookOpen, Brain, Scale, GraduationCap, HeartPulse, ShieldPlus, Users } from 'lucide-react';
 import styles from './page.module.css';
-import { FEATURED_SPONSORS, COMMUNITY_SPONSORS } from '@/data/sponsors';
+import { FEATURED_SPONSORS, COMMUNITY_SPONSORS, TEXT_ONLY_SPONSORS } from '@/data/sponsors';
+import SponsorGrid from '@/components/SponsorGrid';
+import TextSponsorPills from '@/components/TextSponsorPills';
 
 const t = {
   en: {
@@ -422,57 +424,12 @@ export default function HomePage() {
           <h2 className="section-title">{lang === 'es' ? 'Patrocinadores Actuales' : 'Current Sponsors'}</h2>
           <div className="gold-divider center" />
           
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', marginTop: '48px', alignItems: 'center' }}>
-            {/* Featured Sponsors */}
-            <div style={{ width: '100%', display: 'flex', flexWrap: 'wrap', gap: '32px', justifyContent: 'center', alignItems: 'center' }}>
-              {FEATURED_SPONSORS.map((s, i) => (
-                <div
-                  key={i}
-                  style={{
-                    padding: '24px 32px',
-                    borderRadius: '12px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    height: '160px',
-                    ...(s.card === 'light'
-                      ? { background: 'rgba(255, 255, 255, 0.92)', boxShadow: '0 10px 30px rgba(0,0,0,0.2)' }
-                      : s.card === 'dark'
-                      ? { background: 'rgba(10, 14, 26, 0.85)', border: '1px solid rgba(201,168,76,0.25)', boxShadow: '0 10px 30px rgba(0,0,0,0.3)' }
-                      : {}),
-                  }}
-                >
-                  <Image src={s.src} alt={s.alt} width={400} height={112} style={{ height: '112px', width: 'auto', maxWidth: '380px', objectFit: 'contain' }} />
-                </div>
-              ))}
-            </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '40px', marginTop: '48px', alignItems: 'center' }}>
+            <SponsorGrid items={FEATURED_SPONSORS} />
+            <SponsorGrid items={COMMUNITY_SPONSORS} />
+            <TextSponsorPills items={TEXT_ONLY_SPONSORS} />
 
-            {/* Community & Event Sponsor Logos */}
-            <div className={styles.communitySponsorLogosGrid} style={{ marginTop: '24px' }}>
-              {COMMUNITY_SPONSORS.map((s, i) => (
-                <div
-                  key={i}
-                  className={`${styles.communitySponsorLogoBadge} ${s.card === 'light' ? styles.communitySponsorLogoBadgeLight : s.card === 'dark' ? styles.communitySponsorLogoBadgeDark : ''}`}
-                >
-                  <Image src={s.src} alt={s.alt} width={400} height={140} style={{ objectFit: 'contain' }} unoptimized={s.src.endsWith('.svg')} />
-                </div>
-              ))}
-            </div>
-
-            {/* Text Sponsors */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', justifyContent: 'center', maxWidth: '900px', marginTop: '16px' }}>
-              {[
-                'Monarch Air Group', 'South Florida Wellness Network',
-                'Expressions Noblemen & Consulting', 'Rewind 103.9', 'S.A.R.A. Coalition',
-                'Fentanyl Awareness Coalition', 'Gables Cigars Shop', 'RMT Media',
-                'Prosperity Social & Community Development Group',
-                'Powerhouse Workshops & Consulting', 'Century 21 King Realty', 'Wepa.fm', 'Super Q Miami'
-              ].map((p, i) => (
-                <div key={i} style={{ border: '1px solid rgba(201, 168, 76, 0.3)', padding: '10px 20px', borderRadius: '30px', color: 'var(--gold-light)', fontWeight: 600, fontSize: '0.88rem', background: 'rgba(201, 168, 76, 0.05)' }}>{p}</div>
-              ))}
-            </div>
-
-            <Link href="/about#partnerships" className="btn btn-outline" style={{ marginTop: '24px' }}>{lang === 'es' ? 'Ver Todos los Socios' : 'View All Partners'} →</Link>
+            <Link href="/about#partnerships" className="btn btn-outline" style={{ marginTop: '8px' }}>{lang === 'es' ? 'Ver Todos los Socios' : 'View All Partners'} →</Link>
           </div>
         </div>
       </section>

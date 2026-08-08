@@ -6,7 +6,9 @@ import Image from 'next/image';
 import { LanguageContext } from '@/context/LanguageContext';
 import { Lightbulb, Heart, Scale, Leaf, Users, Star, Globe2, Quote, Award } from 'lucide-react';
 import styles from './about.module.css';
-import { FEATURED_SPONSORS, COMMUNITY_SPONSORS } from '@/data/sponsors';
+import { FEATURED_SPONSORS, COMMUNITY_SPONSORS, TEXT_ONLY_SPONSORS } from '@/data/sponsors';
+import SponsorGrid from '@/components/SponsorGrid';
+import TextSponsorPills from '@/components/TextSponsorPills';
 
 const t = {
   en: {
@@ -402,45 +404,19 @@ export default function AboutPage() {
           <div className="gold-divider center" />
           <p className="section-subtitle" style={{ color: 'rgba(255,255,255,0.8)' }}>{txt.partnersSub}</p>
           
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '48px', marginTop: '48px', alignItems: 'center' }}>
-            <div style={{ width: '100%' }}>
-              <div className={styles.sponsorLogosGrid}>
-                {FEATURED_SPONSORS.map((s, i) => (
-                  <div
-                    key={i}
-                    className={`${styles.sponsorBadge} ${s.card === 'light' ? styles.sponsorBadgeLight : s.card === 'dark' ? styles.sponsorBadgeDark : ''}`}
-                  >
-                    <Image src={s.src} alt={s.alt} width={400} height={160} style={{ objectFit: 'contain' }} />
-                  </div>
-                ))}
-              </div>
-            </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '40px', marginTop: '48px', alignItems: 'center' }}>
+            <SponsorGrid items={FEATURED_SPONSORS} />
 
             {/* Community & Event Sponsor Logos */}
-            <div style={{ width: '100%', marginTop: '16px' }}>
+            <div style={{ width: '100%' }}>
               <h4 className={styles.subsectionHeading}>
                 {lang === 'en' ? 'Community & Event Sponsors' : 'Patrocinadores de Eventos y Apoyo'}
               </h4>
               <div className={styles.subsectionDivider} />
-              <div className={styles.communitySponsorLogosGrid}>
-                {COMMUNITY_SPONSORS.map((s, i) => (
-                  <div
-                    key={i}
-                    className={`${styles.communitySponsorLogoBadge} ${s.card === 'light' ? styles.communitySponsorLogoBadgeLight : s.card === 'dark' ? styles.communitySponsorLogoBadgeDark : ''}`}
-                  >
-                    <Image src={s.src} alt={s.alt} width={400} height={140} style={{ objectFit: 'contain' }} unoptimized={s.src.endsWith('.svg')} />
-                  </div>
-                ))}
-              </div>
+              <SponsorGrid items={COMMUNITY_SPONSORS} />
             </div>
 
-            {/* Extended text partners from Wix data */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', justifyContent: 'center', marginTop: '24px' }}>
-              {['Secure Your Drink', 'Outreach Behavior Support', 'Infinity Life Wellness Center', 'Improving Lives Community', 'Luxe Properties', 'DAER Nightclub', 'Juan Carlos Pinera', 'Master Bodyworker', 'ScribeAmerica', 'Prosperity Social & Community Development Group'].map((p, i) => (
-                <div key={i} className={styles.partnerLogo} style={{ border: '1px solid rgba(255,255,255,0.2)', padding: '16px 24px', borderRadius: '8px', color: 'var(--white)', fontWeight: 600 }}>{p}</div>
-              ))}
-            </div>
-
+            <TextSponsorPills items={TEXT_ONLY_SPONSORS} />
           </div>
           <Link href="/contact" className="btn btn-outline" style={{ marginTop: '40px' }}>
             {txt.partnerCta} →
