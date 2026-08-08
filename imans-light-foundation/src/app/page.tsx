@@ -429,7 +429,7 @@ export default function HomePage() {
             <SponsorGrid items={COMMUNITY_SPONSORS} />
             <TextSponsorPills items={TEXT_ONLY_SPONSORS} />
 
-            <Link href="/about#partnerships" className="btn btn-outline" style={{ marginTop: '8px' }}>{lang === 'es' ? 'Ver Todos los Socios' : 'View All Partners'} →</Link>
+            <Link href="/contact" className="btn btn-outline" style={{ marginTop: '8px' }}>{lang === 'es' ? 'Camina Con Nosotros' : 'Walk With Us'} →</Link>
           </div>
         </div>
       </section>

@@ -55,13 +55,29 @@ export interface TextSponsor {
  * without a logo. Sourced a real logo for every previously text-only
  * sponsor directly from that org's own official website/press assets
  * (never a guessed match — see git history for the research per name).
- * Five names had no confidently-identifiable official presence (too
+ * Four names had no confidently-identifiable official presence (too
  * generic or no matching org found): Expressions Noblemen & Consulting,
- * S.A.R.A. Coalition, RMT Media, Master Bodyworker, blackandwhite. For
- * those, generated a plain typographic wordmark card (same treatment
- * Nicolas asked for with FGA earlier: "just put [name] with a good
- * style") rather than fabricating a logo — these are the only entries
- * below where the image is not the organization's own artwork.
+ * S.A.R.A. Coalition, RMT Media, Master Bodyworker. For those, generated
+ * a plain typographic wordmark card (same treatment Nicolas asked for
+ * with FGA earlier: "just put [name] with a good style") rather than
+ * fabricating a logo — these are the only entries below where the image
+ * is not the organization's own artwork.
+ *
+ * 2026-08-08, later still: Nicolas flagged he didn't recognize several of
+ * these names and asked for a legitimacy pass. Traced "blackandwhite"
+ * back to its actual source — it's a performer/act tile from the
+ * "Music and Lights for Life 2025" flyer (public/media/56e6ee_c06acaeb...),
+ * which lists entertainment (Tito Puente Jr, Maritrini, Floyd, Vic,
+ * "blackandwhite", etc.), NOT sponsors. Whoever first compiled this list
+ * conflated the two. Removed it — it was never a sponsor. Also found that
+ * wepa.fm's live site currently redirects visitors through an unrelated,
+ * inappropriate ad — the station itself and its logo are real (confirmed
+ * against their own domain), but the outbound link was pulled until
+ * that's resolved. The remaining names without independent corroboration
+ * beyond "a business with this exact name exists" were reported to
+ * Nicolas directly rather than removed or kept unilaterally — this file
+ * doesn't reflect his answer yet if you're reading this before that
+ * follow-up lands.
  */
 
 export const FEATURED_SPONSORS: SponsorLogo[] = [
@@ -90,7 +106,7 @@ export const COMMUNITY_SPONSORS: SponsorLogo[] = [
   { src: '/sponsors/2026/monat.svg', alt: 'MONAT', url: 'https://monatglobal.com' },
   { src: '/sponsors/2026/powerhouse-workshops.jpg', alt: 'Powerhouse Workshops & Consulting', url: 'https://www.powerhouseworkshops.com' },
   { src: '/sponsors/2026/century21-king-realty.png', alt: 'Century 21 King Realty', url: 'https://www.century21kingrealty.com' },
-  { src: '/sponsors/2026/wepa-fm.jpg', alt: 'Wepa.fm', url: 'https://wepa.fm' },
+  { src: '/sponsors/2026/wepa-fm.jpg', alt: 'Wepa.fm' },
   { src: '/sponsors/2026/super-q-miami.png', alt: 'Super Q Miami', url: 'https://www.superqmiami.com' },
   { src: '/sponsors/2026/south-florida-wellness-network.png', alt: 'South Florida Wellness Network', url: 'https://www.sfwn.org' },
   { src: '/sponsors/2026/scribeamerica.png', alt: 'ScribeAmerica', url: 'https://www.scribeamerica.com' },
@@ -104,7 +120,6 @@ export const COMMUNITY_SPONSORS: SponsorLogo[] = [
   { src: '/sponsors/2026/sara-coalition.png', alt: 'S.A.R.A. Coalition' },
   { src: '/sponsors/2026/rmt-media.png', alt: 'RMT Media' },
   { src: '/sponsors/2026/master-bodyworker.png', alt: 'Master Bodyworker' },
-  { src: '/sponsors/2026/blackandwhite.png', alt: 'blackandwhite' },
 ];
 
 /**
