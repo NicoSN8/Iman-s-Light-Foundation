@@ -66,20 +66,19 @@ site can't safely continue (or shouldn't go live) until you do this.
 
 - [ ] **LATER — Ask a few sponsors for better logo files.** The sponsor/
   partner section (Homepage, About, Donate) now uses one shared, larger
-  card design, but these source files are genuinely low-resolution and will
-  look a bit soft even at the new size — worth asking these sponsors to
-  send a bigger file (PNG or SVG, ideally 500px+ on the short side):
-  Betzabe Pujaico, Improving Lives, Outreach Behavior Support, Survivors'
-  Pathway, Global Innovative Foundation.
-  Also, if you happen to know the official websites for any of these, send
-  them over and I'll add the link (I only link to a site I can verify —
-  never a guessed URL): Outreach Behavior Support, Miami Magazine, Juan
-  Carlos Piñera, and these name-only sponsors with no logo file yet: Rewind
-  103.9, Expressions Noblemen & Consulting, S.A.R.A. Coalition, Fentanyl
-  Awareness Coalition, Gables Cigars Shop, RMT Media, Prosperity Social &
-  Community Development Group, Luxe Properties, Master Bodyworker,
-  blackandwhite. This work is on the `sponsor-research-and-logos` branch,
-  not yet merged to `main`.
+  card design, and every sponsor has a logo — but these source files are
+  genuinely low-resolution and will look a bit soft even at the new size —
+  worth asking these sponsors to send a bigger file (PNG or SVG, ideally
+  500px+ on the short side): Betzabe Pujaico, Improving Lives, Outreach
+  Behavior Support, Survivors' Pathway, Global Innovative Foundation.
+  Separately, **5 sponsors have no real logo** — I couldn't confidently
+  find an official website/logo for them, so they show a plain styled
+  text card instead: Expressions Noblemen & Consulting, S.A.R.A.
+  Coalition, RMT Media, Master Bodyworker, blackandwhite. If you have an
+  actual logo file or the correct website for any of these (or for
+  Outreach Behavior Support, Miami Magazine, or Juan Carlos Piñera, which
+  have a logo but no confirmed website to link to), send it over and I'll
+  add it — I only use a logo/link I can verify, never a guess.
 
 ---
 
