@@ -428,7 +428,7 @@ export default function AboutPage() {
                     key={i}
                     className={`${styles.communitySponsorLogoBadge} ${s.card === 'light' ? styles.communitySponsorLogoBadgeLight : s.card === 'dark' ? styles.communitySponsorLogoBadgeDark : ''}`}
                   >
-                    <Image src={s.src} alt={s.alt} width={120} height={60} style={{ objectFit: 'contain' }} unoptimized={s.src.endsWith('.svg')} />
+                    <Image src={s.src} alt={s.alt} width={280} height={90} style={{ objectFit: 'contain' }} unoptimized={s.src.endsWith('.svg')} />
                   </div>
                 ))}
               </div>

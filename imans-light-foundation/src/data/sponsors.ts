@@ -40,6 +40,15 @@ export interface SponsorLogo {
  * would be unreadable directly on the dark page no matter what — those keep
  * a light `card` rather than being forced transparent, since "delete the
  * background" can't come at the cost of a sponsor's logo being invisible.
+ *
+ * Same date, follow-up: Nicolas said some logos were still hard to read —
+ * partly a genuinely low-res source file, partly the fixed-size badge
+ * squishing wide logos down to a few pixels tall. Foundation of the
+ * Americas was the one real "bad source" case (125x43px) — found and
+ * swapped in their own site's much larger white version (586x640,
+ * "foundation-of-the-americas-logo4.png"), which also happens to need no
+ * card at all now since it's white. The squishing was a badge-sizing bug,
+ * fixed in the CSS, not a per-logo data problem.
  */
 
 export const FEATURED_SPONSORS: SponsorLogo[] = [
@@ -62,7 +71,7 @@ export const COMMUNITY_SPONSORS: SponsorLogo[] = [
   { src: '/media/56e6ee_55f0bbe459fb41e9907cd3c547b6afb5~mv2.png', alt: 'Secure Your Drink', card: 'light' },
   { src: '/sponsors/2026/global-innovative-foundation.png', alt: 'Global Innovative Foundation, Inc.' },
   { src: '/sponsors/2026/wings-to-freedom-foundation.png', alt: 'Wings To Freedom Foundation' },
-  { src: '/sponsors/2026/foundation-of-the-americas.png', alt: 'Foundation of the Americas', card: 'light' },
+  { src: '/sponsors/2026/foundation-of-the-americas.png', alt: 'Foundation of the Americas' },
   { src: '/sponsors/2026/doral-voice.png', alt: 'Doral Voice' },
   { src: '/sponsors/2026/freestyle-fm.png', alt: 'Freestyle.FM' },
   { src: '/sponsors/2026/monat.svg', alt: 'MONAT', card: 'light' },
