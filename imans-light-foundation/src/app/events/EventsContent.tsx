@@ -3,6 +3,7 @@
 import { useContext } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { MapPin } from 'lucide-react';
 import { LanguageContext } from '@/context/LanguageContext';
 import styles from './events.module.css';
 
@@ -94,7 +95,11 @@ export default function EventsPage({ featuredEvents, gridEvents }: EventsContent
                         <h3 className={styles.featuredTitle} style={!isUpcoming ? { fontSize: '1.8rem' } : undefined}>
                           {isEs ? evt.titleEs : evt.titleEn}
                         </h3>
-                        {evt.location && <div className={styles.featuredLocation}>📍 {evt.location}</div>}
+                        {evt.location && (
+                          <div className={styles.featuredLocation}>
+                            <MapPin size={15} /> {evt.location}
+                          </div>
+                        )}
                         <p className={styles.featuredDesc} style={!isUpcoming ? { fontSize: '0.98rem' } : undefined}>
                           {isEs ? evt.descriptionEs : evt.descriptionEn}
                         </p>
@@ -146,7 +151,11 @@ export default function EventsPage({ featuredEvents, gridEvents }: EventsContent
                         }))}
                   </div>
                   <h3>{isEs ? evt.titleEs : evt.titleEn}</h3>
-                  {evt.location && <div className={styles.eventLocation}>📍 {evt.location}</div>}
+                  {evt.location && (
+                    <div className={styles.eventLocation}>
+                      <MapPin size={14} /> {evt.location}
+                    </div>
+                  )}
                   <p>{isEs ? evt.descriptionEs : evt.descriptionEn}</p>
                 </div>
               </div>
