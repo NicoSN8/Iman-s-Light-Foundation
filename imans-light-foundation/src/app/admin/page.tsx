@@ -2,7 +2,7 @@ import { desc } from 'drizzle-orm';
 import { requireAdmin } from '@/lib/adminAuth';
 import { getDb } from '@/db';
 import { contactSubmissions } from '@/db/schema';
-import LogoutButton from './LogoutButton';
+import AdminNav from './AdminNav';
 
 export default async function AdminPage() {
   await requireAdmin();
@@ -14,14 +14,12 @@ export default async function AdminPage() {
 
   return (
     <div className="container" style={{ padding: '48px 24px' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px', flexWrap: 'wrap', gap: '16px' }}>
-        <div>
-          <h1 style={{ fontSize: '1.8rem', marginBottom: '4px' }}>Admin Dashboard</h1>
-          <p style={{ color: 'rgba(255,255,255,0.7)' }}>
-            {submissions.length} contact submission{submissions.length === 1 ? '' : 's'}
-          </p>
-        </div>
-        <LogoutButton />
+      <AdminNav />
+      <div style={{ marginBottom: '24px' }}>
+        <h1 style={{ fontSize: '1.8rem', marginBottom: '4px' }}>Messages</h1>
+        <p style={{ color: 'rgba(255,255,255,0.7)' }}>
+          {submissions.length} contact submission{submissions.length === 1 ? '' : 's'}
+        </p>
       </div>
 
       {submissions.length === 0 ? (

@@ -51,9 +51,10 @@ families. Motto: "Preventing Tragedies, Illuminating Futures."
   members whose photos are inline `data:` URIs — leave that branch alone.
   All media that used to be pulled from Wix (`static.wixstatic.com`) is now
   self-hosted under `public/media/`.
-- **Data:** `src/data/events.json`, `src/data/gallery.json`, `src/data/sponsors.ts`
-  are static, imported directly — no CMS. As of Phase 1 there is also a real
-  database (below) for the first genuinely dynamic data.
+- **Data:** `src/data/gallery.json` and `src/data/sponsors.ts` are static,
+  imported directly — no CMS. Events (`events` table, below) moved to the
+  database in Phase 6, managed from `/admin/events`; there is no
+  `events.json` anymore.
 - **Database:** Neon Postgres, connected via the Vercel dashboard's Storage
   tab. Schema lives in `src/db/schema.ts` (Drizzle ORM). `src/db/index.ts`
   exports `getDb()` — call it fresh per request, don't hoist a client to
@@ -109,6 +110,64 @@ into `ADMIN_PASSWORD_HASH` via `vercel env add ADMIN_PASSWORD_HASH
 <environments> --value "..." --sensitive` (production/preview) and again
 without `--sensitive` for development, then `vercel env pull .env.local`.
 
+`requireAdmin()` (redirect-based) is for pages/Server Components only. Any
+`/api/admin/*` route must use `requireAdminApi()` instead — it returns a
+`Response | null` instead of calling `redirect()`, because a `fetch()` caller
+needs a real 401 it can check, not an HTTP redirect it'll silently follow.
+
+```ts
+const unauthorized = await requireAdminApi();
+if (unauthorized) return unauthorized;
+```
+
+## Events (`/admin/events`)
+
+`events` table (Phase 6): `titleEn/Es`, `descriptionEn/Es`, `location`,
+`image` (nullable Blob URL), `eventDate` (nullable — null means no specific
+day is set yet), `dateLabel` (nullable text shown instead, e.g. "October
+2026"), `isFeatured`, `isPublished`. `src/app/events/page.tsx` fetches
+published events server-side and passes them to `EventsContent.tsx` as
+props — **it has `export const dynamic = 'force-dynamic'`, and that must
+stay.** Without it, Next statically prerenders the page at build time and
+admin edits silently stop showing up on the public site until the next
+deploy. Featured-vs-grid and the "UPCOMING"/"PAST HIGHLIGHT" badge are both
+derived from `isFeatured` and whether `eventDate` is null-or-future, not
+hardcoded per event — don't reintroduce a special-cased event in
+`EventsContent.tsx` the way the old hardcoded gala card worked.
+
+**Image upload:** Vercel Blob, connected the same way as Neon (Storage tab →
+Create Database → Blob → Connect to Project). The browser uploads
+**directly** to Blob storage via `@vercel/blob/client`'s `upload()`,
+authorized by `src/app/api/admin/events/upload/route.ts` (`handleUpload`,
+gated by `requireAdminApi()`) — the file bytes never pass through our own
+serverless function, which matters since a couple of the original event
+photos are 10+ MB and would otherwise hit Vercel's request body limit.
+Blob URLs live on a dynamic per-project hostname
+(`*.public.blob.vercel-storage.com`), allow-listed in `next.config.ts`. The
+store is named `imans-light-blob` and connects via the plain
+`BLOB_READ_WRITE_TOKEN` env var — no name prefix this time (unlike Neon's
+`Imans_Payments_` prefix), so `handleUpload()` doesn't need an explicit
+`token:` option.
+
+**Two real gotchas hit setting this up, in case the store is ever recreated:**
+- **Access mode (public/private) is set once at store creation and cannot
+  be changed after.** A store made through the Vercel dashboard's "Connect
+  to Project" flow with default settings comes out **private**, which
+  breaks public-facing images with "Cannot use public access on a private
+  store." If this ever happens again, the fix is delete-and-recreate
+  (`vercel blob delete-store <id>`, then `vercel blob create-store <name>
+  --access public --yes --environment production --environment preview
+  --environment development`), not a settings toggle — there isn't one.
+- **`@vercel/blob` v2+ tries Vercel's OIDC auth before falling back to
+  `BLOB_READ_WRITE_TOKEN`**, and the OIDC path is unreliable outside actual
+  Vercel infrastructure — a token pulled locally via `vercel env pull` can
+  fail to refresh from a bare `next dev` process with an opaque "No blob
+  credentials found" error that has nothing to do with whether the token or
+  store are actually fine. If local upload testing fails mysteriously,
+  confirm a plain `BLOB_READ_WRITE_TOKEN` exists in `.env.local` (not just
+  an OIDC token) before assuming the code is broken — production deploys
+  don't hit this since OIDC is native there.
+
 ## Conventions
 
 - No test suite exists yet.
@@ -161,9 +220,11 @@ running either command, check for and delete this nested file — the root
   PayPal checkout replaces that link, or donations will 404 silently. Full
   context and the do-not-do-this-yet list lives in `SETUP-TODO.md`.
 - Planned build-out (see `SETUP-TODO.md` for the human side of each phase):
-  Neon Postgres (done) → password-protected `/admin` → PayPal donations in
-  sandbox → bilingual IRS-compliant receipts → donations go live → events move
-  into the database → ticket sales with QR check-in.
+  Neon Postgres (done) → password-protected `/admin` (done) → events in the
+  database (done) → PayPal donations in sandbox → bilingual IRS-compliant
+  receipts → donations go live → ticket sales with QR check-in. Everything
+  not dependent on PayPal is done; remaining phases are blocked on the
+  foundation's PayPal API credentials.
 - There is a harmless, empty, never-deployed Vercel project called
   `imans-light-foundation` (no hyphen after "imans") sitting alongside the
   real `iman-s-light-foundation` project — created by an accidental

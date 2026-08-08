@@ -5,14 +5,30 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { LanguageContext } from '@/context/LanguageContext';
 import styles from './events.module.css';
-import eventsData from '@/data/events.json';
 
-export default function EventsPage() {
+interface EventRow {
+  id: string;
+  titleEn: string;
+  titleEs: string;
+  descriptionEn: string;
+  descriptionEs: string;
+  location: string;
+  image: string | null;
+  eventDate: string | null;
+  dateLabel: string | null;
+  isFeatured: boolean;
+}
+
+interface EventsContentProps {
+  featuredEvents: EventRow[];
+  gridEvents: EventRow[];
+}
+
+const todayStr = () => new Date().toISOString().slice(0, 10);
+
+export default function EventsPage({ featuredEvents, gridEvents }: EventsContentProps) {
   const { lang } = useContext(LanguageContext);
   const isEs = lang === 'es';
-
-  // Filter out the featured 2025 event from the main grid to avoid duplication
-  const gridEvents = eventsData.filter(evt => evt.date !== '2025-10-18');
 
   return (
     <div>
@@ -32,59 +48,66 @@ export default function EventsPage() {
         </div>
       </section>
 
-      {/* ===== FEATURED EVENTS ===== */}
-      <section className="section transparent-bg" style={{ paddingBottom: 0 }}>
-        <div className="container">
-          <div className={styles.featuredSectionTitle}>
-            <span className="section-label">{isEs ? 'Destacados' : 'Highlights'}</span>
-            <h2>{isEs ? 'Eventos Destacados' : 'Featured Events'}</h2>
-            <div className="gold-divider" style={{ width: '60px', margin: '0' }} />
-          </div>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '30px', marginTop: '32px' }}>
-            {/* 2026 Gala Card */}
-            <div className={styles.featuredCard} style={{ border: '2px solid rgba(201, 168, 76, 0.6)' }}>
-              <div className={styles.featuredBadge}>{isEs ? 'PRÓXIMO' : 'UPCOMING'}</div>
-              <div className={styles.featuredContent}>
-                <span className={styles.featuredDate}>{isEs ? 'Octubre 2026' : 'October 2026'}</span>
-                <h3 className={styles.featuredTitle}>{isEs ? 'Tercera Gala Anual' : '3rd Annual Gala'}</h3>
-                <div className={styles.featuredLocation}>📍 The Signature Grand, Davie FL</div>
-                <p className={styles.featuredDesc}>
-                  {isEs 
-                    ? 'Nuestro principal evento anual de recaudación de fondos y concientización. Únase a nosotros para una noche de reflexión, educación, solidaridad comunitaria y apoyo mientras recaudamos fondos cruciales para llevar programas de prevención a las escuelas del sur de Florida.'
-                    : 'Our premier annual fundraising and awareness event. Join us for a night of reflection, education, community solidarity, and support as we raise crucial funds to bring prevention programs to schools across South Florida.'
-                  }
-                </p>
-                <div style={{ marginTop: '24px' }}>
-                  <Link href="/contact" className="btn btn-primary">
-                    {isEs ? 'Patrocinar / Asistir' : 'Sponsor / Attend'}
-                  </Link>
-                </div>
-              </div>
+      {featuredEvents.length > 0 && (
+        <section className="section transparent-bg" style={{ paddingBottom: 0 }}>
+          <div className="container">
+            <div className={styles.featuredSectionTitle}>
+              <span className="section-label">{isEs ? 'Destacados' : 'Highlights'}</span>
+              <h2>{isEs ? 'Eventos Destacados' : 'Featured Events'}</h2>
+              <div className="gold-divider" style={{ width: '60px', margin: '0' }} />
             </div>
 
-            {/* 2025 Music & Lights Card */}
-            <div className={styles.featuredCard} style={{ background: 'rgba(20, 28, 46, 0.45)', border: '1px solid rgba(201, 168, 76, 0.3)' }}>
-              <div className={styles.pastBadge}>{isEs ? 'DESTACADO ANTERIOR' : 'PAST HIGHLIGHT'}</div>
-              <div className={styles.featuredContent}>
-                <span className={styles.featuredDate}>{isEs ? '18 de Octubre, 2025' : 'October 18, 2025'}</span>
-                <h3 className={styles.featuredTitle} style={{ fontSize: '1.8rem' }}>
-                  {isEs ? 'Música y Luces por la Vida - Baile y Exhibición 2025' : 'Music & Lights for Life Dance & Exhibition 2025'}
-                </h3>
-                <div className={styles.featuredLocation}>📍 Miramar City Center Hall, 2400 Civic Center Pl, Miramar FL 33025</div>
-                <p className={styles.featuredDesc} style={{ fontSize: '0.98rem' }}>
-                  {isEs 
-                    ? 'Celebración de la Vida — nuestro evento más grande hasta ahora. Con presentaciones especiales por Mari Trini, Floyd, Aria Canales, Chirirun, Jackie Rain, Zeleste, Ebi Rich, David Fernandez, Vic The Kid, Coral Cove Choir y más. MC Tayhana Garcia. Invitados especiales Representante Estatal Marie Woodson y Comisionado Maxwell Chambers. Más de 24 patrocinadores, memorial de linternas, comida y refrescos incluidos.'
-                    : 'Celebration of Life — our biggest event ever. Featuring special performances by Mari Trini, Floyd, Aria Canales, Chirirun, Jackie Rain, Zeleste, Ebi Rich, David Fernandez, Vic The Kid, Coral Cove Choir, and more. MC Tayhana Garcia. Special guests State Representative Marie Woodson and Commissioner Maxwell Chambers. 24+ sponsors, lantern memorial, food and refreshments included.'
-                  }
-                </p>
-              </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '30px', marginTop: '32px' }}>
+              {featuredEvents.map((evt) => {
+                const isUpcoming = !evt.eventDate || evt.eventDate >= todayStr();
+                const dateText =
+                  evt.dateLabel ||
+                  (evt.eventDate
+                    ? new Date(evt.eventDate).toLocaleDateString(isEs ? 'es-ES' : 'en-US', {
+                        month: 'long',
+                        day: 'numeric',
+                        year: 'numeric',
+                      })
+                    : '');
+
+                return (
+                  <div
+                    key={evt.id}
+                    className={styles.featuredCard}
+                    style={
+                      isUpcoming
+                        ? { border: '2px solid rgba(201, 168, 76, 0.6)' }
+                        : { background: 'rgba(20, 28, 46, 0.45)', border: '1px solid rgba(201, 168, 76, 0.3)' }
+                    }
+                  >
+                    <div className={isUpcoming ? styles.featuredBadge : styles.pastBadge}>
+                      {isUpcoming ? (isEs ? 'PRÓXIMO' : 'UPCOMING') : (isEs ? 'DESTACADO ANTERIOR' : 'PAST HIGHLIGHT')}
+                    </div>
+                    <div className={styles.featuredContent}>
+                      <span className={styles.featuredDate}>{dateText}</span>
+                      <h3 className={styles.featuredTitle} style={!isUpcoming ? { fontSize: '1.8rem' } : undefined}>
+                        {isEs ? evt.titleEs : evt.titleEn}
+                      </h3>
+                      {evt.location && <div className={styles.featuredLocation}>📍 {evt.location}</div>}
+                      <p className={styles.featuredDesc} style={!isUpcoming ? { fontSize: '0.98rem' } : undefined}>
+                        {isEs ? evt.descriptionEs : evt.descriptionEn}
+                      </p>
+                      {isUpcoming && (
+                        <div style={{ marginTop: '24px' }}>
+                          <Link href="/contact" className="btn btn-primary">
+                            {isEs ? 'Patrocinar / Asistir' : 'Sponsor / Attend'}
+                          </Link>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
-      {/* ===== ALL PAST EVENTS GRID ===== */}
       <section className="section section-dark transparent-bg">
         <div className="container">
           <div className={styles.featuredSectionTitle} style={{ marginBottom: '40px' }}>
@@ -94,29 +117,29 @@ export default function EventsPage() {
           </div>
 
           <div className={styles.eventsGrid}>
-            {gridEvents.map((evt, idx) => (
-              <div key={idx} className={styles.eventCard}>
+            {gridEvents.map((evt) => (
+              <div key={evt.id} className={styles.eventCard}>
                 {evt.image ? (
                   <div className={styles.eventImage}>
                     <Image src={evt.image} alt={evt.titleEn} fill style={{ objectFit: 'cover' }} />
                   </div>
                 ) : (
                   <div className={styles.eventImagePlaceholder}>
-                    <span>{new Date(evt.date).getFullYear()}</span>
+                    <span>{evt.eventDate ? new Date(evt.eventDate).getFullYear() : ''}</span>
                   </div>
                 )}
                 <div className={styles.eventContent}>
                   <div className={styles.eventDate}>
-                    {new Date(evt.date).toLocaleDateString(isEs ? 'es-ES' : 'en-US', { 
-                      month: 'long', 
-                      day: 'numeric', 
-                      year: 'numeric' 
-                    })}
+                    {evt.dateLabel ||
+                      (evt.eventDate &&
+                        new Date(evt.eventDate).toLocaleDateString(isEs ? 'es-ES' : 'en-US', {
+                          month: 'long',
+                          day: 'numeric',
+                          year: 'numeric',
+                        }))}
                   </div>
                   <h3>{isEs ? evt.titleEs : evt.titleEn}</h3>
-                  <div className={styles.eventLocation}>
-                    📍 {evt.location}
-                  </div>
+                  {evt.location && <div className={styles.eventLocation}>📍 {evt.location}</div>}
                   <p>{isEs ? evt.descriptionEs : evt.descriptionEn}</p>
                 </div>
               </div>
