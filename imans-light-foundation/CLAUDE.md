@@ -143,7 +143,30 @@ gated by `requireAdminApi()`) — the file bytes never pass through our own
 serverless function, which matters since a couple of the original event
 photos are 10+ MB and would otherwise hit Vercel's request body limit.
 Blob URLs live on a dynamic per-project hostname
-(`*.public.blob.vercel-storage.com`), allow-listed in `next.config.ts`.
+(`*.public.blob.vercel-storage.com`), allow-listed in `next.config.ts`. The
+store is named `imans-light-blob` and connects via the plain
+`BLOB_READ_WRITE_TOKEN` env var — no name prefix this time (unlike Neon's
+`Imans_Payments_` prefix), so `handleUpload()` doesn't need an explicit
+`token:` option.
+
+**Two real gotchas hit setting this up, in case the store is ever recreated:**
+- **Access mode (public/private) is set once at store creation and cannot
+  be changed after.** A store made through the Vercel dashboard's "Connect
+  to Project" flow with default settings comes out **private**, which
+  breaks public-facing images with "Cannot use public access on a private
+  store." If this ever happens again, the fix is delete-and-recreate
+  (`vercel blob delete-store <id>`, then `vercel blob create-store <name>
+  --access public --yes --environment production --environment preview
+  --environment development`), not a settings toggle — there isn't one.
+- **`@vercel/blob` v2+ tries Vercel's OIDC auth before falling back to
+  `BLOB_READ_WRITE_TOKEN`**, and the OIDC path is unreliable outside actual
+  Vercel infrastructure — a token pulled locally via `vercel env pull` can
+  fail to refresh from a bare `next dev` process with an opaque "No blob
+  credentials found" error that has nothing to do with whether the token or
+  store are actually fine. If local upload testing fails mysteriously,
+  confirm a plain `BLOB_READ_WRITE_TOKEN` exists in `.env.local` (not just
+  an OIDC token) before assuming the code is broken — production deploys
+  don't hit this since OIDC is native there.
 
 ## Conventions
 
