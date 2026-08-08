@@ -83,22 +83,29 @@ export default function EventsPage({ featuredEvents, gridEvents }: EventsContent
                     <div className={isUpcoming ? styles.featuredBadge : styles.pastBadge}>
                       {isUpcoming ? (isEs ? 'PRÓXIMO' : 'UPCOMING') : (isEs ? 'DESTACADO ANTERIOR' : 'PAST HIGHLIGHT')}
                     </div>
-                    <div className={styles.featuredContent}>
-                      <span className={styles.featuredDate}>{dateText}</span>
-                      <h3 className={styles.featuredTitle} style={!isUpcoming ? { fontSize: '1.8rem' } : undefined}>
-                        {isEs ? evt.titleEs : evt.titleEn}
-                      </h3>
-                      {evt.location && <div className={styles.featuredLocation}>📍 {evt.location}</div>}
-                      <p className={styles.featuredDesc} style={!isUpcoming ? { fontSize: '0.98rem' } : undefined}>
-                        {isEs ? evt.descriptionEs : evt.descriptionEn}
-                      </p>
-                      {isUpcoming && (
-                        <div style={{ marginTop: '24px' }}>
-                          <Link href="/contact" className="btn btn-primary">
-                            {isEs ? 'Patrocinar / Asistir' : 'Sponsor / Attend'}
-                          </Link>
+                    <div className={styles.featuredCardInner}>
+                      {evt.image && (
+                        <div className={styles.featuredImageWrap}>
+                          <Image src={evt.image} alt={isEs ? evt.titleEs : evt.titleEn} fill style={{ objectFit: 'cover' }} />
                         </div>
                       )}
+                      <div className={styles.featuredContent}>
+                        <span className={styles.featuredDate}>{dateText}</span>
+                        <h3 className={styles.featuredTitle} style={!isUpcoming ? { fontSize: '1.8rem' } : undefined}>
+                          {isEs ? evt.titleEs : evt.titleEn}
+                        </h3>
+                        {evt.location && <div className={styles.featuredLocation}>📍 {evt.location}</div>}
+                        <p className={styles.featuredDesc} style={!isUpcoming ? { fontSize: '0.98rem' } : undefined}>
+                          {isEs ? evt.descriptionEs : evt.descriptionEn}
+                        </p>
+                        {isUpcoming && (
+                          <div style={{ marginTop: '24px' }}>
+                            <Link href="/contact" className="btn btn-primary">
+                              {isEs ? 'Patrocinar / Asistir' : 'Sponsor / Attend'}
+                            </Link>
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
                 );

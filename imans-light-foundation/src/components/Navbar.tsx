@@ -89,9 +89,9 @@ export default function Navbar() {
       <div className={`${styles.topBar} ${scrolled ? styles.topBarHidden : ''}`}>
         <div className={`container ${styles.topBarInner}`}>
           <div className={styles.topBarLeft}>
-            <span className={styles.crisisText}>
+            <a href="tel:988" className={styles.crisisText}>
               <Phone size={12} /> Need Help? Call 988 Suicide & Crisis Lifeline
-            </span>
+            </a>
           </div>
           <div className={styles.topBarRight} style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
             <div style={{ display: 'flex', gap: '8px' }}>
@@ -167,6 +167,23 @@ export default function Navbar() {
 
           {/* Right side Donate CTA */}
           <div className={styles.controls}>
+            <div className={styles.navLangWrapper} aria-label="Language">
+              <button
+                className={lang === 'en' ? styles.navLangActive : ''}
+                onClick={() => setLang('en')}
+                aria-pressed={lang === 'en'}
+              >
+                EN
+              </button>
+              <span className={styles.navLangDivider}>|</span>
+              <button
+                className={lang === 'es' ? styles.navLangActive : ''}
+                onClick={() => setLang('es')}
+                aria-pressed={lang === 'es'}
+              >
+                ES
+              </button>
+            </div>
             <Link href="/donate" className={`btn btn-primary ${styles.donateBtn}`}>
               {lang === 'en' ? 'Donate' : 'Donar Ahora'}
             </Link>
