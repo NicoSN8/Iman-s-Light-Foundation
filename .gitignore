@@ -20,6 +20,9 @@ dist/
 # vercel
 .vercel
 
+# local-only utilities, never meant to be committed
+admin-password-tool.html
+
 # typescript
 *.tsbuildinfo
 

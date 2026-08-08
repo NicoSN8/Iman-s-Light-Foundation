@@ -75,6 +75,40 @@ JSON body defensively, check a honeypot field before touching the database,
 insert via `getDb()`, return `Response.json(...)`. Not cached by default —
 fine for anything that writes data.
 
+## Admin auth (`/admin`)
+
+Single shared password (not per-person accounts) protecting a staff-only
+dashboard — donors/visitors never see this, never log in anywhere.
+`src/lib/adminAuth.ts` has the whole pattern: `verifyPassword()` (PBKDF2
+against `ADMIN_PASSWORD_HASH`), `createSessionToken()`/`verifySessionToken()`
+(HMAC-signed with `ADMIN_SESSION_SECRET`, 8h expiry), and `requireAdmin()`
+(reads the cookie, redirects to `/admin/login` if invalid). **The real
+security check is `requireAdmin()` called directly inside every `/admin`
+page and `/api/admin/*` route — never rely on `proxy.ts`/`middleware.ts`
+alone.** Next.js 16 renamed `middleware.ts` to `proxy.ts`, and a stray
+leftover `middleware.ts` is silently ignored with no build error; if that
+were the only gate, `/admin` could go fully public with no warning. There is
+deliberately no `proxy.ts` in this project — one enforcement point, not two
+that can drift apart.
+
+**Env var gotcha that cost real debugging time:** Next.js's built-in
+`.env.local` loader treats `$` as a variable-substitution character (like
+shell interpolation) and silently truncates a value at the first `$` it
+finds — no error, no warning, it just quietly becomes a shorter string. This
+is why `ADMIN_PASSWORD_HASH` uses `:` as its field delimiter
+(`pbkdf2:<iterations>:<saltHex>:<hashHex>`), not `$`. Keep this in mind for
+any future secret format (e.g. PayPal keys) — if a value contains a literal
+`$`, verify what actually lands in `process.env` (e.g. via a throwaway debug
+route that echoes it back) rather than assuming the file's contents are what
+gets loaded.
+
+To change the admin password: open `admin-password-tool.html` in the project
+root (gitignored, stays local-only) in a browser — it computes the PBKDF2
+hash client-side with Web Crypto, nothing is sent anywhere. Paste the result
+into `ADMIN_PASSWORD_HASH` via `vercel env add ADMIN_PASSWORD_HASH
+<environments> --value "..." --sensitive` (production/preview) and again
+without `--sensitive` for development, then `vercel env pull .env.local`.
+
 ## Conventions
 
 - No test suite exists yet.
@@ -109,6 +143,15 @@ Vercel project (see `.vercel/project.json`, gitignored). Pull real env vars
 with `vercel env pull .env.local` (requires `vercel login` once — opens a
 browser). Never type real secret values directly into chat or commit them;
 `.env.example` documents the variable names without values.
+
+**Vercel CLI gotcha:** both `vercel link` and `vercel env pull` have, more
+than once, auto-created a *second* `.gitignore` inside
+`imans-light-foundation/` containing just `.env*`. That pattern is broader
+than the root `.gitignore`'s (which correctly excludes `.env`/`.env.local`
+but allows `.env.example`) and silently blocks `.env.example` from ever
+being staged again. If `git status` shows `.env.example` missing after
+running either command, check for and delete this nested file — the root
+`.gitignore` already covers everything needed.
 
 ## Known constraints / roadmap
 
