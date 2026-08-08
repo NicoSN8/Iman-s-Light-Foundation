@@ -83,14 +83,37 @@ dashboard — donors/visitors never see this, never log in anywhere.
 `src/lib/adminAuth.ts` has the whole pattern: `verifyPassword()` (PBKDF2
 against `ADMIN_PASSWORD_HASH`), `createSessionToken()`/`verifySessionToken()`
 (HMAC-signed with `ADMIN_SESSION_SECRET`, 8h expiry), and `requireAdmin()`
-(reads the cookie, redirects to `/admin/login` if invalid). **The real
-security check is `requireAdmin()` called directly inside every `/admin`
-page and `/api/admin/*` route — never rely on `proxy.ts`/`middleware.ts`
-alone.** Next.js 16 renamed `middleware.ts` to `proxy.ts`, and a stray
-leftover `middleware.ts` is silently ignored with no build error; if that
-were the only gate, `/admin` could go fully public with no warning. There is
-deliberately no `proxy.ts` in this project — one enforcement point, not two
-that can drift apart.
+(reads the cookie, redirects to `/admin/login` if invalid).
+
+**Route structure:** `src/app/admin/layout.tsx` is a thin wrapper shared by
+*every* `/admin` route including `/login` (just a solid background — no
+public nav/footer, see `SiteChrome` below). Everything that needs a logged-in
+user lives under the route group `src/app/admin/(dashboard)/` — the
+parentheses don't appear in the URL, so `/admin` and `/admin/events` are
+unaffected. `src/app/admin/(dashboard)/layout.tsx` calls `requireAdmin()`
+**once** for that whole subtree and renders `Sidebar.tsx`; individual pages
+under it don't call `requireAdmin()` or render nav themselves. This is safe
+specifically because a layout always renders for every nested page — unlike
+`proxy.ts`/`middleware.ts` (Next.js 16 renamed `middleware.ts` to
+`proxy.ts`, and a stray leftover `middleware.ts` is silently ignored with no
+build error), which is why *that* mechanism was never trusted alone.
+**`/api/admin/*` routes still each call `requireAdminApi()` individually**
+— route handlers aren't part of a page layout tree, so this principle is
+unchanged there. If you add a new authenticated admin page, put it under
+`admin/(dashboard)/` and it's protected automatically; if you add a new
+`/api/admin/*` route, you must still add the `requireAdminApi()` check
+yourself.
+
+**`SiteChrome.tsx`** (`src/components/SiteChrome.tsx`) is what actually
+keeps the public Navbar/Footer/NebulaBackground off `/admin` — it's a client
+component in the root layout that checks `usePathname()` and renders
+`{children}` directly (no public chrome) for any path starting with
+`/admin`. This existed because `/admin` didn't have its own layout early on
+and inherited the public site's fixed navbar, which visually and
+*functionally* sat on top of the admin sidebar (real bug: the nav tabs were
+unclickable because the fixed public navbar intercepted the clicks). If a
+future top-level section also needs to skip public chrome, extend the check
+here rather than duplicating the pattern.
 
 **Env var gotcha that cost real debugging time:** Next.js's built-in
 `.env.local` loader treats `$` as a variable-substitution character (like
@@ -232,3 +255,8 @@ running either command, check for and delete this nested file — the root
   dashboard whenever; nothing points at it.
 - When that work starts, treat the server as the source of truth for any
   amount of money — never trust a client-submitted price/amount.
+- **Ticketing (Phase 7) needs seat/table assignment, not just a quantity
+  counter** — attendees have to be seated when they arrive, so the schema,
+  `/admin` UI, and check-in flow all need to carry seat info, not just
+  valid/used status. Confirmed by Nicolas 2026-08-08, don't lose this when
+  designing that phase.

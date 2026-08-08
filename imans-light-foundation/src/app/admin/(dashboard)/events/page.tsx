@@ -1,19 +1,14 @@
 import Link from 'next/link';
 import { desc } from 'drizzle-orm';
-import { requireAdmin } from '@/lib/adminAuth';
 import { getDb } from '@/db';
 import { events } from '@/db/schema';
-import AdminNav from '../AdminNav';
 import DeleteEventButton from './DeleteEventButton';
 
 export default async function AdminEventsPage() {
-  await requireAdmin();
-
   const allEvents = await getDb().select().from(events).orderBy(desc(events.eventDate));
 
   return (
-    <div className="container" style={{ padding: '48px 24px' }}>
-      <AdminNav />
+    <>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px', flexWrap: 'wrap', gap: '16px' }}>
         <div>
           <h1 style={{ fontSize: '1.8rem', marginBottom: '4px' }}>Events</h1>
@@ -57,6 +52,6 @@ export default async function AdminEventsPage() {
           </tbody>
         </table>
       </div>
-    </div>
+    </>
   );
 }

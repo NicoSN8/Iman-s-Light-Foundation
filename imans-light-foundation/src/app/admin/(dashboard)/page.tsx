@@ -1,20 +1,15 @@
 import { desc } from 'drizzle-orm';
-import { requireAdmin } from '@/lib/adminAuth';
 import { getDb } from '@/db';
 import { contactSubmissions } from '@/db/schema';
-import AdminNav from './AdminNav';
 
 export default async function AdminPage() {
-  await requireAdmin();
-
   const submissions = await getDb()
     .select()
     .from(contactSubmissions)
     .orderBy(desc(contactSubmissions.createdAt));
 
   return (
-    <div className="container" style={{ padding: '48px 24px' }}>
-      <AdminNav />
+    <>
       <div style={{ marginBottom: '24px' }}>
         <h1 style={{ fontSize: '1.8rem', marginBottom: '4px' }}>Messages</h1>
         <p style={{ color: 'rgba(255,255,255,0.7)' }}>
@@ -58,6 +53,6 @@ export default async function AdminPage() {
           </table>
         </div>
       )}
-    </div>
+    </>
   );
 }

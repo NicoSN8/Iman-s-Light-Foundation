@@ -12,7 +12,11 @@ export default function LogoutButton() {
   };
 
   return (
-    <button onClick={handleLogout} className="btn btn-outline" style={{ fontSize: '0.875rem', padding: '10px 20px' }}>
+    <button
+      onClick={handleLogout}
+      className="btn btn-outline"
+      style={{ width: '100%', justifyContent: 'center', fontSize: '0.875rem', padding: '10px 20px' }}
+    >
       Log Out
     </button>
   );
