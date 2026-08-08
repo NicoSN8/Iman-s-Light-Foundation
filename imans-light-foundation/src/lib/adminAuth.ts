@@ -75,10 +75,27 @@ export const sessionCookieOptions = {
   maxAge: SESSION_MAX_AGE_SECONDS,
 };
 
-export async function requireAdmin(): Promise<void> {
+async function isAuthenticated(): Promise<boolean> {
   const store = await cookies();
-  const token = store.get(SESSION_COOKIE)?.value;
-  if (!verifySessionToken(token)) {
+  return verifySessionToken(store.get(SESSION_COOKIE)?.value);
+}
+
+/** For pages/Server Components — redirects to the login page. */
+export async function requireAdmin(): Promise<void> {
+  if (!(await isAuthenticated())) {
     redirect('/admin/login');
   }
+}
+
+/**
+ * For API routes — `redirect()` throws a Next.js-internal signal meant for
+ * page rendering; a `fetch()` caller needs a real 401 response it can check,
+ * not an HTTP redirect. Use this instead of requireAdmin() in any
+ * /api/admin/* route.
+ */
+export async function requireAdminApi(): Promise<Response | null> {
+  if (!(await isAuthenticated())) {
+    return Response.json({ ok: false, error: 'Unauthorized' }, { status: 401 });
+  }
+  return null;
 }

@@ -190,10 +190,24 @@ site can't safely continue (or shouldn't go live) until you do this.
 - [ ] **Now safe to cut over DNS** — point `www.imanslightfoundation.org` at
   Vercel once the above test passes.
 
-## Phase 6 — Events in the database (not started)
+## Phase 6 — Events managed from `/admin` (built — waiting on one click)
 
-- [ ] **LATER — Nothing for you to configure.** Once built, you'll add and
-  edit events yourself from `/admin` — no dashboard clicking required.
+- [ ] **BLOCKING — Connect Blob storage so photo upload works.** Same click
+  pattern as the database in Phase 1:
+  1. **vercel.com/dashboard** → **iman-s-light-foundation** project →
+     **Storage** tab.
+  2. **Create Database** → choose **Blob**.
+  3. **Connect to Project**, select all three environments (Production,
+     Preview, Development).
+  4. Tell me when it's done — I'll pull the new connection automatically,
+     same as before, nothing else for you to copy.
+  Until this is connected, adding a photo to a new/edited event in
+  `/admin/events` will fail — everything else (adding events, editing text,
+  publishing/unpublishing) already works without it.
+- [x] All 36 existing events plus the previously-hardcoded gala card are now
+  real, editable rows — manage them at **`yoursite.com/admin/events`**: add,
+  edit, delete, mark featured, or unpublish/stage an event before it's
+  public.
 
 ## Phase 7 — Ticket sales (not started)
 
@@ -203,4 +217,5 @@ site can't safely continue (or shouldn't go live) until you do this.
 
 ---
 
-*Updated 2026-08-08: Phase 2 (admin login) complete.*
+*Updated 2026-08-08: Phase 6 (events in the database) built — one blocking
+step (Blob storage) left for photo upload to work.*
