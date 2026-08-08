@@ -204,18 +204,30 @@
 }
 
 .sponsorBadge {
-  background: rgba(255, 255, 255, 0.9);
+  background: transparent;
   padding: 24px;
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.25s ease;
+  opacity: 0.85;
 }
 
 .sponsorBadge:hover {
   transform: translateY(-5px);
+  opacity: 1;
+}
+
+.sponsorBadgeLight {
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.sponsorBadgeDark {
+  background: rgba(10, 14, 26, 0.85);
+  border: 1px solid rgba(201, 168, 76, 0.25);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
 }
 
 @media (max-width: 768px) {
@@ -451,7 +463,7 @@
 }
 
 .communitySponsorLogoBadge {
-  background: rgba(255, 255, 255, 0.95);
+  background: transparent;
   padding: 12px 20px;
   border-radius: 8px;
   display: flex;
@@ -459,11 +471,27 @@
   justify-content: center;
   width: 150px;
   height: 75px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  opacity: 0.85;
+}
+
+.communitySponsorLogoBadgeLight {
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.communitySponsorLogoBadgeDark {
+  background: rgba(10, 14, 26, 0.85);
+  border: 1px solid rgba(201, 168, 76, 0.25);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
 }
 
 .communitySponsorLogoBadge:hover {
   transform: translateY(-4px);
+  opacity: 1;
+}
+
+.communitySponsorLogoBadgeLight:hover,
+.communitySponsorLogoBadgeDark:hover {
   box-shadow: 0 8px 20px rgba(201, 168, 76, 0.4);
 }

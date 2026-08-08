@@ -406,7 +406,10 @@ export default function AboutPage() {
             <div style={{ width: '100%' }}>
               <div className={styles.sponsorLogosGrid}>
                 {FEATURED_SPONSORS.map((s, i) => (
-                  <div key={i} className={styles.sponsorBadge}>
+                  <div
+                    key={i}
+                    className={`${styles.sponsorBadge} ${s.card === 'light' ? styles.sponsorBadgeLight : s.card === 'dark' ? styles.sponsorBadgeDark : ''}`}
+                  >
                     <Image src={s.src} alt={s.alt} width={178} height={97} style={{ objectFit: 'contain' }} />
                   </div>
                 ))}
@@ -423,8 +426,7 @@ export default function AboutPage() {
                 {COMMUNITY_SPONSORS.map((s, i) => (
                   <div
                     key={i}
-                    className={styles.communitySponsorLogoBadge}
-                    style={s.dark ? { background: 'rgba(10, 14, 26, 0.9)', border: '1px solid rgba(201,168,76,0.2)' } : undefined}
+                    className={`${styles.communitySponsorLogoBadge} ${s.card === 'light' ? styles.communitySponsorLogoBadgeLight : s.card === 'dark' ? styles.communitySponsorLogoBadgeDark : ''}`}
                   >
                     <Image src={s.src} alt={s.alt} width={120} height={60} style={{ objectFit: 'contain' }} unoptimized={s.src.endsWith('.svg')} />
                   </div>

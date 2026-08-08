@@ -426,7 +426,21 @@ export default function HomePage() {
             {/* Featured Sponsors */}
             <div style={{ width: '100%', display: 'flex', flexWrap: 'wrap', gap: '24px', justifyContent: 'center', alignItems: 'center' }}>
               {FEATURED_SPONSORS.map((s, i) => (
-                <div key={i} style={{ background: 'rgba(255, 255, 255, 0.9)', padding: '24px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}>
+                <div
+                  key={i}
+                  style={{
+                    padding: '20px 28px',
+                    borderRadius: '12px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    ...(s.card === 'light'
+                      ? { background: 'rgba(255, 255, 255, 0.92)', boxShadow: '0 10px 30px rgba(0,0,0,0.2)' }
+                      : s.card === 'dark'
+                      ? { background: 'rgba(10, 14, 26, 0.85)', border: '1px solid rgba(201,168,76,0.25)', boxShadow: '0 10px 30px rgba(0,0,0,0.3)' }
+                      : {}),
+                  }}
+                >
                   <Image src={s.src} alt={s.alt} width={160} height={80} style={{ objectFit: 'contain' }} />
                 </div>
               ))}
@@ -437,8 +451,7 @@ export default function HomePage() {
               {COMMUNITY_SPONSORS.map((s, i) => (
                 <div
                   key={i}
-                  className={styles.communitySponsorLogoBadge}
-                  style={s.dark ? { background: 'rgba(10, 14, 26, 0.9)', border: '1px solid rgba(201,168,76,0.2)' } : undefined}
+                  className={`${styles.communitySponsorLogoBadge} ${s.card === 'light' ? styles.communitySponsorLogoBadgeLight : s.card === 'dark' ? styles.communitySponsorLogoBadgeDark : ''}`}
                 >
                   <Image src={s.src} alt={s.alt} width={120} height={60} style={{ objectFit: 'contain' }} unoptimized={s.src.endsWith('.svg')} />
                 </div>
