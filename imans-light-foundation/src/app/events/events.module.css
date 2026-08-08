@@ -152,6 +152,21 @@
   text-transform: uppercase;
 }
 
+.featuredCardInner {
+  display: flex;
+  gap: 32px;
+  align-items: stretch;
+}
+
+.featuredImageWrap {
+  position: relative;
+  width: 260px;
+  min-height: 220px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
 .featuredContent {
   max-width: 800px;
 }
@@ -201,5 +216,13 @@
   }
   .featuredTitle {
     font-size: 1.6rem;
+  }
+  .featuredCardInner {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .featuredImageWrap {
+    width: 100%;
+    min-height: 180px;
   }
 }

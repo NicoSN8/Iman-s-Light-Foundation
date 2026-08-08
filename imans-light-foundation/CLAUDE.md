@@ -248,11 +248,6 @@ running either command, check for and delete this nested file — the root
   receipts → donations go live → ticket sales with QR check-in. Everything
   not dependent on PayPal is done; remaining phases are blocked on the
   foundation's PayPal API credentials.
-- There is a harmless, empty, never-deployed Vercel project called
-  `imans-light-foundation` (no hyphen after "imans") sitting alongside the
-  real `iman-s-light-foundation` project — created by an accidental
-  `vercel link` during Phase 1 setup. Safe to delete from the Vercel
-  dashboard whenever; nothing points at it.
 - When that work starts, treat the server as the source of truth for any
   amount of money — never trust a client-submitted price/amount.
 - **Ticketing (Phase 7) needs seat/table assignment, not just a quantity
@@ -260,3 +255,15 @@ running either command, check for and delete this nested file — the root
   `/admin` UI, and check-in flow all need to carry seat info, not just
   valid/used status. Confirmed by Nicolas 2026-08-08, don't lose this when
   designing that phase.
+- **Donations (Phase 3-5) and tickets (Phase 7) must capture the payer's
+  name and email as part of checkout**, not just process an anonymous
+  PayPal payment. Nicolas needs to know who gave and who bought a ticket —
+  a new `/admin` "Donations" tab and "Tickets" tab (separate from
+  Messages) are the planned home for this. Confirmed by Nicolas
+  2026-08-08.
+- Contact form submissions (`/contact`) currently only go to the database
+  (`contactSubmissions` table, visible in `/admin`) — there is no email
+  notification. No mail-sending library is installed yet. Confirmed with
+  Nicolas that `imanslightfoundation@gmail.com` does NOT currently receive
+  a copy of these; if that's wanted, it needs its own small phase (a mail
+  API/service + credentials), not a side effect of another phase.

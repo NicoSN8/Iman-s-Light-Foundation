@@ -42,6 +42,13 @@
   align-items: center;
   gap: 6px;
   letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.crisisText:hover {
+  color: var(--gold-light);
+  text-decoration: underline;
 }
 
 .topLink {
@@ -274,6 +281,38 @@
   pointer-events: auto;
 }
 
+.navLangWrapper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+}
+
+.navLangWrapper button {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0;
+}
+
+.navLangWrapper button:hover {
+  color: #fff;
+}
+
+.navLangActive {
+  color: var(--gold) !important;
+}
+
+.navLangDivider {
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 0.75rem;
+}
+
 .donateBtn {
   position: relative;
   z-index: 2000;
@@ -422,4 +461,5 @@
   .hamburger { display: flex; position: relative; z-index: 2000; pointer-events: auto; }
   .mobileMenu { display: block; }
   .donateBtn { display: none; }
+  .navLangWrapper { display: none; }
 }
