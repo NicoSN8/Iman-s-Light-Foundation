@@ -192,6 +192,108 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ===== GALA HIGHLIGHT ===== */}
+      <section className="section transparent-bg">
+        <div className="container">
+          <div ref={addRef} className="fade-up text-center">
+            <span className="section-label">{txt.eventsLabel}</span>
+            <h2 className="section-title">{txt.eventsTitle}</h2>
+            <div className="gold-divider center" />
+            <p className="section-subtitle">{txt.eventsSub}</p>
+          </div>
+
+          {/* Primary Feature: 2026 Gala */}
+          <div
+            ref={addRef}
+            className="fade-up"
+            style={{
+              marginTop: '40px',
+              background: 'var(--navy)',
+              borderRadius: '20px',
+              border: '2px solid rgba(201,168,76,0.6)',
+              boxShadow: '0 20px 50px rgba(0,0,0,0.35)',
+              position: 'relative',
+              overflow: 'hidden',
+            }}
+          >
+            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '6px', background: 'var(--gradient-gold)', zIndex: 1 }} />
+            <div className="grid-2" style={{ gap: 0, alignItems: 'stretch' }}>
+              <div style={{ position: 'relative', minHeight: '320px' }}>
+                <Image
+                  src="/media/56e6ee_8dc0ab6d11544b2899b97b42d912eb28~mv2.jpeg"
+                  alt={lang === 'es' ? "Gala de la Fundación Iman's Light" : "Iman's Light Foundation Gala"}
+                  fill
+                  style={{ objectFit: 'cover' }}
+                />
+              </div>
+              <div style={{ padding: '44px 40px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <span className="tag" style={{ marginBottom: '16px', width: 'fit-content' }}>
+                  {lang === 'es' ? 'Próximo Evento' : 'Upcoming Highlight'}
+                </span>
+                <h3 style={{ color: 'var(--gold)', fontFamily: 'Playfair Display', fontSize: '2.1rem', marginBottom: '10px' }}>
+                  {lang === 'es' ? 'Tercera Gala Anual' : '3rd Annual Gala'}
+                </h3>
+                <p style={{ color: 'var(--white)', fontSize: '1.25rem', fontWeight: 600, marginBottom: '2px' }}>
+                  {lang === 'es' ? 'Octubre 2026' : 'October 2026'}
+                </p>
+                <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1rem', marginBottom: '20px' }}>@ The Signature Grand</p>
+                <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '1rem', lineHeight: '1.75', marginBottom: '20px' }}>
+                  {lang === 'es'
+                    ? 'Nuestra gala anual Música y Luces por la Vida reúne a la comunidad para una noche de celebración, entretenimiento en vivo y homenaje, financiando los talleres, programas de salud mental y alcance comunitario que salvan vidas todo el año.'
+                    : 'Our annual Music and Lights for Life gala brings the community together for an evening of celebration, live entertainment, and remembrance — funding the workshops, mental health programs, and outreach that save lives all year.'}
+                </p>
+                <p style={{ color: 'var(--gold-light)', fontSize: '0.9rem', fontWeight: 600, marginBottom: '24px' }}>
+                  {lang === 'es' ? 'Boletos próximamente — consulta los detalles del evento' : 'Tickets on sale soon — view event details for updates'}
+                </p>
+                <Link href="/events" className="btn btn-primary" style={{ width: 'fit-content' }}>
+                  {lang === 'es' ? 'Ver Detalles del Evento' : 'View Event Details'} →
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Past Highlight: 2025 Event */}
+          <div
+            ref={addRef}
+            className="fade-up"
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: '24px',
+              alignItems: 'center',
+              background: 'rgba(20, 28, 46, 0.4)',
+              backdropFilter: 'blur(10px)',
+              borderRadius: '16px',
+              border: '1px solid rgba(201,168,76,0.3)',
+              padding: '24px',
+              maxWidth: '800px',
+              margin: '24px auto 0',
+              boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
+            }}
+          >
+            <div style={{ position: 'relative', width: '140px', height: '180px', flexShrink: 0, borderRadius: '10px', overflow: 'hidden' }}>
+              <Image
+                src="/media/56e6ee_c06acaeb840e48098e7a8113301f3404~mv2.jpg"
+                alt="Music and Lights for Life 2025 flyer"
+                fill
+                style={{ objectFit: 'cover' }}
+              />
+            </div>
+            <div style={{ flex: 1, minWidth: '220px' }}>
+              <span className="tag" style={{ marginBottom: '12px', display: 'inline-block' }}>{lang === 'es' ? 'Destacado del Pasado' : 'Past Highlight'}</span>
+              <h4 style={{ color: 'var(--white)', fontFamily: 'Playfair Display', fontSize: '1.4rem', marginBottom: '8px' }}>
+                {lang === 'es' ? 'Música y Luces por la Vida 2025' : 'Music & Lights for Life 2025'}
+              </h4>
+              <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.95rem', lineHeight: '1.6' }}>
+                {lang === 'es'
+                  ? 'Nuestro evento más grande hasta ahora — Música y Luces por la Vida 2025 en el Miramar City Center Hall reunió a la comunidad con presentaciones, 24+ patrocinadores y un poderoso mensaje de prevención.'
+                  : 'Our biggest event yet — Music and Lights for Life 2025 at Miramar City Center Hall brought together the community with performances, 24+ sponsors, and powerful prevention messaging.'}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ===== IMPACT STATS ===== */}
       <section className={`section section-dark ${styles.statsSection}`}>
         <div className="container">
@@ -309,41 +411,6 @@ export default function HomePage() {
                 <Link href="/programs" className={styles.programLink}>{txt.learnMore} →</Link>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ===== GALA EVENT ===== */}
-      <section className="section transparent-bg">
-        <div className="container">
-          <div ref={addRef} className="fade-up text-center">
-            <span className="section-label">{txt.eventsLabel}</span>
-            <h2 className="section-title">{txt.eventsTitle}</h2>
-            <div className="gold-divider center" />
-            <p className="section-subtitle">{txt.eventsSub}</p>
-          </div>
-          
-          {/* Primary Highlight Card: 2026 Gala */}
-          <div ref={addRef} className="fade-up" style={{ marginTop: '40px', background: 'var(--navy)', borderRadius: '16px', border: '2px solid rgba(201,168,76,0.6)', padding: '48px', textAlign: 'center', boxShadow: '0 20px 40px rgba(0,0,0,0.3)', position: 'relative', overflow: 'hidden' }}>
-            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '6px', background: 'var(--gradient-gold)' }} />
-            <span className="tag" style={{ marginBottom: '16px', display: 'inline-block' }}>{lang === 'es' ? 'Próximo Evento' : 'Upcoming Highlight'}</span>
-            <h3 style={{ color: 'var(--gold)', fontFamily: 'Playfair Display', fontSize: '2.5rem', marginBottom: '16px' }}>{lang === 'es' ? 'Tercera Gala Anual' : '3rd Annual Gala'}</h3>
-            <p style={{ color: 'var(--white)', fontSize: '1.4rem', marginBottom: '8px' }}>{lang === 'es' ? 'Octubre 2026' : 'October 2026'}</p>
-            <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.1rem', marginBottom: '32px' }}>@ The Signature Grand</p>
-            <Link href="/events" className="btn btn-primary">{txt.viewAllEvents} →</Link>
-          </div>
-
-          {/* Secondary Past Highlight Card: 2025 Event */}
-          <div ref={addRef} className="fade-up" style={{ background: 'rgba(20, 28, 46, 0.4)', backdropFilter: 'blur(10px)', borderRadius: '16px', border: '1px solid rgba(201,168,76,0.3)', padding: '36px', textAlign: 'center', maxWidth: '800px', margin: '30px auto 0', boxShadow: '0 10px 30px rgba(0,0,0,0.2)' }}>
-            <span className="tag" style={{ marginBottom: '16px', display: 'inline-block' }}>{lang === 'es' ? 'Destacado del Pasado' : 'Past Highlight'}</span>
-            <h4 style={{ color: 'var(--white)', fontFamily: 'Playfair Display', fontSize: '1.6rem', marginBottom: '10px' }}>
-              {lang === 'es' ? 'Música y Luces por la Vida 2025' : 'Music & Lights for Life 2025'}
-            </h4>
-            <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '1rem', lineHeight: '1.6', maxWidth: '640px', margin: '0 auto' }}>
-              {lang === 'es' 
-                ? 'Nuestro evento más grande hasta ahora — Música y Luces por la Vida 2025 en el Miramar City Center Hall reunió a la comunidad con presentaciones, 24+ patrocinadores y un poderoso mensaje de prevención.' 
-                : 'Our biggest event yet — Music and Lights for Life 2025 at Miramar City Center Hall brought together the community with performances, 24+ sponsors, and powerful prevention messaging.'}
-            </p>
           </div>
         </div>
       </section>

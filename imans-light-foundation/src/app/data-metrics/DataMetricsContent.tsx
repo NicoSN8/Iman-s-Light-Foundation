@@ -133,11 +133,29 @@ export default function DataMetricsPage() {
               </div>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <div style={{ position: 'relative', width: '100%', maxWidth: '440px', aspectRatio: '1/1', background: 'rgba(20, 28, 46, 0.6)', backdropFilter: 'blur(16px)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 20px 50px rgba(0,0,0,0.5)', border: '1px solid rgba(255,255,255,0.05)' }}>
-                <Activity size={160} color="var(--gold)" strokeWidth={1} />
-                <div style={{ position: 'absolute', bottom: '15%', background: 'var(--gold)', color: 'var(--navy)', padding: '8px 24px', borderRadius: '30px', fontWeight: 'bold', fontSize: '1.1rem' }}>
-                  {lang === 'en' ? 'Evidence in Action' : 'Evidencia en Acción'}
+              <div style={{ width: '100%', maxWidth: '440px', background: 'rgba(20, 28, 46, 0.6)', backdropFilter: 'blur(16px)', borderRadius: '20px', boxShadow: '0 20px 50px rgba(0,0,0,0.5)', border: '1px solid rgba(255,255,255,0.05)', padding: '32px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '24px' }}>
+                  <Activity size={24} color="var(--gold)" />
+                  <span style={{ color: 'var(--gold)', fontWeight: 'bold', fontSize: '1.05rem', letterSpacing: '0.02em' }}>
+                    {lang === 'en' ? 'Evidence in Action' : 'Evidencia en Acción'}
+                  </span>
                 </div>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                  {[
+                    { num: '9.3 / 10', label: txt.statQuality },
+                    { num: '97%', label: txt.statEngagement },
+                    { num: '67%', label: txt.statMindShift },
+                    { num: '100%', label: txt.statRelevance },
+                  ].map((stat, i) => (
+                    <div key={i}>
+                      <div style={{ fontSize: '1.8rem', fontWeight: 'bold', color: 'var(--white)', fontFamily: 'Playfair Display' }}>{stat.num}</div>
+                      <div style={{ fontSize: '0.82rem', color: 'rgba(255,255,255,0.6)', lineHeight: '1.4' }}>{stat.label}</div>
+                    </div>
+                  ))}
+                </div>
+                <a href="#survey-results" style={{ display: 'inline-block', marginTop: '24px', fontSize: '0.85rem', color: 'var(--gold-light)', textDecoration: 'underline' }}>
+                  {lang === 'en' ? 'See the full survey results ↓' : 'Ver los resultados completos ↓'}
+                </a>
               </div>
             </div>
           </div>
