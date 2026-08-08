@@ -240,14 +240,24 @@ running either command, check for and delete this nested file — the root
 - **Donate buttons currently link out** to the old Wix donations page
   (`imanslightfoundation.org/donations`). This is intentional and temporary —
   do not point the production domain at this Vercel deployment until real
-  PayPal checkout replaces that link, or donations will 404 silently. Full
-  context and the do-not-do-this-yet list lives in `SETUP-TODO.md`.
+  checkout (Zeffy or PayPal) replaces that link, or donations will 404
+  silently. Full context and the do-not-do-this-yet list lives in
+  `SETUP-TODO.md`.
+- **2026-08-08 — donation platform switched to Zeffy first, not PayPal.**
+  The CEO chose Zeffy (zeffy.com): genuinely 0% fees (revenue comes from an
+  optional donor tip), captures donor name/email automatically, and also
+  handles event ticket sales — PayPal alone wouldn't. Zeffy needs the
+  foundation to sign up, verify via Stripe (ID + bank account, by an
+  authorized rep), and hand me a form link/embed once approved — see
+  `SETUP-TODO.md` Phase 3 for the exact steps. PayPal's steps are left in
+  place in case it's ever needed alongside or instead of Zeffy, but Zeffy
+  is the active path.
 - Planned build-out (see `SETUP-TODO.md` for the human side of each phase):
   Neon Postgres (done) → password-protected `/admin` (done) → events in the
-  database (done) → PayPal donations in sandbox → bilingual IRS-compliant
-  receipts → donations go live → ticket sales with QR check-in. Everything
-  not dependent on PayPal is done; remaining phases are blocked on the
-  foundation's PayPal API credentials.
+  database (done) → Zeffy donations → donations go live → ticket sales with
+  seat assignment. Everything not dependent on the donation platform is
+  done; remaining phases are blocked on Zeffy's signup/verification (or
+  PayPal API credentials, if that path is used instead).
 - When that work starts, treat the server as the source of truth for any
   amount of money — never trust a client-submitted price/amount.
 - **Ticketing (Phase 7) needs seat/table assignment, not just a quantity
