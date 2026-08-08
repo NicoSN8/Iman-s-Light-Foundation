@@ -83,7 +83,7 @@ site can't safely continue (or shouldn't go live) until you do this.
   General → Delete Project) whenever you feel like tidying up, or just
   ignore it.
 
-## Phase 2 — Admin login (not started)
+## Phase 2 — Admin login ✅ done (2026-08-08)
 
 > **What this is:** a private staff-only dashboard at `yoursite.com/admin` —
 > **not** something donors ever see or use. A donor never creates an account
@@ -93,14 +93,23 @@ site can't safely continue (or shouldn't go live) until you do this.
 > (later) check someone in at the door. One shared password for your team,
 > not per-person accounts.
 
-- [ ] **LATER — Choose an admin password.** I'll ask you to pick a strong
-  password for the site's private `/admin` area (donations, contact
-  messages, later ticket check-in). You'll paste it somewhere temporarily so
-  I can generate a secure hash of it, then that hash — never the plain
-  password — goes into a Vercel environment variable. Keep the real password
-  somewhere safe (a password manager); it isn't stored anywhere in the code.
+- [x] **Password set.** You generated the hash yourself using a local tool
+  that never leaves your browser, so I never saw or stored your actual
+  password — only you know it. **Make sure it's saved somewhere safe (a
+  password manager)** — if it's lost, generating a new one is easy (open
+  `admin-password-tool.html` in the project folder again), but there's no
+  "forgot password" recovery flow.
+- [x] **`/admin` is live** (once this branch is merged/deployed) — shows
+  contact form submissions. Log in at `yoursite.com/admin/login`.
 
-## Phase 3 — PayPal donations, sandbox (not started)
+## Phase 3 — PayPal donations, sandbox (in progress — waiting on PayPal)
+
+> **Status update from you (2026-08-08):** the CEO is waiting on an email
+> from PayPal to link the account to the new site — they're using PayPal's
+> API (application programming interface), not a simple account-number
+> linking. That matches the plan below exactly: the "API" they mean is the
+> Client ID/Secret pair from a PayPal Developer app, which is what the two
+> steps below produce. Nothing for you to do until that email arrives.
 
 - [ ] **LATER — Create a PayPal Developer account and a sandbox app.** At
   **developer.paypal.com**, log in with the same PayPal account, go to **My
@@ -194,4 +203,4 @@ site can't safely continue (or shouldn't go live) until you do this.
 
 ---
 
-*Updated 2026-08-08: Phase 1 (database) complete.*
+*Updated 2026-08-08: Phase 2 (admin login) complete.*
