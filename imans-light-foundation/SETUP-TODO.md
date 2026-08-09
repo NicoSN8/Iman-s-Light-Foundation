@@ -181,7 +181,7 @@ site can't safely continue (or shouldn't go live) until you do this.
   your `/admin` dashboard, confirm a donation receipt email arrives, and
   confirm refunding it in the sandbox updates the status correctly.
 
-## Phase 4 — Email receipts, sent from the org's Gmail (not started)
+## Phase 4 — Email receipts, sent from the org's Gmail ✅ done (2026-08-08)
 
 > Using `imanslightfoundation@gmail.com` directly (instead of a separate
 > email-sending service) as requested. It's genuinely simpler — no new
@@ -199,42 +199,13 @@ site can't safely continue (or shouldn't go live) until you do this.
 > the contact form still works exactly as before (saves to the database,
 > visible in `/admin`), it just silently skips the email step.
 
-- [ ] **BLOCKING — Turn on 2-Step Verification on the org's Gmail**
-  (required before Google will let us create the app-specific password
-  below).
-  1. Sign in to **imanslightfoundation@gmail.com**.
-  2. Go to **myaccount.google.com/security**.
-  3. Under "How you sign in to Google," click **2-Step Verification** →
-     **Get Started**, and follow the prompts (you'll need a phone number to
-     receive a one-time code).
-  4. **Verify:** the Security page shows "2-Step Verification: On."
-
-- [ ] **BLOCKING — Create an App Password** (a special 16-character password
-  just for the website to send mail — it's separate from the real Gmail
-  password and can be revoked any time without changing the real password).
-  1. Still signed in to the org Gmail, go to
-     **myaccount.google.com/apppasswords** (you may be asked to sign in
-     again).
-  2. Under "App name," type **Website Receipts** and click **Create**.
-  3. Google shows a 16-character password in a yellow box — copy it right
-     away, it's shown only once. Spaces in it don't matter.
-  4. In the Vercel dashboard, go to the project's **Settings → Environment
-     Variables** and add two new variables (or tell me and I'll add them via
-     the CLI without you having to paste the password anywhere but Vercel
-     itself):
-     - `GMAIL_USER` = `imanslightfoundation@gmail.com`
-     - `GMAIL_APP_PASSWORD` = the 16-character password from step 3
-  5. **Verify:** back on the App Passwords page, you'll see "Website
-     Receipts" listed (you can revoke it there any time), and Vercel's
-     Environment Variables list shows both new entries.
-
-- [ ] **LATER — Redeploy.** Once both variables are set, the next deploy
-  (or a manual redeploy from the Vercel dashboard) picks them up
-  automatically — submitting `/contact` will then email
-  `imanslightfoundation@gmail.com` with the message, reply-to set to
-  whoever submitted it, in addition to still saving to `/admin`. The same
-  two variables will power donation/ticket receipts once those exist —
-  nothing further to configure for that later.
+- [x] **2-Step Verification + App Password created**, `GMAIL_USER` and
+  `GMAIL_APP_PASSWORD` are set in Vercel (Production, Preview,
+  Development) and confirmed working — contact form submissions email
+  `imanslightfoundation@gmail.com`, reply-to set to whoever submitted it,
+  and you can reply straight from `/admin`. Nothing further to do here.
+  The same two variables will power donation/ticket receipts once those
+  exist.
 
 ## Phase 5 — Go live with donations (not started)
 
