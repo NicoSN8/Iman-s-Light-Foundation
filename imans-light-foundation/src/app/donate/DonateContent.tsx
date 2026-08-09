@@ -1,5 +1,5 @@
 'use client';
-import { useContext, ReactNode } from 'react';
+import { useContext, useState, ReactNode } from 'react';
 import Link from 'next/link';
 import { LanguageContext } from '@/context/LanguageContext';
 import { Leaf, Mail, RefreshCcw, Building2, GraduationCap, Heart, ShieldAlert, Scale } from 'lucide-react';
@@ -111,6 +111,7 @@ export default function DonatePage() {
   const { lang } = useContext(LanguageContext);
   const isEs = lang === 'es';
   const tierList = tiers[lang];
+  const [institution, setInstitution] = useState('');
 
   return (
     <>
@@ -121,38 +122,81 @@ export default function DonatePage() {
             <span>›</span>
             <span style={{ color: 'rgba(255,255,255,0.7)' }}>{isEs ? 'Donar' : 'Donate'}</span>
           </div>
-          <span className="section-label">{isEs ? 'Apóyanos' : 'Support Our Mission'}</span>
-          <h1>{isEs ? 'Invierte en el Mañana' : 'Invest in Tomorrow'}</h1>
-          <p>{isEs ? 'Tu generosidad financia directamente la educación sobre drogas en las escuelas locales y el asesoramiento terapéutico para familias necesitadas.' : 'Your generosity directly funds life-saving drug education in local classrooms and therapy sessions for grieving or at-risk families.'}</p>
+          <span className="section-label">{isEs ? 'Impulsa Nuestra Misión' : 'Fuel Our Mission'}</span>
+          <h1>{isEs ? 'Tu Regalo Salva Vidas' : 'Your Gift Saves Lives'}</h1>
+          <p>
+            {isEs
+              ? 'Cada dólar que das financia un taller impartido, una familia asesorada, una vida salvada. Aquí es donde tu generosidad se convierte en impacto real y medible en el sur de la Florida.'
+              : 'Every dollar you give funds a workshop taught, a family counseled, a life saved. This is where your generosity becomes real, measurable impact across South Florida.'}
+          </p>
         </div>
       </div>
 
       <section className="section">
         <div className="container">
-          <div className="text-center" style={{ marginBottom: '60px' }}>
+          <div className="text-center" style={{ marginBottom: '48px' }}>
             <span className="section-label">{isEs ? 'Opciones de Financiamiento' : 'Funding Packages'}</span>
             <h2 className="section-title">{isEs ? 'Nuestros Paquetes de Impacto' : 'How You Can Support'}</h2>
             <div className="gold-divider center" />
-            <p className="section-subtitle">{isEs ? 'Elige un nivel que resuene con tu deseo de generar un cambio duradero en el sur de Florida.' : 'Choose a sponsorship level that matches your commitment to saving young lives and supporting families.'}</p>
+            <p className="section-subtitle">{isEs ? 'Elige un nivel que resuene con tu deseo de generar un cambio duradero en el sur de Florida.' : 'Choose a level that matches your commitment to saving young lives and supporting families.'}</p>
           </div>
+
+          <div className={`form-group ${styles.institutionField}`}>
+            <label htmlFor="donate-institution">
+              {isEs
+                ? '¿Quieres que tu donación apoye una escuela o universidad específica en Miami-Dade o Broward?'
+                : 'Want your gift to support a specific school or college in Miami-Dade or Broward?'}
+            </label>
+            <input
+              id="donate-institution"
+              type="text"
+              placeholder={isEs ? 'Nombre de la escuela o universidad (opcional)' : 'School or college name (optional)'}
+              value={institution}
+              onChange={(e) => setInstitution(e.target.value)}
+            />
+            <p className={styles.institutionHint}>
+              {isEs
+                ? 'Déjalo en blanco para apoyar donde más se necesite.'
+                : 'Leave it blank to support wherever the need is greatest.'}
+            </p>
+          </div>
+
           <div className={styles.tiersGrid}>
-            {tierList.map((tier, i) => (
-              <div key={i} className={`card ${styles.tierCard} ${tier.featured ? styles.tierFeatured : ''}`}>
-                <div className={styles.tierIcon}>{tier.icon}</div>
-                <div className={styles.tierAmount}>{tier.amount}</div>
-                <div className={styles.tierLabel}>{tier.name}</div>
-                <p className={styles.tierDesc}>{isEs ? tier.descEs : tier.descEn}</p>
-                <a
-                  href="https://www.imanslightfoundation.org/donations"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`btn ${tier.featured ? 'btn-primary' : 'btn-outline'}`}
-                  style={{ marginTop: 'auto', fontSize: '0.875rem', padding: '12px 22px', textAlign: 'center' }}
-                >
-                  {isEs ? 'Donar' : 'Give'} {tier.amount !== 'Custom' && tier.amount !== 'Personalizado' ? tier.amount : ''} →
-                </a>
-              </div>
-            ))}
+            {tierList.map((tier, i) => {
+              const designated = institution.trim();
+              const amountLabel = tier.amount !== 'Custom' && tier.amount !== 'Personalizado' ? tier.amount : '';
+              const giveLabel = designated
+                ? `${isEs ? 'Donar' : 'Give'} ${amountLabel} ${isEs ? 'para' : 'for'} ${designated}`
+                : `${isEs ? 'Donar' : 'Give'} ${amountLabel}`;
+
+              return (
+                <div key={i} className={`${styles.tierCard} ${tier.featured ? styles.tierFeatured : ''}`}>
+                  <div className={styles.tierIcon}>{tier.icon}</div>
+                  <div className={styles.tierAmount}>{tier.amount}</div>
+                  <div className={styles.tierLabel}>{tier.name}</div>
+                  <p className={styles.tierDesc}>{isEs ? tier.descEs : tier.descEn}</p>
+                  {designated ? (
+                    <Link
+                      href={`/contact?donationTier=${encodeURIComponent(tier.name)}&institution=${encodeURIComponent(designated)}`}
+                      className={`btn ${tier.featured ? 'btn-primary' : 'btn-outline'}`}
+                      style={{ marginTop: 'auto', fontSize: '0.875rem', padding: '12px 22px', textAlign: 'center' }}
+                    >
+                      {giveLabel} →
+                    </Link>
+                  ) : (
+                    <a
+                      href="https://www.imanslightfoundation.org/donations"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`btn ${tier.featured ? 'btn-primary' : 'btn-outline'}`}
+                      style={{ marginTop: 'auto', fontSize: '0.875rem', padding: '12px 22px', textAlign: 'center' }}
+                    >
+                      {giveLabel} →
+                    </a>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

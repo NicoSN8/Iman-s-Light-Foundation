@@ -230,7 +230,7 @@ export default function HomePage() {
               </div>
               <div style={{ padding: '44px 40px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                 <span className="tag" style={{ marginBottom: '16px', width: 'fit-content' }}>
-                  {lang === 'es' ? 'Próximo Evento' : 'Upcoming Highlight'}
+                  {lang === 'es' ? 'Nuestra Noche Más Importante' : 'Our Most Important Night'}
                 </span>
                 <h3 style={{ color: 'var(--gold)', fontFamily: 'Playfair Display', fontSize: '2.1rem', marginBottom: '10px' }}>
                   {lang === 'es' ? 'Tercera Gala Anual' : '3rd Annual Gala'}
@@ -241,14 +241,14 @@ export default function HomePage() {
                 <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1rem', marginBottom: '20px' }}>@ The Signature Grand</p>
                 <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '1rem', lineHeight: '1.75', marginBottom: '20px' }}>
                   {lang === 'es'
-                    ? 'Nuestra gala anual Música y Luces por la Vida reúne a la comunidad para una noche de celebración, entretenimiento en vivo y homenaje, financiando los talleres, programas de salud mental y alcance comunitario que salvan vidas todo el año.'
-                    : 'Our annual Music and Lights for Life gala brings the community together for an evening of celebration, live entertainment, and remembrance — funding the workshops, mental health programs, and outreach that save lives all year.'}
+                    ? 'Una noche. Una comunidad reunida. Los fondos que hacen posible cada taller, cada sesión de consejería y cada vida que ayudamos a salvar durante todo el año — todo comienza aquí.'
+                    : "One night. One community, together. The funds behind every workshop, every counseling session, and every life we help save all year — it all starts here."}
                 </p>
                 <p style={{ color: 'var(--gold-light)', fontSize: '0.9rem', fontWeight: 600, marginBottom: '24px' }}>
                   {lang === 'es' ? 'Tamaños de mesa y precios ya disponibles' : 'Table sizes and pricing available now'}
                 </p>
-                <Link href="/events#tickets" className="btn btn-primary" style={{ width: 'fit-content' }}>
-                  {lang === 'es' ? 'Ver Opciones de Boletos' : 'View Ticket Options'} →
+                <Link href="/gala" className="btn btn-primary" style={{ width: 'fit-content' }}>
+                  {lang === 'es' ? 'Ver la Gala y Reservar' : 'View the Gala & Reserve'} →
                 </Link>
               </div>
             </div>

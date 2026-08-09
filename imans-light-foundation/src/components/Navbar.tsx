@@ -143,6 +143,11 @@ export default function Navbar() {
                 {lang === 'en' ? 'Home' : 'Inicio'}
               </Link>
             </li>
+            <li className={styles.navItem}>
+              <Link href="/gala" className={styles.galaLink}>
+                ✦ {lang === 'en' ? '3rd Annual Gala' : '3ra Gala Anual'}
+              </Link>
+            </li>
             {navLinks.map((link) => (
               <li
                 key={link.href}
@@ -208,6 +213,10 @@ export default function Navbar() {
           <div className={styles.mobileInner}>
             <Link href="/" className={styles.mobileLink} onClick={() => setMobileOpen(false)}>
               {lang === 'en' ? 'Home' : 'Inicio'}
+            </Link>
+            <Link href="/gala" className={styles.mobileGalaLink} onClick={() => setMobileOpen(false)}>
+              {lang === 'en' ? '3rd Annual Gala' : '3ra Gala Anual'}
+              <span className={styles.mobileGalaBadge}>{lang === 'en' ? 'BIG NIGHT' : 'GRAN NOCHE'}</span>
             </Link>
             {navLinks.map((link) => (
               <div key={link.href}>

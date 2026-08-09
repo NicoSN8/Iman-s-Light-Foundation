@@ -21,13 +21,27 @@ export default function ContactPage() {
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const tier = params.get('tier');
-    if (!tier) return;
-    setSubject('tickets');
-    setMessage(
-      isEs
-        ? `Me gustaría reservar: ${tier} para la 3ra Gala Anual. Por favor contáctenme para coordinar el pago.`
-        : `I'd like to reserve: ${tier} for the 3rd Annual Gala. Please contact me to arrange payment.`
-    );
+    const donationTier = params.get('donationTier');
+    const institution = params.get('institution');
+
+    if (tier) {
+      setSubject('tickets');
+      setMessage(
+        isEs
+          ? `Me gustaría reservar: ${tier} para la 3ra Gala Anual. Por favor contáctenme para coordinar el pago.`
+          : `I'd like to reserve: ${tier} for the 3rd Annual Gala. Please contact me to arrange payment.`
+      );
+      return;
+    }
+
+    if (donationTier) {
+      setSubject('donation');
+      setMessage(
+        isEs
+          ? `Me gustaría hacer una donación (${donationTier}) para apoyar específicamente a: ${institution ?? ''}. Por favor contáctenme para coordinar el pago.`
+          : `I'd like to make a donation (${donationTier}) designated to support: ${institution ?? ''}. Please contact me to arrange payment.`
+      );
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -134,6 +148,7 @@ export default function ContactPage() {
                       <option value="volunteer">{isEs ? 'Ser Voluntario' : 'Volunteer'}</option>
                       <option value="partner">{isEs ? 'Alianzas / Patrocinios' : 'Partnerships / Sponsorships'}</option>
                       <option value="tickets">{isEs ? 'Boletos de la Gala' : 'Gala Tickets'}</option>
+                      <option value="donation">{isEs ? 'Donación Designada' : 'Designated Donation'}</option>
                       <option value="media">{isEs ? 'Prensa / Medios' : 'Press / Media'}</option>
                       <option value="support">{isEs ? 'Necesito Apoyo' : 'I Need Support'}</option>
                     </select>

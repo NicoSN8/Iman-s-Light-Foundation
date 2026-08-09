@@ -330,6 +330,36 @@
   font-size: 0.75rem;
 }
 
+.galaLink {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--gold-light);
+  white-space: nowrap;
+  padding: 7px 16px;
+  border-radius: 50px;
+  border: 1.5px solid rgba(201, 168, 76, 0.6);
+  background: rgba(201, 168, 76, 0.08);
+  animation: galaPulse 2.6s ease-in-out infinite;
+}
+
+.galaLink:hover {
+  background: rgba(201, 168, 76, 0.18);
+  color: #fff;
+}
+
+@keyframes galaPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201, 168, 76, 0.35); }
+  50% { box-shadow: 0 0 0 6px rgba(201, 168, 76, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .galaLink { animation: none; }
+}
+
 .donateBtn {
   position: relative;
   z-index: 2000;
@@ -416,6 +446,36 @@
 
 .mobileLink:hover {
   color: var(--gold);
+}
+
+.mobileGalaLink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 14px 0;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--gold-light);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: color 0.2s ease;
+}
+
+.mobileGalaLink:hover {
+  color: var(--gold);
+}
+
+.mobileGalaBadge {
+  flex-shrink: 0;
+  white-space: nowrap;
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  background: var(--gradient-gold);
+  color: var(--navy);
+  padding: 3px 10px;
+  border-radius: 50px;
 }
 
 .mobileDropdown {
