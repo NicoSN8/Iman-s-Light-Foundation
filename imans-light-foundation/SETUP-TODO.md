@@ -243,14 +243,33 @@ site can't safely continue (or shouldn't go live) until you do this.
   edit, delete, mark featured, or unpublish/stage an event before it's
   public.
 
-## Phase 7 — Ticket sales (not started)
+## Phase 7 — Gala ticket tiers & seating ✅ mostly done (2026-08-08)
 
-- [ ] **LATER — Nothing new to configure**, reuses the PayPal setup from
-  Phase 3/5. You'll manage ticket types and prices from `/admin`, and check
-  attendees in at the door from `/admin/checkin` using your phone's camera.
+- [x] **Ticket tiers + seating built.** `/events#tickets` shows real,
+  editable pricing for the 3rd Annual Gala (Individual Seat $125, Half
+  Table $600, Full Table $1,100, Sponsor Table $2,500, capped at 5) — this
+  is a **draft template**, not final pricing. Change any of it any time
+  from **`/admin/tickets`**, no code needed. Every ticket order (cash/door
+  commitment, or a Zeffy sale once that's live) is entered by staff from
+  that same page, which is also where you assign a table number, add seat
+  notes, and check someone in at the door.
+- [ ] **BLOCKING (for real online sales) — Send me the Zeffy ticket-sale
+  link once it's approved.** Right now each tier's "Reserve Your Table"
+  button goes to `/contact` with the tier pre-filled, honestly labeled
+  "online tickets go live soon via Zeffy" — no one can reserve without
+  paying, matching what you asked for. Once you have a real Zeffy
+  link/embed for gala tickets, send it over and swapping it in is a small
+  change, not a rebuild.
+- [ ] **LATER — Reconcile Zeffy sales into the seating tool.** For now,
+  after Zeffy is live, add each online ticket buyer into `/admin/tickets`
+  yourself (checking Zeffy's own dashboard) so they show up in the same
+  seating list as cash/door orders. Automating that reconciliation is a
+  future step once Zeffy's real API/webhook shape is known.
 
 ---
 
-*Updated 2026-08-08: Phase 6 (events in the database, with working photo
-upload) fully complete. Everything not dependent on PayPal is done — next
-step is Phase 3, waiting on the PayPal API email.*
+*Updated 2026-08-08: Phases 1, 2, 4, and 6 fully done. Phase 7 (gala ticket
+tiers + seating) is built and live, just waiting on the real Zeffy link.
+Everything else — donations actually appearing anywhere in `/admin`,
+tickets sold online, going live on the real domain — is blocked on Zeffy
+(pending) or PayPal Confirmed Charity (not started).*
