@@ -1,5 +1,6 @@
-import Link from 'next/link';
 import styles from './TicketTiers.module.css';
+
+const ZEFFY_TICKETING_URL = 'https://www.zeffy.com/en-US/ticketing/3rd-annual-gala-6';
 
 export interface TicketTierData {
   id: string;
@@ -34,9 +35,9 @@ export default function TicketTiers({ tiers, lang }: { tiers: TicketTierData[]; 
             {t.capacity != null && (
               <p className={styles.limited}>{isEs ? `Solo ${t.capacity} disponibles` : `Only ${t.capacity} available`}</p>
             )}
-            <Link href={`/contact?tier=${encodeURIComponent(name)}`} className="btn btn-primary" style={{ marginTop: '16px', width: '100%', justifyContent: 'center' }}>
+            <a href={ZEFFY_TICKETING_URL} target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ marginTop: '16px', width: '100%', justifyContent: 'center' }}>
               {isEs ? 'Reservar Su Mesa' : 'Reserve Your Table'} →
-            </Link>
+            </a>
           </div>
         );
       })}

@@ -82,8 +82,8 @@ export default function GalaContent({ event, tiers }: { event: EventRow; tiers: 
               <div className="gold-divider center" />
               <p className={styles.ticketsIntro}>
                 {isEs
-                  ? 'Boletos en venta pronto por Zeffy. Mientras tanto, contáctanos para reservar tu mesa.'
-                  : 'Online tickets go live soon via Zeffy. In the meantime, contact us to reserve your table.'}
+                  ? 'Compra tus boletos de forma segura en línea a través de Zeffy.'
+                  : 'Buy your tickets securely online through Zeffy.'}
               </p>
             </div>
             <TicketTiers tiers={tiers} lang={lang} />

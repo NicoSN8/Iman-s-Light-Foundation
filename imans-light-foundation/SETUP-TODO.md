@@ -121,7 +121,14 @@ site can't safely continue (or shouldn't go live) until you do this.
 - [x] **`/admin` is live** (once this branch is merged/deployed) — shows
   contact form submissions. Log in at `yoursite.com/admin/login`.
 
-## Phase 3 — PayPal donations, sandbox (on hold — see Zeffy below)
+## Phase 3 — PayPal donations, sandbox (on hold — Zeffy is live instead, see below)
+
+> **2026-08-09 — Zeffy is verified and live.** Both the donation form and
+> the gala ticketing campaign are built, approved, and wired into the site.
+> `/donate` points at the real Zeffy donation form and every "Reserve Your
+> Table" button points at the real Zeffy ticketing campaign. The PayPal
+> steps below are no longer the active path — left in place only in case
+> that ever changes.
 
 > **Status update from you (2026-08-08):** the CEO is waiting on an email
 > from PayPal to link the account to the new site — they're using PayPal's
@@ -140,29 +147,16 @@ site can't safely continue (or shouldn't go live) until you do this.
 > the PayPal steps beneath it. The PayPal steps stay here in case the CEO
 > wants both, or wants to switch back later.
 
-### Zeffy setup (do this first)
+### Zeffy setup ✅ done (2026-08-09)
 
-- [ ] **BLOCKING — Sign up at zeffy.com.** Needs: your email, your name,
-  the foundation's legal name, phone number, and the site's URL.
-- [ ] **BLOCKING — Have the EIN and legal address ready.** Zeffy verifies
-  the foundation's EIN (**93-4410846**) and legal name/address against IRS
-  records, so make sure what you enter matches your IRS filing exactly.
-- [ ] **BLOCKING — An authorized representative completes Stripe identity
-  verification.** Zeffy processes payments through Stripe behind the
-  scenes. Whoever is a board member, executive director, or other
-  authorized signatory (this may need to be the CEO, not you, depending on
-  who's authorized) will need to upload a government-issued ID, take a
-  selfie, and provide the last 4 digits of their SSN, directly to
-  Stripe/Zeffy's own verification flow — **never send any of that to me or
-  type it in chat.** Stripe typically reviews within 24-72 hours.
-- [ ] **BLOCKING — Connect the foundation's bank account** (must be the
-  organization's own account, not a personal one) so donations/ticket
-  revenue has somewhere to deposit to.
-- [ ] **LATER — Once the account is approved,** send me the Zeffy
-  donation/ticket form link (or give me access to create one) and I'll
-  embed it on `/donate` and wire the Gala's ticket flow to it — this
-  replaces the PayPal Checkout integration work described below, so once
-  Zeffy is live we likely won't need the PayPal steps at all.
+- [x] **Signed up and verified at zeffy.com**, including Stripe identity
+  verification and the foundation's bank account connected.
+- [x] **Donation form built and linked in:** [donate-to-change-lives-20404](https://www.zeffy.com/en-US/donation-form/donate-to-change-lives-20404)
+  — every "Give"/"Donate Securely" button on `/donate` points here.
+- [x] **Gala ticketing campaign built and linked in:** [3rd-annual-gala-6](https://www.zeffy.com/en-US/ticketing/3rd-annual-gala-6)
+  — configured with the same 4 tiers as `/admin/tickets` (Individual Seat
+  $125, Half Table $600, Full Table $1,100, Sponsor Table $2,500 capped at
+  5). Every "Reserve Your Table" button points here now.
 
 - [ ] **LATER — Create a PayPal Developer account and a sandbox app.** At
   **developer.paypal.com**, log in with the same PayPal account, go to **My
@@ -207,7 +201,12 @@ site can't safely continue (or shouldn't go live) until you do this.
   The same two variables will power donation/ticket receipts once those
   exist.
 
-## Phase 5 — Go live with donations (not started)
+## Phase 5 — Go live with donations ✅ done via Zeffy (2026-08-09)
+
+> Zeffy doesn't have a separate sandbox/live split the way PayPal does —
+> once your account is verified (done), the donation form is real money
+> from the first transaction. The PayPal-specific steps below no longer
+> apply; keeping them here only in case PayPal is ever added back.
 
 - [ ] **BLOCKING (before this phase) — Confirmed Charity status must be
   approved.** Otherwise every live donation is overcharged and PayPal does
@@ -253,23 +252,23 @@ site can't safely continue (or shouldn't go live) until you do this.
   commitment, or a Zeffy sale once that's live) is entered by staff from
   that same page, which is also where you assign a table number, add seat
   notes, and check someone in at the door.
-- [ ] **BLOCKING (for real online sales) — Send me the Zeffy ticket-sale
-  link once it's approved.** Right now each tier's "Reserve Your Table"
-  button goes to `/contact` with the tier pre-filled, honestly labeled
-  "online tickets go live soon via Zeffy" — no one can reserve without
-  paying, matching what you asked for. Once you have a real Zeffy
-  link/embed for gala tickets, send it over and swapping it in is a small
-  change, not a rebuild.
-- [ ] **LATER — Reconcile Zeffy sales into the seating tool.** For now,
-  after Zeffy is live, add each online ticket buyer into `/admin/tickets`
-  yourself (checking Zeffy's own dashboard) so they show up in the same
-  seating list as cash/door orders. Automating that reconciliation is a
-  future step once Zeffy's real API/webhook shape is known.
+- [x] **Real online ticket sales are live.** Every "Reserve Your Table"
+  button now points at the real Zeffy ticketing campaign
+  ([3rd-annual-gala-6](https://www.zeffy.com/en-US/ticketing/3rd-annual-gala-6)).
+- [ ] **LATER — Reconcile Zeffy sales into the seating tool.** This is a
+  manual step for now: after someone buys a ticket on Zeffy, add them into
+  `/admin/tickets` yourself (checking Zeffy's own sales dashboard) using
+  the "Zeffy" payment method option that's already built into the "+ Add
+  Order" form, so they show up in the same seating list as cash/door
+  orders and can be assigned a table. Automating that reconciliation via a
+  webhook is a future step once Zeffy's real API/webhook shape is known.
 
 ---
 
-*Updated 2026-08-08: Phases 1, 2, 4, and 6 fully done. Phase 7 (gala ticket
-tiers + seating) is built and live, just waiting on the real Zeffy link.
-Everything else — donations actually appearing anywhere in `/admin`,
-tickets sold online, going live on the real domain — is blocked on Zeffy
-(pending) or PayPal Confirmed Charity (not started).*
+*Updated 2026-08-09: Phases 1, 2, 3 (via Zeffy), 4, 5 (via Zeffy), 6, and 7
+are all done. Donations and gala ticket sales both run through real,
+verified Zeffy checkout. The one remaining manual step is reconciling
+Zeffy ticket sales into `/admin/tickets` for seating (see Phase 7). The
+only thing left before launch is pointing the real domain
+(`www.imanslightfoundation.org`) at Vercel — that DNS change is yours to
+make whenever you're ready, not something I do.*
