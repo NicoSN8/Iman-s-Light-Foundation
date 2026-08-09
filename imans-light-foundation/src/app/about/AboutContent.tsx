@@ -223,8 +223,8 @@ export default function AboutPage() {
             </div>
             <div className={styles.storyVisual}>
               <Image
-                src="/media/56e6ee_c8a42446ccc74e71817a9116052f4ce2~mv2.jpg"
-                alt="Mari C. Rodriguez, Founder & President"
+                src="/media/56e6ee_8fa3d2dc25d34cbcaaa0219bd31efeaa~mv2.jpg"
+                alt="Iman"
                 width={600}
                 height={600}
                 className={styles.storyImg}

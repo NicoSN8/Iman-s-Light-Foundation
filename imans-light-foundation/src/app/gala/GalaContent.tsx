@@ -93,18 +93,18 @@ export default function GalaContent({ event, tiers }: { event: EventRow; tiers: 
             <div className={styles.whyText}>
               <p>
                 {isEs
-                  ? 'Esta es la noche que hace posible todo lo demás. Los talleres que llevamos a las aulas, la consejería que ofrecemos a familias en duelo, el Narcan que ponemos en manos de quienes lo necesitan — todo se financia gracias a la comunidad que se presenta esta noche.'
-                  : "This is the night that makes everything else possible. The workshops we bring into classrooms, the counseling we offer grieving families, the naloxone we put into the hands of people who need it — all of it runs on what this community raises in one evening."}
+                  ? 'Esta es la noche que hace posible todo lo demás. Los talleres que llevamos a las aulas, la consejería que ofrecemos a familias en duelo, el Narcan que ponemos en manos de quienes lo necesitan: todo se financia gracias a la comunidad que se presenta esta noche.'
+                  : "This is the night that makes everything else possible. The workshops we bring into classrooms, the counseling we offer grieving families, the naloxone we put into the hands of people who need it: all of it runs on what this community raises in one evening."}
               </p>
               <p>
                 {isEs
                   ? 'No es solo una fiesta. Es la razón por la que podemos seguir presentándonos, año tras año, para los estudiantes y familias del sur de la Florida. Cada mesa reservada, cada patrocinio, cada boleto comprado se traduce directamente en talleres impartidos y vidas tocadas el próximo año.'
-                  : "It isn't just a party — it's the reason we can keep showing up, year after year, for South Florida's students and families. Every table reserved, every sponsorship, every ticket sold turns directly into workshops taught and lives touched next year."}
+                  : "This isn't a party. It's the reason we can keep showing up, year after year, for South Florida's students and families. Every table reserved, every sponsorship, every ticket sold turns directly into workshops taught and lives touched next year."}
               </p>
               <p>
                 {isEs
-                  ? 'Únete a nosotros para una noche de música, homenaje y esperanza — y ayúdanos a llevar esta misión hacia otro año.'
-                  : 'Join us for an evening of music, remembrance, and hope — and help carry this mission into another year.'}
+                  ? 'Únete a nosotros para una noche de música, homenaje y esperanza, y ayúdanos a llevar esta misión hacia otro año.'
+                  : 'Join us for an evening of music, remembrance, and hope, and help carry this mission into another year.'}
               </p>
             </div>
 
