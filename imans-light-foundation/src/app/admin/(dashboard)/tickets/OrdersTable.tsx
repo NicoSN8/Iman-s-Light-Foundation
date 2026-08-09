@@ -37,6 +37,7 @@ export default function OrdersTable({ orders }: { orders: Order[] }) {
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [drafts, setDrafts] = useState<Record<string, { tableAssignment: string; seatNotes: string; status: string; paymentMethod: string; checkedIn: boolean }>>({});
   const [savingId, setSavingId] = useState<string | null>(null);
+  const [deletingId, setDeletingId] = useState<string | null>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [search, setSearch] = useState('');
 
@@ -89,6 +90,23 @@ export default function OrdersTable({ orders }: { orders: Order[] }) {
       setErrors((prev) => ({ ...prev, [id]: err instanceof Error ? err.message : 'Failed to save.' }));
     } finally {
       setSavingId(null);
+    }
+  };
+
+  const handleDelete = async (id: string, buyerName: string) => {
+    if (!window.confirm(`Delete the order for "${buyerName}"? This can't be undone.`)) return;
+    setDeletingId(id);
+    try {
+      const res = await fetch(`/api/admin/tickets/orders/${id}`, { method: 'DELETE' });
+      const data = await res.json().catch(() => null);
+      if (!res.ok || !data?.ok) throw new Error(data?.error || 'Failed to delete.');
+      setRows((prev) => prev.filter((r) => r.id !== id));
+      setExpandedId(null);
+      router.refresh();
+    } catch (err) {
+      setErrors((prev) => ({ ...prev, [id]: err instanceof Error ? err.message : 'Failed to delete.' }));
+    } finally {
+      setDeletingId(null);
     }
   };
 
@@ -213,6 +231,14 @@ export default function OrdersTable({ orders }: { orders: Order[] }) {
                         </button>
                         <button onClick={() => setExpandedId(null)} className="btn btn-outline" style={{ padding: '8px 20px', fontSize: '0.85rem' }}>
                           Cancel
+                        </button>
+                        <button
+                          onClick={() => handleDelete(o.id, o.buyerName)}
+                          disabled={deletingId === o.id}
+                          className="btn btn-outline"
+                          style={{ padding: '8px 20px', fontSize: '0.85rem', marginLeft: 'auto', color: '#E86A6A', borderColor: 'rgba(232,106,106,0.4)' }}
+                        >
+                          {deletingId === o.id ? 'Deleting…' : 'Delete Order'}
                         </button>
                       </div>
                     </td>
