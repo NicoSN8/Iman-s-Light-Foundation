@@ -7,8 +7,14 @@ interface PendingSale {
   id: string;
   buyerName: string | null;
   buyerEmail: string | null;
+  amountCents: number | null;
   rawPayload: unknown;
   receivedAt: string | Date;
+}
+
+function formatMoney(cents: number | null) {
+  if (cents == null) return null;
+  return `$${(cents / 100).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 }
 
 export default function PendingZeffySales({ sales }: { sales: PendingSale[] }) {
@@ -42,6 +48,7 @@ export default function PendingZeffySales({ sales }: { sales: PendingSale[] }) {
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '12px', flexWrap: 'wrap' }}>
               <div>
                 <strong>{s.buyerName ?? 'Name not found in payload'}</strong>
+                {formatMoney(s.amountCents) && <span style={{ color: 'var(--gold)', marginLeft: '8px', fontWeight: 600 }}>{formatMoney(s.amountCents)}</span>}
                 {s.buyerEmail && <span style={{ color: 'rgba(255,255,255,0.6)', marginLeft: '8px' }}>{s.buyerEmail}</span>}
                 <div style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.5)', marginTop: '2px' }}>
                   {new Date(s.receivedAt).toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' })}

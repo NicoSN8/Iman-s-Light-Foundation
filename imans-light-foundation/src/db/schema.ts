@@ -105,6 +105,7 @@ export const unmatchedZeffySales = pgTable('unmatched_zeffy_sales', {
   id: uuid('id').primaryKey().defaultRandom(),
   buyerName: text('buyer_name'),
   buyerEmail: text('buyer_email'),
+  amountCents: integer('amount_cents'),
   zeffyPaymentId: text('zeffy_payment_id').unique(),
   rawPayload: jsonb('raw_payload').notNull(),
   reviewed: boolean('reviewed').notNull().default(false),

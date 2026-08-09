@@ -78,6 +78,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ tok
       await db.insert(unmatchedZeffySales).values({
         buyerName,
         buyerEmail,
+        amountCents,
         zeffyPaymentId,
         rawPayload: body,
       }).onConflictDoNothing();
