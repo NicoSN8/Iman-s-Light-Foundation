@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, Fragment } from 'react';
+import { useState, useEffect, Fragment } from 'react';
 import { useRouter } from 'next/navigation';
 
 interface Order {
@@ -34,6 +34,17 @@ function formatMoney(cents: number) {
 export default function OrdersTable({ orders }: { orders: Order[] }) {
   const router = useRouter();
   const [rows, setRows] = useState(orders);
+  // OrdersTable keeps its own copy of `orders` in state so edits/deletes can
+  // update the list instantly without a round trip. That local copy is only
+  // ever seeded from props on first mount, though -- when a sibling
+  // component (AddOrderForm) adds a new order and calls router.refresh(),
+  // this component re-renders with a fresh `orders` prop but its own `rows`
+  // state doesn't pick that up on its own, so a newly-added order silently
+  // didn't appear until a manual page reload. Syncing whenever the prop
+  // reference changes fixes that.
+  useEffect(() => {
+    setRows(orders);
+  }, [orders]);
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [drafts, setDrafts] = useState<Record<string, { tableAssignment: string; seatNotes: string; status: string; paymentMethod: string; checkedIn: boolean }>>({});
   const [savingId, setSavingId] = useState<string | null>(null);
