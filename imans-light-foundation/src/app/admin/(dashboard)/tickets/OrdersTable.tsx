@@ -2,6 +2,7 @@
 
 import { useState, useEffect, Fragment } from 'react';
 import { useRouter } from 'next/navigation';
+import { phoneIncludes } from '@/lib/phone';
 
 interface Order {
   id: string;
@@ -57,7 +58,7 @@ export default function OrdersTable({ orders }: { orders: Order[] }) {
         const q = search.trim().toLowerCase();
         return o.buyerName.toLowerCase().includes(q)
           || (o.buyerEmail ?? '').toLowerCase().includes(q)
-          || (o.buyerPhone ?? '').toLowerCase().includes(q);
+          || phoneIncludes(o.buyerPhone, search);
       })
     : rows;
 
@@ -133,13 +134,14 @@ export default function OrdersTable({ orders }: { orders: Order[] }) {
 
   return (
     <div>
-      <input
-        type="text"
-        placeholder="Search by name, email, or phone…"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        style={{ marginBottom: '16px', maxWidth: '320px' }}
-      />
+      <div className="form-group" style={{ maxWidth: '320px' }}>
+        <input
+          type="text"
+          placeholder="Search by name, email, or phone…"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </div>
       {rows.length === 0 ? (
         <p style={{ color: 'rgba(255,255,255,0.7)' }}>No ticket orders yet — every real Zeffy ticket sale shows up here automatically, or use &quot;+ Add Order&quot; above for a cash/door commitment.</p>
       ) : visibleRows.length === 0 ? (

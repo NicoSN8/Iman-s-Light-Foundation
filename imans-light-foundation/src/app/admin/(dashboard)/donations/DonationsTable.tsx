@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { phoneIncludes } from '@/lib/phone';
 
 interface Donation {
   id: string;
@@ -26,19 +27,20 @@ export default function DonationsTable({ donations }: { donations: Donation[] })
         const q = search.trim().toLowerCase();
         return (d.donorName ?? '').toLowerCase().includes(q)
           || (d.donorEmail ?? '').toLowerCase().includes(q)
-          || (d.donorPhone ?? '').toLowerCase().includes(q);
+          || phoneIncludes(d.donorPhone, search);
       })
     : donations;
 
   return (
     <div>
-      <input
-        type="text"
-        placeholder="Search by name, email, or phone…"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        style={{ marginBottom: '16px', maxWidth: '320px' }}
-      />
+      <div className="form-group" style={{ maxWidth: '320px' }}>
+        <input
+          type="text"
+          placeholder="Search by name, email, or phone…"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </div>
       {donations.length === 0 ? (
         <p style={{ color: 'rgba(255,255,255,0.7)' }}>
           No donations received yet. Once someone gives through the Zeffy form on /donate,

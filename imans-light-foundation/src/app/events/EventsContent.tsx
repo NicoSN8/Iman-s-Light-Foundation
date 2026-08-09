@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { MapPin } from 'lucide-react';
 import { LanguageContext } from '@/context/LanguageContext';
 import type { TicketTierData } from '@/components/TicketTiers';
+import { TICKETS_LIVE } from '@/lib/featureFlags';
 import styles from './events.module.css';
 
 interface EventRow {
@@ -73,7 +74,7 @@ export default function EventsPage({ featuredEvents, gridEvents, ticketTiers }: 
                       })
                     : '');
                 const eventTiers = ticketTiers.filter((t) => t.eventId === evt.id);
-                const hasTickets = isUpcoming && eventTiers.length > 0;
+                const hasTickets = isUpcoming && eventTiers.length > 0 && TICKETS_LIVE;
 
                 return (
                   <div

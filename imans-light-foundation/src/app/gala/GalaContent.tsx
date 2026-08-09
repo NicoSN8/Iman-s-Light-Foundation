@@ -6,17 +6,8 @@ import Image from 'next/image';
 import { MapPin, CalendarDays } from 'lucide-react';
 import { LanguageContext } from '@/context/LanguageContext';
 import TicketTiers, { type TicketTierData } from '@/components/TicketTiers';
+import { TICKETS_LIVE } from '@/lib/featureFlags';
 import styles from './gala.module.css';
-
-// The 4 tiers, the ticket_orders table, the Zeffy ticketing campaign, the
-// webhook auto-matching, and the whole /admin/tickets tool are all fully
-// built and working -- this flag only controls whether the public price
-// cards show. The CEO hasn't given final pricing/descriptions yet (what's
-// in the database now was Nicolas's own draft placeholder), so showing it
-// as if it were final would be wrong. Flip this to true once the real
-// numbers are in and Zeffy's campaign is updated to match -- nothing else
-// needs to change.
-const TICKETS_LIVE = false;
 
 interface EventRow {
   titleEn: string;
