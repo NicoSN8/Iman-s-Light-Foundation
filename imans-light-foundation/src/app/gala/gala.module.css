@@ -6,9 +6,22 @@
   overflow: hidden;
 }
 
-.heroImage {
+.heroImageBackdrop {
   object-fit: cover;
-  object-position: center 30%;
+  object-position: center 25%;
+  filter: blur(32px) brightness(0.55) saturate(1.15);
+  transform: scale(1.15);
+}
+
+.heroImage {
+  object-fit: contain;
+  object-position: right center;
+}
+
+@media (max-width: 768px) {
+  .heroImage {
+    object-position: center 15%;
+  }
 }
 
 .heroOverlay {
