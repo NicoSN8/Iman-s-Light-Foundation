@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { desc, asc, eq } from 'drizzle-orm';
 import { getDb } from '@/db';
 import { events, ticketTiers, ticketOrders, unmatchedZeffySales } from '@/db/schema';
-import DeleteTierButton from './DeleteTierButton';
 import AddOrderForm from './AddOrderForm';
 import OrdersTable from './OrdersTable';
 import PendingZeffySales from './PendingZeffySales';
@@ -18,7 +17,6 @@ export default async function AdminTicketsPage() {
   ]);
 
   const tierById = new Map(allTiers.map((t) => [t.id, t]));
-  const eventById = new Map(allEvents.map((e) => [e.id, e]));
 
   const ordersWithTierName = allOrders.map((o) => ({
     ...o,
@@ -38,71 +36,24 @@ export default async function AdminTicketsPage() {
 
   return (
     <>
-      <div style={{ marginBottom: '24px' }}>
-        <h1 style={{ fontSize: '1.8rem', marginBottom: '4px' }}>Tickets</h1>
-        <p style={{ color: 'rgba(255,255,255,0.7)' }}>
-          {totalSeats} seat{totalSeats === 1 ? '' : 's'} confirmed · {assignedCount} order{assignedCount === 1 ? '' : 's'} with a table assigned, {unassignedCount} not yet seated
-          {totalRaised > 0 && <> · ${(totalRaised / 100).toLocaleString('en-US', { minimumFractionDigits: 2 })} collected (paid)</>}
-        </p>
-      </div>
-
-      <section style={{ marginBottom: '40px' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px', flexWrap: 'wrap', gap: '12px' }}>
-          <h2 style={{ fontSize: '1.3rem' }}>Ticket Tiers</h2>
-          <Link href="/admin/tickets/tiers/new" className="btn btn-outline" style={{ fontSize: '0.85rem', padding: '8px 18px' }}>
-            + Add Tier
-          </Link>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '12px', flexWrap: 'wrap', marginBottom: '24px' }}>
+        <div>
+          <h1 style={{ fontSize: '1.8rem', marginBottom: '4px' }}>Tickets</h1>
+          <p style={{ color: 'rgba(255,255,255,0.7)' }}>
+            {totalSeats} seat{totalSeats === 1 ? '' : 's'} confirmed · {assignedCount} order{assignedCount === 1 ? '' : 's'} with a table assigned, {unassignedCount} not yet seated
+            {totalRaised > 0 && <> · ${(totalRaised / 100).toLocaleString('en-US', { minimumFractionDigits: 2 })} collected (paid)</>}
+          </p>
         </div>
-        <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.85rem', marginBottom: '16px', maxWidth: '640px' }}>
-          This sets pricing and how many of each tier can ever be sold (&quot;Sales Cap&quot;) —
-          it&apos;s not where you seat anyone. To put a specific buyer at a specific physical
-          table, do that per-order below under &quot;Orders &amp; Seating.&quot;
-        </p>
-
-        {allTiers.length === 0 ? (
-          <p style={{ color: 'rgba(255,255,255,0.7)' }}>No ticket tiers yet.</p>
-        ) : (
-          <div style={{ overflowX: 'auto' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-              <thead>
-                <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.15)', textAlign: 'left' }}>
-                  <th style={{ padding: '12px 8px' }}>Event</th>
-                  <th style={{ padding: '12px 8px' }}>Tier</th>
-                  <th style={{ padding: '12px 8px' }}>Price</th>
-                  <th style={{ padding: '12px 8px' }}>Seats</th>
-                  <th style={{ padding: '12px 8px' }} title="How many of this tier can ever be sold, total">Sales Cap</th>
-                  <th style={{ padding: '12px 8px' }}>Active</th>
-                  <th style={{ padding: '12px 8px' }}></th>
-                </tr>
-              </thead>
-              <tbody>
-                {allTiers.map((t) => (
-                  <tr key={t.id} style={{ borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
-                    <td style={{ padding: '12px 8px', fontSize: '0.85rem', color: 'rgba(255,255,255,0.7)' }}>{eventById.get(t.eventId)?.titleEn ?? '—'}</td>
-                    <td style={{ padding: '12px 8px' }}>{t.nameEn}</td>
-                    <td style={{ padding: '12px 8px' }}>${(t.priceCents / 100).toFixed(2)}</td>
-                    <td style={{ padding: '12px 8px' }}>{t.seatsIncluded}</td>
-                    <td style={{ padding: '12px 8px' }}>{t.capacity ?? 'Unlimited'}</td>
-                    <td style={{ padding: '12px 8px' }}>{t.isActive ? 'Yes' : 'No'}</td>
-                    <td style={{ padding: '12px 8px', whiteSpace: 'nowrap' }}>
-                      <Link href={`/admin/tickets/tiers/${t.id}/edit`} className="btn btn-outline" style={{ fontSize: '0.8rem', padding: '6px 14px', marginRight: '8px' }}>
-                        Edit
-                      </Link>
-                      <DeleteTierButton id={t.id} name={t.nameEn} />
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
-      </section>
+        <Link href="/admin/tickets/tiers" className="btn btn-outline" style={{ fontSize: '0.85rem', padding: '8px 18px', whiteSpace: 'nowrap' }}>
+          Manage Tiers &amp; Pricing
+        </Link>
+      </div>
 
       <PendingZeffySales sales={pendingZeffySales} />
 
       <section>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px', flexWrap: 'wrap', gap: '12px' }}>
-          <h2 style={{ fontSize: '1.3rem' }}>Orders &amp; Seating</h2>
+          <h2 style={{ fontSize: '1.3rem' }}>Every Ticket Purchase</h2>
         </div>
 
         <div style={{ marginBottom: '20px' }}>

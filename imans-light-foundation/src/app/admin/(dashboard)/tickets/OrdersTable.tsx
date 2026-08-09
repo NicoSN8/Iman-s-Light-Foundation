@@ -90,10 +90,6 @@ export default function OrdersTable({ orders }: { orders: Order[] }) {
     }
   };
 
-  if (rows.length === 0) {
-    return <p style={{ color: 'rgba(255,255,255,0.7)' }}>No ticket orders yet — use &quot;+ Add Order&quot; above for a cash/door commitment or a reconciled Zeffy sale.</p>;
-  }
-
   return (
     <div>
       <input
@@ -103,9 +99,11 @@ export default function OrdersTable({ orders }: { orders: Order[] }) {
         onChange={(e) => setSearch(e.target.value)}
         style={{ marginBottom: '16px', maxWidth: '320px' }}
       />
-      {visibleRows.length === 0 && (
+      {rows.length === 0 ? (
+        <p style={{ color: 'rgba(255,255,255,0.7)' }}>No ticket orders yet — every real Zeffy ticket sale shows up here automatically, or use &quot;+ Add Order&quot; above for a cash/door commitment.</p>
+      ) : visibleRows.length === 0 ? (
         <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.9rem' }}>No orders match &quot;{search}&quot;.</p>
-      )}
+      ) : (
       <div style={{ overflowX: 'auto' }}>
       <table style={{ width: '100%', borderCollapse: 'collapse' }}>
         <thead>
@@ -220,6 +218,7 @@ export default function OrdersTable({ orders }: { orders: Order[] }) {
         </tbody>
       </table>
       </div>
+      )}
     </div>
   );
 }

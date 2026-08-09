@@ -27,15 +27,6 @@ export default function DonationsTable({ donations }: { donations: Donation[] })
       })
     : donations;
 
-  if (donations.length === 0) {
-    return (
-      <p style={{ color: 'rgba(255,255,255,0.7)' }}>
-        No donations received yet. Once someone gives through the Zeffy form on /donate,
-        it&apos;ll show up here automatically.
-      </p>
-    );
-  }
-
   return (
     <div>
       <input
@@ -45,9 +36,14 @@ export default function DonationsTable({ donations }: { donations: Donation[] })
         onChange={(e) => setSearch(e.target.value)}
         style={{ marginBottom: '16px', maxWidth: '320px' }}
       />
-      {visible.length === 0 && (
+      {donations.length === 0 ? (
+        <p style={{ color: 'rgba(255,255,255,0.7)' }}>
+          No donations received yet. Once someone gives through the Zeffy form on /donate,
+          it&apos;ll show up here automatically.
+        </p>
+      ) : visible.length === 0 ? (
         <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.9rem' }}>No donations match &quot;{search}&quot;.</p>
-      )}
+      ) : (
       <div style={{ overflowX: 'auto' }}>
         <table style={{ width: '100%', borderCollapse: 'collapse' }}>
           <thead>
@@ -82,6 +78,7 @@ export default function DonationsTable({ donations }: { donations: Donation[] })
           </tbody>
         </table>
       </div>
+      )}
     </div>
   );
 }
