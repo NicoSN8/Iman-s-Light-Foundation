@@ -25,8 +25,8 @@ const tiers: { en: Tier[]; es: Tier[] } = {
         name: 'Fund a Workshop',
         amount: '$300',
         icon: <GraduationCap size={32} color="var(--gold)" />,
-        descEn: 'Bring one full drug-prevention workshop to the school or college of your choice — a real conversation that could save a life.',
-        descEs: 'Lleva un taller completo de prevención de drogas a la escuela o universidad de tu elección — una conversación real que podría salvar una vida.'
+        descEn: "Bring one full drug-prevention workshop to the school or college of your choice. It's a real conversation that could save a life.",
+        descEs: 'Lleva un taller completo de prevención de drogas a la escuela o universidad de tu elección. Es una conversación real que podría salvar una vida.'
       },
       {
         id: 'program',
@@ -34,24 +34,24 @@ const tiers: { en: Tier[]; es: Tier[] } = {
         amount: '$1,000',
         icon: <Heart size={32} color="var(--gold-light)" />,
         featured: true,
-        descEn: 'Fund a complete prevention program at the school or college of your choice — an ongoing series that goes far beyond a single visit.',
-        descEs: 'Financia un programa completo de prevención en la escuela o universidad de tu elección — una serie continua que va mucho más allá de una sola visita.'
+        descEn: 'Fund a complete prevention program at the school or college of your choice: an ongoing series that goes far beyond a single visit.',
+        descEs: 'Financia un programa completo de prevención en la escuela o universidad de tu elección: una serie continua que va mucho más allá de una sola visita.'
       },
       {
         id: 'champion',
         name: 'Champion Sponsor',
         amount: '$2,500',
         icon: <ShieldAlert size={32} color="var(--gold)" />,
-        descEn: 'Extend our reach further — help bring workshops and programs to more classrooms and more students across South Florida this year.',
-        descEs: 'Amplía nuestro alcance — ayuda a llevar talleres y programas a más aulas y más estudiantes en el sur de la Florida este año.'
+        descEn: 'Help bring workshops and programs to more classrooms and more students across South Florida this year.',
+        descEs: 'Ayuda a llevar talleres y programas a más aulas y más estudiantes en el sur de la Florida este año.'
       },
       {
         id: 'founding',
         name: 'Founding Partner',
         amount: '$5,000',
         icon: <Building2 size={32} color="var(--gold)" />,
-        descEn: "Stand behind this year's entire mission — funding the workshops, programs, and family support that carry us through to the next Gala.",
-        descEs: 'Respalda toda la misión de este año — financiando los talleres, programas y apoyo familiar que nos llevan hasta la próxima Gala.'
+        descEn: "Stand behind this year's entire mission: the workshops, programs, and family support that carry us through to the next Gala.",
+        descEs: 'Respalda toda la misión de este año: los talleres, programas y apoyo familiar que nos llevan hasta la próxima Gala.'
       },
       {
         id: 'custom',
@@ -68,8 +68,8 @@ const tiers: { en: Tier[]; es: Tier[] } = {
         name: 'Financia un Taller',
         amount: '$300',
         icon: <GraduationCap size={32} color="var(--gold)" />,
-        descEn: 'Bring one full drug-prevention workshop to the school or college of your choice — a real conversation that could save a life.',
-        descEs: 'Lleva un taller completo de prevención de drogas a la escuela o universidad de tu elección — una conversación real que podría salvar una vida.'
+        descEn: "Bring one full drug-prevention workshop to the school or college of your choice. It's a real conversation that could save a life.",
+        descEs: 'Lleva un taller completo de prevención de drogas a la escuela o universidad de tu elección. Es una conversación real que podría salvar una vida.'
       },
       {
         id: 'program',
@@ -77,24 +77,24 @@ const tiers: { en: Tier[]; es: Tier[] } = {
         amount: '$1,000',
         icon: <Heart size={32} color="var(--gold-light)" />,
         featured: true,
-        descEn: 'Fund a complete prevention program at the school or college of your choice — an ongoing series that goes far beyond a single visit.',
-        descEs: 'Financia un programa completo de prevención en la escuela o universidad de tu elección — una serie continua que va mucho más allá de una sola visita.'
+        descEn: 'Fund a complete prevention program at the school or college of your choice: an ongoing series that goes far beyond a single visit.',
+        descEs: 'Financia un programa completo de prevención en la escuela o universidad de tu elección: una serie continua que va mucho más allá de una sola visita.'
       },
       {
         id: 'champion',
         name: 'Patrocinador Campeón',
         amount: '$2,500',
         icon: <ShieldAlert size={32} color="var(--gold)" />,
-        descEn: 'Extend our reach further — help bring workshops and programs to more classrooms and more students across South Florida this year.',
-        descEs: 'Amplía nuestro alcance — ayuda a llevar talleres y programas a más aulas y más estudiantes en el sur de la Florida este año.'
+        descEn: 'Help bring workshops and programs to more classrooms and more students across South Florida this year.',
+        descEs: 'Ayuda a llevar talleres y programas a más aulas y más estudiantes en el sur de la Florida este año.'
       },
       {
         id: 'founding',
         name: 'Socio Fundador',
         amount: '$5,000',
         icon: <Building2 size={32} color="var(--gold)" />,
-        descEn: "Stand behind this year's entire mission — funding the workshops, programs, and family support that carry us through to the next Gala.",
-        descEs: 'Respalda toda la misión de este año — financiando los talleres, programas y apoyo familiar que nos llevan hasta la próxima Gala.'
+        descEn: "Stand behind this year's entire mission: the workshops, programs, and family support that carry us through to the next Gala.",
+        descEs: 'Respalda toda la misión de este año: los talleres, programas y apoyo familiar que nos llevan hasta la próxima Gala.'
       },
       {
         id: 'custom',

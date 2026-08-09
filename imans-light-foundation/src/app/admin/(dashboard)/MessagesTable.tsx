@@ -45,6 +45,7 @@ export default function MessagesTable({ submissions }: { submissions: Submission
       if (!res.ok || !data?.ok) throw new Error(data?.error || 'Failed to send reply.');
 
       setRows((prev) => prev.map((r) => (r.id === id ? { ...r, adminReply: reply, repliedAt: data.repliedAt } : r)));
+      setDrafts((prev) => ({ ...prev, [id]: '' }));
       setExpandedId(null);
     } catch (err) {
       setErrors((prev) => ({ ...prev, [id]: err instanceof Error ? err.message : 'Failed to send reply.' }));

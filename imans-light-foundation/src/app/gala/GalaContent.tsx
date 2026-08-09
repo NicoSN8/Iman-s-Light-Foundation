@@ -114,7 +114,7 @@ export default function GalaContent({ event, tiers }: { event: EventRow; tiers: 
                   src="/media/56e6ee_c06acaeb840e48098e7a8113301f3404~mv2.jpg"
                   alt={isEs ? 'Música y Luces por la Vida 2025' : 'Music and Lights for Life 2025'}
                   fill
-                  style={{ objectFit: 'cover' }}
+                  style={{ objectFit: 'contain' }}
                 />
               </div>
               <div className={styles.lookBackContent}>
