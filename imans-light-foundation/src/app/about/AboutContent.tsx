@@ -221,7 +221,7 @@ export default function AboutPage() {
               <p style={{ marginBottom: '24px', fontSize: '1.1rem', color: 'rgba(255,255,255,0.9)', lineHeight: '1.8' }}>{txt.storyText2}</p>
               <p style={{ fontSize: '1.1rem', color: 'var(--gold)', fontWeight: 500, lineHeight: '1.8' }}>{txt.storyText3}</p>
             </div>
-            <div className={styles.storyVisual}>
+            <div className={styles.storyVisual} style={{ position: 'relative', paddingRight: '20px', paddingBottom: '20px' }}>
               <Image
                 src="/media/56e6ee_8fa3d2dc25d34cbcaaa0219bd31efeaa~mv2.jpg"
                 alt="Iman"
@@ -230,6 +230,26 @@ export default function AboutPage() {
                 className={styles.storyImg}
                 style={{ borderRadius: '16px', boxShadow: '0 20px 50px rgba(0,0,0,0.5)', border: '1px solid rgba(255,255,255,0.1)' }}
               />
+              <div
+                style={{
+                  position: 'absolute',
+                  bottom: 0,
+                  right: 0,
+                  width: '30%',
+                  aspectRatio: '3 / 4',
+                  borderRadius: '12px',
+                  overflow: 'hidden',
+                  border: '4px solid var(--white)',
+                  boxShadow: '0 16px 40px rgba(0,0,0,0.5)',
+                }}
+              >
+                <Image
+                  src="/media/56e6ee_dd6ee2f616104027bdfd2ce80bf6ab2b-cropped.jpg"
+                  alt="Iman"
+                  fill
+                  style={{ objectFit: 'cover', objectPosition: 'top center' }}
+                />
+              </div>
             </div>
           </div>
         </div>
