@@ -63,6 +63,24 @@ export default function GalaContent({ event, tiers }: { event: EventRow; tiers: 
         </div>
       </section>
 
+      {tiers.length > 0 && (
+        <section id="tickets" className="section section-dark transparent-bg">
+          <div className="container">
+            <div className="text-center">
+              <span className="section-label">{isEs ? 'Boletos' : 'Tickets'}</span>
+              <h2 className="section-title">{isEs ? 'Reserva Tu Mesa' : 'Reserve Your Table'}</h2>
+              <div className="gold-divider center" />
+              <p className={styles.ticketsIntro}>
+                {isEs
+                  ? 'Boletos en venta pronto por Zeffy. Mientras tanto, contáctanos para reservar tu mesa.'
+                  : 'Online tickets go live soon via Zeffy. In the meantime, contact us to reserve your table.'}
+              </p>
+            </div>
+            <TicketTiers tiers={tiers} lang={lang} />
+          </div>
+        </section>
+      )}
+
       <section className={`section ${styles.whySection}`}>
         <div className="container">
           <div className="text-center">
@@ -111,24 +129,6 @@ export default function GalaContent({ event, tiers }: { event: EventRow; tiers: 
           </div>
         </div>
       </section>
-
-      {tiers.length > 0 && (
-        <section id="tickets" className="section section-dark transparent-bg">
-          <div className="container">
-            <div className="text-center">
-              <span className="section-label">{isEs ? 'Boletos' : 'Tickets'}</span>
-              <h2 className="section-title">{isEs ? 'Reserva Tu Mesa' : 'Reserve Your Table'}</h2>
-              <div className="gold-divider center" />
-              <p className={styles.ticketsIntro}>
-                {isEs
-                  ? 'Boletos en venta pronto por Zeffy. Mientras tanto, contáctanos para reservar tu mesa.'
-                  : 'Online tickets go live soon via Zeffy. In the meantime, contact us to reserve your table.'}
-              </p>
-            </div>
-            <TicketTiers tiers={tiers} lang={lang} />
-          </div>
-        </section>
-      )}
 
       <section className={`section transparent-bg ${styles.finalCta}`}>
         <div className="container">
