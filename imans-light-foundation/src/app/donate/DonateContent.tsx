@@ -185,7 +185,7 @@ export default function DonatePage() {
                     </Link>
                   ) : (
                     <a
-                      href="https://www.imanslightfoundation.org/donations"
+                      href="https://www.zeffy.com/en-US/donation-form/donate-to-change-lives-20404"
                       target="_blank"
                       rel="noopener noreferrer"
                       className={`btn ${tier.featured ? 'btn-primary' : 'btn-outline'}`}
@@ -248,7 +248,7 @@ export default function DonatePage() {
             </p>
             <div className={styles.donateActions}>
               <a
-                href="https://www.imanslightfoundation.org/donations"
+                href="https://www.zeffy.com/en-US/donation-form/donate-to-change-lives-20404"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-primary"
