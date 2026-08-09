@@ -71,7 +71,16 @@ export default function Navbar() {
     // clicked. Blurring on every click (not just the same-page case) closes
     // it immediately.
     (e.currentTarget as HTMLElement).blur();
-    if (href === pathname) {
+    const [hrefPath, hrefHash] = href.split('#');
+    if (hrefHash && (hrefPath === pathname || hrefPath === '')) {
+      // Same page, jumping to a section (e.g. the "About Us" dropdown's
+      // "/about#mission" while already on /about). Next.js's Link only
+      // scrolls on an actual URL hash change, so clicking the same hash
+      // link a second time silently did nothing — scrolling to the target
+      // element manually works every time regardless of the current hash.
+      e.preventDefault();
+      document.getElementById(hrefHash)?.scrollIntoView({ behavior: 'smooth' });
+    } else if (href === pathname) {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }

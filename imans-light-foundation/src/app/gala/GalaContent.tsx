@@ -77,7 +77,18 @@ export default function GalaContent({ event, tiers }: { event: EventRow; tiers: 
               ? 'Una noche. Una comunidad reunida. Los fondos que hacen posible cada taller, cada sesión de consejería y cada vida que ayudamos a salvar durante todo el año.'
               : "One night. One community, together. The funds that make every workshop, every counseling session, and every life we help save all year possible."}
           </p>
-          <Link href="#tickets" className="btn btn-primary">
+          <Link
+            href="#tickets"
+            className="btn btn-primary"
+            onClick={(e) => {
+              // Next.js's Link only scrolls on an actual URL hash change, so
+              // a second click did nothing since the hash was already
+              // #tickets from the first click. Scrolling manually every
+              // time works regardless of the current URL/hash state.
+              e.preventDefault();
+              document.getElementById('tickets')?.scrollIntoView({ behavior: 'smooth' });
+            }}
+          >
             {TICKETS_LIVE
               ? (isEs ? 'Reserva Tu Mesa' : 'Reserve Your Table')
               : (isEs ? 'Ver Información de Boletos' : 'See Ticket Info')} →
