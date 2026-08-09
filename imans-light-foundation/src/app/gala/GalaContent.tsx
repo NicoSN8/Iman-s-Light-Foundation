@@ -40,13 +40,15 @@ export default function GalaContent({ event, tiers }: { event: EventRow; tiers: 
           priority
           className={styles.heroImageBackdrop}
         />
-        <Image
-          src="/media/56e6ee_8dc0ab6d11544b2899b97b42d912eb28~mv2.jpeg"
-          alt={isEs ? "Gala de la Fundación Iman's Light" : "Iman's Light Foundation Gala"}
-          fill
-          priority
-          className={styles.heroImage}
-        />
+        <div className={styles.heroPhotoCard}>
+          <Image
+            src="/media/56e6ee_8dc0ab6d11544b2899b97b42d912eb28~mv2.jpeg"
+            alt={isEs ? "Gala de la Fundación Iman's Light" : "Iman's Light Foundation Gala"}
+            fill
+            priority
+            className={styles.heroImage}
+          />
+        </div>
         <div className={styles.heroOverlay} />
         <div className={`container ${styles.heroContent}`}>
           <span className={styles.heroLabel}>{isEs ? 'Nuestra Noche Más Importante' : 'Our Most Important Night'}</span>

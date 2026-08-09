@@ -223,10 +223,10 @@ export default function AboutPage() {
             </div>
             <div className={styles.storyVisual} style={{ position: 'relative', paddingRight: '20px', paddingBottom: '20px' }}>
               <Image
-                src="/media/56e6ee_8fa3d2dc25d34cbcaaa0219bd31efeaa~mv2.jpg"
+                src="/media/56e6ee_dd6ee2f616104027bdfd2ce80bf6ab2b-primary.jpg"
                 alt="Iman"
                 width={600}
-                height={600}
+                height={750}
                 className={styles.storyImg}
                 style={{ borderRadius: '16px', boxShadow: '0 20px 50px rgba(0,0,0,0.5)', border: '1px solid rgba(255,255,255,0.1)' }}
               />
@@ -236,7 +236,7 @@ export default function AboutPage() {
                   bottom: 0,
                   right: 0,
                   width: '30%',
-                  aspectRatio: '3 / 4',
+                  aspectRatio: '1 / 1',
                   borderRadius: '12px',
                   overflow: 'hidden',
                   border: '4px solid var(--white)',
@@ -244,10 +244,10 @@ export default function AboutPage() {
                 }}
               >
                 <Image
-                  src="/media/56e6ee_dd6ee2f616104027bdfd2ce80bf6ab2b-cropped.jpg"
+                  src="/media/56e6ee_8fa3d2dc25d34cbcaaa0219bd31efeaa~mv2.jpg"
                   alt="Iman"
                   fill
-                  style={{ objectFit: 'cover', objectPosition: 'top center' }}
+                  style={{ objectFit: 'cover', objectPosition: 'center 25%' }}
                 />
               </div>
             </div>

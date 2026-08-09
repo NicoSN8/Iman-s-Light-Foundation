@@ -9,18 +9,31 @@
 .heroImageBackdrop {
   object-fit: cover;
   object-position: center 25%;
-  filter: blur(32px) brightness(0.55) saturate(1.15);
+  filter: blur(32px) brightness(0.5) saturate(1.15);
   transform: scale(1.15);
 }
 
-.heroImage {
-  object-fit: contain;
-  object-position: right center;
+.heroPhotoCard {
+  position: absolute;
+  top: 150px;
+  bottom: 40px;
+  right: 64px;
+  width: 34%;
+  min-width: 320px;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
 }
 
-@media (max-width: 768px) {
-  .heroImage {
-    object-position: center 15%;
+.heroImage {
+  object-fit: cover;
+  object-position: center 22%;
+}
+
+@media (max-width: 900px) {
+  .heroPhotoCard {
+    display: none;
   }
 }
 
