@@ -1,18 +1,20 @@
 import Link from 'next/link';
-import { desc, asc } from 'drizzle-orm';
+import { desc, asc, eq } from 'drizzle-orm';
 import { getDb } from '@/db';
-import { events, ticketTiers, ticketOrders } from '@/db/schema';
+import { events, ticketTiers, ticketOrders, unmatchedZeffySales } from '@/db/schema';
 import DeleteTierButton from './DeleteTierButton';
 import AddOrderForm from './AddOrderForm';
 import OrdersTable from './OrdersTable';
+import PendingZeffySales from './PendingZeffySales';
 
 export default async function AdminTicketsPage() {
   const db = getDb();
 
-  const [allTiers, allOrders, allEvents] = await Promise.all([
+  const [allTiers, allOrders, allEvents, pendingZeffySales] = await Promise.all([
     db.select().from(ticketTiers).orderBy(asc(ticketTiers.sortOrder)),
     db.select().from(ticketOrders).orderBy(desc(ticketOrders.createdAt)),
     db.select({ id: events.id, titleEn: events.titleEn }).from(events).orderBy(desc(events.createdAt)),
+    db.select().from(unmatchedZeffySales).where(eq(unmatchedZeffySales.reviewed, false)).orderBy(desc(unmatchedZeffySales.receivedAt)),
   ]);
 
   const tierById = new Map(allTiers.map((t) => [t.id, t]));
@@ -90,6 +92,8 @@ export default async function AdminTicketsPage() {
           </div>
         )}
       </section>
+
+      <PendingZeffySales sales={pendingZeffySales} />
 
       <section>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px', flexWrap: 'wrap', gap: '12px' }}>

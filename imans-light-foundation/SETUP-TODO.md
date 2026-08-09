@@ -255,20 +255,51 @@ site can't safely continue (or shouldn't go live) until you do this.
 - [x] **Real online ticket sales are live.** Every "Reserve Your Table"
   button now points at the real Zeffy ticketing campaign
   ([3rd-annual-gala-6](https://www.zeffy.com/en-US/ticketing/3rd-annual-gala-6)).
-- [ ] **LATER — Reconcile Zeffy sales into the seating tool.** This is a
-  manual step for now: after someone buys a ticket on Zeffy, add them into
-  `/admin/tickets` yourself (checking Zeffy's own sales dashboard) using
-  the "Zeffy" payment method option that's already built into the "+ Add
-  Order" form, so they show up in the same seating list as cash/door
-  orders and can be assigned a table. Automating that reconciliation via a
-  webhook is a future step once Zeffy's real API/webhook shape is known.
+- [x] **Zeffy sales now feed into `/admin` automatically** — see Phase 8.
+  Ticket sales still need a manual last step (see Phase 8) since getting a
+  seat count wrong is worse than a little manual work.
+
+## Phase 8 — Automatic Zeffy → admin sync (2026-08-09)
+
+> A webhook now receives every Zeffy payment in real time and stores it —
+> donations go straight into a new **Donations** tab in `/admin`. Ticket
+> sales go into a "Pending Zeffy Ticket Sales" review list on
+> `/admin/tickets` instead of being auto-seated, on purpose: Zeffy's exact
+> payload format isn't published anywhere I could read without a live
+> sample, so rather than guess at seat counts (wrong = someone doesn't have
+> a seat at the actual event) or dollar amounts (wrong = bad financial
+> record), anything ticket-shaped waits for a human to glance at it and
+> click "+ Add Order" the same way a cash/door sale is entered today. This
+> also means **dollar amounts don't show yet** in the Donations tab — same
+> reasoning, shown there as a note rather than a possibly-wrong number.
+
+- [ ] **BLOCKING — Paste the webhook URL into Zeffy.** In your Zeffy
+  dashboard: **Settings → Integrations → Webhooks**, add a new webhook
+  pointing at:
+  `https://www.imanslightfoundation.org/api/webhooks/zeffy/<ask me for the token>`
+  (or the current `.vercel.app` URL if the domain hasn't been cut over
+  yet). I won't put the actual secret token in this file since it's
+  committed to git — ask me for it directly when you're ready to set this
+  up, or find it in Vercel's Environment Variables as
+  `ZEFFY_WEBHOOK_SECRET`.
+- [ ] **BLOCKING — Make one small real test transaction** (a $1 donation is
+  fine and refundable) after the webhook is connected. I need to see one
+  real payload to confirm field names are being read correctly — right now
+  the parsing is a best-effort guess at common field names, not confirmed
+  against real Zeffy data. Tell me once you've done this and I'll check
+  what came through and fix anything that's off.
+- [ ] **LATER — Once confirmed, revisit showing real dollar amounts** in
+  the Donations tab.
 
 ---
 
 *Updated 2026-08-09: Phases 1, 2, 3 (via Zeffy), 4, 5 (via Zeffy), 6, and 7
-are all done. Donations and gala ticket sales both run through real,
-verified Zeffy checkout. The one remaining manual step is reconciling
-Zeffy ticket sales into `/admin/tickets` for seating (see Phase 7). The
-only thing left before launch is pointing the real domain
+are done. Donations and gala ticket sales both run through real, verified
+Zeffy checkout, and both now feed into `/admin` automatically (Phase 8) —
+donations show up in a new Donations tab, and ticket sales show up as a
+review list on `/admin/tickets` for staff to seat. Phase 8 has two blocking
+steps left, both on you: paste the webhook URL into Zeffy, then make one
+real test transaction so field parsing can be confirmed against real data.
+After that, the only thing left before launch is pointing the real domain
 (`www.imanslightfoundation.org`) at Vercel — that DNS change is yours to
 make whenever you're ready, not something I do.*

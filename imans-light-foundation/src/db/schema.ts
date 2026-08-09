@@ -1,4 +1,4 @@
-import { pgTable, uuid, text, timestamp, date, boolean, integer } from 'drizzle-orm/pg-core';
+import { pgTable, uuid, text, timestamp, date, boolean, integer, jsonb } from 'drizzle-orm/pg-core';
 
 export const contactSubmissions = pgTable('contact_submissions', {
   id: uuid('id').primaryKey().defaultRandom(),
@@ -75,4 +75,37 @@ export const ticketOrders = pgTable('ticket_orders', {
   seatNotes: text('seat_notes'),
   checkedIn: boolean('checked_in').notNull().default(false),
   createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+});
+
+// Populated automatically by the Zeffy webhook (src/app/api/webhooks/zeffy)
+// when a donation payment comes through. rawPayload always stores the full
+// JSON Zeffy sent us, no matter what — a safety net so no donor data is
+// ever silently lost even if the parsed fields below turn out to be wrong
+// once we see a real payload and confirm the field names.
+export const donations = pgTable('donations', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  donorName: text('donor_name'),
+  donorEmail: text('donor_email'),
+  amountCents: integer('amount_cents'),
+  campaignName: text('campaign_name'),
+  // Zeffy's own payment ID, used to ignore duplicate webhook retries.
+  zeffyPaymentId: text('zeffy_payment_id').unique(),
+  rawPayload: jsonb('raw_payload').notNull(),
+  receivedAt: timestamp('received_at', { withTimezone: true }).notNull().defaultNow(),
+});
+
+// A Zeffy ticket sale that came through the webhook but couldn't be
+// confidently matched to one of our ticket tiers (e.g. unrecognized tier
+// name, or the payload shape didn't match what we expected). Staff reviews
+// these in /admin and manually creates the matching ticketOrders row —
+// safer than guessing and creating a ticket order with the wrong seat
+// count, since that directly affects physical seating at the event.
+export const unmatchedZeffySales = pgTable('unmatched_zeffy_sales', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  buyerName: text('buyer_name'),
+  buyerEmail: text('buyer_email'),
+  zeffyPaymentId: text('zeffy_payment_id').unique(),
+  rawPayload: jsonb('raw_payload').notNull(),
+  reviewed: boolean('reviewed').notNull().default(false),
+  receivedAt: timestamp('received_at', { withTimezone: true }).notNull().defaultNow(),
 });
