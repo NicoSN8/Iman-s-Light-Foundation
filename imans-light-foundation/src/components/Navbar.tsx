@@ -64,6 +64,13 @@ export default function Navbar() {
   // the page you're already on — scroll to top instead so clicking the
   // current tab always does something.
   const scrollToTopIfSamePage = (href: string) => (e: React.MouseEvent) => {
+    // Client-side navigation never triggers a full page reload, so a clicked
+    // link keeps keyboard focus after the route changes underneath it — and
+    // since the dropdown menus are shown via CSS :focus-within, that left a
+    // dropdown visibly stuck open on the new page until something else was
+    // clicked. Blurring on every click (not just the same-page case) closes
+    // it immediately.
+    (e.currentTarget as HTMLElement).blur();
     if (href === pathname) {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -176,7 +183,12 @@ export default function Navbar() {
                 {link.dropdown && (
                   <div className={styles.dropdown}>
                     {link.dropdown.map((item) => (
-                      <Link key={item.href} href={item.href} className={styles.dropdownItem}>
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className={styles.dropdownItem}
+                        onClick={scrollToTopIfSamePage(item.href)}
+                      >
                         {lang === 'en' ? item.labelEn : item.labelEs}
                       </Link>
                     ))}
