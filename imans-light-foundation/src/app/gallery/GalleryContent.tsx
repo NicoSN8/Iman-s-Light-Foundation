@@ -30,7 +30,7 @@ export default function GalleryPage() {
           </div>
           <span className="section-label">{isEs ? 'Nuestra Comunidad' : 'Our Community'}</span>
           <h1>{isEs ? 'Galería de Fotos' : 'Photo Gallery'}</h1>
-          <p>{isEs ? 'Una ventana a nuestro trabajo comunitario, cada imagen representa vidas tocadas y comunidades fortalecidas.' : 'A window into our community work, every image represents lives touched and communities strengthened.'}</p>
+          <p>{isEs ? 'Fotos de nuestros talleres, eventos y trabajo comunitario.' : 'Photos from our workshops, events, and outreach across the community.'}</p>
         </div>
       </div>
 
@@ -54,7 +54,7 @@ export default function GalleryPage() {
                   <div className={styles.galleryImg}>
                     <Image
                       src={item.src}
-                      alt={isEs ? `Foto de Iman's Light Foundation — ${categoryLabel}` : `Iman's Light Foundation photo — ${categoryLabel}`}
+                      alt={isEs ? `Foto de Iman's Light Foundation: ${categoryLabel}` : `Iman's Light Foundation photo: ${categoryLabel}`}
                       fill
                       style={{ objectFit: 'cover' }}
                     />

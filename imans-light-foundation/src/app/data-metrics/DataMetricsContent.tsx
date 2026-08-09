@@ -10,28 +10,28 @@ const t = {
     breadcrumb: 'Home',
     heroLabel: 'Evidence-Based Action',
     heroTitle: 'The Data Behind the Mission',
-    heroSub: 'We do not operate on assumptions. Our foundation is built on uncompromising data, forensic metrics, and proven psychological methodologies to dismantle the fentanyl crisis.',
+    heroSub: "We don't guess. Everything we do is based on real data and methods that have actually been studied, not just what sounds good.",
     dataLabel: 'The Hard Truth',
     dataTitle: 'A Crisis Measured in Human Lives',
-    dataText: 'Every 5 minutes, an American dies from a preventable drug overdose. Fentanyl is the leading cause of death for adults aged 18-45, completely bypassing accidents, suicides, and illnesses. We operate within this unforgiving reality. By leveraging real-time data from the DEA, CDC, and the Opiate Response Network (ORN), we pinpoint exactly where our education and Narcan distribution will have the most aggressive life-saving impact.',
+    dataText: 'Every 5 minutes, someone in the US dies from a preventable overdose. Fentanyl is now the leading cause of death for adults 18 to 45, ahead of accidents, suicide, and illness. We use real-time data from the DEA, CDC, and the Opiate Response Network (ORN) to figure out exactly where our workshops and Narcan distribution will do the most good.',
     partnerships: [
-      { 
-        title: 'Opiate Response Network (ORN) Sponsorship', 
-        desc: 'We are a front-line sponsor of the ORN in Miramar, Florida. This allows us to track local overdose spikes instantly and deploy educational resources precisely where they are needed, before a synthetic opioid wave hits the school system.' 
+      {
+        title: 'Opiate Response Network (ORN) Sponsorship',
+        desc: "We're a front-line sponsor of the ORN in Miramar, Florida. That means we can see local overdose spikes as they happen and get educational resources where they're needed, before a problem reaches the school system."
       },
-      { 
-        title: 'Substance Abuse Reduction Alliance (S.A.R.A.)', 
-        desc: 'As active board members, we analyze state-wide trafficking routes and youth susceptibility metrics. This data dictates our workshop schedules, ensuring we intercept vulnerable students before dealers do.' 
+      {
+        title: 'Substance Abuse Reduction Alliance (S.A.R.A.)',
+        desc: 'As board members, we look at statewide trafficking patterns and where young people are most at risk. That data shapes our workshop schedule, so we can reach vulnerable students early.'
       },
     ],
     methodLabel: 'Tactical Approach',
     methodTitle: 'Psychological & Biological Defense',
-    methodSub: 'Our interventions are not generic lectures. They are heavily researched, peer-reviewed strategies designed to build absolute generational resilience:',
+    methodSub: "These aren't generic lectures. Each one is based on research and reviewed strategies, built to actually stick with kids as they grow up:",
     methods: [
-      { icon: <ShieldCheck size={32} />, title: 'Trauma-Informed Education', desc: 'We utilize NIDA (National Institute on Drug Abuse) protocols to explain the biological hijacking of addiction without using archaic, ineffective scare tactics.' },
+      { icon: <ShieldCheck size={32} />, title: 'Trauma-Informed Education', desc: "We use NIDA (National Institute on Drug Abuse) protocols to explain how addiction hijacks the brain, without the outdated scare tactics that don't actually work." },
       { icon: <Users size={32} />, title: 'Nonviolent Communication (NVC)', desc: 'Developed by Dr. Marshall Rosenberg, we train families in NVC to resolve conflict. Data shows that high-conflict homes drastically increase a child\'s likelihood to self-medicate.' },
-      { icon: <Database size={32} />, title: 'The Kingian Philosophy', desc: 'Inspired by Dr. Martin Luther King Jr., we use social justice metrics to empower underserved demographics who are disproportionately targeted by illicit drug operations.' },
-      { icon: <AlertTriangle size={32} />, title: 'Counterfeit Pill Identification', desc: 'Using DEA forensics, we actively teach students how to identify cartel-pressed lethal synthetics that disguise themselves as Adderall or Percocet.' },
+      { icon: <Database size={32} />, title: 'The Kingian Philosophy', desc: 'Inspired by Dr. Martin Luther King Jr., we focus extra attention on the communities that drug operations target the most.' },
+      { icon: <AlertTriangle size={32} />, title: 'Counterfeit Pill Identification', desc: 'Using DEA forensic data, we teach students how to spot counterfeit pills, made to look like Adderall or Percocet, that actually contain lethal synthetic opioids.' },
     ],
     surveyLabel: 'Outreach Impact Report',
     surveyTitle: 'Youth Workshop Survey Feedback',
@@ -52,28 +52,28 @@ const t = {
     breadcrumb: 'Inicio',
     heroLabel: 'Acción Basada en Evidencia',
     heroTitle: 'Los Datos Detrás de la Misión',
-    heroSub: 'No operamos con suposiciones. Nuestra fundación se basa en datos irrefutables, métricas forenses y metodologías psicológicas comprobadas para desmantelar la crisis del fentanilo.',
+    heroSub: 'No adivinamos. Todo lo que hacemos se basa en datos reales y en métodos que realmente han sido estudiados, no en lo que suena bien.',
     dataLabel: 'La Dura Verdad',
     dataTitle: 'Una Crisis Medida en Vidas Humanas',
-    dataText: 'Cada 5 minutos, un estadounidense muere por una sobredosis prevenible. El fentanilo es la principal causa de muerte para adultos de 18 a 45 años. Operamos dentro de esta implacable realidad. Al aprovechar datos en tiempo real de la DEA, los CDC y la Red de Respuesta de Opiáceos (ORN), identificamos exactamente dónde nuestra educación tendrá el mayor impacto para salvar vidas.',
+    dataText: 'Cada 5 minutos, alguien en Estados Unidos muere por una sobredosis prevenible. El fentanilo es ahora la principal causa de muerte para adultos de 18 a 45 años, por encima de accidentes, suicidios y enfermedades. Usamos datos en tiempo real de la DEA, los CDC y la Red de Respuesta de Opiáceos (ORN) para saber exactamente dónde nuestros talleres y la distribución de Narcan harán más bien.',
     partnerships: [
-      { 
-        title: 'Patrocinio de la Red de Respuesta a Opiáceos (ORN)', 
-        desc: 'Somos patrocinadores de primera línea de la ORN en Miramar, Florida. Esto nos permite rastrear picos locales de sobredosis instantáneamente y desplegar recursos educativos precisamente donde se necesitan.' 
+      {
+        title: 'Patrocinio de la Red de Respuesta a Opiáceos (ORN)',
+        desc: 'Somos patrocinadores de primera línea de la ORN en Miramar, Florida. Eso significa que podemos ver los picos locales de sobredosis en tiempo real y llevar recursos educativos a donde se necesitan, antes de que el problema llegue al sistema escolar.'
       },
-      { 
-        title: 'Alianza para la Reducción del Abuso de Sustancias', 
-        desc: 'Como miembros activos, analizamos las rutas de tráfico a nivel estatal y las métricas de susceptibilidad juvenil. Estos datos dictan nuestros talleres escolares.' 
+      {
+        title: 'Alianza para la Reducción del Abuso de Sustancias',
+        desc: 'Como miembros de la junta, analizamos los patrones de tráfico a nivel estatal y dónde los jóvenes están en mayor riesgo. Esos datos definen nuestro calendario de talleres, para llegar temprano a los estudiantes más vulnerables.'
       },
     ],
     methodLabel: 'Enfoque Táctico',
     methodTitle: 'Defensa Psicológica y Biológica',
-    methodSub: 'Nuestras intervenciones no son conferencias genéricas. Son estrategias altamente investigadas diseñadas para construir una resiliencia generacional absoluta:',
+    methodSub: 'Estos no son charlas genéricas. Cada uno se basa en investigación y estrategias revisadas, diseñadas para quedarse con los chicos a medida que crecen:',
     methods: [
-      { icon: <ShieldCheck size={32} />, title: 'Educación Informada por el Trauma', desc: 'Utilizamos protocolos del Instituto Nacional sobre el Abuso de Drogas (NIDA) para explicar el secuestro biológico de la adicción sin tácticas de miedo ineficaces.' },
+      { icon: <ShieldCheck size={32} />, title: 'Educación Informada por el Trauma', desc: 'Usamos protocolos del Instituto Nacional sobre el Abuso de Drogas (NIDA) para explicar cómo la adicción altera el cerebro, sin las tácticas de miedo anticuadas que no funcionan.' },
       { icon: <Users size={32} />, title: 'Comunicación No Violenta (CNV)', desc: 'Capacitamos a las familias para resolver conflictos. Los datos muestran que los hogares de alto conflicto aumentan drásticamente la probabilidad de que un niño se automedique.' },
-      { icon: <Database size={32} />, title: 'Filosofía Kingiana', desc: 'Inspirados en el Dr. Martin Luther King Jr., usamos métricas de justicia social para empoderar a poblaciones desatendidas que son blanco de operaciones de drogas ilícitas.' },
-      { icon: <AlertTriangle size={32} />, title: 'Identificación de Píldoras Falsas', desc: 'Usando estudios de la DEA, enseñamos a los estudiantes cómo identificar sintéticos letales que se disfrazan como Adderall o Percocet.' },
+      { icon: <Database size={32} />, title: 'Filosofía Kingiana', desc: 'Inspirados en el Dr. Martin Luther King Jr., ponemos atención adicional en las comunidades que más son blanco de las operaciones de narcotráfico.' },
+      { icon: <AlertTriangle size={32} />, title: 'Identificación de Píldoras Falsas', desc: 'Con datos forenses de la DEA, enseñamos a los estudiantes a identificar píldoras falsificadas, hechas para parecer Adderall o Percocet, que en realidad contienen opioides sintéticos letales.' },
     ],
     surveyLabel: 'Reporte de Impacto',
     surveyTitle: 'Resultados de Encuestas de Talleres',

@@ -45,8 +45,8 @@ export default function EventsPage({ featuredEvents, gridEvents, ticketTiers }: 
           <h1>{isEs ? 'Nuestra Prueba de Impacto' : 'Our Proof of Impact'}</h1>
           <p>
             {isEs
-              ? 'Rastreando cada presentación, cada asociación y cada vida tocada.'
-              : 'Tracking every presentation, every partnership, and every life touched.'}
+              ? 'Un registro de los talleres que hemos impartido, los aliados con quienes hemos trabajado y la gente a la que hemos llegado.'
+              : "A record of the workshops we've run, the partners we've worked with, and the people we've reached."}
           </p>
         </div>
       </section>

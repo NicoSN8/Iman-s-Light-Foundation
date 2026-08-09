@@ -15,12 +15,12 @@ const t = {
     heroLabel: 'Be The Light In Darkness',
     heroTitle: 'Preventing Tragedies,\nIlluminating Futures',
     heroSubtitle:
-      "Iman's Light Foundation educates communities on the perils of Fentanyl, advocates for legislative change, and provides mental health support to those affected by addiction.",
+      "We teach communities about the dangers of fentanyl and push for legislative change. We also provide mental health support to people affected by addiction.",
     heroCta1: 'Our Mission',
     heroCta2: 'Donate',
     impactLabel: 'Our Impact',
     impactTitle: 'Every Life Matters',
-    impactSub: 'Through education, advocacy, and community programs, we are changing lives across South Florida.',
+    impactSub: 'We work through education, advocacy, and community programs to change lives across South Florida.',
     stat1: '500+',
     stat1Label: 'Lives Reached',
     stat2: '30+',
@@ -31,25 +31,25 @@ const t = {
     stat4Label: 'Active Programs',
     missionLabel: 'What We Stand For',
     missionTitle: "Iman's Light Stands For Change",
-    missionSub: 'We fight on three fronts to protect our communities from the devastation of Fentanyl and lethal drugs.',
+    missionSub: 'We work in three ways to protect our communities from fentanyl and other lethal drugs.',
     pillar1Title: 'Education & Prevention',
     pillar1Text: 'Delivering life-saving workshops to children, youth, and adults on the perils of Fentanyl, drug lacing, and grooming tactics.',
     pillar2Title: 'Mental Health & Wellness',
     pillar2Text: 'Providing workshops with strategies to address anxiety, depression, anger, and stress, key root causes of substance use.',
     pillar3Title: 'Legislative Advocacy',
-    pillar3Text: 'Advocating for severe consequences for drug dealers and traffickers, and robust protections for children and communities.',
+    pillar3Text: 'Pushing for real consequences for drug dealers and traffickers, and stronger protections for children and communities.',
     storyLabel: "Iman's Story",
     storyTitle: 'Finding Light in the Darkest Moments',
-    storyText1: "We are in the middle of a chemical warfare in the realm of drug addiction, where no infant, child, youth or adult should lose their life to Fentanyl, or any other drug.",
-    storyText2: "Iman's Light Foundation was born from tragedy, and transformed into a beacon of hope, education, and change for communities across Florida and beyond.",
+    storyText1: "Fentanyl is killing people of every age, and it has to stop. No infant, child, teenager, or adult should lose their life to this drug, or any other.",
+    storyText2: "Iman's Light Foundation started after a tragedy. Since then, it has grown into a source of education, support, and change for communities across Florida and beyond.",
     storyBtn: "Read Iman's Full Story",
     programsLabel: 'Programs',
     programsTitle: 'Our Core Programs',
-    programsSub: 'Comprehensive, community-centered programs designed to prevent addiction and heal those affected.',
+    programsSub: 'Programs built with our community, to prevent addiction and support the people it affects.',
     prog1: 'Drug Education Workshops',
     prog1Text: 'School and community workshops covering Fentanyl dangers, drug lacing, and resistance strategies.',
     prog2: 'Mental Health Wellness',
-    prog2Text: 'Life-changing workshops addressing anxiety, depression, stress, and emotional self-regulation.',
+    prog2Text: 'Workshops that address anxiety, depression, stress, and emotional regulation.',
     prog3: 'Saving Lives Initiative',
     prog3Text: 'Direct outreach, resource connection, and safe disposal of medical waste and drugs.',
     prog4: 'Victim & Family Support',
@@ -72,12 +72,12 @@ const t = {
     heroLabel: 'Sé La Luz En La Oscuridad',
     heroTitle: 'Previniendo Tragedias,\nIluminando Futuros',
     heroSubtitle:
-      'La Fundación Iman\'s Light educa comunidades sobre los peligros del Fentanilo, aboga por cambios legislativos y proporciona apoyo de salud mental a los afectados por la adicción.',
+      'Educamos a las comunidades sobre los peligros del fentanilo y luchamos por cambios legislativos. También ofrecemos apoyo de salud mental a las personas afectadas por la adicción.',
     heroCta1: 'Nuestra Misión',
     heroCta2: 'Donar Ahora',
     impactLabel: 'Nuestro Impacto',
     impactTitle: 'Cada Vida Importa',
-    impactSub: 'A través de la educación, la abogacía y los programas comunitarios, estamos cambiando vidas en el sur de Florida.',
+    impactSub: 'Trabajamos a través de la educación, la abogacía y los programas comunitarios para cambiar vidas en el sur de Florida.',
     stat1: '500+',
     stat1Label: 'Vidas Alcanzadas',
     stat2: '30+',
@@ -88,25 +88,25 @@ const t = {
     stat4Label: 'Programas Activos',
     missionLabel: 'Lo Que Defendemos',
     missionTitle: 'Iman\'s Light Lucha Por El Cambio',
-    missionSub: 'Luchamos en tres frentes para proteger a nuestras comunidades de la devastación del Fentanilo y las drogas letales.',
+    missionSub: 'Trabajamos de tres maneras para proteger a nuestras comunidades del fentanilo y otras drogas letales.',
     pillar1Title: 'Educación y Prevención',
     pillar1Text: 'Talleres que salvan vidas sobre los peligros del Fentanilo, el corte de drogas y las tácticas de manipulación.',
     pillar2Title: 'Salud Mental y Bienestar',
     pillar2Text: 'Talleres con estrategias para abordar la ansiedad, la depresión, la ira y el estrés, causas raíz del consumo de sustancias.',
     pillar3Title: 'Abogacía Legislativa',
-    pillar3Text: 'Abogando por consecuencias severas para traficantes de drogas y protecciones robustas para niños y comunidades.',
+    pillar3Text: 'Luchando por consecuencias reales para los traficantes de drogas y protecciones más fuertes para niños y comunidades.',
     storyLabel: 'La Historia de Iman',
     storyTitle: 'Encontrando Luz en los Momentos Más Oscuros',
-    storyText1: 'Estamos en medio de una guerra química en el ámbito de la adicción a las drogas, donde ningún infante, niño, joven o adulto debería perder la vida por el Fentanilo.',
-    storyText2: 'La Fundación Iman\'s Light nació de la tragedia, y se transformó en un faro de esperanza, educación y cambio para comunidades de toda Florida.',
+    storyText1: 'El fentanilo está matando a personas de todas las edades, y tiene que parar. Ningún bebé, niño, joven o adulto debería perder la vida por esta droga, ni por ninguna otra.',
+    storyText2: 'La Fundación Iman\'s Light nació de una tragedia. Desde entonces, se ha convertido en una fuente de educación, apoyo y cambio para comunidades de toda Florida.',
     storyBtn: 'Leer la Historia Completa de Iman',
     programsLabel: 'Programas',
     programsTitle: 'Nuestros Programas Principales',
-    programsSub: 'Programas integrales en la comunidad para prevenir la adicción y sanar a los afectados.',
+    programsSub: 'Programas creados junto a nuestra comunidad, para prevenir la adicción y apoyar a las personas afectadas.',
     prog1: 'Talleres de Educación sobre Drogas',
     prog1Text: 'Talleres en escuelas y comunidades sobre los peligros del Fentanilo, el corte de drogas y estrategias de resistencia.',
     prog2: 'Bienestar de Salud Mental',
-    prog2Text: 'Talleres que cambian vidas abordando la ansiedad, depresión, estrés y autoregulación emocional.',
+    prog2Text: 'Talleres que abordan la ansiedad, la depresión, el estrés y la regulación emocional.',
     prog3: 'Iniciativa Salvando Vidas',
     prog3Text: 'Alcance directo, conexión de recursos y eliminación segura de residuos médicos y drogas.',
     prog4: 'Apoyo a Víctimas y Familias',
@@ -241,8 +241,8 @@ export default function HomePage() {
                 <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1rem', marginBottom: '20px' }}>@ The Signature Grand</p>
                 <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '1rem', lineHeight: '1.75', marginBottom: '20px' }}>
                   {lang === 'es'
-                    ? 'Una noche. Una comunidad reunida. Los fondos que hacen posible cada taller, cada sesión de consejería y cada vida que ayudamos a salvar durante todo el año — todo comienza aquí.'
-                    : "One night. One community, together. The funds behind every workshop, every counseling session, and every life we help save all year — it all starts here."}
+                    ? 'Una noche. Una comunidad reunida. Los fondos que hacen posible cada taller, cada sesión de consejería y cada vida que ayudamos a salvar durante todo el año empiezan justo aquí.'
+                    : "One night. One community, together. The funds behind every workshop, every counseling session, and every life we help save all year start right here."}
                 </p>
                 <p style={{ color: 'var(--gold-light)', fontSize: '0.9rem', fontWeight: 600, marginBottom: '24px' }}>
                   {lang === 'es' ? 'Tamaños de mesa y precios ya disponibles' : 'Table sizes and pricing available now'}
@@ -288,8 +288,8 @@ export default function HomePage() {
               </h4>
               <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.95rem', lineHeight: '1.6' }}>
                 {lang === 'es'
-                  ? 'Nuestro evento más grande hasta ahora — Música y Luces por la Vida 2025 en el Miramar City Center Hall reunió a la comunidad con presentaciones, 24+ patrocinadores y un poderoso mensaje de prevención.'
-                  : 'Our biggest event yet — Music and Lights for Life 2025 at Miramar City Center Hall brought together the community with performances, 24+ sponsors, and powerful prevention messaging.'}
+                  ? 'Nuestro evento más grande hasta ahora. Música y Luces por la Vida 2025 en el Miramar City Center Hall reunió a la comunidad para presentaciones, más de 24 patrocinadores y un mensaje de prevención contundente.'
+                  : 'Our biggest event yet. Music and Lights for Life 2025 at Miramar City Center Hall brought together the community for performances, 24+ sponsors, and a strong prevention message.'}
               </p>
             </div>
           </div>

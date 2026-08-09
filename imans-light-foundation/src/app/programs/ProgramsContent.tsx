@@ -32,7 +32,7 @@ const programs = {
       tag: 'Interactive Workshops',
       title: 'The Truth About Drugs & Awareness',
       subtitle: 'Knowledge is the strongest defense against synthetics.',
-      description: 'Your investment of $5,000 funds four interactive, specialized workshops (1-2.5 hours each) led by presenters and presentation aids. "The Truth About Drugs" covers the realities of vaping, marijuana, fentanyl, synthetics, and addiction. We detail how these affect the brain and body, providing clear instruction on overdose signs and Narcan application. Pre- and post-assessments guarantee that students properly integrate this critical survival knowledge.',
+      description: 'A $5,000 investment funds four workshops (1 to 2.5 hours each), led by our presenters with hands-on materials. "The Truth About Drugs" covers vaping, marijuana, fentanyl, synthetic drugs, and addiction: what they do to the brain and body, how to recognize an overdose, and how to use Narcan. We run assessments before and after each session to check that students actually retained the material.',
       cta: 'View Lesson Plans',
       image: '/media/56e6ee_073f30a006774b13b0b4760f92bad63e~mv2.jpeg',
       imageAlt: 'Iman\'s Light Foundation Narcan distribution and overdose-response training',
@@ -43,7 +43,7 @@ const programs = {
       tag: 'Emotional Resilience',
       title: 'Mental Wellness Workshops',
       subtitle: 'Understanding emotions to prevent self-harm.',
-      description: 'Addiction often stems from emotional pain. Our Mental Wellness Workshop "Understanding Emotions and Critical Thinking"—provides deep skills in emotional intelligence and cognitive restructuring. By teaching nonviolent communication and positive self-talk, we help youth manage the stress, anger, anxiety, and grief that often lead to self-medication and violence.',
+      description: 'Addiction often starts with emotional pain. Our Mental Wellness Workshop, "Understanding Emotions and Critical Thinking," teaches emotional intelligence and healthier thought patterns. We cover nonviolent communication and positive self-talk, so young people have real tools for the stress, anger, anxiety, and grief that often lead to self-medication and violence.',
       cta: 'Request a Session',
       image: '/media/56e6ee_3576a17eaea54dc89bcb590ac41a3ec6~mv2.jpeg',
       imageAlt: 'Iman\'s Light Foundation founder presenting at a community wellness event',
@@ -53,8 +53,8 @@ const programs = {
       icon: HeartPulse,
       tag: 'Continuous Prevention',
       title: 'ILF Youth Group Networks',
-      subtitle: 'Empowering students to lead their peers.',
-      description: 'Iman\'s Light Foundation is committed to encouraging and supporting schools and students to continue the conversation locally. We establish ILF Youth Groups, providing them with ongoing materials and topics to discuss among themselves. This transforms students into proactive leaders and positive influences within their own peer circles.',
+      subtitle: 'Students leading the conversation for their peers.',
+      description: 'We want schools and students to keep this conversation going after we leave. That\'s why we set up ILF Youth Groups: ongoing materials and discussion topics students can use with each other. Over time, group members become the person other students turn to.',
       cta: 'Start a Youth Group',
       image: '/media/56e6ee_d289e22e23694b668fdf387aaafa140c~mv2.jpeg',
       imageAlt: 'Iman\'s Light Foundation mentor connecting with a student',
@@ -65,7 +65,7 @@ const programs = {
       tag: 'Community Events',
       title: 'Music and Lights for Life',
       subtitle: 'Celebrating life safely, without substances.',
-      description: 'Our annual "Music and Lights for Life Dance and Exhibition" provides a safe environment to dance, laugh, and have fun, proving there is absolutely no need for substances that alter your mental state. We deliver crucial information on drug lacing, mental wellness, and the reality of fake pills. With Narcan distributed on-site and sponsors offering CPR lessons, we honor lives lost while actively protecting the living.',
+      description: 'Our annual "Music and Lights for Life Dance and Exhibition" is a safe place to dance, laugh, and have fun without drugs or alcohol. We share real information about drug lacing, mental health, and counterfeit pills. Narcan is available on-site, and sponsors offer CPR lessons. We remember the people we\'ve lost, and we do what we can to protect the people who are still here.',
       cta: 'Attend the Event',
       image: '/media/56e6ee_b5621014b4e14c088141ec0ff07a50fb~mv2.jpeg',
       imageAlt: 'Music and Lights for Life annual dance event',
@@ -78,7 +78,7 @@ const programs = {
       tag: 'Talleres Interactivos',
       title: 'La Verdad Sobre las Drogas',
       subtitle: 'El conocimiento es la defensa más fuerte.',
-      description: 'Su inversión de $5,000 financia cuatro talleres interactivos y especializados. Cubrimos las realidades del vapeo, la marihuana, el fentanilo y las adicciones. Detallamos cómo afectan el cerebro y el cuerpo, y enseñamos a aplicar Narcan. Las evaluaciones previas y posteriores garantizan que los estudiantes integren este conocimiento vital de supervivencia.',
+      description: 'Una inversión de $5,000 financia cuatro talleres interactivos y especializados. Cubrimos las realidades del vapeo, la marihuana, el fentanilo y las adicciones: cómo afectan el cerebro y el cuerpo, y cómo aplicar Narcan. Aplicamos evaluaciones antes y después de cada sesión para confirmar que los estudiantes retuvieron la información.',
       cta: 'Ver Planes de Estudio',
       image: '/media/56e6ee_073f30a006774b13b0b4760f92bad63e~mv2.jpeg',
       imageAlt: 'Distribución de Narcan y entrenamiento de respuesta a sobredosis de Iman\'s Light Foundation',
@@ -89,7 +89,7 @@ const programs = {
       tag: 'Resiliencia Emocional',
       title: 'Talleres de Bienestar Mental',
       subtitle: 'Comprendiendo las emociones para prevenir autolesiones.',
-      description: 'Nuestro taller "Comprendiendo las emociones y pensamiento crítico" brinda habilidades de inteligencia emocional. Enseñamos comunicación no violenta para manejar el estrés, la ira y el dolor, que a menudo llevan a la automedicación.',
+      description: 'La adicción a menudo comienza con dolor emocional. Nuestro taller, "Comprendiendo las Emociones y el Pensamiento Crítico," enseña inteligencia emocional. Cubrimos comunicación no violenta para manejar el estrés, la ira y el dolor que a menudo llevan a la automedicación.',
       cta: 'Solicitar una Sesión',
       image: '/media/56e6ee_3576a17eaea54dc89bcb590ac41a3ec6~mv2.jpeg',
       imageAlt: 'Fundadora de Iman\'s Light Foundation presentando en un evento comunitario de bienestar',
@@ -99,8 +99,8 @@ const programs = {
       icon: HeartPulse,
       tag: 'Prevención Continua',
       title: 'Grupos Juveniles ILF',
-      subtitle: 'Empoderando a los líderes del mañana.',
-      description: 'Establecemos Grupos Juveniles ILF en escuelas, brindándoles materiales y temas continuos para continuar la conversación de prevención entre ellos mismos. Esto transforma a los estudiantes en líderes positivos.',
+      subtitle: 'Estudiantes liderando la conversación entre sus compañeros.',
+      description: 'Creamos Grupos Juveniles ILF en las escuelas, con materiales y temas continuos para que los estudiantes sigan la conversación entre ellos mismos. Con el tiempo, se convierten en líderes positivos para sus compañeros.',
       cta: 'Crear un Grupo',
       image: '/media/56e6ee_d289e22e23694b668fdf387aaafa140c~mv2.jpeg',
       imageAlt: 'Mentor de Iman\'s Light Foundation conectando con un estudiante',
@@ -111,7 +111,7 @@ const programs = {
       tag: 'Eventos Comunitarios',
       title: 'Música y Luces por la Vida',
       subtitle: 'Celebrando con seguridad, sin sustancias.',
-      description: 'Nuestro baile anual proporciona un entorno seguro demostrando que no hay necesidad de sustancias para alterar el estado mental. Entregamos información vital, distribuimos Narcan y celebramos las vidas que hemos perdido.',
+      description: 'Nuestro baile anual es un espacio seguro para bailar, reír y divertirse sin drogas ni alcohol. Compartimos información real, distribuimos Narcan y recordamos a las vidas que hemos perdido.',
       cta: 'Asistir al Evento',
       image: '/media/56e6ee_b5621014b4e14c088141ec0ff07a50fb~mv2.jpeg',
       imageAlt: 'Evento anual de baile Música y Luces por la Vida',
@@ -223,7 +223,7 @@ export default function ProgramsPage() {
           </div>
           <span className="section-label">{isEs ? 'Lo Que Hacemos' : 'What We Do'}</span>
           <h1>{isEs ? 'Agenda y Programas' : 'Agenda & Programs'}</h1>
-          <p>{isEs ? 'La importancia vital de la prevención y la educación. Todos los estudios muestran que debemos comenzar la educación mucho antes de lo pensado.' : 'The vital importance of prevention, education, and awareness. All research shows why we must start educating children earlier than previously thought.'}</p>
+          <p>{isEs ? 'La prevención y la educación funcionan, pero hay que empezar temprano. Los estudios lo confirman: debemos llegar a los niños antes de lo que la mayoría piensa.' : "Prevention and education work, but only if we start early. Research backs this up: we need to reach kids sooner than most people think."}</p>
         </div>
       </div>
 
@@ -284,8 +284,8 @@ export default function ProgramsPage() {
               <div className="gold-divider" style={{ width: '60px', marginBottom: '24px' }} />
               <p style={{ color: 'rgba(255, 255, 255, 0.9)', fontSize: '1.05rem', lineHeight: '1.8' }}>
                 {isEs 
-                  ? 'La prevalencia de sobredosis accidentales, en su mayoría causadas por opiáceos sintéticos letales, ha alcanzado niveles pandémicos. Esta crisis se ve agravada por el auge del vapeo, la accesibilidad de Cannabis callejero con alto contenido de THC, la marihuana sintética y la amenaza mortal de productos contaminados con fentanilo y pastillas falsas. La educación y la intervención tempranas son fundamentales para prevenir la adicción y sus consecuencias. Además, abordar los desafíos de salud mental como la ansiedad, el estrés, la ira, el duelo y la depresión es esencial, ya que estas condiciones a menudo contribuyen a la automedicación.'
-                  : 'The prevalence of accidental overdose, most of which is caused by lethal synthetic opiates, has reached pandemic levels. This crisis is exacerbated by the rise of vaping, the accessibility of street Cannabis with high THC, synthetic marijuana, and the deadly threat of fentanyl-laced products and fake pills. Early education and intervention are critical in preventing addiction and its associated consequences. Additionally, addressing mental health challenges such as anxiety, stress, anger, grief, and depression is essential, as these conditions often contribute to self-medication.'
+                  ? 'La sobredosis accidental, la mayoría por opioides sintéticos, ha alcanzado niveles de crisis. El vapeo, el fácil acceso a cannabis con alto contenido de THC, la marihuana sintética y la creciente amenaza de píldoras contaminadas con fentanilo empeoran la situación. La educación y la intervención temprana importan porque pueden detener la adicción antes de que comience. Y también hay que atender la ansiedad, el estrés, la ira, el duelo y la depresión, porque muchas veces son la causa detrás de la automedicación.'
+                  : 'Accidental overdose, most of it from synthetic opioids, has reached crisis levels. Vaping, easy access to high-THC cannabis and synthetic marijuana, and the growing threat of fentanyl-laced pills are making it worse. Early education and intervention matter because they can stop addiction before it starts. And we have to deal with anxiety, stress, anger, grief, and depression too. Those are often what lead to self-medication in the first place.'
                 }
               </p>
             </div>
@@ -349,8 +349,8 @@ export default function ProgramsPage() {
               },
               {
                 icon: <Users size={36} color="var(--gold)" />,
-                titleEn: 'Foster Engagement',
-                titleEs: 'Fomentar la Participación',
+                titleEn: 'Build Community Support',
+                titleEs: 'Fortalecer el Apoyo Comunitario',
                 descEn: 'Encourage ongoing dialogue and support networks within the community and schools.',
                 descEs: 'Fomentar el diálogo continuo y las redes de apoyo dentro de la comunidad y las escuelas.'
               }
@@ -382,7 +382,7 @@ export default function ProgramsPage() {
             </div>
 
             <p style={{ color: 'rgba(255,255,255,0.7)', maxWidth: '700px', margin: '0 auto', fontSize: '1.1rem' }}>
-              {isEs ? 'Desglosamos los hechos reales sobre las sustancias para desmentir mitos y salvar vidas. Cada presentación está diseñada para la resiliencia juvenil.' : 'We break down the raw facts regarding substances to shatter internet myths and definitively save lives. Each presentation is custom-built.'}
+              {isEs ? 'Desglosamos los hechos reales sobre estas sustancias para contrarrestar lo que los jóvenes encuentran en internet. Cada presentación está diseñada según el grupo con el que hablamos.' : "We break down the real facts about these substances to cut through what kids find online. Every presentation is built for the group we're talking to."}
             </p>
           </div>
 
@@ -463,8 +463,8 @@ export default function ProgramsPage() {
                 <div className="gold-divider" style={{ width: '80px', marginBottom: '28px' }} />
                 <p style={{ color: 'rgba(255,255,255,0.9)', fontSize: '1.1rem', lineHeight: '1.8' }}>
                   {isEs 
-                    ? 'Alas de la Luz de Iman es nuestra iniciativa de liderazgo y prevención juvenil diseñada para empoderar a los estudiantes desde el 4to grado. Establecemos clubes dirigidos por estudiantes en las escuelas que sirven como plataformas continuas para la educación sobre prevención de drogas, mentoría entre pares y participación comunitaria. Estos clubes transforman a los estudiantes en líderes proactivos e influencias positivas dentro de sus propios círculos de compañeros, asegurando que la conversación sobre la seguridad de las drogas y el bienestar mental continúe mucho después de nuestros talleres iniciales.'
-                    : 'Iman\'s Light Wings is our youth leadership and prevention initiative designed to empower students starting from the 4th grade. We establish student-led clubs in schools that serve as ongoing platforms for drug prevention education, peer mentoring, and community engagement. These clubs transform students into proactive leaders and positive influences within their own peer circles, ensuring the conversation about drug safety and mental wellness continues long after our initial workshops.'
+                    ? 'Alas de la Luz de Iman es nuestro programa de liderazgo juvenil para estudiantes desde el 4to grado. Ayudamos a las escuelas a formar clubes dirigidos por estudiantes donde los chicos siguen hablando de prevención de drogas, se apoyan entre ellos y se mantienen involucrados en su comunidad. La conversación no termina cuando acaba nuestro taller: continúa a través del club, dirigido por los propios estudiantes.'
+                    : "Iman's Light Wings is our youth leadership program for students starting in 4th grade. We help schools set up student-led clubs where kids keep talking about drug prevention, mentor each other, and stay involved in their community. The conversation doesn't stop when our workshop ends: it continues through the club, led by the students themselves."
                   }
                 </p>
               </div>
@@ -710,7 +710,7 @@ export default function ProgramsPage() {
             {isEs ? 'Patrocine una Escuela Hoy' : 'Sponsor a School Today'}
           </h2>
           <p style={{ color: 'rgba(255,255,255,0.75)', maxWidth: '640px', margin: '0 auto 40px', fontSize: '1.1rem', lineHeight: '1.8' }}>
-            {isEs ? 'Asociándose con la policía, líderes comunitarios y la DEA para la eliminación segura de drogas. Ayúdenos a abogar por cambios legislativos y llevar estos talleres a los estudiantes en mayor riesgo.' : 'Partnering with police, city leaders, and the DEA for safe drug disposal. Help us advocate for legislative changes and bring these life-saving workshops to students.'}
+            {isEs ? 'Nos asociamos con la policía, líderes de la ciudad y la DEA para la eliminación segura de drogas. Ayúdanos a impulsar cambios legislativos y llevar estos talleres a más estudiantes.' : 'We partner with police, city leaders, and the DEA on safe drug disposal. Help us push for legislative change and bring these workshops to more students.'}
           </p>
           <div style={{ display: 'flex', gap: '20px', justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link href="/contact" className="btn btn-primary">{isEs ? 'Póngase en Contacto' : 'Get in Touch'}</Link>
