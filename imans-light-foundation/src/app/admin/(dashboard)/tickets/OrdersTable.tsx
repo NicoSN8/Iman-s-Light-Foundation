@@ -46,7 +46,7 @@ export default function OrdersTable({ orders }: { orders: Order[] }) {
     setRows(orders);
   }, [orders]);
   const [expandedId, setExpandedId] = useState<string | null>(null);
-  const [drafts, setDrafts] = useState<Record<string, { tableAssignment: string; seatNotes: string; status: string; paymentMethod: string; checkedIn: boolean }>>({});
+  const [drafts, setDrafts] = useState<Record<string, { buyerName: string; buyerEmail: string; buyerPhone: string; tableAssignment: string; seatNotes: string; status: string; paymentMethod: string; checkedIn: boolean }>>({});
   const [savingId, setSavingId] = useState<string | null>(null);
   const [deletingId, setDeletingId] = useState<string | null>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -69,6 +69,9 @@ export default function OrdersTable({ orders }: { orders: Order[] }) {
     setDrafts((prev) => ({
       ...prev,
       [order.id]: {
+        buyerName: order.buyerName,
+        buyerEmail: order.buyerEmail ?? '',
+        buyerPhone: order.buyerPhone ?? '',
         tableAssignment: order.tableAssignment ?? '',
         seatNotes: order.seatNotes ?? '',
         status: order.status,
@@ -94,7 +97,14 @@ export default function OrdersTable({ orders }: { orders: Order[] }) {
       const data = await res.json().catch(() => null);
       if (!res.ok || !data?.ok) throw new Error(data?.error || 'Failed to save.');
 
-      setRows((prev) => prev.map((r) => (r.id === id ? { ...r, ...draft, tableAssignment: draft.tableAssignment || null, seatNotes: draft.seatNotes || null } : r)));
+      setRows((prev) => prev.map((r) => (r.id === id ? {
+        ...r,
+        ...draft,
+        buyerEmail: draft.buyerEmail || null,
+        buyerPhone: draft.buyerPhone || null,
+        tableAssignment: draft.tableAssignment || null,
+        seatNotes: draft.seatNotes || null,
+      } : r)));
       setExpandedId(null);
       router.refresh();
     } catch (err) {
@@ -182,6 +192,28 @@ export default function OrdersTable({ orders }: { orders: Order[] }) {
                   <tr style={borderRowStyle}>
                     <td colSpan={9} style={{ padding: '4px 8px 20px', background: 'rgba(201,168,76,0.04)' }}>
                       <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', maxWidth: '760px' }}>
+                        <div className="form-group" style={{ flex: '1 1 200px' }}>
+                          <label>Buyer Name</label>
+                          <input
+                            value={draft.buyerName}
+                            onChange={(e) => setDrafts((p) => ({ ...p, [o.id]: { ...p[o.id], buyerName: e.target.value } }))}
+                          />
+                        </div>
+                        <div className="form-group" style={{ flex: '1 1 200px' }}>
+                          <label>Email</label>
+                          <input
+                            type="email"
+                            value={draft.buyerEmail}
+                            onChange={(e) => setDrafts((p) => ({ ...p, [o.id]: { ...p[o.id], buyerEmail: e.target.value } }))}
+                          />
+                        </div>
+                        <div className="form-group" style={{ flex: '1 1 160px' }}>
+                          <label>Phone</label>
+                          <input
+                            value={draft.buyerPhone}
+                            onChange={(e) => setDrafts((p) => ({ ...p, [o.id]: { ...p[o.id], buyerPhone: e.target.value } }))}
+                          />
+                        </div>
                         <div className="form-group" style={{ flex: '1 1 260px' }}>
                           <label>Table Assignment ({o.totalSeats} seat{o.totalSeats === 1 ? '' : 's'} total)</label>
                           <input

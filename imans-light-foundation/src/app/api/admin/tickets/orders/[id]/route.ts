@@ -4,6 +4,9 @@ import { getDb } from '@/db';
 import { ticketOrders } from '@/db/schema';
 
 interface OrderPatchInput {
+  buyerName?: unknown;
+  buyerEmail?: unknown;
+  buyerPhone?: unknown;
   tableAssignment?: unknown;
   seatNotes?: unknown;
   status?: unknown;
@@ -26,12 +29,19 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ id
     return Response.json({ ok: false, error: 'Invalid request body.' }, { status: 400 });
   }
 
+  if (typeof body.buyerName === 'string' && !body.buyerName.trim()) {
+    return Response.json({ ok: false, error: 'Buyer name cannot be empty.' }, { status: 400 });
+  }
+
   const status = typeof body.status === 'string' && STATUSES.includes(body.status) ? body.status : 'confirmed';
   const paymentMethod = typeof body.paymentMethod === 'string' && PAYMENT_METHODS.includes(body.paymentMethod) ? body.paymentMethod : 'cash_door';
 
   const [updated] = await getDb()
     .update(ticketOrders)
     .set({
+      ...(typeof body.buyerName === 'string' && body.buyerName.trim() ? { buyerName: body.buyerName.trim() } : {}),
+      buyerEmail: typeof body.buyerEmail === 'string' && body.buyerEmail.trim() ? body.buyerEmail.trim() : null,
+      buyerPhone: typeof body.buyerPhone === 'string' && body.buyerPhone.trim() ? body.buyerPhone.trim() : null,
       tableAssignment: typeof body.tableAssignment === 'string' && body.tableAssignment.trim() ? body.tableAssignment.trim() : null,
       seatNotes: typeof body.seatNotes === 'string' && body.seatNotes.trim() ? body.seatNotes.trim() : null,
       status,

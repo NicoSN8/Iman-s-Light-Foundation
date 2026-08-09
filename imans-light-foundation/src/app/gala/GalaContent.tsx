@@ -8,6 +8,16 @@ import { LanguageContext } from '@/context/LanguageContext';
 import TicketTiers, { type TicketTierData } from '@/components/TicketTiers';
 import styles from './gala.module.css';
 
+// The 4 tiers, the ticket_orders table, the Zeffy ticketing campaign, the
+// webhook auto-matching, and the whole /admin/tickets tool are all fully
+// built and working -- this flag only controls whether the public price
+// cards show. The CEO hasn't given final pricing/descriptions yet (what's
+// in the database now was Nicolas's own draft placeholder), so showing it
+// as if it were final would be wrong. Flip this to true once the real
+// numbers are in and Zeffy's campaign is updated to match -- nothing else
+// needs to change.
+const TICKETS_LIVE = false;
+
 interface EventRow {
   titleEn: string;
   titleEs: string;
@@ -68,28 +78,45 @@ export default function GalaContent({ event, tiers }: { event: EventRow; tiers: 
               : "One night. One community, together. The funds that make every workshop, every counseling session, and every life we help save all year possible."}
           </p>
           <Link href="#tickets" className="btn btn-primary">
-            {isEs ? 'Reserva Tu Mesa' : 'Reserve Your Table'} →
+            {TICKETS_LIVE
+              ? (isEs ? 'Reserva Tu Mesa' : 'Reserve Your Table')
+              : (isEs ? 'Ver Información de Boletos' : 'See Ticket Info')} →
           </Link>
         </div>
       </section>
 
-      {tiers.length > 0 && (
-        <section id="tickets" className="section section-dark transparent-bg">
-          <div className="container">
-            <div className="text-center">
-              <span className="section-label">{isEs ? 'Boletos' : 'Tickets'}</span>
-              <h2 className="section-title">{isEs ? 'Reserva Tu Mesa' : 'Reserve Your Table'}</h2>
-              <div className="gold-divider center" />
+      <section id="tickets" className="section section-dark transparent-bg">
+        <div className="container">
+          <div className="text-center">
+            <span className="section-label">{isEs ? 'Boletos' : 'Tickets'}</span>
+            <h2 className="section-title">
+              {TICKETS_LIVE
+                ? (isEs ? 'Reserva Tu Mesa' : 'Reserve Your Table')
+                : (isEs ? 'Boletos Próximamente' : 'Tickets Coming Soon')}
+            </h2>
+            <div className="gold-divider center" />
+            {TICKETS_LIVE ? (
               <p className={styles.ticketsIntro}>
                 {isEs
                   ? 'Compra tus boletos de forma segura en línea a través de Zeffy.'
                   : 'Buy your tickets securely online through Zeffy.'}
               </p>
-            </div>
-            <TicketTiers tiers={tiers} lang={lang} />
+            ) : (
+              <>
+                <p className={styles.ticketsIntro}>
+                  {isEs
+                    ? 'Los precios y detalles de los boletos se están finalizando. Vuelve pronto, o contáctanos si quieres reservar tu lugar ahora.'
+                    : "Ticket pricing and details are being finalized. Check back soon, or contact us if you'd like to reserve your spot now."}
+                </p>
+                <Link href="/contact" className="btn btn-primary" style={{ marginTop: '20px' }}>
+                  {isEs ? 'Contáctanos' : 'Contact Us'} →
+                </Link>
+              </>
+            )}
           </div>
-        </section>
-      )}
+          {TICKETS_LIVE && <TicketTiers tiers={tiers} lang={lang} />}
+        </div>
+      </section>
 
       <section className={`section ${styles.whySection}`}>
         <div className="container">
