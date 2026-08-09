@@ -240,13 +240,13 @@ export default function AboutPage() {
           <div className="grid-2" style={{ gap: '40px' }}>
             <div className="card" style={{ background: 'rgba(20, 28, 46, 0.7)', backdropFilter: 'blur(12px)', padding: '48px', border: '1px solid rgba(201, 168, 76, 0.2)' }}>
               <Star size={48} color="var(--gold)" style={{ marginBottom: '24px' }} />
-              <h2 style={{ color: 'var(--white)', marginBottom: '16px', fontFamily: 'Playfair Display' }}>{txt.missionTitle}</h2>
+              <h3 style={{ color: 'var(--white)', fontSize: '1.5rem', marginBottom: '16px', fontFamily: 'Playfair Display' }}>{txt.missionTitle}</h3>
               <div className="gold-divider" />
               <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '1.05rem', lineHeight: '1.8' }}>{txt.missionText}</p>
             </div>
             <div className="card" style={{ background: 'rgba(20, 28, 46, 0.7)', backdropFilter: 'blur(12px)', padding: '48px', border: '1px solid rgba(201, 168, 76, 0.2)' }}>
               <Globe2 size={48} color="var(--gold-light)" style={{ marginBottom: '24px' }} />
-              <h2 style={{ color: 'var(--white)', marginBottom: '16px', fontFamily: 'Playfair Display' }}>{txt.visionTitle}</h2>
+              <h3 style={{ color: 'var(--white)', fontSize: '1.5rem', marginBottom: '16px', fontFamily: 'Playfair Display' }}>{txt.visionTitle}</h3>
               <div className="gold-divider" />
               <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '1.05rem', lineHeight: '1.8' }}>{txt.visionText}</p>
             </div>

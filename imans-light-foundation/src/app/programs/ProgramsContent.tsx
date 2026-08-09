@@ -278,7 +278,7 @@ export default function ProgramsPage() {
               <span className="section-label" style={{ color: '#E8C97A' }}>
                 {isEs ? 'Por Qué Importa' : 'Why This Matters'}
               </span>
-              <h2 style={{ color: '#fff', fontSize: '2.2rem', fontFamily: 'Playfair Display, serif', marginBottom: '20px' }}>
+              <h2 className="section-title" style={{ color: '#fff' }}>
                 {isEs ? 'La Crisis Que Enfrentamos' : 'The Crisis We Face'}
               </h2>
               <div className="gold-divider" style={{ width: '60px', marginBottom: '24px' }} />
@@ -454,7 +454,7 @@ export default function ProgramsPage() {
                   <Sparkles size={32} color="var(--gold)" />
                   <span className="tag">{isEs ? 'Liderazgo Juvenil' : 'Youth Leadership'}</span>
                 </div>
-                <h2 style={{ color: '#fff', fontSize: '2.5rem', fontFamily: 'Playfair Display, serif', marginBottom: '16px' }}>
+                <h2 className="section-title" style={{ color: '#fff' }}>
                   {isEs ? 'Alas de la Luz de Iman' : "Iman's Light Wings"}
                 </h2>
                 <p style={{ fontSize: '1.2rem', fontStyle: 'italic', color: 'var(--gold)', marginBottom: '24px', fontFamily: 'Playfair Display, serif' }}>
