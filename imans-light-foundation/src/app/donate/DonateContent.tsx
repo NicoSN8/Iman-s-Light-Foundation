@@ -122,12 +122,12 @@ export default function DonatePage() {
             <span>›</span>
             <span style={{ color: 'rgba(255,255,255,0.7)' }}>{isEs ? 'Donar' : 'Donate'}</span>
           </div>
-          <span className="section-label">{isEs ? 'Impulsa Nuestra Misión' : 'Fuel Our Mission'}</span>
+          <span className="section-label">{isEs ? 'Apoya Nuestra Misión' : 'Support Our Mission'}</span>
           <h1>{isEs ? 'Tu Regalo Salva Vidas' : 'Your Gift Saves Lives'}</h1>
           <p>
             {isEs
-              ? 'Cada dólar que das financia un taller impartido, una familia asesorada, una vida salvada. Aquí es donde tu generosidad se convierte en impacto real y medible en el sur de la Florida.'
-              : 'Every dollar you give funds a workshop taught, a family counseled, a life saved. This is where your generosity becomes real, measurable impact across South Florida.'}
+              ? 'Cada dólar que das va directo a un taller impartido, una familia asesorada o una vida salvada aquí en el sur de la Florida.'
+              : 'Every dollar you give goes straight to a workshop taught, a family counseled, or a life saved here in South Florida.'}
           </p>
         </div>
       </div>
