@@ -149,8 +149,16 @@ p {
   color: rgba(255,255,255,0.85);
 }
 
+/* A visibly distinct "chapter" band for alternating sections — was barely
+   different from the page's own background before (rgba(20,28,46,0.6) on
+   top of a body that's already #0A0E1A), so long pages read as one
+   undifferentiated scroll. Uses --navy-light, already an existing brand
+   token, as a real lightness step, framed with a hairline gold rule so the
+   section reads as its own deliberate block instead of a random tint. */
 .section-cream {
-  background: rgba(20, 28, 46, 0.6);
+  background: linear-gradient(180deg, rgba(20, 28, 46, 0.4) 0%, rgba(30, 42, 61, 0.75) 50%, rgba(20, 28, 46, 0.4) 100%);
+  border-top: 1px solid rgba(201, 168, 76, 0.15);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.15);
   backdrop-filter: blur(10px);
 }
 
