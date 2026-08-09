@@ -1,5 +1,5 @@
 'use client';
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import Link from 'next/link';
 import { LanguageContext } from '@/context/LanguageContext';
 import { CheckCircle2, Phone, Mail, Clipboard, Siren } from 'lucide-react';
@@ -11,6 +11,25 @@ export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState(false);
+  const [subject, setSubject] = useState('');
+  const [message, setMessage] = useState('');
+
+  // Reading window.location directly (not Next's useSearchParams) so this
+  // page can stay statically prerendered — the prefill only ever needs to
+  // happen client-side, after hydration, when arriving from a ticket tier's
+  // "Reserve Your Table" link.
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const tier = params.get('tier');
+    if (!tier) return;
+    setSubject('tickets');
+    setMessage(
+      isEs
+        ? `Me gustaría reservar: ${tier} para la 3ra Gala Anual. Por favor contáctenme para coordinar el pago.`
+        : `I'd like to reserve: ${tier} for the 3rd Annual Gala. Please contact me to arrange payment.`
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -20,7 +39,7 @@ export default function ContactPage() {
     const email = (data.get('email') as string)?.trim() ?? '';
     const phone = (data.get('phone') as string)?.trim() ?? '';
     const subjectKey = (data.get('subject') as string) ?? '';
-    const message = (data.get('message') as string)?.trim() ?? '';
+    const messageValue = (data.get('message') as string)?.trim() ?? '';
     const website = (data.get('website') as string) ?? '';
 
     setSubmitting(true);
@@ -30,11 +49,13 @@ export default function ContactPage() {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, phone, subject: subjectKey, message, lang, website }),
+        body: JSON.stringify({ name, email, phone, subject: subjectKey, message: messageValue, lang, website }),
       });
       const result = await res.json().catch(() => null);
       if (!res.ok || !result?.ok) throw new Error('Contact submission failed');
       form.reset();
+      setSubject('');
+      setMessage('');
       setSubmitted(true);
     } catch {
       setSubmitError(true);
@@ -106,19 +127,20 @@ export default function ContactPage() {
                   </div>
                   <div className="form-group">
                     <label htmlFor="contact-subject">{isEs ? 'Asunto' : 'Subject'} *</label>
-                    <select id="contact-subject" name="subject" required defaultValue="">
+                    <select id="contact-subject" name="subject" required value={subject} onChange={(e) => setSubject(e.target.value)}>
                       <option value="" disabled>{isEs ? 'Selecciona un asunto' : 'Select a subject'}</option>
                       <option value="general">{isEs ? 'Consulta General' : 'General Inquiry'}</option>
                       <option value="workshop">{isEs ? 'Solicitar un Taller' : 'Request a Workshop'}</option>
                       <option value="volunteer">{isEs ? 'Ser Voluntario' : 'Volunteer'}</option>
                       <option value="partner">{isEs ? 'Alianzas / Patrocinios' : 'Partnerships / Sponsorships'}</option>
+                      <option value="tickets">{isEs ? 'Boletos de la Gala' : 'Gala Tickets'}</option>
                       <option value="media">{isEs ? 'Prensa / Medios' : 'Press / Media'}</option>
                       <option value="support">{isEs ? 'Necesito Apoyo' : 'I Need Support'}</option>
                     </select>
                   </div>
                   <div className="form-group">
                     <label htmlFor="contact-message">{isEs ? 'Mensaje' : 'Message'} *</label>
-                    <textarea id="contact-message" name="message" required placeholder={isEs ? 'Cuéntanos cómo podemos ayudarte...' : 'Tell us how we can help...'} />
+                    <textarea id="contact-message" name="message" required value={message} onChange={(e) => setMessage(e.target.value)} placeholder={isEs ? 'Cuéntanos cómo podemos ayudarte...' : 'Tell us how we can help...'} />
                   </div>
                   {submitError && (
                     <p style={{ color: '#f87171', fontSize: '0.9rem' }}>

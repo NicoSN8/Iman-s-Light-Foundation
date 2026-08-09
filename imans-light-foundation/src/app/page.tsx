@@ -245,10 +245,10 @@ export default function HomePage() {
                     : 'Our annual Music and Lights for Life gala brings the community together for an evening of celebration, live entertainment, and remembrance — funding the workshops, mental health programs, and outreach that save lives all year.'}
                 </p>
                 <p style={{ color: 'var(--gold-light)', fontSize: '0.9rem', fontWeight: 600, marginBottom: '24px' }}>
-                  {lang === 'es' ? 'Boletos próximamente — consulta los detalles del evento' : 'Tickets on sale soon — view event details for updates'}
+                  {lang === 'es' ? 'Tamaños de mesa y precios ya disponibles' : 'Table sizes and pricing available now'}
                 </p>
-                <Link href="/events" className="btn btn-primary" style={{ width: 'fit-content' }}>
-                  {lang === 'es' ? 'Ver Detalles del Evento' : 'View Event Details'} →
+                <Link href="/events#tickets" className="btn btn-primary" style={{ width: 'fit-content' }}>
+                  {lang === 'es' ? 'Ver Opciones de Boletos' : 'View Ticket Options'} →
                 </Link>
               </div>
             </div>

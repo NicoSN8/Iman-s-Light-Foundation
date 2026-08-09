@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { MapPin } from 'lucide-react';
 import { LanguageContext } from '@/context/LanguageContext';
+import TicketTiers, { type TicketTierData } from '@/components/TicketTiers';
 import styles from './events.module.css';
 
 interface EventRow {
@@ -23,11 +24,12 @@ interface EventRow {
 interface EventsContentProps {
   featuredEvents: EventRow[];
   gridEvents: EventRow[];
+  ticketTiers: (TicketTierData & { eventId: string })[];
 }
 
 const todayStr = () => new Date().toISOString().slice(0, 10);
 
-export default function EventsPage({ featuredEvents, gridEvents }: EventsContentProps) {
+export default function EventsPage({ featuredEvents, gridEvents, ticketTiers }: EventsContentProps) {
   const { lang } = useContext(LanguageContext);
   const isEs = lang === 'es';
 
@@ -70,48 +72,65 @@ export default function EventsPage({ featuredEvents, gridEvents }: EventsContent
                         year: 'numeric',
                       })
                     : '');
+                const eventTiers = ticketTiers.filter((t) => t.eventId === evt.id);
 
                 return (
-                  <div
-                    key={evt.id}
-                    className={styles.featuredCard}
-                    style={
-                      isUpcoming
-                        ? { border: '2px solid rgba(201, 168, 76, 0.6)' }
-                        : { background: 'rgba(20, 28, 46, 0.45)', border: '1px solid rgba(201, 168, 76, 0.3)' }
-                    }
-                  >
-                    <div className={isUpcoming ? styles.featuredBadge : styles.pastBadge}>
-                      {isUpcoming ? (isEs ? 'PRÓXIMO' : 'UPCOMING') : (isEs ? 'DESTACADO ANTERIOR' : 'PAST HIGHLIGHT')}
-                    </div>
-                    <div className={styles.featuredCardInner}>
-                      {evt.image && (
-                        <div className={styles.featuredImageWrap}>
-                          <Image src={evt.image} alt={isEs ? evt.titleEs : evt.titleEn} fill style={{ objectFit: 'cover' }} />
+                  <div key={evt.id}>
+                    <div
+                      id={isUpcoming && eventTiers.length > 0 ? 'tickets' : undefined}
+                      className={styles.featuredCard}
+                      style={
+                        isUpcoming
+                          ? { border: '2px solid rgba(201, 168, 76, 0.6)' }
+                          : { background: 'rgba(20, 28, 46, 0.45)', border: '1px solid rgba(201, 168, 76, 0.3)' }
+                      }
+                    >
+                      <div className={isUpcoming ? styles.featuredBadge : styles.pastBadge}>
+                        {isUpcoming ? (isEs ? 'PRÓXIMO' : 'UPCOMING') : (isEs ? 'DESTACADO ANTERIOR' : 'PAST HIGHLIGHT')}
+                      </div>
+                      <div className={styles.featuredCardInner}>
+                        {evt.image && (
+                          <div className={styles.featuredImageWrap}>
+                            <Image src={evt.image} alt={isEs ? evt.titleEs : evt.titleEn} fill style={{ objectFit: 'cover' }} />
+                          </div>
+                        )}
+                        <div className={styles.featuredContent}>
+                          <span className={styles.featuredDate}>{dateText}</span>
+                          <h3 className={styles.featuredTitle} style={!isUpcoming ? { fontSize: '1.8rem' } : undefined}>
+                            {isEs ? evt.titleEs : evt.titleEn}
+                          </h3>
+                          {evt.location && (
+                            <div className={styles.featuredLocation}>
+                              <MapPin size={15} /> {evt.location}
+                            </div>
+                          )}
+                          <p className={styles.featuredDesc} style={!isUpcoming ? { fontSize: '0.98rem' } : undefined}>
+                            {isEs ? evt.descriptionEs : evt.descriptionEn}
+                          </p>
+                          {isUpcoming && eventTiers.length === 0 && (
+                            <div style={{ marginTop: '24px' }}>
+                              <Link href="/contact" className="btn btn-primary">
+                                {isEs ? 'Patrocinar / Asistir' : 'Sponsor / Attend'}
+                              </Link>
+                            </div>
+                          )}
                         </div>
-                      )}
-                      <div className={styles.featuredContent}>
-                        <span className={styles.featuredDate}>{dateText}</span>
-                        <h3 className={styles.featuredTitle} style={!isUpcoming ? { fontSize: '1.8rem' } : undefined}>
-                          {isEs ? evt.titleEs : evt.titleEn}
-                        </h3>
-                        {evt.location && (
-                          <div className={styles.featuredLocation}>
-                            <MapPin size={15} /> {evt.location}
-                          </div>
-                        )}
-                        <p className={styles.featuredDesc} style={!isUpcoming ? { fontSize: '0.98rem' } : undefined}>
-                          {isEs ? evt.descriptionEs : evt.descriptionEn}
-                        </p>
-                        {isUpcoming && (
-                          <div style={{ marginTop: '24px' }}>
-                            <Link href="/contact" className="btn btn-primary">
-                              {isEs ? 'Patrocinar / Asistir' : 'Sponsor / Attend'}
-                            </Link>
-                          </div>
-                        )}
                       </div>
                     </div>
+
+                    {isUpcoming && eventTiers.length > 0 && (
+                      <div style={{ marginTop: '4px' }}>
+                        <h3 style={{ color: 'var(--gold)', fontFamily: 'Playfair Display', fontSize: '1.5rem', textAlign: 'center' }}>
+                          {isEs ? 'Reserva Tu Mesa' : 'Reserve Your Table'}
+                        </h3>
+                        <p style={{ textAlign: 'center', color: 'rgba(255,255,255,0.6)', fontSize: '0.9rem', maxWidth: '520px', margin: '8px auto 0' }}>
+                          {isEs
+                            ? 'Boletos en venta pronto por Zeffy. Mientras tanto, contáctanos para reservar tu mesa.'
+                            : 'Online tickets go live soon via Zeffy. In the meantime, contact us to reserve your table.'}
+                        </p>
+                        <TicketTiers tiers={eventTiers} lang={lang} />
+                      </div>
+                    )}
                   </div>
                 );
               })}
