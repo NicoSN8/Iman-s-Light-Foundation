@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { desc, asc, eq } from 'drizzle-orm';
 import { getDb } from '@/db';
 import { events, ticketTiers, ticketOrders, unmatchedZeffySales } from '@/db/schema';
@@ -36,17 +35,12 @@ export default async function AdminTicketsPage() {
 
   return (
     <>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '12px', flexWrap: 'wrap', marginBottom: '24px' }}>
-        <div>
-          <h1 style={{ fontSize: '1.8rem', marginBottom: '4px' }}>Tickets</h1>
-          <p style={{ color: 'rgba(255,255,255,0.7)' }}>
-            {totalSeats} seat{totalSeats === 1 ? '' : 's'} confirmed · {assignedCount} order{assignedCount === 1 ? '' : 's'} with a table assigned, {unassignedCount} not yet seated
-            {totalRaised > 0 && <> · ${(totalRaised / 100).toLocaleString('en-US', { minimumFractionDigits: 2 })} collected (paid)</>}
-          </p>
-        </div>
-        <Link href="/admin/tickets/tiers" className="btn btn-outline" style={{ fontSize: '0.85rem', padding: '8px 18px', whiteSpace: 'nowrap' }}>
-          Manage Tiers &amp; Pricing
-        </Link>
+      <div style={{ marginBottom: '24px' }}>
+        <h1 style={{ fontSize: '1.8rem', marginBottom: '4px' }}>Tickets</h1>
+        <p style={{ color: 'rgba(255,255,255,0.7)' }}>
+          {totalSeats} seat{totalSeats === 1 ? '' : 's'} confirmed · {assignedCount} order{assignedCount === 1 ? '' : 's'} with a table assigned, {unassignedCount} not yet seated
+          {totalRaised > 0 && <> · ${(totalRaised / 100).toLocaleString('en-US', { minimumFractionDigits: 2 })} collected (paid)</>}
+        </p>
       </div>
 
       <PendingZeffySales sales={pendingZeffySales} />

@@ -7,6 +7,7 @@ interface PendingSale {
   id: string;
   buyerName: string | null;
   buyerEmail: string | null;
+  buyerPhone: string | null;
   amountCents: number | null;
   rawPayload: unknown;
   receivedAt: string | Date;
@@ -50,6 +51,7 @@ export default function PendingZeffySales({ sales }: { sales: PendingSale[] }) {
                 <strong>{s.buyerName ?? 'Name not found in payload'}</strong>
                 {formatMoney(s.amountCents) && <span style={{ color: 'var(--gold)', marginLeft: '8px', fontWeight: 600 }}>{formatMoney(s.amountCents)}</span>}
                 {s.buyerEmail && <span style={{ color: 'rgba(255,255,255,0.6)', marginLeft: '8px' }}>{s.buyerEmail}</span>}
+                {s.buyerPhone && <span style={{ color: 'rgba(255,255,255,0.6)', marginLeft: '8px' }}>{s.buyerPhone}</span>}
                 <div style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.5)', marginTop: '2px' }}>
                   {new Date(s.receivedAt).toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' })}
                 </div>

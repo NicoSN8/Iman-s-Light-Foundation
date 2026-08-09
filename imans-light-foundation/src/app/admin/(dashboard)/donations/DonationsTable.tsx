@@ -6,6 +6,7 @@ interface Donation {
   id: string;
   donorName: string | null;
   donorEmail: string | null;
+  donorPhone: string | null;
   amountCents: number | null;
   campaignName: string | null;
   receiptUrl: string | null;
@@ -23,7 +24,9 @@ export default function DonationsTable({ donations }: { donations: Donation[] })
   const visible = search.trim()
     ? donations.filter((d) => {
         const q = search.trim().toLowerCase();
-        return (d.donorName ?? '').toLowerCase().includes(q) || (d.donorEmail ?? '').toLowerCase().includes(q);
+        return (d.donorName ?? '').toLowerCase().includes(q)
+          || (d.donorEmail ?? '').toLowerCase().includes(q)
+          || (d.donorPhone ?? '').toLowerCase().includes(q);
       })
     : donations;
 
@@ -51,6 +54,7 @@ export default function DonationsTable({ donations }: { donations: Donation[] })
               <th style={{ padding: '12px 8px' }}>Received</th>
               <th style={{ padding: '12px 8px' }}>Donor</th>
               <th style={{ padding: '12px 8px' }}>Email</th>
+              <th style={{ padding: '12px 8px' }}>Phone</th>
               <th style={{ padding: '12px 8px' }}>Amount</th>
               <th style={{ padding: '12px 8px' }}>Campaign</th>
               <th style={{ padding: '12px 8px' }}>Receipt</th>
@@ -64,6 +68,7 @@ export default function DonationsTable({ donations }: { donations: Donation[] })
                 </td>
                 <td style={{ padding: '12px 8px' }}>{d.donorName ?? '—'}</td>
                 <td style={{ padding: '12px 8px' }}>{d.donorEmail ?? '—'}</td>
+                <td style={{ padding: '12px 8px' }}>{d.donorPhone ?? '—'}</td>
                 <td style={{ padding: '12px 8px', fontWeight: 600, color: 'var(--gold)' }}>{formatMoney(d.amountCents)}</td>
                 <td style={{ padding: '12px 8px' }}>{d.campaignName ?? '—'}</td>
                 <td style={{ padding: '12px 8px' }}>

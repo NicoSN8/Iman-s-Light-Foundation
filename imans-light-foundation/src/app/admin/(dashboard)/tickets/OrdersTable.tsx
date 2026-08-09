@@ -43,7 +43,9 @@ export default function OrdersTable({ orders }: { orders: Order[] }) {
   const visibleRows = search.trim()
     ? rows.filter((o) => {
         const q = search.trim().toLowerCase();
-        return o.buyerName.toLowerCase().includes(q) || (o.buyerEmail ?? '').toLowerCase().includes(q);
+        return o.buyerName.toLowerCase().includes(q)
+          || (o.buyerEmail ?? '').toLowerCase().includes(q)
+          || (o.buyerPhone ?? '').toLowerCase().includes(q);
       })
     : rows;
 
@@ -151,13 +153,17 @@ export default function OrdersTable({ orders }: { orders: Order[] }) {
                   <tr style={borderRowStyle}>
                     <td colSpan={9} style={{ padding: '4px 8px 20px', background: 'rgba(201,168,76,0.04)' }}>
                       <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', maxWidth: '760px' }}>
-                        <div className="form-group" style={{ flex: '1 1 200px' }}>
-                          <label>Table Assignment</label>
+                        <div className="form-group" style={{ flex: '1 1 260px' }}>
+                          <label>Table Assignment ({o.totalSeats} seat{o.totalSeats === 1 ? '' : 's'} total)</label>
                           <input
-                            placeholder="e.g. Table 4"
+                            placeholder="e.g. Table 4 — or Tables 4 & 5 if it doesn't fit at one"
                             value={draft.tableAssignment}
                             onChange={(e) => setDrafts((p) => ({ ...p, [o.id]: { ...p[o.id], tableAssignment: e.target.value } }))}
                           />
+                          <p style={{ fontSize: '0.78rem', color: 'rgba(255,255,255,0.5)', marginTop: '4px' }}>
+                            All {o.totalSeats} seat{o.totalSeats === 1 ? '' : 's'} from this order go wherever you type here.
+                            If they don&apos;t fit at one physical table, just list more than one, e.g. &quot;Tables 4 &amp; 5.&quot;
+                          </p>
                         </div>
                         <div className="form-group" style={{ flex: '1 1 160px' }}>
                           <label>Status</label>

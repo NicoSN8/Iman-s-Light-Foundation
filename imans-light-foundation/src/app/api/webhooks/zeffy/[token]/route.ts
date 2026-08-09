@@ -14,6 +14,25 @@ function asRecord(v: unknown): Record<string, unknown> {
   return typeof v === 'object' && v !== null ? (v as Record<string, unknown>) : {};
 }
 
+// Zeffy's confirmed real payload doesn't have a flat phone field — it comes
+// back as a custom "buyer question" (donation forms can be configured to
+// ask for a phone number), shaped like:
+//   buyer_questions: [{ type: 'phone', answer: '13052820302', question: 'Phone Number' }]
+function extractPhone(payment: Record<string, unknown>): string | null {
+  const questions = payment.buyer_questions;
+  if (!Array.isArray(questions)) return null;
+  for (const q of questions) {
+    const question = asRecord(q);
+    const type = typeof question.type === 'string' ? question.type.toLowerCase() : '';
+    const label = typeof question.question === 'string' ? question.question.toLowerCase() : '';
+    if (type === 'phone' || label.includes('phone')) {
+      const answer = question.answer;
+      if (typeof answer === 'string' && answer.trim()) return answer.trim();
+    }
+  }
+  return null;
+}
+
 /**
  * Receives Zeffy's payment.completed webhook. Payload shape confirmed
  * against a real $1 test transaction on 2026-08-09:
@@ -61,6 +80,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ tok
   const personName = [firstName, lastName].filter(Boolean).join(' ') || null;
   const buyerName = buyer.is_corporate === true && companyName ? companyName : personName ?? companyName;
   const buyerEmail = firstString(buyer, ['email']);
+  const buyerPhone = extractPhone(payment);
   const campaignName = firstString(payment, ['description', 'campaignName', 'campaign', 'formName', 'formTitle']);
   const receiptUrl = firstString(payment, ['receipt_url', 'receiptUrl']);
   const amountCents = typeof payment.amount === 'number' && Number.isFinite(payment.amount) ? payment.amount : null;
@@ -73,6 +93,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ tok
       await db.insert(donations).values({
         donorName: buyerName,
         donorEmail: buyerEmail,
+        donorPhone: buyerPhone,
         amountCents,
         campaignName,
         receiptUrl,
@@ -94,6 +115,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ tok
           tierId: matchedTier.id,
           buyerName: buyerName!,
           buyerEmail,
+          buyerPhone,
           quantity: 1,
           totalSeats: matchedTier.seatsIncluded,
           amountCents: amountCents!,
@@ -106,6 +128,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ tok
         await db.insert(unmatchedZeffySales).values({
           buyerName,
           buyerEmail,
+          buyerPhone,
           amountCents,
           zeffyPaymentId,
           rawPayload: body,
