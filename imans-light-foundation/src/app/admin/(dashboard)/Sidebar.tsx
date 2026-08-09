@@ -3,13 +3,14 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { Mail, Calendar } from 'lucide-react';
+import { Mail, Calendar, Ticket } from 'lucide-react';
 import LogoutButton from './LogoutButton';
 import styles from './Sidebar.module.css';
 
 const NAV_LINKS = [
   { href: '/admin', label: 'Messages', icon: Mail },
   { href: '/admin/events', label: 'Events', icon: Calendar },
+  { href: '/admin/tickets', label: 'Tickets', icon: Ticket },
 ];
 
 export default function Sidebar() {

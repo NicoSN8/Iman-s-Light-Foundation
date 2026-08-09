@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
-import { desc, eq } from 'drizzle-orm';
+import { desc, eq, and, inArray } from 'drizzle-orm';
 import { getDb } from '@/db';
-import { events } from '@/db/schema';
+import { events, ticketTiers } from '@/db/schema';
 import EventsContent from './EventsContent';
 
 export const metadata: Metadata = {
@@ -25,5 +25,14 @@ export default async function EventsPage() {
   const featuredEvents = allEvents.filter((e) => e.isFeatured);
   const gridEvents = allEvents.filter((e) => !e.isFeatured);
 
-  return <EventsContent featuredEvents={featuredEvents} gridEvents={gridEvents} />;
+  const featuredIds = featuredEvents.map((e) => e.id);
+  const tiers = featuredIds.length
+    ? await getDb()
+        .select()
+        .from(ticketTiers)
+        .where(and(inArray(ticketTiers.eventId, featuredIds), eq(ticketTiers.isActive, true)))
+        .orderBy(ticketTiers.sortOrder)
+    : [];
+
+  return <EventsContent featuredEvents={featuredEvents} gridEvents={gridEvents} ticketTiers={tiers} />;
 }
