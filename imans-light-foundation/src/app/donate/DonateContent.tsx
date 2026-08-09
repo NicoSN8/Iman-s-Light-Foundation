@@ -2,7 +2,7 @@
 import { useContext, useState, ReactNode } from 'react';
 import Link from 'next/link';
 import { LanguageContext } from '@/context/LanguageContext';
-import { Leaf, Mail, RefreshCcw, Building2, GraduationCap, Heart, ShieldAlert, Scale } from 'lucide-react';
+import { Leaf, Mail, RefreshCcw, Building2, GraduationCap, Heart, ShieldAlert } from 'lucide-react';
 import styles from './donate.module.css';
 import { FEATURED_SPONSORS, COMMUNITY_SPONSORS, TEXT_ONLY_SPONSORS } from '@/data/sponsors';
 import SponsorGrid from '@/components/SponsorGrid';
@@ -22,36 +22,36 @@ const tiers: { en: Tier[]; es: Tier[] } = {
   en: [
       {
         id: 'workshop',
-        name: 'The Workshop Package',
-        amount: '$5,000',
-        icon: <GraduationCap size={32} color="var(--gold-light)" />,
-        featured: true,
-        descEn: 'Directly fund four interactive "Truth About Drugs" presentations for an entire school. Includes projector equipment, printed materials, and expert speakers.',
-        descEs: 'Financia directamente cuatro presentaciones interactivas completas para toda una escuela. Equipos, materiales e instructores expertos.'
+        name: 'Fund a Workshop',
+        amount: '$300',
+        icon: <GraduationCap size={32} color="var(--gold)" />,
+        descEn: 'Bring one full drug-prevention workshop to the school or college of your choice — a real conversation that could save a life.',
+        descEs: 'Lleva un taller completo de prevención de drogas a la escuela o universidad de tu elección — una conversación real que podría salvar una vida.'
       },
       {
-        id: 'family',
-        name: 'The Family Support Package',
-        amount: '$2,500',
-        icon: <Heart size={32} color="var(--gold)" />,
-        descEn: 'Provide a grieving family or at-risk youth with 6 months of dedicated mental health counseling from our licensed psychological advisors.',
-        descEs: 'Proporciona a una familia en duelo o a un joven en riesgo 6 meses de asesoramiento de salud mental dedicado con nuestros psicólogos.'
-      },
-      {
-        id: 'lifesaver',
-        name: 'The Lifesaver Package',
+        id: 'program',
+        name: 'Fund a Program',
         amount: '$1,000',
-        icon: <ShieldAlert size={32} color="var(--gold)" />,
-        descEn: 'Fund 100 boxes of Narcan (Naloxone) spray and resources for our direct community outreach team to distribute to high-risk youth and families.',
-        descEs: 'Financia 100 cajas de aerosol Narcan y folletos educativos para distribuir a jóvenes y familias de alto riesgo.'
+        icon: <Heart size={32} color="var(--gold-light)" />,
+        featured: true,
+        descEn: 'Fund a complete prevention program at the school or college of your choice — an ongoing series that goes far beyond a single visit.',
+        descEs: 'Financia un programa completo de prevención en la escuela o universidad de tu elección — una serie continua que va mucho más allá de una sola visita.'
       },
       {
-        id: 'supporter',
-        name: 'The Prevention Supporter',
-        amount: '$500',
-        icon: <Scale size={32} color="var(--gold)" />,
-        descEn: 'Help print 1,000 copies of our educational drug prevention toolkits distributed to middle school and high school classrooms.',
-        descEs: 'Ayuda a imprimir 1,000 copias de nuestros manuales de prevención distribuidos en aulas de secundaria.'
+        id: 'champion',
+        name: 'Champion Sponsor',
+        amount: '$2,500',
+        icon: <ShieldAlert size={32} color="var(--gold)" />,
+        descEn: 'Extend our reach further — help bring workshops and programs to more classrooms and more students across South Florida this year.',
+        descEs: 'Amplía nuestro alcance — ayuda a llevar talleres y programas a más aulas y más estudiantes en el sur de la Florida este año.'
+      },
+      {
+        id: 'founding',
+        name: 'Founding Partner',
+        amount: '$5,000',
+        icon: <Building2 size={32} color="var(--gold)" />,
+        descEn: "Stand behind this year's entire mission — funding the workshops, programs, and family support that carry us through to the next Gala.",
+        descEs: 'Respalda toda la misión de este año — financiando los talleres, programas y apoyo familiar que nos llevan hasta la próxima Gala.'
       },
       {
         id: 'custom',
@@ -65,36 +65,36 @@ const tiers: { en: Tier[]; es: Tier[] } = {
   es: [
       {
         id: 'workshop',
-        name: 'Paquete de Taller Completo',
-        amount: '$5,000',
-        icon: <GraduationCap size={32} color="var(--gold-light)" />,
-        featured: true,
-        descEn: 'Directly fund four interactive "Truth About Drugs" presentations for an entire school. Includes projector equipment, printed materials, and expert speakers.',
-        descEs: 'Financia directamente cuatro presentaciones interactivas completas para toda una escuela. Equipos, materiales e instructores expertos.'
+        name: 'Financia un Taller',
+        amount: '$300',
+        icon: <GraduationCap size={32} color="var(--gold)" />,
+        descEn: 'Bring one full drug-prevention workshop to the school or college of your choice — a real conversation that could save a life.',
+        descEs: 'Lleva un taller completo de prevención de drogas a la escuela o universidad de tu elección — una conversación real que podría salvar una vida.'
       },
       {
-        id: 'family',
-        name: 'Paquete de Apoyo Familiar',
-        amount: '$2,500',
-        icon: <Heart size={32} color="var(--gold)" />,
-        descEn: 'Provide a grieving family or at-risk youth with 6 months of dedicated mental health counseling from our licensed psychological advisors.',
-        descEs: 'Proporciona a una familia en duelo o a un joven en riesgo 6 meses de asesoramiento de salud mental dedicado con nuestros psicólogos.'
-      },
-      {
-        id: 'lifesaver',
-        name: 'Paquete Salvador de Vidas',
+        id: 'program',
+        name: 'Financia un Programa',
         amount: '$1,000',
-        icon: <ShieldAlert size={32} color="var(--gold)" />,
-        descEn: 'Fund 100 boxes of Narcan (Naloxone) spray and resources for our direct community outreach team to distribute to high-risk youth and families.',
-        descEs: 'Financia 100 cajas de aerosol Narcan y folletos educativos para distribuir a jóvenes y familias de alto riesgo.'
+        icon: <Heart size={32} color="var(--gold-light)" />,
+        featured: true,
+        descEn: 'Fund a complete prevention program at the school or college of your choice — an ongoing series that goes far beyond a single visit.',
+        descEs: 'Financia un programa completo de prevención en la escuela o universidad de tu elección — una serie continua que va mucho más allá de una sola visita.'
       },
       {
-        id: 'supporter',
-        name: 'Colaborador de Prevención',
-        amount: '$500',
-        icon: <Scale size={32} color="var(--gold)" />,
-        descEn: 'Help print 1,000 copies of our educational drug prevention toolkits distributed to middle school and high school classrooms.',
-        descEs: 'Ayuda a imprimir 1,000 copias de nuestros manuales de prevención distribuidos en aulas de secundaria.'
+        id: 'champion',
+        name: 'Patrocinador Campeón',
+        amount: '$2,500',
+        icon: <ShieldAlert size={32} color="var(--gold)" />,
+        descEn: 'Extend our reach further — help bring workshops and programs to more classrooms and more students across South Florida this year.',
+        descEs: 'Amplía nuestro alcance — ayuda a llevar talleres y programas a más aulas y más estudiantes en el sur de la Florida este año.'
+      },
+      {
+        id: 'founding',
+        name: 'Socio Fundador',
+        amount: '$5,000',
+        icon: <Building2 size={32} color="var(--gold)" />,
+        descEn: "Stand behind this year's entire mission — funding the workshops, programs, and family support that carry us through to the next Gala.",
+        descEs: 'Respalda toda la misión de este año — financiando los talleres, programas y apoyo familiar que nos llevan hasta la próxima Gala.'
       },
       {
         id: 'custom',

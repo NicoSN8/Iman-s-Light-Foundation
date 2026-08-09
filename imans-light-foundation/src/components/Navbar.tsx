@@ -3,6 +3,7 @@
 import { useState, useEffect, useContext, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { LanguageContext } from '@/context/LanguageContext';
 import { Phone, Mail } from 'lucide-react';
 import styles from './Navbar.module.css';
@@ -57,6 +58,17 @@ export default function Navbar() {
   const hamburgerRef = useRef<HTMLButtonElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const wasMobileOpen = useRef(false);
+  const pathname = usePathname();
+
+  // Link doesn't navigate (and does nothing visible) when its href matches
+  // the page you're already on — scroll to top instead so clicking the
+  // current tab always does something.
+  const scrollToTopIfSamePage = (href: string) => (e: React.MouseEvent) => {
+    if (href === pathname) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
@@ -128,7 +140,11 @@ export default function Navbar() {
       <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
         <div className={`container ${styles.inner}`}>
           {/* Logo */}
-          <Link href="/" className={styles.logo} onClick={() => setMobileOpen(false)}>
+          <Link
+            href="/"
+            className={styles.logo}
+            onClick={(e) => { setMobileOpen(false); scrollToTopIfSamePage('/')(e); }}
+          >
             <Image src="/logo.jpg" alt="Iman's Light Foundation" width={56} height={56} className={styles.logoImg} />
             <span className={styles.logoText}>
               <span className={styles.logoMain}>Iman&apos;s Light</span>
@@ -139,12 +155,12 @@ export default function Navbar() {
           {/* Desktop Nav */}
           <ul className={styles.desktopLinks}>
             <li className={styles.navItem}>
-              <Link href="/" className={styles.navLink}>
+              <Link href="/" className={styles.navLink} onClick={scrollToTopIfSamePage('/')}>
                 {lang === 'en' ? 'Home' : 'Inicio'}
               </Link>
             </li>
             <li className={styles.navItem}>
-              <Link href="/gala" className={styles.galaLink}>
+              <Link href="/gala" className={styles.galaLink} onClick={scrollToTopIfSamePage('/gala')}>
                 ✦ {lang === 'en' ? '3rd Annual Gala' : '3ra Gala Anual'}
               </Link>
             </li>
@@ -153,7 +169,7 @@ export default function Navbar() {
                 key={link.href}
                 className={styles.navItem}
               >
-                <Link href={link.href} className={styles.navLink}>
+                <Link href={link.href} className={styles.navLink} onClick={scrollToTopIfSamePage(link.href)}>
                   {lang === 'en' ? link.labelEn : link.labelEs}
                   {link.dropdown && <span className={styles.chevron}>▾</span>}
                 </Link>
@@ -189,7 +205,7 @@ export default function Navbar() {
                 ES
               </button>
             </div>
-            <Link href="/donate" className={`btn btn-primary ${styles.donateBtn}`}>
+            <Link href="/donate" className={`btn btn-primary ${styles.donateBtn}`} onClick={scrollToTopIfSamePage('/donate')}>
               {lang === 'en' ? 'Donate' : 'Donar Ahora'}
             </Link>
 
@@ -211,10 +227,18 @@ export default function Navbar() {
         {/* Mobile Menu */}
         <div ref={mobileMenuRef} className={`${styles.mobileMenu} ${mobileOpen ? styles.mobileMenuOpen : ''}`}>
           <div className={styles.mobileInner}>
-            <Link href="/" className={styles.mobileLink} onClick={() => setMobileOpen(false)}>
+            <Link
+              href="/"
+              className={styles.mobileLink}
+              onClick={(e) => { setMobileOpen(false); scrollToTopIfSamePage('/')(e); }}
+            >
               {lang === 'en' ? 'Home' : 'Inicio'}
             </Link>
-            <Link href="/gala" className={styles.mobileGalaLink} onClick={() => setMobileOpen(false)}>
+            <Link
+              href="/gala"
+              className={styles.mobileGalaLink}
+              onClick={(e) => { setMobileOpen(false); scrollToTopIfSamePage('/gala')(e); }}
+            >
               {lang === 'en' ? '3rd Annual Gala' : '3ra Gala Anual'}
               <span className={styles.mobileGalaBadge}>{lang === 'en' ? 'BIG NIGHT' : 'GRAN NOCHE'}</span>
             </Link>
@@ -223,7 +247,7 @@ export default function Navbar() {
                 <Link
                   href={link.href}
                   className={styles.mobileLink}
-                  onClick={() => setMobileOpen(false)}
+                  onClick={(e) => { setMobileOpen(false); scrollToTopIfSamePage(link.href)(e); }}
                 >
                   {lang === 'en' ? link.labelEn : link.labelEs}
                 </Link>
@@ -247,7 +271,11 @@ export default function Navbar() {
               <button className={lang === 'en' ? styles.activeLang : ''} onClick={() => setLang('en')}>English</button>
               <button className={lang === 'es' ? styles.activeLang : ''} onClick={() => setLang('es')}>Español</button>
             </div>
-            <Link href="/donate" className="btn btn-primary" onClick={() => setMobileOpen(false)}>
+            <Link
+              href="/donate"
+              className="btn btn-primary"
+              onClick={(e) => { setMobileOpen(false); scrollToTopIfSamePage('/donate')(e); }}
+            >
               {lang === 'en' ? 'Donate' : 'Donar Ahora'}
             </Link>
           </div>
