@@ -8,7 +8,7 @@ import GalaContent from './GalaContent';
 export const metadata: Metadata = {
   title: '3rd Annual Gala',
   description:
-    "Music and Lights for Life — Iman's Light Foundation's biggest night of the year. Reserve your table for the 3rd Annual Gala.",
+    "Music and Lights for Life: Iman's Light Foundation's biggest night of the year. Reserve your table for the 3rd Annual Gala.",
 };
 
 // Same reasoning as /events — this is an admin-managed event row, so it
