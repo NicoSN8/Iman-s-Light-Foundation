@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, Fragment } from 'react';
+import { phoneIncludes } from '@/lib/phone';
 
 interface Submission {
   id: string;
@@ -24,6 +25,18 @@ export default function MessagesTable({ submissions }: { submissions: Submission
   const [drafts, setDrafts] = useState<Record<string, string>>({});
   const [sendingId, setSendingId] = useState<string | null>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [search, setSearch] = useState('');
+
+  const visibleRows = search.trim()
+    ? rows.filter((s) => {
+        const q = search.trim().toLowerCase();
+        return s.name.toLowerCase().includes(q)
+          || s.email.toLowerCase().includes(q)
+          || s.subject.toLowerCase().includes(q)
+          || s.message.toLowerCase().includes(q)
+          || phoneIncludes(s.phone, search);
+      })
+    : rows;
 
   const toggleExpand = (id: string) => {
     setExpandedId((cur) => (cur === id ? null : id));
@@ -59,7 +72,19 @@ export default function MessagesTable({ submissions }: { submissions: Submission
   }
 
   return (
-    <div style={{ overflowX: 'auto' }}>
+    <div>
+      <div className="form-group" style={{ maxWidth: '320px' }}>
+        <input
+          type="text"
+          placeholder="Search by name, email, phone, subject, or message…"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </div>
+      {visibleRows.length === 0 ? (
+        <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.9rem' }}>No messages match &quot;{search}&quot;.</p>
+      ) : (
+      <div style={{ overflowX: 'auto' }}>
       <table style={{ width: '100%', borderCollapse: 'collapse' }}>
         <thead>
           <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.15)', textAlign: 'left' }}>
@@ -74,7 +99,7 @@ export default function MessagesTable({ submissions }: { submissions: Submission
           </tr>
         </thead>
         <tbody>
-          {rows.map((s) => (
+          {visibleRows.map((s) => (
             <Fragment key={s.id}>
               <tr style={borderRowStyle}>
                 <td style={{ ...cellStyle, whiteSpace: 'nowrap', fontSize: '0.85rem', color: 'rgba(255,255,255,0.7)' }}>
@@ -171,6 +196,8 @@ export default function MessagesTable({ submissions }: { submissions: Submission
           ))}
         </tbody>
       </table>
+      </div>
+      )}
     </div>
   );
 }
