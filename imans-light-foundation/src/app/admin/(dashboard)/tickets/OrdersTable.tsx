@@ -38,6 +38,14 @@ export default function OrdersTable({ orders }: { orders: Order[] }) {
   const [drafts, setDrafts] = useState<Record<string, { tableAssignment: string; seatNotes: string; status: string; paymentMethod: string; checkedIn: boolean }>>({});
   const [savingId, setSavingId] = useState<string | null>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [search, setSearch] = useState('');
+
+  const visibleRows = search.trim()
+    ? rows.filter((o) => {
+        const q = search.trim().toLowerCase();
+        return o.buyerName.toLowerCase().includes(q) || (o.buyerEmail ?? '').toLowerCase().includes(q);
+      })
+    : rows;
 
   const toggleExpand = (order: Order) => {
     if (expandedId === order.id) {
@@ -87,7 +95,18 @@ export default function OrdersTable({ orders }: { orders: Order[] }) {
   }
 
   return (
-    <div style={{ overflowX: 'auto' }}>
+    <div>
+      <input
+        type="text"
+        placeholder="Search by name or email…"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        style={{ marginBottom: '16px', maxWidth: '320px' }}
+      />
+      {visibleRows.length === 0 && (
+        <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.9rem' }}>No orders match &quot;{search}&quot;.</p>
+      )}
+      <div style={{ overflowX: 'auto' }}>
       <table style={{ width: '100%', borderCollapse: 'collapse' }}>
         <thead>
           <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.15)', textAlign: 'left' }}>
@@ -103,7 +122,7 @@ export default function OrdersTable({ orders }: { orders: Order[] }) {
           </tr>
         </thead>
         <tbody>
-          {rows.map((o) => {
+          {visibleRows.map((o) => {
             const draft = drafts[o.id];
             return (
               <Fragment key={o.id}>
@@ -121,8 +140,12 @@ export default function OrdersTable({ orders }: { orders: Order[] }) {
                   <td style={cellStyle}>{o.tableAssignment ?? '—'}</td>
                   <td style={cellStyle}>{o.checkedIn ? '✓' : '—'}</td>
                   <td style={cellStyle}>
-                    <button onClick={() => toggleExpand(o)} className="btn btn-outline" style={{ padding: '6px 16px', fontSize: '0.8rem' }}>
-                      {expandedId === o.id ? 'Close' : 'Manage'}
+                    <button
+                      onClick={() => toggleExpand(o)}
+                      className={expandedId === o.id || o.tableAssignment ? 'btn btn-outline' : 'btn btn-primary'}
+                      style={{ padding: '6px 16px', fontSize: '0.8rem', whiteSpace: 'nowrap' }}
+                    >
+                      {expandedId === o.id ? 'Close' : o.tableAssignment ? 'Edit' : 'Assign Table'}
                     </button>
                   </td>
                 </tr>
@@ -196,6 +219,7 @@ export default function OrdersTable({ orders }: { orders: Order[] }) {
           })}
         </tbody>
       </table>
+      </div>
     </div>
   );
 }

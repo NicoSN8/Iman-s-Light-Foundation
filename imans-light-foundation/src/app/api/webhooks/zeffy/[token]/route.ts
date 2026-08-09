@@ -1,5 +1,6 @@
+import { eq } from 'drizzle-orm';
 import { getDb } from '@/db';
-import { donations, unmatchedZeffySales } from '@/db/schema';
+import { donations, unmatchedZeffySales, ticketTiers, ticketOrders } from '@/db/schema';
 
 function firstString(obj: Record<string, unknown>, keys: string[]): string | null {
   for (const key of keys) {
@@ -21,13 +22,17 @@ function asRecord(v: unknown): Record<string, unknown> {
  *     description, receipt_url, buyer: { first_name, last_name, email,
  *     company_name, is_corporate }, ... } }
  *
- * Only campaign_type === 'donation_form' is treated as a confirmed
- * donation. Anything else (including gala ticket sales, and any future
- * campaign type we haven't seen yet) goes to unmatchedZeffySales for a
- * human to review — a bad guess on a ticket's seat count means someone
- * shows up to the gala without a table, which is worse than one extra
- * manual click. The full raw payload is always stored regardless, so nothing
- * is ever lost even if a future Zeffy payload doesn't match this shape.
+ * campaign_type === 'donation_form' is a confirmed donation. Anything else
+ * is treated as a possible gala ticket sale: if the exact amount matches
+ * exactly one active ticket tier's price, it's auto-seated (quantity 1) --
+ * safe because the 4 tier prices are all distinct, so there's no ambiguity
+ * about which tier was bought. Anything that doesn't match cleanly (wrong
+ * amount, multiple tiers at the same price, quantity > 1, or a campaign
+ * type we've never seen) goes to unmatchedZeffySales for a human to check
+ * and seat manually via the existing "+ Add Order" flow -- a bad guess
+ * there means someone shows up to the gala without a table, which is worse
+ * than one extra click. The full raw payload is always stored regardless,
+ * so nothing is ever lost even if a future payload doesn't match this shape.
  */
 export async function POST(request: Request, { params }: { params: Promise<{ token: string }> }) {
   const { token } = await params;
@@ -75,13 +80,37 @@ export async function POST(request: Request, { params }: { params: Promise<{ tok
         rawPayload: body,
       }).onConflictDoNothing();
     } else {
-      await db.insert(unmatchedZeffySales).values({
-        buyerName,
-        buyerEmail,
-        amountCents,
-        zeffyPaymentId,
-        rawPayload: body,
-      }).onConflictDoNothing();
+      let matchedTier: typeof ticketTiers.$inferSelect | null = null;
+
+      if (amountCents != null && buyerName) {
+        const activeTiers = await db.select().from(ticketTiers).where(eq(ticketTiers.isActive, true));
+        const priceMatches = activeTiers.filter((t) => t.priceCents === amountCents);
+        if (priceMatches.length === 1) matchedTier = priceMatches[0];
+      }
+
+      if (matchedTier) {
+        await db.insert(ticketOrders).values({
+          eventId: matchedTier.eventId,
+          tierId: matchedTier.id,
+          buyerName: buyerName!,
+          buyerEmail,
+          quantity: 1,
+          totalSeats: matchedTier.seatsIncluded,
+          amountCents: amountCents!,
+          paymentMethod: 'zeffy',
+          status: 'paid',
+          seatNotes: `Auto-matched from a real Zeffy payment by exact amount (${(amountCents! / 100).toFixed(2)} = ${matchedTier.nameEn}).`,
+          zeffyPaymentId,
+        }).onConflictDoNothing();
+      } else {
+        await db.insert(unmatchedZeffySales).values({
+          buyerName,
+          buyerEmail,
+          amountCents,
+          zeffyPaymentId,
+          rawPayload: body,
+        }).onConflictDoNothing();
+      }
     }
   } catch (err) {
     console.error('Zeffy webhook: failed to store event:', err);

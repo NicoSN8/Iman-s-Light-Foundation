@@ -47,12 +47,17 @@ export default async function AdminTicketsPage() {
       </div>
 
       <section style={{ marginBottom: '40px' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px', flexWrap: 'wrap', gap: '12px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px', flexWrap: 'wrap', gap: '12px' }}>
           <h2 style={{ fontSize: '1.3rem' }}>Ticket Tiers</h2>
           <Link href="/admin/tickets/tiers/new" className="btn btn-outline" style={{ fontSize: '0.85rem', padding: '8px 18px' }}>
             + Add Tier
           </Link>
         </div>
+        <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.85rem', marginBottom: '16px', maxWidth: '640px' }}>
+          This sets pricing and how many of each tier can ever be sold (&quot;Sales Cap&quot;) —
+          it&apos;s not where you seat anyone. To put a specific buyer at a specific physical
+          table, do that per-order below under &quot;Orders &amp; Seating.&quot;
+        </p>
 
         {allTiers.length === 0 ? (
           <p style={{ color: 'rgba(255,255,255,0.7)' }}>No ticket tiers yet.</p>
@@ -65,7 +70,7 @@ export default async function AdminTicketsPage() {
                   <th style={{ padding: '12px 8px' }}>Tier</th>
                   <th style={{ padding: '12px 8px' }}>Price</th>
                   <th style={{ padding: '12px 8px' }}>Seats</th>
-                  <th style={{ padding: '12px 8px' }}>Max Available</th>
+                  <th style={{ padding: '12px 8px' }} title="How many of this tier can ever be sold, total">Sales Cap</th>
                   <th style={{ padding: '12px 8px' }}>Active</th>
                   <th style={{ padding: '12px 8px' }}></th>
                 </tr>

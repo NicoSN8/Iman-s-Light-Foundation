@@ -75,6 +75,10 @@ export const ticketOrders = pgTable('ticket_orders', {
   seatNotes: text('seat_notes'),
   checkedIn: boolean('checked_in').notNull().default(false),
   createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+  // Set only for orders the Zeffy webhook created automatically (matched by
+  // exact amount to a single active tier) — lets retried webhook deliveries
+  // be ignored instead of creating a duplicate seated order.
+  zeffyPaymentId: text('zeffy_payment_id').unique(),
 });
 
 // Populated automatically by the Zeffy webhook (src/app/api/webhooks/zeffy)
