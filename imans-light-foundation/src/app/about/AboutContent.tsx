@@ -212,7 +212,7 @@ export default function AboutPage() {
 
       <section className="section transparent-bg">
         <div className="container">
-          <div className="grid-2" style={{ alignItems: 'center' }}>
+          <div className="grid-2" style={{ alignItems: 'center', gridTemplateColumns: '1fr 1.15fr' }}>
             <div style={{ paddingRight: '20px' }}>
               <span className="section-label">{txt.storyLabel}</span>
               <h2 className="section-title" style={{ color: 'var(--white)' }}>{txt.storyTitle}</h2>
@@ -221,8 +221,8 @@ export default function AboutPage() {
               <p style={{ marginBottom: '24px', fontSize: '1.1rem', color: 'rgba(255,255,255,0.9)', lineHeight: '1.8' }}>{txt.storyText2}</p>
               <p style={{ fontSize: '1.1rem', color: 'var(--gold)', fontWeight: 500, lineHeight: '1.8' }}>{txt.storyText3}</p>
             </div>
-            <div style={{ display: 'flex', gap: '16px', justifyContent: 'center' }}>
-              <div style={{ position: 'relative', width: '48%', maxWidth: '260px', aspectRatio: '4 / 5', borderRadius: '14px', overflow: 'hidden', boxShadow: '0 16px 40px rgba(0,0,0,0.5)', border: '1px solid rgba(255,255,255,0.1)' }}>
+            <div style={{ display: 'flex', gap: '18px', justifyContent: 'center' }}>
+              <div style={{ position: 'relative', width: '48%', maxWidth: '310px', aspectRatio: '4 / 5', borderRadius: '14px', overflow: 'hidden', boxShadow: '0 16px 40px rgba(0,0,0,0.5)', border: '1px solid rgba(255,255,255,0.1)' }}>
                 <Image
                   src="/media/56e6ee_dd6ee2f616104027bdfd2ce80bf6ab2b-primary.jpg"
                   alt="Iman"
@@ -230,7 +230,7 @@ export default function AboutPage() {
                   style={{ objectFit: 'cover', objectPosition: 'center 15%' }}
                 />
               </div>
-              <div style={{ position: 'relative', width: '48%', maxWidth: '260px', aspectRatio: '4 / 5', borderRadius: '14px', overflow: 'hidden', boxShadow: '0 16px 40px rgba(0,0,0,0.5)', border: '1px solid rgba(255,255,255,0.1)' }}>
+              <div style={{ position: 'relative', width: '48%', maxWidth: '310px', aspectRatio: '4 / 5', borderRadius: '14px', overflow: 'hidden', boxShadow: '0 16px 40px rgba(0,0,0,0.5)', border: '1px solid rgba(255,255,255,0.1)' }}>
                 <Image
                   src="/media/56e6ee_8fa3d2dc25d34cbcaaa0219bd31efeaa~mv2.jpg"
                   alt="Iman"
