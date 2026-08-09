@@ -135,7 +135,7 @@ export default function OrdersTable({ orders }: { orders: Order[] }) {
     <div>
       <input
         type="text"
-        placeholder="Search by name or email…"
+        placeholder="Search by name, email, or phone…"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         style={{ marginBottom: '16px', maxWidth: '320px' }}
