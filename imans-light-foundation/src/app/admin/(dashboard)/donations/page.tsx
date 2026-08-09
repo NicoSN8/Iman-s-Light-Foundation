@@ -2,8 +2,14 @@ import { desc } from 'drizzle-orm';
 import { getDb } from '@/db';
 import { donations } from '@/db/schema';
 
+function formatMoney(cents: number | null) {
+  if (cents == null) return '—';
+  return `$${(cents / 100).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+}
+
 export default async function AdminDonationsPage() {
   const rows = await getDb().select().from(donations).orderBy(desc(donations.receivedAt));
+  const total = rows.reduce((sum, d) => sum + (d.amountCents ?? 0), 0);
 
   return (
     <>
@@ -11,13 +17,7 @@ export default async function AdminDonationsPage() {
         <h1 style={{ fontSize: '1.8rem', marginBottom: '4px' }}>Donations</h1>
         <p style={{ color: 'rgba(255,255,255,0.7)' }}>
           {rows.length} donation{rows.length === 1 ? '' : 's'} received via Zeffy
-        </p>
-        <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.85rem', marginTop: '8px', maxWidth: '640px' }}>
-          Amounts aren&apos;t shown here yet — Zeffy&apos;s exact payload format hasn&apos;t
-          been confirmed against a real transaction, so a wrong dollar amount isn&apos;t
-          worth the risk of showing. Treat your Zeffy dashboard as the source of truth
-          for exact amounts until this note goes away. Expand &quot;Raw data&quot; on any
-          row to see everything Zeffy actually sent.
+          {total > 0 && <> · {formatMoney(total)} total</>}
         </p>
       </div>
 
@@ -34,7 +34,9 @@ export default async function AdminDonationsPage() {
                 <th style={{ padding: '12px 8px' }}>Received</th>
                 <th style={{ padding: '12px 8px' }}>Donor</th>
                 <th style={{ padding: '12px 8px' }}>Email</th>
+                <th style={{ padding: '12px 8px' }}>Amount</th>
                 <th style={{ padding: '12px 8px' }}>Campaign</th>
+                <th style={{ padding: '12px 8px' }}>Receipt</th>
                 <th style={{ padding: '12px 8px' }}>Raw data</th>
               </tr>
             </thead>
@@ -46,8 +48,16 @@ export default async function AdminDonationsPage() {
                   </td>
                   <td style={{ padding: '12px 8px' }}>{d.donorName ?? '—'}</td>
                   <td style={{ padding: '12px 8px' }}>{d.donorEmail ?? '—'}</td>
+                  <td style={{ padding: '12px 8px', fontWeight: 600, color: 'var(--gold)' }}>{formatMoney(d.amountCents)}</td>
                   <td style={{ padding: '12px 8px' }}>{d.campaignName ?? '—'}</td>
-                  <td style={{ padding: '12px 8px', maxWidth: '360px' }}>
+                  <td style={{ padding: '12px 8px' }}>
+                    {d.receiptUrl ? (
+                      <a href={d.receiptUrl} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--gold)' }}>
+                        View
+                      </a>
+                    ) : '—'}
+                  </td>
+                  <td style={{ padding: '12px 8px', maxWidth: '320px' }}>
                     <details>
                       <summary style={{ cursor: 'pointer', color: 'var(--gold)', fontSize: '0.85rem' }}>View</summary>
                       <pre style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.7)', whiteSpace: 'pre-wrap', wordBreak: 'break-word', marginTop: '8px', maxHeight: '300px', overflow: 'auto' }}>

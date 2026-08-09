@@ -88,6 +88,7 @@ export const donations = pgTable('donations', {
   donorEmail: text('donor_email'),
   amountCents: integer('amount_cents'),
   campaignName: text('campaign_name'),
+  receiptUrl: text('receipt_url'),
   // Zeffy's own payment ID, used to ignore duplicate webhook retries.
   zeffyPaymentId: text('zeffy_payment_id').unique(),
   rawPayload: jsonb('raw_payload').notNull(),

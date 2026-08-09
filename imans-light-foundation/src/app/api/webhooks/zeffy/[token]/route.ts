@@ -9,21 +9,25 @@ function firstString(obj: Record<string, unknown>, keys: string[]): string | nul
   return null;
 }
 
+function asRecord(v: unknown): Record<string, unknown> {
+  return typeof v === 'object' && v !== null ? (v as Record<string, unknown>) : {};
+}
+
 /**
- * Receives Zeffy's payment.completed webhook. Zeffy's exact payload shape
- * isn't published anywhere we can read without a real sample, so this
- * always keeps the full raw body regardless of what the best-effort parse
- * below finds — nothing is ever silently lost. Dollar amounts are
- * deliberately NOT parsed here: whether a given field is dollars or cents
- * isn't confirmed yet, and showing a wrong amount is worse than showing
- * none. Treat Zeffy's own dashboard as the source of truth for money until
- * a real test payload lets us confirm the field names, at which point this
- * should be revisited.
+ * Receives Zeffy's payment.completed webhook. Payload shape confirmed
+ * against a real $1 test transaction on 2026-08-09:
+ *   { type: 'payment.completed', data: { id, amount (in cents), currency,
+ *     campaign_type ('donation_form' for the donate form), campaign_category,
+ *     description, receipt_url, buyer: { first_name, last_name, email,
+ *     company_name, is_corporate }, ... } }
  *
- * Ticket sales are never auto-inserted into ticketOrders (the real seating
- * source of truth) — they're logged to unmatchedZeffySales for a human to
- * review and promote via the existing "+ Add Order" flow in /admin/tickets,
- * since a bad guess there would mean a wrong seat count at the actual event.
+ * Only campaign_type === 'donation_form' is treated as a confirmed
+ * donation. Anything else (including gala ticket sales, and any future
+ * campaign type we haven't seen yet) goes to unmatchedZeffySales for a
+ * human to review — a bad guess on a ticket's seat count means someone
+ * shows up to the gala without a table, which is worse than one extra
+ * manual click. The full raw payload is always stored regardless, so nothing
+ * is ever lost even if a future Zeffy payload doesn't match this shape.
  */
 export async function POST(request: Request, { params }: { params: Promise<{ token: string }> }) {
   const { token } = await params;
@@ -42,31 +46,38 @@ export async function POST(request: Request, { params }: { params: Promise<{ tok
   }
 
   const root = body as Record<string, unknown>;
-  const payment = (
-    typeof root.data === 'object' && root.data !== null ? root.data
-      : typeof root.payment === 'object' && root.payment !== null ? root.payment
-      : root
-  ) as Record<string, unknown>;
+  const payment = asRecord(root.data ?? root.payment ?? root);
+  const buyer = asRecord(payment.buyer);
 
   const zeffyPaymentId = firstString(payment, ['id', 'paymentId', 'payment_id', 'transactionId']);
-  const donorName = firstString(payment, ['name', 'fullName', 'donorName', 'buyerName', 'contactName']);
-  const donorEmail = firstString(payment, ['email', 'donorEmail', 'buyerEmail', 'contactEmail']);
-  const campaignName = firstString(payment, ['campaignName', 'campaign', 'formName', 'formTitle']);
-
-  const payloadText = JSON.stringify(body).toLowerCase();
-  const looksLikeGalaTicket = payloadText.includes('gala') || payloadText.includes('ticket');
+  const companyName = firstString(buyer, ['company_name']);
+  const firstName = firstString(buyer, ['first_name']);
+  const lastName = firstString(buyer, ['last_name']);
+  const personName = [firstName, lastName].filter(Boolean).join(' ') || null;
+  const buyerName = buyer.is_corporate === true && companyName ? companyName : personName ?? companyName;
+  const buyerEmail = firstString(buyer, ['email']);
+  const campaignName = firstString(payment, ['description', 'campaignName', 'campaign', 'formName', 'formTitle']);
+  const receiptUrl = firstString(payment, ['receipt_url', 'receiptUrl']);
+  const amountCents = typeof payment.amount === 'number' && Number.isFinite(payment.amount) ? payment.amount : null;
+  const campaignType = firstString(payment, ['campaign_type']);
 
   const db = getDb();
 
   try {
-    if (looksLikeGalaTicket) {
-      await db.insert(unmatchedZeffySales).values({ buyerName: donorName, buyerEmail: donorEmail, zeffyPaymentId, rawPayload: body }).onConflictDoNothing();
-    } else {
+    if (campaignType === 'donation_form') {
       await db.insert(donations).values({
-        donorName,
-        donorEmail,
-        amountCents: null,
+        donorName: buyerName,
+        donorEmail: buyerEmail,
+        amountCents,
         campaignName,
+        receiptUrl,
+        zeffyPaymentId,
+        rawPayload: body,
+      }).onConflictDoNothing();
+    } else {
+      await db.insert(unmatchedZeffySales).values({
+        buyerName,
+        buyerEmail,
         zeffyPaymentId,
         rawPayload: body,
       }).onConflictDoNothing();
