@@ -55,11 +55,11 @@ const tiers: { en: Tier[]; es: Tier[] } = {
       },
       {
         id: 'custom',
-        name: 'A Custom Contribution',
-        amount: 'Custom',
+        name: 'Give What You Can',
+        amount: 'Any Amount',
         icon: <Leaf size={32} color="var(--gold)" />,
-        descEn: 'Every single dollar helps. Make a custom donation that goes directly to supporting our local prevention and counseling efforts.',
-        descEs: 'Cada dólar ayuda. Haz una contribución personalizada que irá directamente a apoyar nuestros esfuerzos locales.'
+        descEn: "Every single dollar helps. Type in whatever amount feels right to you — it goes directly to supporting our local prevention and counseling efforts.",
+        descEs: 'Cada dólar ayuda. Escribe la cantidad que prefieras: va directo a apoyar nuestros esfuerzos locales de prevención y consejería.'
       }
     ],
   es: [
@@ -98,11 +98,11 @@ const tiers: { en: Tier[]; es: Tier[] } = {
       },
       {
         id: 'custom',
-        name: 'Contribución Personalizada',
-        amount: 'Personalizado',
+        name: 'Dona lo que Puedas',
+        amount: 'Cualquier Cantidad',
         icon: <Leaf size={32} color="var(--gold)" />,
-        descEn: 'Every single dollar helps. Make a custom donation that goes directly to supporting our local prevention and counseling efforts.',
-        descEs: 'Cada dólar ayuda. Haz una contribución personalizada que irá directamente a apoyar nuestros esfuerzos locales.'
+        descEn: "Every single dollar helps. Type in whatever amount feels right to you — it goes directly to supporting our local prevention and counseling efforts.",
+        descEs: 'Cada dólar ayuda. Escribe la cantidad que prefieras: va directo a apoyar nuestros esfuerzos locales de prevención y consejería.'
       }
     ]
 };
@@ -164,7 +164,7 @@ export default function DonatePage() {
           <div className={styles.tiersGrid}>
             {tierList.map((tier, i) => {
               const designated = institution.trim();
-              const amountLabel = tier.amount !== 'Custom' && tier.amount !== 'Personalizado' ? tier.amount : '';
+              const amountLabel = tier.id === 'custom' ? (isEs ? 'Cualquier Cantidad' : 'Any Amount') : tier.amount;
               const giveLabel = designated
                 ? `${isEs ? 'Donar' : 'Give'} ${amountLabel} ${isEs ? 'para' : 'for'} ${designated}`
                 : `${isEs ? 'Donar' : 'Give'} ${amountLabel}`;
