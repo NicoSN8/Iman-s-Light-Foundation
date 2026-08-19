@@ -96,6 +96,7 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
+  max-width: calc(100vw - 48px);
 }
 
 .heroScrollText {
@@ -332,6 +333,7 @@
 
 .newsletterInput {
   flex: 1;
+  min-width: 0;
   padding: 14px 20px;
   border: 2px solid var(--gray-200);
   border-radius: 50px;
@@ -361,5 +363,11 @@
 @media (max-width: 768px) {
   .heroContent { padding-top: 120px; }
   .heroBtns { flex-direction: column; }
+  .heroScrollText {
+    white-space: normal;
+    text-align: center;
+    letter-spacing: 0.12em;
+  }
+  .newsletterForm { flex-direction: column; }
 }
 

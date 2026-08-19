@@ -7,6 +7,7 @@ import { MapPin } from 'lucide-react';
 import { LanguageContext } from '@/context/LanguageContext';
 import type { TicketTierData } from '@/components/TicketTiers';
 import { TICKETS_LIVE } from '@/lib/featureFlags';
+import { parseDateOnly } from '@/lib/dates';
 import styles from './events.module.css';
 
 interface EventRow {
@@ -67,7 +68,7 @@ export default function EventsPage({ featuredEvents, gridEvents, ticketTiers }: 
                 const dateText =
                   evt.dateLabel ||
                   (evt.eventDate
-                    ? new Date(evt.eventDate).toLocaleDateString(isEs ? 'es-ES' : 'en-US', {
+                    ? parseDateOnly(evt.eventDate).toLocaleDateString(isEs ? 'es-ES' : 'en-US', {
                         month: 'long',
                         day: 'numeric',
                         year: 'numeric',
@@ -144,14 +145,14 @@ export default function EventsPage({ featuredEvents, gridEvents, ticketTiers }: 
                   </div>
                 ) : (
                   <div className={styles.eventImagePlaceholder}>
-                    <span>{evt.eventDate ? new Date(evt.eventDate).getFullYear() : ''}</span>
+                    <span>{evt.eventDate ? parseDateOnly(evt.eventDate).getFullYear() : ''}</span>
                   </div>
                 )}
                 <div className={styles.eventContent}>
                   <div className={styles.eventDate}>
                     {evt.dateLabel ||
                       (evt.eventDate &&
-                        new Date(evt.eventDate).toLocaleDateString(isEs ? 'es-ES' : 'en-US', {
+                        parseDateOnly(evt.eventDate).toLocaleDateString(isEs ? 'es-ES' : 'en-US', {
                           month: 'long',
                           day: 'numeric',
                           year: 'numeric',

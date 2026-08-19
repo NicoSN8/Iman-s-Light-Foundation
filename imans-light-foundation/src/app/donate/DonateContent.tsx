@@ -23,7 +23,7 @@ const tiers: { en: Tier[]; es: Tier[] } = {
       {
         id: 'workshop',
         name: 'Fund a Workshop',
-        amount: '$300',
+        amount: '$550',
         icon: <GraduationCap size={32} color="var(--gold)" />,
         descEn: "Bring one full drug-prevention workshop to the school or college of your choice. It's a real conversation that could save a life.",
         descEs: 'Lleva un taller completo de prevención de drogas a la escuela o universidad de tu elección. Es una conversación real que podría salvar una vida.'
@@ -66,7 +66,7 @@ const tiers: { en: Tier[]; es: Tier[] } = {
       {
         id: 'workshop',
         name: 'Financia un Taller',
-        amount: '$300',
+        amount: '$550',
         icon: <GraduationCap size={32} color="var(--gold)" />,
         descEn: "Bring one full drug-prevention workshop to the school or college of your choice. It's a real conversation that could save a life.",
         descEs: 'Lleva un taller completo de prevención de drogas a la escuela o universidad de tu elección. Es una conversación real que podría salvar una vida.'

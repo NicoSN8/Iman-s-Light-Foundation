@@ -7,6 +7,7 @@ import { MapPin, CalendarDays } from 'lucide-react';
 import { LanguageContext } from '@/context/LanguageContext';
 import TicketTiers, { type TicketTierData } from '@/components/TicketTiers';
 import { TICKETS_LIVE } from '@/lib/featureFlags';
+import { parseDateOnly } from '@/lib/dates';
 import styles from './gala.module.css';
 
 interface EventRow {
@@ -27,7 +28,7 @@ export default function GalaContent({ event, tiers }: { event: EventRow; tiers: 
   const dateText =
     event.dateLabel ||
     (event.eventDate
-      ? new Date(event.eventDate).toLocaleDateString(isEs ? 'es-ES' : 'en-US', { month: 'long', day: 'numeric', year: 'numeric' })
+      ? parseDateOnly(event.eventDate).toLocaleDateString(isEs ? 'es-ES' : 'en-US', { month: 'long', day: 'numeric', year: 'numeric' })
       : '');
 
   return (
