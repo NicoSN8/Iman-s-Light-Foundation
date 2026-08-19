@@ -19,9 +19,10 @@ import {
   Users, 
   DollarSign, 
   Handshake, 
-  BarChart3, 
-  Megaphone, 
-  BookOpen 
+  BarChart3,
+  Megaphone,
+  BookOpen,
+  Pill
 } from 'lucide-react';
 
 const programs = {
@@ -162,6 +163,17 @@ const lessonPlans = {
         'Overdose deaths in 2023 and 2024 (Data metrics)',
         'Signs of an overdose & correctly administering Narcan'
       ]
+    },
+    {
+      icon: <Pill size={32} />,
+      title: 'Uppers, Downers & Fake Pills',
+      points: [
+        'What is a stimulant vs. a depressant?',
+        'Opioids and opiates: examples, effects, and risks',
+        'What Adderall is and its real side effects',
+        'Spotting a real pill from a counterfeit one',
+        'Why one fake pill is enough to kill'
+      ]
     }
   ],
   es: [
@@ -201,6 +213,17 @@ const lessonPlans = {
         'Peligro de píldoras falsas compradas en línea',
         'Estadísticas brutales de sobredosis 2023-2024',
         'Identificar una sobredosis y aplicar Narcan rápidamente'
+      ]
+    },
+    {
+      icon: <Pill size={32} />,
+      title: 'Estimulantes, Depresores y Píldoras Falsas',
+      points: [
+        '¿Qué es un estimulante frente a un depresor?',
+        'Opioides y opiáceos: ejemplos, efectos y riesgos',
+        'Qué es el Adderall y sus efectos secundarios reales',
+        'Cómo distinguir una píldora real de una falsificada',
+        'Por qué una sola píldora falsa puede matar'
       ]
     }
   ]
