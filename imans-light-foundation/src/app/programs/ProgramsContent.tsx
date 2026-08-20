@@ -475,7 +475,11 @@ export default function ProgramsPage() {
             </p>
           </div>
 
-          <div className="grid-3" style={{ gap: '30px' }}>
+          {/* 2 columns, not 3 -- there are 4 lesson topics, and a 3-column
+              grid left the 4th card alone on its own row with two empty
+              column-widths of blank space beside it. A 2x2 grid fills
+              evenly and gives each topic more room. */}
+          <div className="grid-2" style={{ gap: '30px', alignItems: 'stretch' }}>
             {lessons.map((lesson, idx) => (
               <div key={idx} style={{
                 background: 'rgba(20, 28, 46, 0.5)',
@@ -654,6 +658,20 @@ export default function ProgramsPage() {
           </div>
 
           <div className="grid-3" style={{ gap: '40px', position: 'relative' }}>
+            {/* Connects the 3 phase circles into one line, visible above
+                the mobile breakpoint where grid-3 collapses to 1 column. */}
+            <div
+              className="hide-mobile"
+              style={{
+                position: 'absolute',
+                top: '34px',
+                left: 'calc(16.67% + 8px)',
+                right: 'calc(16.67% + 8px)',
+                height: '2px',
+                background: 'linear-gradient(to right, rgba(201,168,76,0.5), rgba(201,168,76,0.5))',
+                zIndex: 0,
+              }}
+            />
             {[
               {
                 num: '1',
@@ -701,19 +719,14 @@ export default function ProgramsPage() {
                 ]
               }
             ].map((phase, pIdx) => (
-              <div key={pIdx} style={{
-                background: 'rgba(20, 28, 46, 0.5)',
-                borderRadius: '16px',
-                padding: '40px 32px',
-                border: '1px solid rgba(255,255,255,0.05)',
-                position: 'relative'
-              }}>
+              // Deliberately not another bordered card box -- this is a
+              // sequence (prep, then execution, then follow-up), so a
+              // connected timeline reads that order at a glance instead
+              // of looking like one more square in a page full of them.
+              <div key={pIdx} style={{ position: 'relative', paddingTop: '8px' }}>
                 <div style={{
-                  position: 'absolute',
-                  top: '-24px',
-                  left: '32px',
-                  width: '48px',
-                  height: '48px',
+                  width: '52px',
+                  height: '52px',
                   borderRadius: '50%',
                   background: 'var(--gradient-gold)',
                   display: 'flex',
@@ -721,17 +734,20 @@ export default function ProgramsPage() {
                   justifyContent: 'center',
                   color: 'var(--navy)',
                   fontWeight: 800,
-                  fontSize: '1.25rem',
-                  boxShadow: '0 8px 20px rgba(201,168,76,0.3)'
+                  fontSize: '1.3rem',
+                  boxShadow: '0 8px 20px rgba(201,168,76,0.3)',
+                  marginBottom: '24px',
+                  position: 'relative',
+                  zIndex: 1
                 }}>
                   {phase.num}
                 </div>
-                <h3 style={{ color: '#fff', fontSize: '1.3rem', fontFamily: 'Playfair Display, serif', marginTop: '12px', marginBottom: '24px' }}>
+                <h3 style={{ color: '#fff', fontSize: '1.3rem', fontFamily: 'Playfair Display, serif', marginBottom: '20px' }}>
                   {isEs ? phase.titleEs : phase.titleEn}
                 </h3>
-                <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '14px' }}>
                   {(isEs ? phase.pointsEs : phase.pointsEn).map((pt, ptIdx) => (
-                    <li key={ptIdx} style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.92rem', lineHeight: '1.6', paddingLeft: '18px', position: 'relative' }}>
+                    <li key={ptIdx} style={{ color: 'rgba(255,255,255,0.75)', fontSize: '0.92rem', lineHeight: '1.6', paddingLeft: '18px', position: 'relative' }}>
                       <span style={{ position: 'absolute', left: 0, top: '8px', width: '5px', height: '5px', borderRadius: '50%', background: 'var(--gold)' }} />
                       {pt}
                     </li>

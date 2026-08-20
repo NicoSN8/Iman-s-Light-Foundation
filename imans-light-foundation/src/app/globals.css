@@ -206,6 +206,13 @@ p {
   gap: 24px;
 }
 
+/* Hides purely decorative elements (e.g. a connecting line between grid-3
+   items) once that grid collapses to 1 column on mobile, where the
+   element would no longer line up with anything. */
+@media (max-width: 768px) {
+  .hide-mobile { display: none; }
+}
+
 /* =============================================
    SECTION LABELS & HEADINGS
    ============================================= */

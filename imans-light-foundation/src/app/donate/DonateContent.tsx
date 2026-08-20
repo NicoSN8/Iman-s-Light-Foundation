@@ -58,7 +58,7 @@ const tiers: { en: Tier[]; es: Tier[] } = {
         name: 'Give What You Can',
         amount: 'Any Amount',
         icon: <Leaf size={32} color="var(--gold)" />,
-        descEn: "Every single dollar helps. Type in whatever amount feels right to you — it goes directly to supporting our local prevention and counseling efforts.",
+        descEn: "Every single dollar helps. Type in whatever amount feels right to you, and it goes directly to supporting our local prevention and counseling efforts.",
         descEs: 'Cada dólar ayuda. Escribe la cantidad que prefieras: va directo a apoyar nuestros esfuerzos locales de prevención y consejería.'
       }
     ],
@@ -101,7 +101,7 @@ const tiers: { en: Tier[]; es: Tier[] } = {
         name: 'Dona lo que Puedas',
         amount: 'Cualquier Cantidad',
         icon: <Leaf size={32} color="var(--gold)" />,
-        descEn: "Every single dollar helps. Type in whatever amount feels right to you — it goes directly to supporting our local prevention and counseling efforts.",
+        descEn: "Every single dollar helps. Type in whatever amount feels right to you, and it goes directly to supporting our local prevention and counseling efforts.",
         descEs: 'Cada dólar ayuda. Escribe la cantidad que prefieras: va directo a apoyar nuestros esfuerzos locales de prevención y consejería.'
       }
     ]
