@@ -3,8 +3,7 @@
 // /admin/tickets tool are all fully built and working -- this flag only
 // controls whether the PUBLIC site treats tickets as purchasable (tier
 // cards on /gala, "Reserve Tickets" vs "Sponsor / Attend" on /events).
-// The CEO hasn't given final pricing/descriptions yet, so showing draft
-// placeholder numbers as if they were final would be wrong. Flip this to
-// true once the real numbers are in and Zeffy's campaign is updated to
-// match -- nothing else needs to change.
-export const TICKETS_LIVE = false;
+// 2026-08-20: confirmed the DB's 4 tiers ($125/$600/$1,100/$2,500) match
+// the live Zeffy campaign (zeffy.com/.../3rd-annual-gala-6) exactly, and
+// Nicolas asked for the ticket buttons live -- flipped to true.
+export const TICKETS_LIVE = true;

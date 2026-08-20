@@ -148,22 +148,42 @@ export default function GalaContent({ event, tiers }: { event: EventRow; tiers: 
               </p>
             </div>
 
-            <div className={styles.lookBackCard}>
-              <div className={styles.lookBackImageWrap}>
+            <div className={styles.whyPhotoGrid}>
+              <div className={styles.whyPhoto}>
+                <Image
+                  src="/media/56e6ee_073f30a006774b13b0b4760f92bad63e~mv2.jpeg"
+                  alt={isEs ? 'Taller de prevención en una escuela' : 'A prevention workshop at a school'}
+                  fill
+                  style={{ objectFit: 'cover' }}
+                />
+                <span className={styles.whyPhotoCaption}>{isEs ? 'Los talleres' : 'The workshops'}</span>
+              </div>
+              <div className={styles.whyPhoto}>
+                <Image
+                  src="/media/56e6ee_d289e22e23694b668fdf387aaafa140c~mv2.jpeg"
+                  alt={isEs ? 'Consejera de Iman\'s Light con un estudiante' : "An Iman's Light counselor with a student"}
+                  fill
+                  style={{ objectFit: 'cover' }}
+                />
+                <span className={styles.whyPhotoCaption}>{isEs ? 'La consejería' : 'The counseling'}</span>
+              </div>
+              <div className={styles.whyPhoto}>
+                <Image
+                  src="/media/56e6ee_03ab8a5dab7447aab4707f294780cd1a~mv2.jpeg"
+                  alt={isEs ? 'Un kit real de Naloxona distribuido por Iman\'s Light' : "A real naloxone kit distributed by Iman's Light"}
+                  fill
+                  style={{ objectFit: 'cover' }}
+                />
+                <span className={styles.whyPhotoCaption}>{isEs ? 'La naloxona' : 'The naloxone'}</span>
+              </div>
+              <div className={`${styles.whyPhoto} ${styles.whyPhotoFlyer}`} style={{ background: '#0a0e1a' }}>
                 <Image
                   src="/media/56e6ee_c06acaeb840e48098e7a8113301f3404~mv2.jpg"
                   alt={isEs ? 'Música y Luces por la Vida 2025' : 'Music and Lights for Life 2025'}
                   fill
                   style={{ objectFit: 'contain' }}
                 />
-              </div>
-              <div className={styles.lookBackContent}>
-                <span className={styles.lookBackLabel}>{isEs ? 'Mirando Atrás' : 'Look Back at Last Year'}</span>
-                <p className={styles.lookBackText}>
-                  {isEs
-                    ? 'Música y Luces por la Vida 2025 reunió a más de 24 patrocinadores y llenó el Miramar City Center Hall para una noche de presentaciones y un poderoso mensaje de prevención. Este año, vamos aún más grande.'
-                    : '2025\'s Music and Lights for Life brought together 24+ sponsors and a packed Miramar City Center Hall for a night of performances and powerful prevention messaging. This year, we\'re going even bigger.'}
-                </p>
+                <span className={styles.whyPhotoCaption}>{isEs ? 'La noche que lo hace posible' : 'The night that pays for it'}</span>
               </div>
             </div>
           </div>

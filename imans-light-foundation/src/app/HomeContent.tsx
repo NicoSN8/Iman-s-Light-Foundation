@@ -256,13 +256,18 @@ export default function HomeContent({ featuredEvents }: { featuredEvents: EventR
               >
                 <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '6px', background: 'var(--gradient-gold)', zIndex: 1 }} />
                 <div className="grid-2" style={{ gap: 0, alignItems: 'stretch' }}>
-                  <div style={{ position: 'relative', minHeight: '320px', background: isGala ? '#0a0e1a' : undefined }}>
+                  {/* object-fit: contain, not cover -- every featured event
+                      image on this page is a designed flyer graphic with
+                      edge-to-edge text (dates, addresses, sponsor logos),
+                      and cover was cropping that text off on multiple
+                      events, not just the Gala. */}
+                  <div style={{ position: 'relative', minHeight: '320px', background: '#0a0e1a' }}>
                     {evt.image && (
                       <Image
                         src={evt.image}
                         alt={isEs ? evt.titleEs : evt.titleEn}
                         fill
-                        style={{ objectFit: isGala ? 'contain' : 'cover' }}
+                        style={{ objectFit: 'contain' }}
                       />
                     )}
                   </div>

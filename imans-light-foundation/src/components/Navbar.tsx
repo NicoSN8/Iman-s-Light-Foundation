@@ -153,7 +153,7 @@ export default function Navbar() {
 
       {/* Main Navigation */}
       <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
-        <div className={`container ${styles.inner}`}>
+        <div className={styles.inner}>
           {/* Logo */}
           <Link
             href="/"

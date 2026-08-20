@@ -125,6 +125,15 @@
   align-items: center;
   justify-content: space-between;
   gap: 24px;
+  /* Deliberately wider than the site's standard 1200px content container --
+     the full nav (7 tabs + Gala badge + language toggle + Donate button)
+     needs more room than that, especially in Spanish where labels like
+     "Contáctanos" and "Apoyo y Donaciones" run longer than their English
+     counterparts. Using the shared .container class here caused the nav to
+     overflow past the visible viewport in Spanish. */
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 24px;
 }
 
 /* ---- Logo ---- */
@@ -525,13 +534,18 @@
   border-color: var(--gold);
 }
 
-/* ---- Responsive ---- */
-@media (max-width: 1100px) {
-  .desktopLinks { gap: 16px; }
-  .navLink { font-size: 0.85rem; }
-}
-
-@media (max-width: 900px) {
+/* ---- Responsive ----
+   The full desktop nav (logo, Home, Gala badge, 4 dropdown tabs, Contact
+   Us, language toggle, Donate button) needs roughly 1580-1600px of width
+   to lay out on one line -- more in Spanish, where labels like
+   "Apoyo y Donaciones" and "Contáctanos" run longer than their English
+   equivalents. Below that, there simply isn't a comfortable in-between:
+   the desktop nav either overflows past the viewport or gets uncomfortably
+   cramped. So the switch to the (already fully built) mobile hamburger
+   menu happens at 1500px, well above common laptop widths (1280-1440px),
+   rather than the old 900px, which left a wide squeeze zone where the
+   desktop nav technically rendered but ran off-screen in Spanish. */
+@media (max-width: 1500px) {
   .topBar { display: none; }
   .nav { top: 0; padding: 12px 0; }
   .desktopLinks { display: none; }

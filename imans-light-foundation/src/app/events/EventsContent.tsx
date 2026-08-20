@@ -31,10 +31,11 @@ interface EventsContentProps {
 
 const todayStr = () => new Date().toISOString().slice(0, 10);
 
-// The Gala's image is the CEO's designed "Save the Date" flyer, not a
-// candid photo -- object-fit: cover would crop its headline/footer text
-// depending on the card's aspect ratio, so it needs object-fit: contain
-// instead (same reasoning as GalaContent.tsx and HomeContent.tsx).
+// The Gala has its own dedicated page (with the full Zeffy checkout flow),
+// so it gets routed there. Other events with real ticket tiers (e.g. the
+// Fentanyl Awareness Day's $150 Sponsor Table) don't have a dedicated page
+// yet, so their tier is shown inline and the button goes to /contact,
+// pre-filled, so someone can actually reserve one right now.
 const GALA_EVENT_ID = 'b58cabc5-7cdc-4719-80a7-283f2932a07c';
 
 export default function EventsPage({ featuredEvents, gridEvents, ticketTiers }: EventsContentProps) {
@@ -98,8 +99,8 @@ export default function EventsPage({ featuredEvents, gridEvents, ticketTiers }: 
                     </div>
                     <div className={styles.featuredCardInner}>
                       {evt.image && (
-                        <div className={styles.featuredImageWrap} style={evt.id === GALA_EVENT_ID ? { background: '#0a0e1a' } : undefined}>
-                          <Image src={evt.image} alt={isEs ? evt.titleEs : evt.titleEn} fill style={{ objectFit: evt.id === GALA_EVENT_ID ? 'contain' : 'cover' }} />
+                        <div className={styles.featuredImageWrap} style={{ background: '#0a0e1a' }}>
+                          <Image src={evt.image} alt={isEs ? evt.titleEs : evt.titleEn} fill style={{ objectFit: 'contain' }} />
                         </div>
                       )}
                       <div className={styles.featuredContent}>
@@ -115,15 +116,47 @@ export default function EventsPage({ featuredEvents, gridEvents, ticketTiers }: 
                         <p className={styles.featuredDesc} style={!isUpcoming ? { fontSize: '0.98rem' } : undefined}>
                           {isEs ? evt.descriptionEs : evt.descriptionEn}
                         </p>
-                        {isUpcoming && (
-                          <div style={{ marginTop: '24px' }}>
-                            <Link href={hasTickets ? '/gala' : '/contact'} className="btn btn-primary">
-                              {hasTickets
-                                ? (isEs ? 'Ver Gala y Reservar Boletos' : 'View Gala & Reserve Tickets')
-                                : (isEs ? 'Patrocinar / Asistir' : 'Sponsor / Attend')} →
-                            </Link>
-                          </div>
-                        )}
+                        {isUpcoming && (() => {
+                          const isGalaEvent = evt.id === GALA_EVENT_ID;
+                          const primaryTier = eventTiers[0];
+
+                          if (isGalaEvent && hasTickets) {
+                            return (
+                              <div style={{ marginTop: '24px' }}>
+                                <Link href="/gala" className="btn btn-primary">
+                                  {isEs ? 'Ver Gala y Reservar Boletos' : 'View Gala & Reserve Tickets'} →
+                                </Link>
+                              </div>
+                            );
+                          }
+
+                          if (!isGalaEvent && hasTickets && primaryTier) {
+                            const priceLabel = (primaryTier.priceCents / 100).toLocaleString(isEs ? 'es-US' : 'en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+                            const tierName = isEs ? primaryTier.nameEs : primaryTier.nameEn;
+                            const eventName = isEs ? evt.titleEs : evt.titleEn;
+                            return (
+                              <div style={{ marginTop: '24px' }}>
+                                <p style={{ color: 'var(--gold-light)', fontSize: '0.9rem', fontWeight: 600, marginBottom: '12px' }}>
+                                  {tierName}: ${priceLabel}
+                                </p>
+                                <Link
+                                  href={`/contact?tier=${encodeURIComponent(tierName)}&event=${encodeURIComponent(eventName)}`}
+                                  className="btn btn-primary"
+                                >
+                                  {isEs ? `Reservar Mesa ($${priceLabel})` : `Reserve a Table ($${priceLabel})`} →
+                                </Link>
+                              </div>
+                            );
+                          }
+
+                          return (
+                            <div style={{ marginTop: '24px' }}>
+                              <Link href="/contact" className="btn btn-primary">
+                                {isEs ? 'Patrocinar / Asistir' : 'Sponsor / Attend'} →
+                              </Link>
+                            </div>
+                          );
+                        })()}
                       </div>
                     </div>
                   </div>

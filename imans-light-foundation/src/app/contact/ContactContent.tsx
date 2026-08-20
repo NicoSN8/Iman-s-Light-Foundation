@@ -21,15 +21,17 @@ export default function ContactPage() {
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const tier = params.get('tier');
+    const eventName = params.get('event');
     const donationTier = params.get('donationTier');
     const institution = params.get('institution');
 
     if (tier) {
+      const eventLabel = eventName || (isEs ? 'la 3ra Gala Anual' : 'the 3rd Annual Gala');
       setSubject('tickets');
       setMessage(
         isEs
-          ? `Me gustaría reservar: ${tier} para la 3ra Gala Anual. Por favor contáctenme para coordinar el pago.`
-          : `I'd like to reserve: ${tier} for the 3rd Annual Gala. Please contact me to arrange payment.`
+          ? `Me gustaría reservar: ${tier} para ${eventLabel}. Por favor contáctenme para coordinar el pago.`
+          : `I'd like to reserve: ${tier} for ${eventLabel}. Please contact me to arrange payment.`
       );
       return;
     }
