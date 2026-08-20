@@ -229,10 +229,76 @@ const lessonPlans = {
   ]
 };
 
+const wellnessLessonPlans = {
+  en: [
+    {
+      icon: <BookOpen size={32} />,
+      title: 'Critical Thinking',
+      points: [
+        'What critical thinking is, and why it matters',
+        'Core skills and key principles',
+        'What happens when we don’t use it'
+      ]
+    },
+    {
+      icon: <Heart size={32} />,
+      title: 'Emotional Intelligence',
+      points: [
+        'The five C’s of emotional intelligence',
+        'Understanding anxiety, anger, and stress and their real health effects',
+        'Developing empathy, compassion, tolerance, and understanding',
+        'What self-medication is, and coping tools that actually work'
+      ]
+    },
+    {
+      icon: <Handshake size={32} />,
+      title: 'Non-Violent Communication',
+      points: [
+        'Dr. Marshall Rosenberg and Dr. King’s principles of non-violent communication',
+        'Conflict reconciliation and preventing escalation',
+        'Cognitive restructuring: turning hostile self-talk into positive self-talk',
+        'Managing emotions at work, at home, and in school'
+      ]
+    }
+  ],
+  es: [
+    {
+      icon: <BookOpen size={32} />,
+      title: 'Pensamiento Crítico',
+      points: [
+        'Qué es el pensamiento crítico y por qué importa',
+        'Habilidades clave y principios fundamentales',
+        'Qué sucede cuando no lo usamos'
+      ]
+    },
+    {
+      icon: <Heart size={32} />,
+      title: 'Inteligencia Emocional',
+      points: [
+        'Las cinco C’s de la inteligencia emocional',
+        'Entender la ansiedad, la ira y el estrés y sus efectos reales en la salud',
+        'Desarrollar empatía, compasión, tolerancia y comprensión',
+        'Qué es la automedicación y herramientas de afrontamiento que sí funcionan'
+      ]
+    },
+    {
+      icon: <Handshake size={32} />,
+      title: 'Comunicación No Violenta',
+      points: [
+        'Los principios de comunicación no violenta del Dr. Marshall Rosenberg y el Dr. King',
+        'Reconciliación de conflictos y cómo prevenir la escalada',
+        'Reestructuración cognitiva: cambiar el diálogo interno hostil por uno positivo',
+        'Manejo de emociones en el trabajo, el hogar y la escuela'
+      ]
+    }
+  ]
+};
+
 export default function ProgramsPage() {
   const { lang } = useContext(LanguageContext);
   const progs = programs[lang];
   const lessons = lessonPlans[lang];
+  const wellnessLessons = wellnessLessonPlans[lang];
   const isEs = lang === 'es';
 
   return (
@@ -428,6 +494,70 @@ export default function ProgramsPage() {
                 <ul style={{ 
                   listStyle: 'none', 
                   padding: 0, 
+                  margin: 0,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '12px'
+                }}>
+                  {lesson.points.map((point, pIdx) => (
+                    <li key={pIdx} style={{
+                      color: 'rgba(255,255,255,0.8)',
+                      fontSize: '0.95rem',
+                      lineHeight: '1.5',
+                      paddingLeft: '20px',
+                      position: 'relative'
+                    }}>
+                      <span style={{
+                        position: 'absolute',
+                        left: 0,
+                        top: '8px',
+                        width: '6px',
+                        height: '6px',
+                        background: 'var(--gold)',
+                        borderRadius: '50%'
+                      }} />
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section section-cream">
+        <div className="container">
+          <div className="text-center" style={{ marginBottom: '60px' }}>
+            <span className="section-label">{isEs ? 'Bienestar Mental' : 'Mental Wellness'}</span>
+            <h2 className="section-title">{isEs ? 'Currículo de Bienestar Mental' : 'Our Mental Wellness Curriculum'}</h2>
+            <div className="gold-divider center" />
+            <p style={{ maxWidth: '700px', margin: '0 auto', fontSize: '1.1rem' }}>
+              {isEs
+                ? 'Adicción a menudo empieza con dolor emocional. Estas son las herramientas reales que enseñamos para lidiar con él antes de que lleve a la automedicación.'
+                : "Addiction often starts with emotional pain. These are the real tools we teach to deal with it before it leads to self-medication."}
+            </p>
+          </div>
+
+          <div className="grid-3" style={{ gap: '30px' }}>
+            {wellnessLessons.map((lesson, idx) => (
+              <div key={idx} style={{
+                background: 'rgba(20, 28, 46, 0.5)',
+                border: '1px solid rgba(201, 168, 76, 0.2)',
+                borderRadius: '16px',
+                padding: '40px 30px',
+                display: 'flex',
+                flexDirection: 'column'
+              }}>
+                <div style={{ color: 'var(--gold)', marginBottom: '24px' }}>
+                  {lesson.icon}
+                </div>
+                <h3 style={{ color: '#fff', fontSize: '1.4rem', fontFamily: 'Playfair Display, serif', marginBottom: '20px' }}>
+                  {lesson.title}
+                </h3>
+                <ul style={{
+                  listStyle: 'none',
+                  padding: 0,
                   margin: 0,
                   display: 'flex',
                   flexDirection: 'column',
