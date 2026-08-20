@@ -1,5 +1,13 @@
 [
   {
+    "src": "/media/gallery-nomi-evening-of-honor.jpg",
+    "category": "Event"
+  },
+  {
+    "src": "/media/gallery-nomi-event-portrait.jpg",
+    "category": "Event"
+  },
+  {
     "src": "/media/gallery-ana-bovo-cao-award.jpg",
     "category": "Event"
   },
@@ -21,23 +29,19 @@
   },
   {
     "src": "/media/56e6ee_12d66a450e1f4ff2923c070001db1eac~mv2.jpeg",
-    "category": "Outreach"
+    "category": "Event"
   },
   {
     "src": "/media/56e6ee_de71e2ed5ba64915989434f69c07c271~mv2.jpeg",
     "category": "Support"
   },
   {
-    "src": "/media/56e6ee_3f8d083d2d014e3288b966aaa6b71574~mv2.jpeg",
+    "src": "/media/56e6ee_036e80bb339d433bb057c37d6c160e79~mv2.jpeg",
     "category": "Event"
   },
   {
-    "src": "/media/56e6ee_036e80bb339d433bb057c37d6c160e79~mv2.jpeg",
-    "category": "Advocacy"
-  },
-  {
     "src": "/media/56e6ee_6e5831231f37407889d2a096bdaf48f7~mv2.jpeg",
-    "category": "Advocacy"
+    "category": "Event"
   },
   {
     "src": "/media/56e6ee_3d1195150c614e4eb00f5e3b86aa67d5~mv2.jpeg",
@@ -76,10 +80,6 @@
     "category": "Support"
   },
   {
-    "src": "/media/56e6ee_9a41e1f85206488e9d5360d7c2c4c68b~mv2.jpeg",
-    "category": "Outreach"
-  },
-  {
     "src": "/media/56e6ee_5338f5709f714f7793a6923d0de03d33~mv2.jpeg",
     "category": "Support"
   },
@@ -89,7 +89,7 @@
   },
   {
     "src": "/media/56e6ee_a2b70b8e86c24d7586d3e018f554eb5c~mv2.jpeg",
-    "category": "Support"
+    "category": "Event"
   },
   {
     "src": "/media/56e6ee_d289e22e23694b668fdf387aaafa140c~mv2.jpeg",
@@ -97,7 +97,7 @@
   },
   {
     "src": "/media/56e6ee_8ebc946a14fe46f4bbc36fb5a29252f1~mv2.jpeg",
-    "category": "Workshop"
+    "category": "Event"
   },
   {
     "src": "/media/56e6ee_530cb6649ce9467a80ac619417a16f15~mv2.jpeg",
@@ -164,10 +164,6 @@
     "category": "Event"
   },
   {
-    "src": "/media/56e6ee_c83c898f9a3643739de904d16f88536a~mv2.jpeg",
-    "category": "Workshop"
-  },
-  {
     "src": "/media/56e6ee_ff3cf65802c744e7a3fde951b3f3e87d~mv2.jpeg",
     "category": "Support"
   },
@@ -192,16 +188,8 @@
     "category": "Outreach"
   },
   {
-    "src": "/media/56e6ee_4072bbcb86834326866dcf889c7f176f~mv2.jpeg",
-    "category": "Event"
-  },
-  {
-    "src": "/media/56e6ee_72142308228c4de1b76aa8f23e36f99b~mv2.jpeg",
-    "category": "Outreach"
-  },
-  {
     "src": "/media/56e6ee_9b6aea089ec24d95b8ead106e75e2427~mv2.jpeg",
-    "category": "Workshop"
+    "category": "Event"
   },
   {
     "src": "/media/56e6ee_e040ea5e26da409780256c44ce3ce74d~mv2.jpeg",
@@ -236,10 +224,6 @@
     "category": "Workshop"
   },
   {
-    "src": "/media/56e6ee_55dce64df3354190b26098791edccbe0~mv2.jpeg",
-    "category": "Advocacy"
-  },
-  {
     "src": "/media/56e6ee_d56b20c2f021432aadf00f5b0c5df244~mv2.jpg",
     "category": "Workshop"
   },
@@ -265,7 +249,7 @@
   },
   {
     "src": "/media/56e6ee_e03e63c58c3746f093f0fad63affdf44~mv2.jpeg",
-    "category": "Advocacy"
+    "category": "Workshop"
   },
   {
     "src": "/media/56e6ee_1cf045b3c6f24eeaa6699d688b7871fe~mv2.jpeg",
@@ -274,10 +258,6 @@
   {
     "src": "/media/56e6ee_c06acaeb840e48098e7a8113301f3404~mv2.jpg",
     "category": "Event"
-  },
-  {
-    "src": "/media/56e6ee_315fab46d6434e9180087174b63ac5e1~mv2.jpeg",
-    "category": "Workshop"
   },
   {
     "src": "/media/56e6ee_174ef4a2cf7c452f82b419b6d84596e7~mv2.jpg",
