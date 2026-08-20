@@ -87,9 +87,9 @@ const t = {
     organizations: [
       'PTA & PTSA', 'Global Innovative Foundation', 'Florida Board of Nursing', 'Black Nurses Association',
       'Miami Kingdom Lion Club', 'Wings to Freedom', 'Survivors Pathway', 'Miami Children\'s Hospital / Joe DiMaggio',
-      'Miami Mission', 'Global Philanthropy Society', 'Foundation of the Americas', 'Comunidad FBE',
-      'The Circle of Brotherhood', 'DEA', 'CDC', 'Southern Winds Hospital', 'Behavior Support of South Florida',
-      'Jewish University System'
+      'Miami Mission', 'Global Philanthropy Society', 'Foundation of the Americas', 'Comunidad FVE',
+      'The Circle of Brotherhood', 'DEA', 'CDC', 'Southern Winds Hospital', 'Behavior Support Center of Florida',
+      'Jewish University System', 'S.A.R.A. Coalition', 'CADCA', 'NAMI'
     ],
     chambers: [
       'The Christian Latin Chamber of Commerce', 'Miami Chamber of Commerce', 'Miami Real Estate Association of Realtors',
@@ -181,9 +181,9 @@ const t = {
     organizations: [
       'PTA y PTSA', 'Global Innovative Foundation', 'Florida Board of Nursing', 'Black Nurses Association',
       'Miami Kingdom Lion Club', 'Wings to Freedom', 'Survivors Pathway', 'Miami Children\'s Hospital / Joe DiMaggio',
-      'Miami Mission', 'Global Philanthropy Society', 'Foundation of the Americas', 'Comunidad FBE',
-      'The Circle of Brotherhood', 'DEA', 'CDC', 'Southern Winds Hospital', 'Behavior Support of South Florida',
-      'Jewish University System'
+      'Miami Mission', 'Global Philanthropy Society', 'Foundation of the Americas', 'Comunidad FVE',
+      'The Circle of Brotherhood', 'DEA', 'CDC', 'Southern Winds Hospital', 'Behavior Support Center of Florida',
+      'Jewish University System', 'S.A.R.A. Coalition', 'CADCA', 'NAMI'
     ],
     chambers: [
       'Cámara de Comercio Cristiana Latina', 'Cámara de Comercio de Miami', 'Asociación de Agentes Inmobiliarios de Miami',
