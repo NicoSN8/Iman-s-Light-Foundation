@@ -46,6 +46,17 @@ export default function GalleryPage() {
               </span>
             </p>
           </div>
+          <div style={{ marginBottom: '48px' }}>
+            <h2 className="section-title" style={{ marginBottom: '20px' }}>
+              {isEs ? 'Video: Music & Lights for Life 2025' : 'Video: Music & Lights for Life 2025'}
+            </h2>
+            <video
+              controls
+              preload="metadata"
+              style={{ width: '100%', borderRadius: 'var(--radius-md)', display: 'block' }}
+              src="https://ic5hghfat7q3aql8.public.blob.vercel-storage.com/events/music-and-lights-for-life-2025-highlight-IomXpqtKIaZUkq878IUpPG2MrxqyE5.mp4"
+            />
+          </div>
           <div className={styles.gallery}>
             {galleryItems.map((item, i) => {
               const categoryLabel = CATEGORY_LABELS[item.category]?.[lang] ?? item.category;

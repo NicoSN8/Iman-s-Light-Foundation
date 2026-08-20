@@ -10,10 +10,11 @@ families. Motto: "Preventing Tragedies, Illuminating Futures."
 - Contact: imanslightfoundation@gmail.com / +1 (786) 853-3347
 - Instagram / Facebook: @imanslightfoundation
 - Currently deployed at: https://iman-s-light-foundation.vercel.app
-- Target production domain: https://www.imanslightfoundation.org — **currently
-  still serves the old Wix site.** DNS cutover is done by the site owner
-  (Nicolas), never by an agent. Do not point the domain at Vercel until
-  donations work end-to-end (see "Known constraints" below).
+- **2026-08-12 — production domain cutover is done.**
+  https://www.imanslightfoundation.org now points at this Vercel deployment
+  (the old Wix site is decommissioned). DNS changes are still the site
+  owner's (Nicolas) job, never an agent's — this note just reflects that
+  the cutover already happened, so don't assume the domain is still on Wix.
 - Repo root is one level above this folder — `imans-light-foundation/` is the
   actual Next.js app. `git` commands run from the repo root.
 
@@ -237,27 +238,20 @@ running either command, check for and delete this nested file — the root
 
 ## Known constraints / roadmap
 
-- **Donate buttons currently link out** to the old Wix donations page
-  (`imanslightfoundation.org/donations`). This is intentional and temporary —
-  do not point the production domain at this Vercel deployment until real
-  checkout (Zeffy or PayPal) replaces that link, or donations will 404
-  silently. Full context and the do-not-do-this-yet list lives in
-  `SETUP-TODO.md`.
-- **2026-08-08 — donation platform switched to Zeffy first, not PayPal.**
-  The CEO chose Zeffy (zeffy.com): genuinely 0% fees (revenue comes from an
-  optional donor tip), captures donor name/email automatically, and also
-  handles event ticket sales — PayPal alone wouldn't. Zeffy needs the
-  foundation to sign up, verify via Stripe (ID + bank account, by an
-  authorized rep), and hand me a form link/embed once approved — see
-  `SETUP-TODO.md` Phase 3 for the exact steps. PayPal's steps are left in
-  place in case it's ever needed alongside or instead of Zeffy, but Zeffy
-  is the active path.
+- **2026-08-09 — Zeffy is verified and live.** `/donate` and every "Reserve
+  Your Table" / ticket button point at real Zeffy checkout
+  (`zeffy.com/en-US/donation-form/donate-to-change-lives-20404` and
+  `zeffy.com/en-US/ticketing/3rd-annual-gala-6`), and a webhook
+  (`src/app/api/webhooks/zeffy`) syncs every payment into `/admin`
+  automatically. Donations and ticket sales are real, working revenue paths
+  — do not treat this as a placeholder. PayPal's setup steps are left in
+  `SETUP-TODO.md` in case they're ever needed alongside Zeffy, but Zeffy is
+  the live path. Full detail: `SETUP-TODO.md` Phases 3, 5, and 8.
 - Planned build-out (see `SETUP-TODO.md` for the human side of each phase):
   Neon Postgres (done) → password-protected `/admin` (done) → events in the
-  database (done) → Zeffy donations → donations go live → ticket sales with
-  seat assignment. Everything not dependent on the donation platform is
-  done; remaining phases are blocked on Zeffy's signup/verification (or
-  PayPal API credentials, if that path is used instead).
+  database (done) → Zeffy donations (done, live) → ticket sales with seat
+  assignment (done, live). Check `SETUP-TODO.md` directly for anything still
+  open rather than assuming from this file alone.
 - When that work starts, treat the server as the source of truth for any
   amount of money — never trust a client-submitted price/amount.
 - **Ticketing (Phase 7) needs seat/table assignment, not just a quantity
