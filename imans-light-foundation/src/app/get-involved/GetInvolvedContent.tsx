@@ -78,24 +78,26 @@ export default function GetInvolvedPage() {
     },
   ];
 
+  // Real quotes from actual letters of support the Foundation has received --
+  // never invent testimonials or attribute quotes to generic/unnamed people.
   const testimonials = [
     {
-      quoteEn: "Iman's Light Foundation changed how I talk to my kids about drugs. The workshop was eye-opening and gave us real tools to use at home.",
-      quoteEs: "La Fundación Iman's Light cambió la forma en que hablo con mis hijos sobre las drogas. El taller fue revelador y nos dio herramientas reales.",
-      nameEn: 'Maria G., Miami Parent',
-      nameEs: 'Maria G., Madre de Miami',
+      quoteEn: "Through the Iman's Light Foundation, you offer students critical knowledge they often have not encountered before, particularly regarding the dangers of substance abuse, marijuana use, vaping, and fentanyl. Your approach creates a safe, welcoming environment where students feel comfortable asking questions without fear of judgment.",
+      quoteEs: "A través de la Fundación Iman's Light, ofrecen a los estudiantes conocimientos críticos que a menudo no habían encontrado antes, particularmente sobre los peligros del abuso de sustancias, el uso de marihuana, el vapeo y el fentanilo. Su enfoque crea un ambiente seguro y acogedor donde los estudiantes se sienten cómodos haciendo preguntas.",
+      nameEn: 'Eduardo Sabillon, Counselor, Kinloch Park Middle School',
+      nameEs: 'Eduardo Sabillon, Consejero, Kinloch Park Middle School',
     },
     {
-      quoteEn: "As a school counselor, I recommend these workshops to every administrator. The information is accurate, age-appropriate, and life-saving.",
-      quoteEs: "Como consejera escolar, recomiendo estos talleres a todos los administradores. La información es precisa, apropiada para la edad y salva vidas.",
-      nameEn: 'J. Rodriguez, School Counselor',
-      nameEs: 'J. Rodriguez, Consejera Escolar',
+      quoteEn: "Her ability to combine professional expertise with personal experience sets her apart as a true leader in prevention and community outreach. The workshops she has conducted in partnership with us have not only increased awareness but also fostered safe spaces for dialogue.",
+      quoteEs: "Su capacidad para combinar la experiencia profesional con la experiencia personal la distingue como una verdadera líder en prevención y alcance comunitario. Los talleres que ha realizado en asociación con nosotros no solo han aumentado la conciencia sino que también han fomentado espacios seguros para el diálogo.",
+      nameEn: 'Natalia Angarita, Director of Special Affairs, Drug-Free World Foundation South Florida',
+      nameEs: 'Natalia Angarita, Directora de Asuntos Especiales, Drug-Free World Foundation South Florida',
     },
     {
-      quoteEn: "After losing my son, this foundation gave me community, purpose, and hope. I don't know where I'd be without Iman's Light.",
-      quoteEs: "Después de perder a mi hijo, esta fundación me dio comunidad, propósito y esperanza. No sé dónde estaría sin Iman's Light.",
-      nameEn: 'Community Member',
-      nameEs: 'Miembro de la Comunidad',
+      quoteEn: "Iman's Light Foundation has demonstrated a strong commitment to educating our youth and community members on the dangers of lethal synthetic drugs, vaping, and overall substance misuse. Their workshops are informative, engaging, and rooted in compassion and evidence-based practices.",
+      quoteEs: "La Fundación Iman's Light ha demostrado un fuerte compromiso con la educación de nuestros jóvenes y miembros de la comunidad sobre los peligros de las drogas sintéticas letales, el vapeo y el mal uso de sustancias. Sus talleres son informativos, atractivos y basados en la compasión y prácticas basadas en evidencia.",
+      nameEn: 'Romnie Vertus, Program Coordinator, S.A.R.A. / Prosperity Social & Community Development Group',
+      nameEs: 'Romnie Vertus, Coordinador de Programas, S.A.R.A. / Prosperity Social & Community Development Group',
     },
   ];
 
