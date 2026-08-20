@@ -69,6 +69,8 @@ const t = {
     awards: [
       { year: '2026', title: "Iman's Light Foundation Award presented to Ana Bovo Cao, CEO of Southern Winds Hospital", org: '7th Annual Power & Influence Luncheon' },
       { year: '2025', title: 'Honoree, NOMI Evening of Honor', org: 'City of North Miami, Florida' },
+      { year: '2025', title: 'Certificate of Appreciation for Education, Awareness & Prevention', org: 'U.S. DEA Miami Laboratory — Director Mirlane Germain Titus & Supervisory Chemist April Taylor' },
+      { year: '2025', title: 'Woman Who Transcends Award', org: 'Presented by Dr. Sonia Valdez' },
       { year: '2024', title: 'La Antorcha de Oro: Woman Who Transcends', org: 'Christian Latin Business Chamber of Commerce' },
       { year: '2023 & 2024', title: 'Mayor Daniela Levine Cava Certificate of Appreciation', org: '4th & 5th Annual Power & Influence Awards' },
       { year: '2023', title: 'National Caribbean American Awards', org: 'Community Service Recognition' },
@@ -161,6 +163,8 @@ const t = {
     awards: [
       { year: '2026', title: "Premio Iman's Light Foundation entregado a Ana Bovo Cao, CEO de Southern Winds Hospital", org: '7mo Almuerzo Anual de Poder e Influencia' },
       { year: '2025', title: 'Homenajeada, NOMI Evening of Honor', org: 'Ciudad de North Miami, Florida' },
+      { year: '2025', title: 'Certificado de Apreciación por Educación, Concientización y Prevención', org: 'Laboratorio de la DEA de Miami — Directora Mirlane Germain Titus y Química Supervisora April Taylor' },
+      { year: '2025', title: 'Premio Mujer Que Trasciende', org: 'Entregado por la Dra. Sonia Valdez' },
       { year: '2024', title: 'La Antorcha de Oro: Mujer Que Trasciende', org: 'Cámara de Comercio de Negocios Latinos Cristianos' },
       { year: '2023 & 2024', title: 'Certificado de Apreciación de la Alcaldesa Daniela Levine Cava', org: '4to y 5to Premios Anuales de Poder e Influencia' },
       { year: '2023', title: 'Premios Nacionales del Caribe Americano', org: 'Reconocimiento al Servicio Comunitario' },
