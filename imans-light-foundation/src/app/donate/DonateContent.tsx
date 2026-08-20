@@ -171,6 +171,9 @@ export default function DonatePage() {
 
               return (
                 <div key={i} className={`${styles.tierCard} ${tier.featured ? styles.tierFeatured : ''}`}>
+                  {tier.featured && (
+                    <span className={styles.tierBadge}>{isEs ? 'MÁS POPULAR' : 'MOST POPULAR'}</span>
+                  )}
                   <div className={styles.tierIcon}>{tier.icon}</div>
                   <div className={styles.tierAmount}>{tier.amount}</div>
                   <div className={styles.tierLabel}>{tier.name}</div>

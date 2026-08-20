@@ -46,7 +46,6 @@ const navLinks = [
     dropdown: [
       { href: '/donate', labelEn: 'Donate Now', labelEs: 'Donar Ahora' },
       { href: '/get-involved', labelEn: 'Volunteer', labelEs: 'Ser Voluntario' },
-      { href: '/contact', labelEn: 'Contact Us', labelEs: 'Contáctanos' },
     ],
   },
 ];
@@ -205,6 +204,11 @@ export default function Navbar() {
                 )}
               </li>
             ))}
+            <li className={styles.navItem}>
+              <Link href="/contact" className={styles.navLink} onClick={scrollToTopIfSamePage('/contact')}>
+                {lang === 'en' ? 'Contact Us' : 'Contáctanos'}
+              </Link>
+            </li>
           </ul>
 
           {/* Right side Donate CTA */}
@@ -288,6 +292,13 @@ export default function Navbar() {
                 )}
               </div>
             ))}
+            <Link
+              href="/contact"
+              className={styles.mobileLink}
+              onClick={(e) => { setMobileOpen(false); scrollToTopIfSamePage('/contact')(e); }}
+            >
+              {lang === 'en' ? 'Contact Us' : 'Contáctanos'}
+            </Link>
             <div className={styles.mobileLang}>
               <button className={lang === 'en' ? styles.activeLang : ''} onClick={() => setLang('en')}>English</button>
               <button className={lang === 'es' ? styles.activeLang : ''} onClick={() => setLang('es')}>Español</button>

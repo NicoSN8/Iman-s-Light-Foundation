@@ -24,11 +24,15 @@
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.18);
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+  background: #0a0e1a;
 }
 
 .heroImage {
-  object-fit: cover;
-  object-position: center 22%;
+  /* This card shows the CEO's designed "Save the Date" flyer, not a
+     candid photo -- object-fit: cover would crop its headline or footer
+     text depending on viewport height. contain guarantees the whole
+     flyer, text included, is always visible. */
+  object-fit: contain;
 }
 
 @media (max-width: 900px) {

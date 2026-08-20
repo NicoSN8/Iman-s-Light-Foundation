@@ -31,6 +31,12 @@ interface EventsContentProps {
 
 const todayStr = () => new Date().toISOString().slice(0, 10);
 
+// The Gala's image is the CEO's designed "Save the Date" flyer, not a
+// candid photo -- object-fit: cover would crop its headline/footer text
+// depending on the card's aspect ratio, so it needs object-fit: contain
+// instead (same reasoning as GalaContent.tsx and HomeContent.tsx).
+const GALA_EVENT_ID = 'b58cabc5-7cdc-4719-80a7-283f2932a07c';
+
 export default function EventsPage({ featuredEvents, gridEvents, ticketTiers }: EventsContentProps) {
   const { lang } = useContext(LanguageContext);
   const isEs = lang === 'es';
@@ -92,8 +98,8 @@ export default function EventsPage({ featuredEvents, gridEvents, ticketTiers }: 
                     </div>
                     <div className={styles.featuredCardInner}>
                       {evt.image && (
-                        <div className={styles.featuredImageWrap}>
-                          <Image src={evt.image} alt={isEs ? evt.titleEs : evt.titleEn} fill style={{ objectFit: 'cover' }} />
+                        <div className={styles.featuredImageWrap} style={evt.id === GALA_EVENT_ID ? { background: '#0a0e1a' } : undefined}>
+                          <Image src={evt.image} alt={isEs ? evt.titleEs : evt.titleEn} fill style={{ objectFit: evt.id === GALA_EVENT_ID ? 'contain' : 'cover' }} />
                         </div>
                       )}
                       <div className={styles.featuredContent}>

@@ -32,8 +32,7 @@
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.25), var(--shadow-gold);
 }
 
-.tierFeatured::before {
-  content: 'MOST POPULAR';
+.tierBadge {
   position: absolute;
   top: -14px;
   left: 50%;
@@ -45,6 +44,7 @@
   letter-spacing: 0.12em;
   padding: 4px 14px;
   border-radius: 50px;
+  white-space: nowrap;
 }
 
 .tierIcon {

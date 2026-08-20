@@ -35,7 +35,7 @@ export default function GalaContent({ event, tiers }: { event: EventRow; tiers: 
     <div>
       <section className={styles.hero}>
         <Image
-          src="/media/56e6ee_8dc0ab6d11544b2899b97b42d912eb28~mv2.jpeg"
+          src={event.image || '/media/gala-2026-save-the-date.jpg'}
           alt=""
           aria-hidden="true"
           fill
@@ -44,8 +44,8 @@ export default function GalaContent({ event, tiers }: { event: EventRow; tiers: 
         />
         <div className={styles.heroPhotoCard}>
           <Image
-            src="/media/56e6ee_8dc0ab6d11544b2899b97b42d912eb28~mv2.jpeg"
-            alt={isEs ? "Gala de la Fundación Iman's Light" : "Iman's Light Foundation Gala"}
+            src={event.image || '/media/gala-2026-save-the-date.jpg'}
+            alt={isEs ? "Save the Date: 3ra Gala Anual, 17 de octubre de 2026" : "Save the Date: 3rd Annual Gala, October 17, 2026"}
             fill
             priority
             className={styles.heroImage}

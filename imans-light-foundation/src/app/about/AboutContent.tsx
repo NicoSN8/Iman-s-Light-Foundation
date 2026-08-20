@@ -212,7 +212,7 @@ export default function AboutPage() {
           <div className="breadcrumb">
             <Link href="/">{txt.breadcrumb}</Link>
             <span>›</span>
-            <span style={{ color: 'rgba(255,255,255,0.7)' }}>{lang === 'en' ? 'Legacy' : 'Legado'}</span>
+            <span style={{ color: 'rgba(255,255,255,0.7)' }}>{lang === 'en' ? 'About Us' : 'Acerca de Nosotros'}</span>
           </div>
           <span className="section-label">{txt.heroLabel}</span>
           <h1>{txt.heroTitle}</h1>
