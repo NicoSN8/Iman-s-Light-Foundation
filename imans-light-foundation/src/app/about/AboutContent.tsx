@@ -222,7 +222,7 @@ export default function AboutPage() {
 
       <section className="section transparent-bg">
         <div className="container">
-          <div className="grid-2" style={{ alignItems: 'center', gridTemplateColumns: '1fr 1.15fr' }}>
+          <div className={`grid-2 ${styles.storyGrid}`} style={{ alignItems: 'center' }}>
             <div style={{ paddingRight: '20px' }}>
               <span className="section-label">{txt.storyLabel}</span>
               <h2 className="section-title" style={{ color: 'var(--white)' }}>{txt.storyTitle}</h2>

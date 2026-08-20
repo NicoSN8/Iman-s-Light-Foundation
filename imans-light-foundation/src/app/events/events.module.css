@@ -1,6 +1,9 @@
 .eventsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  /* 320px was wider than the space actually available on narrower phones
+     (~360px screen minus 48px of container padding = 312px), which forced
+     a horizontal scrollbar on the grid events section. */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 24px;
 }
 

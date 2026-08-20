@@ -392,3 +392,14 @@
   box-shadow: 0 16px 36px rgba(201, 168, 76, 0.25) !important;
 }
 
+
+/* Desktop-only column ratio for the "How We Started" story section --
+   scoped behind a min-width so it never fights globals.css's grid-2 rule
+   that collapses to 1 column at 768px and below. An inline style here
+   previously always won over that mobile rule and kept this section
+   squeezed into 2 columns even on phones. */
+@media (min-width: 769px) {
+  .storyGrid {
+    grid-template-columns: 1fr 1.15fr;
+  }
+}

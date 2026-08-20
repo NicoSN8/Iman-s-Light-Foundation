@@ -213,7 +213,11 @@ export default function DataMetricsPage() {
           </div>
 
           {/* Graph Images Grid */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '32px', alignItems: 'start', marginBottom: '40px' }}>
+          {/* minmax floor was 350px -- wider than the ~330px actually
+              available on common phones after container padding, which
+              forced a horizontal scrollbar. 280px comfortably fits phones
+              while still giving 2 columns on tablet/desktop. */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '32px', alignItems: 'start', marginBottom: '40px' }}>
             <div className="card" style={{ padding: '24px', background: '#ffffff', border: '1px solid rgba(201, 168, 76, 0.15)', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0,0,0,0.03)' }}>
               <h4 style={{ color: 'var(--navy)', marginBottom: '16px', fontFamily: 'Playfair Display', fontSize: '1.25rem', textAlign: 'center' }}>
                 {txt.chart1Title}
