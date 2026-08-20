@@ -41,8 +41,8 @@ export default function GalleryPage() {
               <Camera className="gold-icon" style={{ flexShrink: 0, marginTop: '2px' }} size={20} />
               <span>
                 {isEs
-                  ? 'La galería de fotos completa se actualizará con imágenes reales de nuestros eventos y programas. Por favor contáctenos para enviar fotos de nuestros eventos.'
-                  : 'The full photo gallery will be updated with real images from our events and programs. Please contact us to submit photos from our events.'}
+                  ? 'Fotos y videos reales de nuestros eventos, talleres y programas. ¿Tienes fotos de un evento de Iman\'s Light? Contáctanos para agregarlas a la galería.'
+                  : 'Real photos and video from our events, workshops, and programs. Have photos from an Iman\'s Light event? Contact us to add them to the gallery.'}
               </span>
             </p>
           </div>
