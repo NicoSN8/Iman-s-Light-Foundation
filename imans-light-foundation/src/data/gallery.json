@@ -1,5 +1,21 @@
 [
   {
+    "src": "/media/gallery-brandon-powell-camp.jpg",
+    "category": "Outreach"
+  },
+  {
+    "src": "/media/gallery-drug-free-world-tabling.jpg",
+    "category": "Advocacy"
+  },
+  {
+    "src": "/media/gallery-dea-summit-memorial-wall.jpg",
+    "category": "Advocacy"
+  },
+  {
+    "src": "/media/gallery-dea-summit-florida-sam.jpg",
+    "category": "Support"
+  },
+  {
     "src": "/media/gallery-nomi-evening-of-honor.jpg",
     "category": "Event"
   },
@@ -58,10 +74,6 @@
   {
     "src": "/media/56e6ee_22de2a9489594c6bb9a6022b21a0559f~mv2.jpeg",
     "category": "Support"
-  },
-  {
-    "src": "/media/56e6ee_e45aeb436109409ba9fd1da522ce8eec~mv2.jpg",
-    "category": "Advocacy"
   },
   {
     "src": "/media/56e6ee_abc613f8f932423a8e3b4e2448660461~mv2.jpeg",
@@ -152,10 +164,6 @@
     "category": "Support"
   },
   {
-    "src": "/media/56e6ee_5ce5a2543f51453cbc008df599127ce9~mv2.jpeg",
-    "category": "Outreach"
-  },
-  {
     "src": "/media/56e6ee_1883900cfc974a68ba6cd750894bc110~mv2.jpg",
     "category": "Advocacy"
   },
@@ -178,10 +186,6 @@
   {
     "src": "/media/56e6ee_2566d88396664c7493e24cd350d6a243~mv2.jpeg",
     "category": "Advocacy"
-  },
-  {
-    "src": "/media/56e6ee_219b661304d7496c8c635500a0ed313f~mv2.jpg",
-    "category": "Workshop"
   },
   {
     "src": "/media/56e6ee_bcba3d3a01cf425aa9031fe218156258~mv2.jpeg",
@@ -232,10 +236,6 @@
     "category": "Event"
   },
   {
-    "src": "/media/56e6ee_401a04d342a04fab8c3b951e00b9c84d~mv2.jpeg",
-    "category": "Workshop"
-  },
-  {
     "src": "/media/56e6ee_e1673370393048a0bb8c0e70da9cf0ef~mv2.jpeg",
     "category": "Advocacy"
   },
@@ -256,15 +256,7 @@
     "category": "Outreach"
   },
   {
-    "src": "/media/56e6ee_c06acaeb840e48098e7a8113301f3404~mv2.jpg",
-    "category": "Event"
-  },
-  {
     "src": "/media/56e6ee_174ef4a2cf7c452f82b419b6d84596e7~mv2.jpg",
-    "category": "Support"
-  },
-  {
-    "src": "/media/56e6ee_60ecfec132ef4b6a85d6f3d03b4c5fae~mv2.jpg",
     "category": "Support"
   },
   {
