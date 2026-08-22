@@ -252,14 +252,13 @@ export default function HomeContent({ featuredEvents }: { featuredEvents: EventR
             </p>
           </div>
 
-          <div className="grid-2" style={{ marginTop: '48px', alignItems: 'start' }}>
+          <div className={styles.videoGrid}>
             {[
               {
                 id: 'DLplL73u8dO',
                 credit: '@nicoleperezwplg',
                 src: 'https://ic5hghfat7q3aql8.public.blob.vercel-storage.com/videos/mom-to-mom-local10-z1BDVx7XvAip8N2xlciGK14CPOd0rj.mp4',
                 poster: 'https://ic5hghfat7q3aql8.public.blob.vercel-storage.com/videos/poster-mom-to-mom-X0gzR2zFt8QZqDFiGiWRQe4QsvwXRA.jpg',
-                aspect: '16 / 9',
                 titleEn: '"Mom to Mom" on WPLG Local 10 News',
                 titleEs: '"Mom to Mom" en WPLG Local 10 News',
                 creditEn: 'Courtesy of Local 10 News (WPLG), reported by Nicole Perez',
@@ -270,24 +269,14 @@ export default function HomeContent({ featuredEvents }: { featuredEvents: EventR
                 credit: '@themindfulnetworkflorida',
                 src: 'https://ic5hghfat7q3aql8.public.blob.vercel-storage.com/videos/not-your-mamas-drugs-dZcerYJIG0y4v8HAQZv3MBvNiaFHje.mp4',
                 poster: 'https://ic5hghfat7q3aql8.public.blob.vercel-storage.com/videos/poster-not-your-mamas-drugs-cqvTRuRklhFqasxH72RawHBE2EuMUi.jpg',
-                aspect: '9 / 16',
                 titleEn: '"It’s Not Your Mama’s Drugs"',
                 titleEs: '"It’s Not Your Mama’s Drugs"',
                 creditEn: 'Courtesy of The Mindful Network Florida',
                 creditEs: 'Cortesía de The Mindful Network Florida',
               },
             ].map((reel) => (
-              <div key={reel.id} style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-                <div
-                  style={{
-                    borderRadius: 'var(--radius-md)',
-                    overflow: 'hidden',
-                    border: '1px solid rgba(201,168,76,0.25)',
-                    background: '#0a0e1a',
-                    display: 'flex',
-                    justifyContent: 'center',
-                  }}
-                >
+              <div key={reel.id} className={styles.videoCard}>
+                <div className={styles.videoFrame}>
                   <video
                     controls
                     preload="metadata"
@@ -295,28 +284,17 @@ export default function HomeContent({ featuredEvents }: { featuredEvents: EventR
                     poster={reel.poster}
                     src={reel.src}
                     title={isEs ? reel.titleEs : reel.titleEn}
-                    style={{
-                      width: '100%',
-                      aspectRatio: reel.aspect,
-                      maxHeight: '540px',
-                      objectFit: 'contain',
-                      display: 'block',
-                      background: '#0a0e1a',
-                    }}
+                    className={styles.videoEl}
                   />
                 </div>
                 <div>
-                  <p style={{ color: 'var(--white)', fontWeight: 600, marginBottom: '4px' }}>
-                    {isEs ? reel.titleEs : reel.titleEn}
-                  </p>
-                  <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.85rem', marginBottom: '6px' }}>
-                    {isEs ? reel.creditEs : reel.creditEn}
-                  </p>
+                  <p className={styles.videoTitle}>{isEs ? reel.titleEs : reel.titleEn}</p>
+                  <p className={styles.videoCredit}>{isEs ? reel.creditEs : reel.creditEn}</p>
                   <a
                     href={`https://www.instagram.com/reel/${reel.id}/`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    style={{ color: 'var(--gold-light)', fontSize: '0.9rem', textDecoration: 'underline' }}
+                    className={styles.videoLink}
                   >
                     {isEs ? 'Ver original en Instagram' : 'View original on Instagram'} ({reel.credit}) →
                   </a>
