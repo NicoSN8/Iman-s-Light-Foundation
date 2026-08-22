@@ -222,15 +222,23 @@ export default function HomeContent({ featuredEvents }: { featuredEvents: EventR
       </section>
 
       {/* ===== FEATURED VIDEOS =====
-          Instagram embeds, not self-hosted copies: neither reel belongs to
-          the Foundation. The first is WPLG Local 10 journalist Nicole
-          Perez's "Mom to Mom" segment, the second is The Mindful Network
-          Florida's. Embedding keeps each video on its owner's account and
-          credits them automatically; re-uploading the files to our own
-          storage would republish someone else's footage without their
-          permission. Each embed has a visible "Watch on Instagram" link
-          beneath it so the content is always reachable even if the
-          in-page player fails to load. */}
+          Self-hosted on Vercel Blob rather than embedded from Instagram.
+          Neither video is the Foundation's own work, so this is only done
+          with the owners' permission, granted 2026-08-21: WPLG Local 10 /
+          Nicole Perez for the "Mom to Mom" segment, and The Mindful
+          Network Florida for "It's Not Your Mama's Drugs." Credit and a
+          link back to each Instagram account stay visible below each
+          player -- do not remove them.
+
+          Self-hosting (vs. the Instagram iframe this replaced) is what
+          gives visitors a real scrub bar / seek control, and means
+          playback never depends on Instagram or on the viewer being
+          logged in. preload="metadata" so the poster shows without
+          pulling the full file (these are 35MB and 21MB) until someone
+          actually presses play. The two videos have opposite aspect
+          ratios -- the news segment is landscape, the interview is
+          vertical -- so each carries its own and is capped by maxHeight
+          so the vertical one doesn't tower over the other. */}
       <section className="section transparent-bg" id="featured-video">
         <div className="container">
           <div ref={addRef} className="fade-up text-center">
@@ -249,40 +257,60 @@ export default function HomeContent({ featuredEvents }: { featuredEvents: EventR
               {
                 id: 'DLplL73u8dO',
                 credit: '@nicoleperezwplg',
+                src: 'https://ic5hghfat7q3aql8.public.blob.vercel-storage.com/videos/mom-to-mom-local10-z1BDVx7XvAip8N2xlciGK14CPOd0rj.mp4',
+                poster: 'https://ic5hghfat7q3aql8.public.blob.vercel-storage.com/videos/poster-mom-to-mom-X0gzR2zFt8QZqDFiGiWRQe4QsvwXRA.jpg',
+                aspect: '16 / 9',
                 titleEn: '"Mom to Mom" on WPLG Local 10 News',
                 titleEs: '"Mom to Mom" en WPLG Local 10 News',
+                creditEn: 'Courtesy of Local 10 News (WPLG), reported by Nicole Perez',
+                creditEs: 'Cortesía de Local 10 News (WPLG), reportaje de Nicole Perez',
               },
               {
                 id: 'DZx0aPZkvTd',
                 credit: '@themindfulnetworkflorida',
+                src: 'https://ic5hghfat7q3aql8.public.blob.vercel-storage.com/videos/not-your-mamas-drugs-dZcerYJIG0y4v8HAQZv3MBvNiaFHje.mp4',
+                poster: 'https://ic5hghfat7q3aql8.public.blob.vercel-storage.com/videos/poster-not-your-mamas-drugs-cqvTRuRklhFqasxH72RawHBE2EuMUi.jpg',
+                aspect: '9 / 16',
                 titleEn: '"It’s Not Your Mama’s Drugs"',
                 titleEs: '"It’s Not Your Mama’s Drugs"',
+                creditEn: 'Courtesy of The Mindful Network Florida',
+                creditEs: 'Cortesía de The Mindful Network Florida',
               },
             ].map((reel) => (
               <div key={reel.id} style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
                 <div
                   style={{
-                    position: 'relative',
-                    width: '100%',
                     borderRadius: 'var(--radius-md)',
                     overflow: 'hidden',
                     border: '1px solid rgba(201,168,76,0.25)',
                     background: '#0a0e1a',
+                    display: 'flex',
+                    justifyContent: 'center',
                   }}
                 >
-                  <iframe
-                    src={`https://www.instagram.com/reel/${reel.id}/embed/`}
+                  <video
+                    controls
+                    preload="metadata"
+                    playsInline
+                    poster={reel.poster}
+                    src={reel.src}
                     title={isEs ? reel.titleEs : reel.titleEn}
-                    loading="lazy"
-                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                    allowFullScreen
-                    scrolling="no"
-                    style={{ width: '100%', height: '680px', border: 'none', display: 'block' }}
+                    style={{
+                      width: '100%',
+                      aspectRatio: reel.aspect,
+                      maxHeight: '540px',
+                      objectFit: 'contain',
+                      display: 'block',
+                      background: '#0a0e1a',
+                    }}
                   />
                 </div>
                 <div>
                   <p style={{ color: 'var(--white)', fontWeight: 600, marginBottom: '4px' }}>
                     {isEs ? reel.titleEs : reel.titleEn}
+                  </p>
+                  <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.85rem', marginBottom: '6px' }}>
+                    {isEs ? reel.creditEs : reel.creditEn}
                   </p>
                   <a
                     href={`https://www.instagram.com/reel/${reel.id}/`}
@@ -290,7 +318,7 @@ export default function HomeContent({ featuredEvents }: { featuredEvents: EventR
                     rel="noopener noreferrer"
                     style={{ color: 'var(--gold-light)', fontSize: '0.9rem', textDecoration: 'underline' }}
                   >
-                    {isEs ? 'Ver en Instagram' : 'Watch on Instagram'} ({reel.credit}) →
+                    {isEs ? 'Ver original en Instagram' : 'View original on Instagram'} ({reel.credit}) →
                   </a>
                 </div>
               </div>
