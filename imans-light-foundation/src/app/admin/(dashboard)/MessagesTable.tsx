@@ -85,7 +85,11 @@ export default function MessagesTable({ submissions }: { submissions: Submission
         <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.9rem' }}>No messages match &quot;{search}&quot;.</p>
       ) : (
       <div style={{ overflowX: 'auto' }}>
-      <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+      {/* minWidth matters as much as the wrapper's overflow-x: without it
+          a width:100% table never overflows, it just crushes 8 columns
+          into unreadable slivers on a phone. With it, the wrapper
+          actually scrolls and the columns stay legible. */}
+      <table style={{ width: '100%', minWidth: '980px', borderCollapse: 'collapse' }}>
         <thead>
           <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.15)', textAlign: 'left' }}>
             <th style={cellStyle}>Date</th>
@@ -111,7 +115,11 @@ export default function MessagesTable({ submissions }: { submissions: Submission
                 </td>
                 <td style={cellStyle}>{s.phone ?? '—'}</td>
                 <td style={cellStyle}>{s.subject}</td>
-                <td style={{ ...cellStyle, maxWidth: '360px' }}>{s.message}</td>
+                {/* minWidth as well as maxWidth: with only a max, this
+                    column collapsed to a sliver once the table was
+                    scrolling on a phone, wrapping a two-line message into
+                    a dozen lines and making every row ~300px tall. */}
+                <td style={{ ...cellStyle, minWidth: '280px', maxWidth: '360px' }}>{s.message}</td>
                 <td style={{ ...cellStyle, textTransform: 'uppercase', fontSize: '0.8rem' }}>{s.lang}</td>
                 <td style={cellStyle}>
                   {s.repliedAt ? (

@@ -139,12 +139,12 @@
 }
 
 @media (max-width: 768px) {
-  /* The admin shell pads content by 40px, which is a lot of a phone
-     screen to give up when the slide is the whole point. Pull back to
-     the edges so the deck stays legible. */
+  /* Cancel the admin shell's 16px mobile padding so the slide runs edge
+     to edge. Keep this number in sync with .content padding in
+     layout.module.css. */
   .bleed {
-    margin-left: -28px;
-    margin-right: -28px;
+    margin-left: -16px;
+    margin-right: -16px;
   }
 
   .stage {
@@ -164,4 +164,17 @@
 
   .prev { left: 8px; }
   .next { right: 8px; }
+
+  /* 38px is under the ~44px minimum comfortable touch target, and this
+     is the button she taps to start presenting. */
+  .fsBtn {
+    width: 44px;
+    height: 44px;
+  }
+
+  /* An 8px strip is hard to hit accurately with a thumb; give the scrub
+     bar more height on touch so jumping between slides stays usable. */
+  .progressTrack {
+    height: 14px;
+  }
 }

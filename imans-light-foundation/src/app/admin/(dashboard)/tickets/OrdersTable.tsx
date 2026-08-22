@@ -148,7 +148,10 @@ export default function OrdersTable({ orders }: { orders: Order[] }) {
         <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.9rem' }}>No orders match &quot;{search}&quot;.</p>
       ) : (
       <div style={{ overflowX: 'auto' }}>
-      <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+      {/* See MessagesTable: width:100% alone would squash the columns on
+          mobile rather than letting the wrapper scroll. Nine columns
+          here, so this is the widest of the four. */}
+      <table style={{ width: '100%', minWidth: '900px', borderCollapse: 'collapse' }}>
         <thead>
           <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.15)', textAlign: 'left' }}>
             <th style={cellStyle}>Buyer</th>

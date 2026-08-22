@@ -1,5 +1,6 @@
 import { requireAdmin } from '@/lib/adminAuth';
 import Sidebar from './Sidebar';
+import styles from './layout.module.css';
 
 /**
  * The single requireAdmin() check for this entire authenticated subtree.
@@ -14,9 +15,9 @@ export default async function DashboardLayout({ children }: { children: React.Re
   await requireAdmin();
 
   return (
-    <div style={{ display: 'flex', minHeight: '100vh' }}>
+    <div className={styles.shell}>
       <Sidebar />
-      <div style={{ flex: 1, minWidth: 0, padding: '40px', overflowX: 'auto' }}>
+      <div className={styles.content}>
         {children}
       </div>
     </div>

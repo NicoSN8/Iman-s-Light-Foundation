@@ -1,0 +1,33 @@
+/* The dashboard shell. This lived as inline styles on layout.tsx, which
+   is why the admin panel broke on phones: inline styles cannot carry a
+   media query, so the shell stayed flex-direction: row while
+   Sidebar.module.css switched the sidebar to width: 100% on mobile. A
+   full-width sidebar sharing a row with the content forced the page
+   wider than the screen. It needs to be a real stylesheet so the
+   direction can actually change. */
+
+.shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+  padding: 40px;
+  /* min-width:0 above is what actually lets a wide child (a table, the
+     slide deck) shrink instead of stretching the flex item; this then
+     scrolls that child rather than the whole page. */
+  overflow-x: auto;
+}
+
+@media (max-width: 768px) {
+  .shell {
+    flex-direction: column;
+  }
+
+  .content {
+    /* 40px each side is an eighth of a 390px phone spent on margin. */
+    padding: 16px;
+  }
+}

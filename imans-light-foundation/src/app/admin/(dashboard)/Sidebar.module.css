@@ -99,16 +99,27 @@
     padding: 14px 16px;
   }
 
+  /* Wrap rather than scroll horizontally. With five destinations only
+     about three fit across a phone, so the old overflow-x meant
+     Donations and Presentation were invisible unless you happened to
+     discover you could swipe the bar sideways -- and it drew an ugly
+     native scrollbar across the nav. Wrapping keeps every link on
+     screen. */
   .nav {
     flex-direction: row;
-    overflow-x: auto;
-    padding: 8px 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px;
   }
 
   .navLink {
     border-left: none;
     border-bottom: 3px solid transparent;
     white-space: nowrap;
+    padding: 9px 12px;
+    font-size: 0.85rem;
+    gap: 8px;
   }
 
   .navLinkActive {

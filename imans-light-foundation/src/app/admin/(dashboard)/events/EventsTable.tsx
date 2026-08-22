@@ -43,7 +43,9 @@ export default function EventsTable({ events }: { events: EventRow[] }) {
         <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.9rem' }}>No events match &quot;{search}&quot;.</p>
       ) : (
         <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+          {/* See MessagesTable: width:100% alone would squash the columns
+              on mobile rather than letting the wrapper scroll. */}
+          <table style={{ width: '100%', minWidth: '560px', borderCollapse: 'collapse' }}>
             <thead>
               <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.15)', textAlign: 'left' }}>
                 <th style={{ padding: '12px 8px' }}>Title</th>
