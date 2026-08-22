@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { Mail, Calendar, Ticket, HandCoins } from 'lucide-react';
+import { Mail, Calendar, Ticket, HandCoins, Presentation } from 'lucide-react';
 import LogoutButton from './LogoutButton';
 import styles from './Sidebar.module.css';
 
@@ -12,6 +12,7 @@ const NAV_LINKS = [
   { href: '/admin/events', label: 'Events', icon: Calendar },
   { href: '/admin/tickets', label: 'Tickets', icon: Ticket },
   { href: '/admin/donations', label: 'Donations', icon: HandCoins },
+  { href: '/admin/presentation', label: 'Presentation', icon: Presentation },
 ];
 
 export default function Sidebar() {
