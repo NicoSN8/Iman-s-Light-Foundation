@@ -221,6 +221,84 @@ export default function HomeContent({ featuredEvents }: { featuredEvents: EventR
         </div>
       </section>
 
+      {/* ===== FEATURED VIDEOS =====
+          Instagram embeds, not self-hosted copies: neither reel belongs to
+          the Foundation. The first is WPLG Local 10 journalist Nicole
+          Perez's "Mom to Mom" segment, the second is The Mindful Network
+          Florida's. Embedding keeps each video on its owner's account and
+          credits them automatically; re-uploading the files to our own
+          storage would republish someone else's footage without their
+          permission. Each embed has a visible "Watch on Instagram" link
+          beneath it so the content is always reachable even if the
+          in-page player fails to load. */}
+      <section className="section transparent-bg" id="featured-video">
+        <div className="container">
+          <div ref={addRef} className="fade-up text-center">
+            <span className="section-label">{isEs ? 'En los Medios' : 'As Seen In'}</span>
+            <h2 className="section-title">{isEs ? 'Nuestra Historia, en Video' : 'Our Story, on Video'}</h2>
+            <div className="gold-divider center" />
+            <p className="section-subtitle">
+              {isEs
+                ? 'Cobertura de nuestra misión de prevención del fentanilo y del trabajo de la Dra. Rodríguez en la comunidad.'
+                : "Coverage of our fentanyl prevention mission and Dr. Rodriguez's work in the community."}
+            </p>
+          </div>
+
+          <div className="grid-2" style={{ marginTop: '48px', alignItems: 'start' }}>
+            {[
+              {
+                id: 'DLplL73u8dO',
+                credit: '@nicoleperezwplg',
+                titleEn: '"Mom to Mom" on WPLG Local 10 News',
+                titleEs: '"Mom to Mom" en WPLG Local 10 News',
+              },
+              {
+                id: 'DZx0aPZkvTd',
+                credit: '@themindfulnetworkflorida',
+                titleEn: '"It’s Not Your Mama’s Drugs"',
+                titleEs: '"It’s Not Your Mama’s Drugs"',
+              },
+            ].map((reel) => (
+              <div key={reel.id} style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                <div
+                  style={{
+                    position: 'relative',
+                    width: '100%',
+                    borderRadius: 'var(--radius-md)',
+                    overflow: 'hidden',
+                    border: '1px solid rgba(201,168,76,0.25)',
+                    background: '#0a0e1a',
+                  }}
+                >
+                  <iframe
+                    src={`https://www.instagram.com/reel/${reel.id}/embed/`}
+                    title={isEs ? reel.titleEs : reel.titleEn}
+                    loading="lazy"
+                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                    allowFullScreen
+                    scrolling="no"
+                    style={{ width: '100%', height: '680px', border: 'none', display: 'block' }}
+                  />
+                </div>
+                <div>
+                  <p style={{ color: 'var(--white)', fontWeight: 600, marginBottom: '4px' }}>
+                    {isEs ? reel.titleEs : reel.titleEn}
+                  </p>
+                  <a
+                    href={`https://www.instagram.com/reel/${reel.id}/`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ color: 'var(--gold-light)', fontSize: '0.9rem', textDecoration: 'underline' }}
+                  >
+                    {isEs ? 'Ver en Instagram' : 'Watch on Instagram'} ({reel.credit}) →
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ===== GALA HIGHLIGHT ===== */}
       <section className="section transparent-bg">
         <div className="container">
