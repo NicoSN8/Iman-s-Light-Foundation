@@ -1,4 +1,5 @@
 import { Presentation, ExternalLink, Download, Maximize } from 'lucide-react';
+import SlideDeck from './SlideDeck';
 
 /**
  * Staff-only slide deck, used by the CEO to present live from the site.
@@ -8,19 +9,22 @@ import { Presentation, ExternalLink, Download, Maximize } from 'lucide-react';
  * managing the site, it's a presenting tool. Do not link it from the
  * public nav.
  *
- * The deck renders as a live Google Slides embed rather than a static
- * copy, so whatever the CEO edits in Google is what shows here, with no
- * redeploy needed. The self-hosted PDF below is a deliberate backup for
- * one specific failure case that actually happens: school and municipal
- * networks that block docs.google.com but not the rest of the web. In
- * that situation the embed goes blank while this page still loads, and
- * the PDF is the way to still give the talk.
+ * The slides are 84 self-hosted images driven by our own SlideDeck
+ * viewer, NOT a Google Slides embed. That was the earlier approach and
+ * it was wrong for the job: an embed's present button hands off to
+ * Google's own player on Google's domain, so the talk stops being given
+ * from this site. Self-hosting also means the deck still works if the
+ * venue's network blocks docs.google.com, which school and municipal
+ * networks routinely do.
+ *
+ * The tradeoff to know about: these images are a snapshot. Editing the
+ * Google deck no longer changes what shows here -- someone has to
+ * re-export and re-upload. That is a deliberate trade of
+ * auto-freshness for reliability during a live talk.
  */
 
 const SLIDES_ID = '1_s2DJHd77744RFNCwWX8MOiSVVLLbZw2H8xjvomSEIQ';
-const EMBED_URL = `https://docs.google.com/presentation/d/${SLIDES_ID}/embed?start=false&loop=false&delayms=3000&rm=minimal`;
 const EDIT_URL = `https://docs.google.com/presentation/d/${SLIDES_ID}/edit`;
-const PRESENT_URL = `https://docs.google.com/presentation/d/${SLIDES_ID}/present`;
 const PDF_BACKUP_URL =
   'https://ic5hghfat7q3aql8.public.blob.vercel-storage.com/presentations/truth-about-drugs-84-slides-f0v4VFOS3JtpG8yIOc5TIpyZ1aNjCb.pdf';
 
@@ -62,40 +66,17 @@ export default function AdminPresentationPage() {
       >
         <Maximize size={18} style={{ color: 'var(--gold)', flexShrink: 0, marginTop: '2px' }} />
         <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.92rem', lineHeight: 1.6, margin: 0 }}>
-          To present, click the slides below and use the <strong>fullscreen</strong> button in the
-          player&apos;s bottom-right corner. Arrow keys move between slides. This page is
-          staff-only and is not linked anywhere on the public site.
+          Press the <strong>fullscreen</strong> button at the bottom-right of the deck to present.
+          Use the <strong>arrow keys</strong> or spacebar to move between slides, click the gold bar
+          along the bottom to jump anywhere, and press <strong>Esc</strong> to come back out. On a
+          phone or tablet, swipe left and right. This page is staff-only and is not linked anywhere
+          on the public site.
         </p>
       </div>
 
-      <div
-        style={{
-          position: 'relative',
-          width: '100%',
-          aspectRatio: '16 / 9',
-          background: '#000',
-          borderRadius: '12px',
-          overflow: 'hidden',
-          border: '1px solid rgba(255,255,255,0.12)',
-        }}
-      >
-        <iframe
-          src={EMBED_URL}
-          title="Iman's Light Foundation: The Truth About Drugs"
-          allowFullScreen
-          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 'none' }}
-        />
-      </div>
+      <SlideDeck />
 
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', marginTop: '20px' }}>
-        <a
-          href={PRESENT_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ ...buttonBase, background: 'var(--gradient-gold)', color: 'var(--navy)' }}
-        >
-          <Maximize size={16} /> Open in presenter mode
-        </a>
         <a
           href={EDIT_URL}
           target="_blank"
@@ -125,9 +106,10 @@ export default function AdminPresentationPage() {
       </div>
 
       <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.82rem', marginTop: '16px', lineHeight: 1.6 }}>
-        The slides above are live from Google, so any edit made there appears here immediately.
-        The PDF is a snapshot saved on {new Date('2026-08-22T00:00:00').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })} —
-        keep it for venues whose network blocks Google Docs, and re-download it after major edits.
+        These 84 slides are hosted on our own server, so presenting works even if the venue&apos;s
+        network blocks Google. Because they are a saved copy rather than a live link, edits made in
+        Google Slides will not appear here on their own: after changing the deck, tell Nicolas so
+        the slides can be re-exported. Snapshot taken {new Date('2026-08-22T00:00:00').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}.
       </p>
     </>
   );

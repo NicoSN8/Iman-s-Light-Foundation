@@ -1,0 +1,167 @@
+.stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  user-select: none;
+  touch-action: pan-y;
+}
+
+/* In fullscreen the browser gives us the whole screen, which is rarely
+   exactly 16:9 -- drop the forced ratio and let the image letterbox
+   itself against black instead, so nothing is ever cropped. */
+.stage:fullscreen {
+  aspect-ratio: auto;
+  height: 100vh;
+  border-radius: 0;
+  border: none;
+}
+
+/* CSS stand-in for fullscreen, used where the real API is unavailable or
+   refused (notably iOS Safari, which only fullscreens <video>). Pins the
+   stage over the whole viewport so the effect is the same for the room.
+   dvh rather than vh so the iOS address bar collapsing doesn't crop the
+   bottom of a slide. */
+.faux {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  aspect-ratio: auto;
+  border-radius: 0;
+  border: none;
+  background: #000;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.navBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s ease, background 0.2s ease;
+  z-index: 2;
+}
+
+.stage:hover .navBtn,
+.stage:focus-within .navBtn {
+  opacity: 1;
+}
+
+.navBtn:hover:not(:disabled) {
+  background: rgba(201, 168, 76, 0.9);
+  color: #0a0e1a;
+}
+
+.navBtn:disabled {
+  opacity: 0 !important;
+  cursor: default;
+}
+
+.prev { left: 14px; }
+.next { right: 14px; }
+
+.counter {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 5px 14px;
+  border-radius: 50px;
+  z-index: 2;
+  font-variant-numeric: tabular-nums;
+}
+
+.fsBtn {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.fsBtn:hover { background: rgba(201, 168, 76, 0.9); color: #0a0e1a; }
+
+/* Clickable scrub bar: jumping to slide 60 of 84 mid-talk shouldn't mean
+   pressing the arrow 59 times. */
+.progressTrack {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+  z-index: 2;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--gradient-gold);
+  transition: width 0.15s ease;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  /* The admin shell pads content by 40px, which is a lot of a phone
+     screen to give up when the slide is the whole point. Pull back to
+     the edges so the deck stays legible. */
+  .bleed {
+    margin-left: -28px;
+    margin-right: -28px;
+  }
+
+  .stage {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+
+  /* Touch targets stay put and always visible -- there is no hover on a
+     phone, so opacity-on-hover would hide them permanently. */
+  .navBtn {
+    opacity: 1;
+    width: 44px;
+    height: 44px;
+    background: rgba(0, 0, 0, 0.45);
+  }
+
+  .prev { left: 8px; }
+  .next { right: 8px; }
+}
