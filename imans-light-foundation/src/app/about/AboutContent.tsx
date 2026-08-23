@@ -48,6 +48,7 @@ const t = {
       { name: 'Brittany DeMeo', role: 'Recording Secretary', image: '/media/56e6ee_3c8481b926504a1dae34abe7d0fd3dde~mv2.jpeg', bio: 'Brittany joined the foundation after seeing how fentanyl was affecting our region. As recording secretary, she keeps our operations organized so resources get where they’re needed quickly.' },
       { name: 'Libby L. Calero', role: 'PR & Sponsor Development', image: '/media/56e6ee_37bc5c9d971949858e3cd5393e414ae6~mv2.jpg', bio: 'Over 25 years in hospitality and PR, including work with DJ Irie and Jamie Foxx. Libby uses her network to bring visibility and sponsorships to the foundation.' },
       { name: 'Victor H. Jinete', role: 'Audio Visual Director', image: '/media/56e6ee_1857a150774e4beb9114d4788de004a5~mv2.jpeg', bio: 'Known as "Vic The Kid," Victor is a Latin music artist who creates content for the foundation and shows younger fans that you don\'t need drugs to be happy or successful.' },
+      { name: 'Johnny Leon', role: 'IT & Web Director', image: '', bio: "Johnny built the foundation's original website and set up its early donation and ticketing systems, and has worked to bring in corporate sponsors to support the mission." },
       { name: 'Naylin Rizo, LMHC', role: 'Psychology Advisor', image: '/media/56e6ee_35c37897108948f48e30e3d1ff4434c9~mv2.jpg', bio: 'A licensed mental health counselor with over 14 years of experience working with teens and adults on trauma and addiction. She makes sure our mental health programs are clinically sound.' },
       { name: 'Natalie Cruz, MSW', role: 'Social Work Advisor', image: '/media/natalie-cruz-health-advisory.jpg', bio: 'A social worker for over 25 years. Natalie has a bachelor’s degree in psychology from St. Thomas University and a master’s in social work from Florida International University. She currently manages a hospital case management department, coordinating care so patients get what they need after they leave the hospital.' },
       { name: 'Jackeline Alers', role: 'Advisory Chair for Grants, Branding & Structure', image: '/media/jackeline-alers.jpg', bio: 'A fundraising strategist with over 25 years of experience across the corporate, government, and nonprofit sectors, having helped raise more than $80 million for organizations including the American Red Cross and Nicklaus Children’s Hospital Foundation. Jackeline guides the foundation’s grants, branding, and fundraising strategy.' },
@@ -142,6 +143,7 @@ const t = {
       { name: 'Brittany DeMeo', role: 'Secretaria', image: '/media/56e6ee_3c8481b926504a1dae34abe7d0fd3dde~mv2.jpeg', bio: 'Brittany se unió a la fundación después de ver cómo el fentanilo afectaba a nuestra región. Como secretaria, mantiene nuestras operaciones organizadas para que los recursos lleguen rápido a donde se necesitan.' },
       { name: 'Libby L. Calero', role: 'Relaciones Públicas', image: '/media/56e6ee_37bc5c9d971949858e3cd5393e414ae6~mv2.jpg', bio: 'Más de 25 años en hospitalidad y relaciones públicas, incluyendo trabajo con DJ Irie y Jamie Foxx. Libby usa su red de contactos para traer visibilidad y patrocinios a la fundación.' },
       { name: 'Victor H. Jinete', role: 'Director Audiovisual', image: '/media/56e6ee_1857a150774e4beb9114d4788de004a5~mv2.jpeg', bio: 'Conocido como "Vic The Kid," Victor es un artista de música latina que crea contenido para la fundación y les muestra a sus seguidores más jóvenes que no se necesitan drogas para ser feliz o tener éxito.' },
+      { name: 'Johnny Leon', role: 'Director de TI y Sitio Web', image: '', bio: 'Johnny construyó el sitio web original de la fundación y estableció sus primeros sistemas de donaciones y venta de boletos, y ha trabajado para conseguir patrocinadores corporativos que apoyen la misión.' },
       { name: 'Naylin Rizo, LMHC', role: 'Asesora Psicológica', image: '/media/56e6ee_35c37897108948f48e30e3d1ff4434c9~mv2.jpg', bio: 'Consejera de salud mental licenciada con más de 14 años de experiencia trabajando con adolescentes y adultos en trauma y adicción. Se asegura de que nuestros programas de bienestar mental sean clínicamente sólidos.' },
       { name: 'Natalie Cruz, MSW', role: 'Asesora de Trabajo Social', image: '/media/natalie-cruz-health-advisory.jpg', bio: 'Trabajadora social por más de 25 años. Natalie tiene una licenciatura en psicología de St. Thomas University y una maestría en trabajo social de Florida International University. Actualmente dirige un departamento de gestión de casos hospitalarios, coordinando la atención para que los pacientes reciban lo que necesitan después de salir del hospital.' },
       { name: 'Jackeline Alers', role: 'Presidenta Asesora de Subvenciones, Marca y Estructura', image: '/media/jackeline-alers.jpg', bio: 'Estratega de recaudación de fondos con más de 25 años de experiencia en los sectores corporativo, gubernamental y sin fines de lucro, habiendo ayudado a recaudar más de $80 millones para organizaciones como la Cruz Roja Americana y la Fundación del Hospital Infantil Nicklaus. Jackeline guía la estrategia de subvenciones, marca y recaudación de fondos de la fundación.' },
@@ -303,18 +305,34 @@ export default function AboutPage() {
             {txt.team.map((member, i) => (
               <div key={i} className={styles.teamCard}>
                 <div className={styles.teamImageWrapper}>
-                  {member.image.startsWith('data:') ? (
-                    <img 
-                      src={member.image} 
-                      alt={member.name} 
+                  {member.image === '' ? (
+                    <div
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        background: 'linear-gradient(135deg, rgba(201,168,76,0.25), rgba(201,168,76,0.08))',
+                        fontFamily: 'Playfair Display',
+                        fontSize: '2.4rem',
+                        color: 'var(--gold-light)',
+                      }}
+                    >
+                      {member.name.split(' ').map((p) => p[0]).slice(0, 2).join('')}
+                    </div>
+                  ) : member.image.startsWith('data:') ? (
+                    <img
+                      src={member.image}
+                      alt={member.name}
                       className={styles.teamImage}
                       style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                     />
                   ) : (
-                    <Image 
-                      src={member.image} 
-                      alt={member.name} 
-                      fill 
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      fill
                       className={styles.teamImage}
                       sizes="(max-width: 768px) 100vw, 33vw"
                     />

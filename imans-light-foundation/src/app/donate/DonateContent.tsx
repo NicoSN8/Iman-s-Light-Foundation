@@ -8,6 +8,30 @@ import { FEATURED_SPONSORS, COMMUNITY_SPONSORS, TEXT_ONLY_SPONSORS } from '@/dat
 import SponsorGrid from '@/components/SponsorGrid';
 import TextSponsorPills from '@/components/TextSponsorPills';
 
+const SCHOOLS = [
+  'Melrose Elementary School — Miami',
+  'Kinloch Middle School — Miami',
+  'Miami Beach Feinberg Fisher K-8 — Miami Beach',
+  'Rockway Middle School — Westchester',
+  'Shenandoah Middle School — Miami',
+  'Glades Middle School — Miramar',
+  'Everglades High School — Miramar',
+  'Silver Trails Middle School — Pembroke Pines',
+  'Homestead Senior High (MAC) — Miami',
+  'Robert Morgan Senior High (MAC) — Miami',
+  'Miami Community Charter (MAC) — Florida City',
+  'South Dade Senior High (MAC) — Miami',
+  'Job Corps — Miami Gardens',
+];
+
+const CENTERS = [
+  'Naranja Community Center — Homestead',
+  'Behavior Support Center — Miami Lakes',
+  'Southern Winds Hospital — Hialeah',
+];
+
+const OTHER_VALUE = '__other__';
+
 interface Tier {
   id: string;
   name: string;
@@ -111,7 +135,9 @@ export default function DonatePage() {
   const { lang } = useContext(LanguageContext);
   const isEs = lang === 'es';
   const tierList = tiers[lang];
-  const [institution, setInstitution] = useState('');
+  const [selectedSchool, setSelectedSchool] = useState('');
+  const [customSchool, setCustomSchool] = useState('');
+  const institution = selectedSchool === OTHER_VALUE ? customSchool : selectedSchool;
 
   return (
     <>
@@ -147,17 +173,38 @@ export default function DonatePage() {
                 ? '¿Quieres que tu donación apoye una escuela o universidad específica en Miami-Dade o Broward?'
                 : 'Want your gift to support a specific school or college in Miami-Dade or Broward?'}
             </label>
-            <input
+            <select
               id="donate-institution"
-              type="text"
-              placeholder={isEs ? 'Nombre de la escuela o universidad (opcional)' : 'School or college name (optional)'}
-              value={institution}
-              onChange={(e) => setInstitution(e.target.value)}
-            />
+              value={selectedSchool}
+              onChange={(e) => setSelectedSchool(e.target.value)}
+            >
+              <option value="">{isEs ? 'Donde más se necesite' : 'Wherever the need is greatest'}</option>
+              <optgroup label={isEs ? 'Escuelas' : 'Schools'}>
+                {SCHOOLS.map((s) => (
+                  <option key={s} value={s}>{s}</option>
+                ))}
+              </optgroup>
+              <optgroup label={isEs ? 'Centros y Hospitales' : 'Centers & Hospitals'}>
+                {CENTERS.map((c) => (
+                  <option key={c} value={c}>{c}</option>
+                ))}
+              </optgroup>
+              <option value={OTHER_VALUE}>{isEs ? 'Otro (especificar)…' : 'Other (specify)…'}</option>
+            </select>
+            {selectedSchool === OTHER_VALUE && (
+              <input
+                id="donate-institution-custom"
+                type="text"
+                placeholder={isEs ? 'Nombre de la escuela o institución' : 'Name of the school or institution'}
+                value={customSchool}
+                onChange={(e) => setCustomSchool(e.target.value)}
+                style={{ marginTop: '10px' }}
+              />
+            )}
             <p className={styles.institutionHint}>
               {isEs
-                ? 'Déjalo en blanco para apoyar donde más se necesite.'
-                : 'Leave it blank to support wherever the need is greatest.'}
+                ? 'Déjalo en "Donde más se necesite" para apoyar donde más se necesite, o elige tu escuela.'
+                : "Leave it on \"Wherever the need is greatest,\" or pick your school."}
             </p>
           </div>
 
