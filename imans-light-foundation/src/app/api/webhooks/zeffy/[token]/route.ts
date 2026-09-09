@@ -86,9 +86,8 @@ export async function POST(request: Request, { params }: { params: Promise<{ tok
   const amountCents = typeof payment.amount === 'number' && Number.isFinite(payment.amount) ? payment.amount : null;
   const campaignType = firstString(payment, ['campaign_type']);
 
-  const db = getDb();
-
   try {
+    const db = getDb();
     if (campaignType === 'donation_form') {
       await db.insert(donations).values({
         donorName: buyerName,
@@ -137,9 +136,9 @@ export async function POST(request: Request, { params }: { params: Promise<{ tok
     }
   } catch (err) {
     console.error('Zeffy webhook: failed to store event:', err);
-    // Still return 200 — Zeffy retries on non-2xx, and retrying won't fix a
-    // DB error. The raw body is in the server logs above if it needs
-    // manual recovery.
+    // Acknowledge only after storage succeeds. A non-2xx response lets Zeffy
+    // retry a delivery after a transient database failure.
+    return new Response('Service Unavailable', { status: 503 });
   }
 
   return new Response('OK', { status: 200 });
